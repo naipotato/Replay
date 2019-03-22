@@ -27,14 +27,27 @@ class UniTube.App : Gtk.Application {
         );
 	}
 
-	protected override void activate () {
+	public override void activate () {
+		// Get the actual window.
 		var win = this.active_window;
 
+		// If there's no window, then create a new one.
 		if (win == null) {
 			win = new MainWindow (this);
 			win.show_all ();
 		}
 
+		// Ensure that the window is on foreground.
 		win.present ();
+	}
+
+	public override void startup () {
+		// Add quit accelerator
+		var action = new SimpleAction ("quit", null);
+		action.activate.connect (this.quit);
+		this.add_action (action);
+		this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
+
+		base.startup ();
 	}
 }
