@@ -1,4 +1,6 @@
 sources = [
+    'widgets/header-bar.vala',
+
     'app.vala',
     'main-window.vala',
     'main.vala',
