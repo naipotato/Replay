@@ -48,6 +48,17 @@ class UniTube.App : Gtk.Application {
 		this.add_action (action);
 		this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
 
+		// Add about action
+		action = new SimpleAction ("about", null);
+		action.activate.connect (this.on_about_activate);
+		this.add_action (action);
+
 		base.startup ();
+	}
+
+	private void on_about_activate () {
+		var about_dialog = new AboutDialog ();
+		about_dialog.transient_for = this.active_window;
+		about_dialog.present ();
 	}
 }

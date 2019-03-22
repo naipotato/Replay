@@ -1,4 +1,6 @@
 sources = [
+    'dialogs/about-dialog.vala',
+
     'widgets/header-bar.vala',
 
     'app.vala',
