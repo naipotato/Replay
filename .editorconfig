@@ -9,3 +9,7 @@ end_of_line = lf
 [*.vala]
 indent_size = 4
 indent_style = tab
+
+[*.{ui,xml}]
+indent_size = 2
+indent_style = space

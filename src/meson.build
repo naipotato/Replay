@@ -1,7 +1,9 @@
 sources = [
     'app.vala',
     'main-window.vala',
-    'main.vala'
+    'main.vala',
+
+    resources
 ]
 
 dependencies = [

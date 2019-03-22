@@ -6,4 +6,5 @@ project (
 
 app_id = 'com.nucleuxsoft.UniTube'
 
+subdir ('data')
 subdir ('src')

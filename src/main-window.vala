@@ -18,6 +18,7 @@
  * Author: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
  */
 
+[GtkTemplate (ui = "/com/nucleuxsoft/UniTube/ui/main-window.ui")]
 class UniTube.MainWindow : Gtk.ApplicationWindow {
 
 	public MainWindow (Gtk.Application app) {
