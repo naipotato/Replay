@@ -24,6 +24,9 @@ class UniTube.HeaderBar : Gtk.HeaderBar {
 	private bool _selection_mode;
 
 	[GtkChild]
+	private Gtk.Button back_button;
+
+	[GtkChild]
 	private Gtk.ToggleButton select_button;
 
 	[GtkChild]
@@ -48,6 +51,8 @@ class UniTube.HeaderBar : Gtk.HeaderBar {
 		this.bind_property ("selection-mode", this.select_button, "visible",
 			BindingFlags.INVERT_BOOLEAN);
 		this.bind_property ("selection-mode", this.menu_button, "visible",
+			BindingFlags.INVERT_BOOLEAN);
+		this.bind_property ("selection-mode", this.back_button, "visible",
 			BindingFlags.INVERT_BOOLEAN);
 		this.bind_property ("search-mode", this.search_button, "active",
 			BindingFlags.BIDIRECTIONAL);
