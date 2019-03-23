@@ -15,3 +15,5 @@ datadir = join_paths (prefix, get_option ('datadir'))
 
 subdir ('data')
 subdir ('src')
+
+meson.add_install_script (join_paths ('build-aux', 'post_install.py'))
