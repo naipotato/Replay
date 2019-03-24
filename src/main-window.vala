@@ -21,6 +21,8 @@
 [GtkTemplate (ui = "/com/nucleuxsoft/UniTube/ui/main-window.ui")]
 class UniTube.MainWindow : Gtk.ApplicationWindow {
 
+	private uint configure_id;
+
 	[GtkChild]
 	private HeaderBar header_bar;
 
