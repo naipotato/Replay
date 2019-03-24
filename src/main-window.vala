@@ -29,4 +29,32 @@ class UniTube.MainWindow : Gtk.ApplicationWindow {
 			application: app
 		);
 	}
+
+	public override bool configure_event (Gdk.EventConfigure event) {
+		if (configure_id != 0) {
+			Source.remove (configure_id);
+		}
+
+		configure_id = Timeout.add (100, () => {
+			configure_id = 0;
+
+			if (this.is_maximized) {
+				App.settings.set_boolean ("window-maximized", true);
+			} else {
+				App.settings.set_boolean ("window-maximized", false);
+
+				Gdk.Rectangle rect;
+				this.get_allocation (out rect);
+				App.settings.set ("window-size", "(ii)", rect.width, rect.height);
+
+				int root_x, root_y;
+				this.get_position (out root_x, out root_y);
+				App.settings.set ("window-position", "(ii)", root_x, root_y);
+			}
+
+			return false;
+		});
+
+		return base.configure_event (event);
+	}
 }

@@ -20,6 +20,8 @@
 
 class UniTube.App : Gtk.Application {
 
+	public static Settings settings;
+
     public App (string app_id) {
         Object (
             application_id: app_id,
@@ -27,13 +29,34 @@ class UniTube.App : Gtk.Application {
         );
 	}
 
+	static construct {
+		settings = new Settings ("com.nucleuxsoft.UniTube");
+	}
+
 	public override void activate () {
 		// Get the actual window.
 		var win = this.active_window;
 
-		// If there's no window, then create a new one.
 		if (win == null) {
+			// If there's no window, then create a new one.
 			win = new MainWindow (this);
+
+			int window_x, window_y;
+			var rect = Gtk.Allocation ();
+
+			App.settings.get ("window-position", "(ii)", out window_x, out window_y);
+			App.settings.get ("window-size", "(ii)", out rect.width, out rect.height);
+
+			if (window_x != -1 || window_y != -1) {
+				win.move (window_x, window_y);
+			}
+
+			win.set_allocation (rect);
+
+			if (App.settings.get_boolean ("window-maximized")) {
+				win.maximize ();
+			}
+
 			win.show_all ();
 		}
 
