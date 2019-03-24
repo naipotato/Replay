@@ -32,4 +32,9 @@ if desktop_file_validate.found ()
     )
 endif
 
+install_data (
+    '@0@.gschema.xml'.format (app_id),
+    install_dir: join_paths (datadir, 'glib-2.0', 'schemas')
+)
+
 subdir ('icons')
