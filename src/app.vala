@@ -57,6 +57,10 @@ class UniTube.App : Gtk.Application {
 				win.maximize ();
 			}
 
+			var dark_theme = App.settings.get_boolean ("dark-theme");
+			var settings = Gtk.Settings.get_default ();
+			settings.gtk_application_prefer_dark_theme = dark_theme;
+
 			win.show_all ();
 		}
 
@@ -76,6 +80,13 @@ class UniTube.App : Gtk.Application {
 		action.activate.connect (this.on_about_activate);
 		this.add_action (action);
 
+		// Add dark theme action
+		var saved_value = App.settings.get_boolean ("dark-theme");
+		var variant = new Variant.boolean (saved_value);
+		action = new SimpleAction.stateful ("dark-theme", null, variant);
+		action.change_state.connect (this.on_dark_theme_change_state);
+		this.add_action (action);
+
 		base.startup ();
 	}
 
@@ -83,5 +94,15 @@ class UniTube.App : Gtk.Application {
 		var about_dialog = new AboutDialog ();
 		about_dialog.transient_for = this.active_window;
 		about_dialog.present ();
+	}
+
+	private void on_dark_theme_change_state (SimpleAction sender, Variant? value) {
+		assert (value != null);
+		sender.set_state (value);
+
+		var settings = Gtk.Settings.get_default ();
+		settings.gtk_application_prefer_dark_theme = value.get_boolean ();
+
+		App.settings.set_boolean ("dark-theme", value.get_boolean ());
 	}
 }
