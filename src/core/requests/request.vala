@@ -20,10 +20,10 @@
 
 abstract class UniTube.Core.Request<T> : Object {
 
-	private Gee.Map<string, string> parameters;
+	private Gee.HashMap<string, string> parameters;
 
 	public Request () {
-		this.parameters = new Gee.HasMap<string, string> ();
+		this.parameters = new Gee.HashMap<string, string> ();
 	}
 
 	public string? access_token {
@@ -134,5 +134,7 @@ abstract class UniTube.Core.Request<T> : Object {
 		return string.joinv ("&", joined_pairs.to_array ());
 	}
 
-	public async abstract T execute_request () throws ApiError;
+	public abstract T execute () throws ApiError;
+
+	public async abstract T execute_async () throws ApiError;
 }

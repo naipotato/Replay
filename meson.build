@@ -13,6 +13,8 @@ podir = join_paths (meson.source_root (), 'po')
 prefix = get_option ('prefix')
 datadir = join_paths (prefix, get_option ('datadir'))
 
+vul_proj = subproject ('vul')
+
 subdir ('data')
 subdir ('src')
 

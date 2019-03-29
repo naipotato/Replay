@@ -132,7 +132,42 @@ class UniTube.Core.VideoListRequest : Request<VideoListResponse> {
 		}
 	}
 
-	public async override VideoListResponse execute_request () throws ApiError {
+	public override VideoListResponse execute () throws ApiError {
+		var parameters = this.get_parameters ();
+		var session = new Soup.Session ();
 
+		var message = new Soup.Message ("GET",
+			@"https://www.googleapis.com/youtube/v3/videos?$parameters");
+		var status_code = session.send_message (message);
+
+		if (status_code == 200) {
+			var content_response = (string) message.response_body.data;
+			GJson.Object gjson_object = null;
+
+			try {
+				gjson_object = GJson.Object.parse (content_response);
+			} catch (Error e) {
+				throw new ApiError.JSON_PARSE_ERROR (@"Error $(e.message)");
+			}
+
+			return (VideoListResponse) GJson.deserialize_object (
+				typeof (VideoListResponse), gjson_object);
+		} else {
+			throw new ApiError.HTTP_REQUEST_ERROR (
+				@"Error $(status_code)\n$(message.reason_phrase)\n" +
+				"$((string) message.response_body.data)");
+		}
+	}
+
+	public async override VideoListResponse execute_async () throws ApiError {
+		VideoListResponse response = null;
+		ThreadFunc<void*> func = () => {
+			response = execute ();
+			Idle.add (execute_async.callback);
+			return null;
+		};
+		Thread.create (func, false);
+		yield;
+		return response;
 	}
 }
