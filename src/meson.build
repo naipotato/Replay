@@ -13,6 +13,7 @@ sources = [
     'dialogs/about-dialog.vala',
 
     'widgets/header-bar.vala',
+    'widgets/search-bar.vala',
 
     'app.vala',
     'main-window.vala',
@@ -22,12 +23,13 @@ sources = [
 ]
 
 dependencies = [
-    dependency ('glib-2.0'),
-    dependency ('gobject-2.0'),
-    dependency ('gtk+-3.0'),
-    dependency ('gee-0.8'),
-    dependency ('libsoup-2.4'),
-    vul_proj.get_variable ('gjson_dep')
+    glib_dep,
+    gobject_dep,
+    gtk_dep,
+    gee_dep,
+    soup_dep,
+    handy_dep,
+    gjson_dep
 ]
 
 executable (

@@ -26,10 +26,18 @@ class UniTube.MainWindow : Gtk.ApplicationWindow {
 	[GtkChild]
 	private HeaderBar header_bar;
 
+	[GtkChild]
+	private SearchBar search_bar;
+
 	public MainWindow (Gtk.Application app) {
 		Object (
 			application: app
 		);
+	}
+
+	construct {
+		this.header_bar.bind_property ("search-mode", this.search_bar,
+			"search-mode-enabled", BindingFlags.BIDIRECTIONAL);
 	}
 
 	public override bool configure_event (Gdk.EventConfigure event) {

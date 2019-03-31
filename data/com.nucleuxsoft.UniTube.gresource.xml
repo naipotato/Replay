@@ -3,5 +3,6 @@
   <gresource prefix="/com/nucleuxsoft/UniTube">
     <file>ui/header-bar.ui</file>
     <file>ui/main-window.ui</file>
+    <file>ui/search-bar.ui</file>
   </gresource>
 </gresources>
