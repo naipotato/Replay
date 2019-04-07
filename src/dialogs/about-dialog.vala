@@ -14,6 +14,14 @@ class UniTube.AboutDialog : Gtk.AboutDialog {
 
 		this.license_type = Gtk.License.GPL_3_0;
 
-		this.website = "https://github.com/NucleuxSoft/unitube-gtk";
+        this.website = "https://github.com/NucleuxSoft/unitube-gtk";
+
+        this.response.connect (() => {
+            this.hide ();
+        });
+
+        this.hide.connect (() => {
+            this.destroy ();
+        });
 	}
 }

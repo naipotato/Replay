@@ -20,7 +20,7 @@
 
 class UniTube.App : Gtk.Application {
 
-	public static Settings settings;
+    public static Settings settings;
 
     public App (string app_id) {
         Object (

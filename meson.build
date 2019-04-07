@@ -2,7 +2,7 @@ project (
     'unitube-gtk',
     ['c', 'vala'],
     version: '0.1.0',
-    license: 'GPL3+'
+    license: 'GPL-3.0-or-later'
 )
 
 app_id = 'com.nucleuxsoft.UniTube'
