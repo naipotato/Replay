@@ -1,5 +1,9 @@
 class UniTube.AboutDialog : Gtk.AboutDialog {
 
+    public AboutDialog (Gtk.Window window) {
+        this.transient_for = window;
+    }
+
 	construct {
 		this.destroy_with_parent = true;
 		this.modal = true;

@@ -20,89 +20,87 @@
 
 class UniTube.App : Gtk.Application {
 
-    public static Settings settings;
-
     public App (string app_id) {
         Object (
             application_id: app_id,
             flags: ApplicationFlags.FLAGS_NONE
         );
-	}
+    }
 
-	static construct {
-		settings = new Settings ("com.nucleuxsoft.UniTube");
-	}
+    public override void activate () {
+        base.activate ();
 
-	public override void activate () {
-		// Get the actual window.
-		var win = this.active_window;
+        if (this.active_window == null) {
+            // If there's no active window, let's create a new one
+            var window = new MainWindow (this);
 
-		if (win == null) {
-			// If there's no window, then create a new one.
-			win = new MainWindow (this);
+            // Load preferences about the window
+            this.load_preferences (window);
 
-			int window_x, window_y;
-			var rect = Gtk.Allocation ();
+            // Show the window created
+            window.show_all ();
+        }
 
-			App.settings.get ("window-position", "(ii)", out window_x, out window_y);
-			App.settings.get ("window-size", "(ii)", out rect.width, out rect.height);
+        // Ensure that the active window is on foreground
+        this.active_window.present ();
+    }
 
-			if (window_x != -1 || window_y != -1) {
-				win.move (window_x, window_y);
-			}
+    public override void startup () {
+        base.startup ();
 
-			win.set_allocation (rect);
+        // Add quit action
+        var action = new SimpleAction ("quit", null);
+        action.activate.connect (this.quit);
+        this.add_action (action);
+        this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
 
-			if (App.settings.get_boolean ("window-maximized")) {
-				win.maximize ();
-			}
+        // Add about action
+        action = new SimpleAction ("about", null);
+        action.activate.connect (this.on_about_activate);
+        this.add_action (action);
 
-			var dark_theme = App.settings.get_boolean ("dark-theme");
-			var settings = Gtk.Settings.get_default ();
-			settings.gtk_application_prefer_dark_theme = dark_theme;
+        // Add dark theme action
+        var settings = SettingsService.instance;
+        var variant = new Variant.boolean (settings.dark_theme);
+        action = new SimpleAction.stateful ("dark-theme", null, variant);
+        action.change_state.connect (this.on_dark_theme_change_state);
+        this.add_action (action);
+    }
 
-			win.show_all ();
-		}
+    private void load_preferences (Gtk.Window window) {
+        var settings = SettingsService.instance;
 
-		// Ensure that the window is on foreground.
-		win.present ();
-	}
+        // Load window position
+        var position = settings.window_position;
+        if (position.x != -1 || position.y != -1) {
+            window.move (position.x, position.y);
+        }
 
-	public override void startup () {
-		// Add quit accelerator
-		var action = new SimpleAction ("quit", null);
-		action.activate.connect (this.quit);
-		this.add_action (action);
-		this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
+        // Load window size
+        window.set_allocation (settings.window_size);
 
-		// Add about action
-		action = new SimpleAction ("about", null);
-		action.activate.connect (this.on_about_activate);
-		this.add_action (action);
+        // Load a value that indicates whether the window is maximized or not
+        if (settings.window_maximized) {
+            window.maximize ();
+        }
 
-		// Add dark theme action
-		var saved_value = App.settings.get_boolean ("dark-theme");
-		var variant = new Variant.boolean (saved_value);
-		action = new SimpleAction.stateful ("dark-theme", null, variant);
-		action.change_state.connect (this.on_dark_theme_change_state);
-		this.add_action (action);
+        // Load a value that indicates whether the dark theme is enabled or not
+        var gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.gtk_application_prefer_dark_theme = settings.dark_theme;
+    }
 
-		base.startup ();
-	}
+    private void on_about_activate () {
+        var about_dialog = new AboutDialog (this.active_window);
+        about_dialog.present ();
+    }
 
-	private void on_about_activate () {
-		var about_dialog = new AboutDialog ();
-		about_dialog.transient_for = this.active_window;
-		about_dialog.present ();
-	}
+    private void on_dark_theme_change_state (SimpleAction sender, Variant? value) {
+        assert (value != null);
+        sender.set_state (value);
 
-	private void on_dark_theme_change_state (SimpleAction sender, Variant? value) {
-		assert (value != null);
-		sender.set_state (value);
+        var gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.gtk_application_prefer_dark_theme = value.get_boolean ();
 
-		var settings = Gtk.Settings.get_default ();
-		settings.gtk_application_prefer_dark_theme = value.get_boolean ();
-
-		App.settings.set_boolean ("dark-theme", value.get_boolean ());
-	}
+        SettingsService.instance.dark_theme = value.get_boolean ();
+    }
 }

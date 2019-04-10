@@ -12,6 +12,8 @@ sources = [
 
     'dialogs/about-dialog.vala',
 
+    'services/settings-service.vala',
+
     'widgets/header-bar.vala',
     'widgets/search-bar.vala',
 

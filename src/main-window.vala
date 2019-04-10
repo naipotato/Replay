@@ -45,22 +45,31 @@ class UniTube.MainWindow : Gtk.ApplicationWindow {
 			Source.remove (configure_id);
 		}
 
+        // Save window state every 100 miliseconds
 		configure_id = Timeout.add (100, () => {
-			configure_id = 0;
+            configure_id = 0;
 
-			if (this.is_maximized) {
-				App.settings.set_boolean ("window-maximized", true);
-			} else {
-				App.settings.set_boolean ("window-maximized", false);
+            var settings = SettingsService.instance;
 
-				Gdk.Rectangle rect;
-				this.get_allocation (out rect);
-				App.settings.set ("window-size", "(ii)", rect.width, rect.height);
+            if (this.is_maximized) {
+                // If window is maximized, save a value that indicates that.
+                settings.window_maximized = true;
+            } else {
+                // If not, sava a value that indicates that the window is not
+                // maximized and save size and position of the window.
+                settings.window_maximized = false;
 
-				int root_x, root_y;
-				this.get_position (out root_x, out root_y);
-				App.settings.set ("window-position", "(ii)", root_x, root_y);
-			}
+                // Create a new Gtk.Allocation to store position and size values
+                Gtk.Allocation rect;
+
+                // Save window size
+                this.get_allocation (out rect);
+                settings.window_size = rect;
+
+                // Save window position
+                this.get_position (out rect.x, out rect.y);
+                settings.window_position = rect;
+            }
 
 			return false;
 		});
