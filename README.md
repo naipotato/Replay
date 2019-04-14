@@ -1,4 +1,4 @@
-unitube-gtk
+UniTube GTK
 ===========
 
 An open source client for YouTube built using Vala and GTK.
