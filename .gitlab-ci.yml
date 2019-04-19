@@ -1,0 +1,14 @@
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - meson build --prefix /usr
+    - ninja -C build
+
+test:
+  stage: test
+  script:
+    - ninja -C build test
