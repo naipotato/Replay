@@ -3,8 +3,10 @@ stages:
   - test
 
 build:
+  image: archlinux/base
   stage: build
   script:
+    - pacman -Syu vala meson
     - meson build --prefix /usr
     - ninja -C build
 
