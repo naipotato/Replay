@@ -2,11 +2,14 @@ stages:
   - build
   - test
 
+variables:
+  GIT_SUBMODULE_STRATEGY: normal
+
 build:
   image: archlinux/base
   stage: build
   script:
-    - pacman -Syu --noconfirm vala meson
+    - pacman -Syu --noconfirm glib2 gtk3 libgee libhandy libsoup git meson vala
     - meson build --prefix /usr
     - ninja -C build
 
