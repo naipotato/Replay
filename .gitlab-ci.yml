@@ -1,3 +1,8 @@
+image: archlinux/base
+
+before_script:
+  - pacman -Syu --noconfirm glib2 gtk3 libgee libhandy libsoup git meson vala gobject-introspection
+
 stages:
   - build
   - test
@@ -6,12 +11,13 @@ variables:
   GIT_SUBMODULE_STRATEGY: normal
 
 build:
-  image: archlinux/base
   stage: build
   script:
-    - pacman -Syu --noconfirm glib2 gtk3 libgee libhandy libsoup git meson vala gobject-introspection
     - meson build --prefix /usr
     - ninja -C build
+  artifacts:
+    paths:
+      - build/
 
 test:
   stage: test
