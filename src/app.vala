@@ -1,106 +1,124 @@
-/* Copyright (C) 2019 Nucleux Software
- *
- * This file is part of unitube-gtk.
- *
- * unitube-gtk is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * unitube-gtk is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY of FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with unitube-gtk.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Author: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
- */
+using Gdk;
+using Gtk;
 
-class UniTube.App : Gtk.Application {
+namespace Unitube {
 
-    public App (string app_id) {
-        Object (
-            application_id: app_id,
-            flags: ApplicationFlags.FLAGS_NONE
-        );
-    }
+    public class App : Gtk.Application {
 
-    public override void activate () {
-        base.activate ();
+        private AppTheme _requested_theme;
 
-        if (this.active_window == null) {
-            // If there's no active window, let's create a new one
-            var window = new MainWindow (this);
+        public AppTheme requested_theme {
+            get {
+                return this._requested_theme;
+            }
+            set {
+                var gtk_settings = Gtk.Settings.get_default ();
+                var settings = SettingsService.get_default ();
 
-            // Load preferences about the window
-            this.load_preferences (window);
+                gtk_settings.gtk_application_prefer_dark_theme = value == AppTheme.DARK;
+                gtk_settings.gtk_theme_name = settings.system.gtk_theme.replace ("-dark", "");
 
-            // Show the window created
-            window.show_all ();
+                this._requested_theme = value;
+            }
         }
 
-        // Ensure that the active window is on foreground
-        this.active_window.present ();
-    }
-
-    public override void startup () {
-        base.startup ();
-
-        // Add quit action
-        var action = new SimpleAction ("quit", null);
-        action.activate.connect (this.quit);
-        this.add_action (action);
-        this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
-
-        // Add about action
-        action = new SimpleAction ("about", null);
-        action.activate.connect (this.on_about_activate);
-        this.add_action (action);
-
-        // Add dark theme action
-        var settings = SettingsService.instance;
-        var variant = new Variant.boolean (settings.dark_theme);
-        action = new SimpleAction.stateful ("dark-theme", null, variant);
-        action.change_state.connect (this.on_dark_theme_change_state);
-        this.add_action (action);
-    }
-
-    private void load_preferences (Gtk.Window window) {
-        var settings = SettingsService.instance;
-
-        // Load window position
-        var position = settings.window_position;
-        if (position.x != -1 || position.y != -1) {
-            window.move (position.x, position.y);
+        public bool without_colored_styles {
+            get {
+                var settings = SettingsService.get_default ();
+                return settings.system.gtk_theme != "Adwaita" &&
+                    settings.system.gtk_theme != "Adwaita-dark";
+            }
         }
 
-        // Load window size
-        window.set_allocation (settings.window_size);
+        public App () {
+            Object (
+                application_id: Config.APP_ID,
+                flags: ApplicationFlags.FLAGS_NONE
+            );
 
-        // Load a value that indicates whether the window is maximized or not
-        if (settings.window_maximized) {
-            window.maximize ();
+            this.add_actions ();
         }
 
-        // Load a value that indicates whether the dark theme is enabled or not
-        var gtk_settings = Gtk.Settings.get_default ();
-        gtk_settings.gtk_application_prefer_dark_theme = settings.dark_theme;
-    }
+        public static int main (string[] args) {
+            Hdy.init (ref args);
 
-    private void on_about_activate () {
-        var about_dialog = new AboutDialog (this.active_window);
-        about_dialog.present ();
-    }
+            var app = new Unitube.App ();
+            return app.run (args);
+        }
 
-    private void on_dark_theme_change_state (SimpleAction sender, Variant? value) {
-        assert (value != null);
-        sender.set_state (value);
+        protected override void activate () {
+            var icon_theme = Gtk.IconTheme.get_default ();
+            icon_theme.add_resource_path (@"$(Config.RESOURCE_PATH)/icons");
 
-        var gtk_settings = Gtk.Settings.get_default ();
-        gtk_settings.gtk_application_prefer_dark_theme = value.get_boolean ();
+            this.load_custom_styles ("style.css");
 
-        SettingsService.instance.dark_theme = value.get_boolean ();
+            var settings = SettingsService.get_default ();
+            settings.appearance.notify["app-theme"].connect (this.on_app_theme_changed);
+            settings.system.notify["gtk-theme"].connect (this.on_app_theme_changed);
+
+            // Due to the fact that there's no way to emit the property changed
+            // signal every time it gets connected to a method, I've to emit it
+            // manually in order to avoid code repetition.
+            settings.appearance.notify_property ("app-theme");
+
+            var win = this.active_window;
+
+            if (win == null) {
+                win = new MainWindow (this);
+                win.show ();
+            }
+
+            win.present ();
+        }
+
+        private void add_actions () {
+            var about_action = new SimpleAction ("about", null);
+            about_action.activate.connect (() => {
+                var about_dialog = new Unitube.AboutDialog ();
+                about_dialog.transient_for = this.active_window;
+                about_dialog.present ();
+            });
+            this.add_action (about_action);
+
+            var quit_action = new SimpleAction ("quit", null);
+            quit_action.activate.connect (() => {
+                this.quit ();
+            });
+            this.set_accels_for_action ("app.quit", {"<Ctrl>Q"});
+            this.add_action (quit_action);
+        }
+
+        private void load_custom_styles (string style) {
+            var screen = Screen.get_default ();
+
+            var provider = new CssProvider ();
+            provider.load_from_resource (@"$(Config.RESOURCE_PATH)/$style");
+
+            // TODO: I've stolen this from gnome-games, but I don't know why
+            // the priority is 600, I've to research more about this.
+            StyleContext.add_provider_for_screen (screen, provider, 600);
+        }
+
+        private void on_app_theme_changed () {
+            var settings = SettingsService.get_default ();
+            var dark_theme = false;
+
+            // Check if the system theme is dark
+            dark_theme = settings.system.gtk_theme.contains ("-dark");
+
+            // Check if the user has forced the dark theme in settings.ini
+            dark_theme = settings.system.dark_theme ? true : dark_theme;
+
+            // Check the theme setted by the user
+            if (settings.appearance.app_theme != ElementTheme.SYSTEM) {
+                dark_theme = settings.appearance.app_theme == ElementTheme.DARK;
+            }
+
+            // Notify that the without-colored-styles property needs to be
+            // regetted
+            notify_property ("without-colored-styles");
+
+            requested_theme = dark_theme ? AppTheme.DARK : AppTheme.LIGHT;
+        }
     }
 }

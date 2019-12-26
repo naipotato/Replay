@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+  <requires lib="gtk+" version="3.24"/>
+  <requires lib="libhandy" version="0.0"/>
+
+  <template class="UnitubeMainHeaderBar" parent="HdyHeaderBar">
+
+    <property name="show-close-button">True</property>
+    <signal name="toggle-search-mode" handler="on_search_mode_toggled"/>
+    <signal name="toggle-menu" handler="on_menu_toggled"/>
+    <signal name="notify::search-mode" handler="on_search_mode_changed"/>
+
+    <style>
+      <class name="red-style"/>
+    </style>
+
+    <child type="title">
+      <object class="GtkStack" id="title_stack">
+
+        <property name="visible">True</property>
+        <property name="transition-type">crossfade</property>
+
+        <child>
+
+          <object class="HdySqueezer">
+
+            <property name="visible">True</property>
+            <property name="transition-type">crossfade</property>
+            <signal name="notify::visible-child" handler="on_squeezer_visible_child_changed"/>
+
+            <child>
+              <object class="HdyViewSwitcher" id="view_switcher">
+                <property name="visible">True</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkLabel">
+
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Unitube</property>
+
+                <style>
+                  <class name="title"/>
+                </style>
+              </object>
+            </child>
+          </object>
+
+          <packing>
+            <property name="name">tabs</property>
+          </packing>
+        </child>
+
+        <child>
+
+          <object class="HdyColumn">
+
+            <property name="visible">True</property>
+            <property name="maximum-width">500</property>
+            <property name="linear-growth-width">400</property>
+
+            <child>
+              <object class="GtkSearchEntry" id="search_entry">
+                <property name="visible">True</property>
+                <signal name="stop-search" handler="on_search_entry_stop_search"/>
+              </object>
+            </child>
+          </object>
+
+          <packing>
+            <property name="name">search</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+
+    <child>
+
+      <object class="GtkToggleButton" id="search_button">
+        <property name="visible">True</property>
+        <property name="tooltip-text" translatable="yes">Search</property>
+        <property name="image">search-icon</property>
+      </object>
+
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+
+    <child>
+
+      <object class="GtkMenuButton" id="menu_button">
+        <property name="visible">True</property>
+        <property name="menu-model">main-menu</property>
+        <property name="tooltip-text" translatable="yes">Menu</property>
+        <property name="image">menu-icon</property>
+      </object>
+
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+  </template>
+
+  <menu id="main-menu">
+    <section>
+
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+
+      <item>
+        <attribute name="label" translatable="yes">About</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+
+  <object class="GtkImage" id="search-icon">
+    <property name="visible">True</property>
+    <property name="icon-name">system-search-symbolic</property>
+  </object>
+
+  <object class="GtkImage" id="menu-icon">
+    <property name="visible">True</property>
+    <property name="icon-name">open-menu-symbolic</property>
+  </object>
+</interface>

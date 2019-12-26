@@ -1,79 +1,39 @@
-/* Copyright (C) 2019 Nucleux Software
- *
- * This file is part of unitube-gtk.
- *
- * unitube-gtk is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * unitube-gtk is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY of FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with unitube-gtk.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Author: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
- */
+using Gdk;
+using Gtk;
 
-[GtkTemplate (ui = "/com/nucleuxsoft/UniTube/ui/main-window.ui")]
-class UniTube.MainWindow : Gtk.ApplicationWindow {
+namespace Unitube {
 
-	private uint configure_id;
+    [GtkTemplate (ui = "/com/gitlab/nahuelwexd/Unitube/ui/main-window.ui")]
+    public class MainWindow : ApplicationWindow {
 
-	[GtkChild]
-	private HeaderBar header_bar;
+        [GtkChild]
+        private MainHeaderBar headerbar;
 
-	[GtkChild]
-	private SearchBar search_bar;
+        [GtkChild]
+        private TrendingView trending_view;
 
-	public MainWindow (Gtk.Application app) {
-		Object (
-			application: app
-		);
-	}
+        [GtkChild]
+        private SubscriptionsView subs_view;
 
-	construct {
-		this.header_bar.bind_property ("search-mode", this.search_bar,
-			"search-mode-enabled", BindingFlags.BIDIRECTIONAL);
-	}
+        [GtkChild]
+        private LibraryView library_view;
 
-	public override bool configure_event (Gdk.EventConfigure event) {
-		if (configure_id != 0) {
-			Source.remove (configure_id);
-		}
+        public MainWindow (App app) {
+            Object (
+                application: app
+            );
 
-        // Save window state every 100 miliseconds
-		configure_id = Timeout.add (100, () => {
-            configure_id = 0;
+            var close_action = new SimpleAction ("close", null);
+            close_action.activate.connect (() => {
+                this.close ();
+            });
+            app.set_accels_for_action ("win.close", {"<Ctrl>W"});
+            this.add_action (close_action);
+        }
 
-            var settings = SettingsService.instance;
-
-            if (this.is_maximized) {
-                // If window is maximized, save a value that indicates that.
-                settings.window_maximized = true;
-            } else {
-                // If not, sava a value that indicates that the window is not
-                // maximized and save size and position of the window.
-                settings.window_maximized = false;
-
-                // Create a new Gtk.Allocation to store position and size values
-                Gtk.Allocation rect;
-
-                // Save window size
-                this.get_allocation (out rect);
-                settings.window_size = rect;
-
-                // Save window position
-                this.get_position (out rect.x, out rect.y);
-                settings.window_position = rect;
-            }
-
-			return false;
-		});
-
-		return base.configure_event (event);
-	}
+        [GtkCallback]
+        private bool on_key_press_event (EventKey event) {
+            return headerbar.handle_event (event);
+        }
+    }
 }

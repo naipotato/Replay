@@ -1,43 +1,39 @@
 sources = [
-    'core/requests/request.vala',
-    'core/requests/video-list-request.vala',
-
-    'core/resources/resource.vala',
-    'core/resources/thumbnail.vala',
-    'core/resources/video.vala',
-
-    'core/responses/video-list-response.vala',
-
-    'core/api-error.vala',
-
     'dialogs/about-dialog.vala',
 
+    'services/settings/appearance-settings.vala',
+    'services/settings/system-settings.vala',
+
+    'services/element-theme.vala',
     'services/settings-service.vala',
 
-    'widgets/header-bar.vala',
-    'widgets/search-bar.vala',
+    'view-models/categories-list-model.vala',
+    'view-models/category.vala',
+    'view-models/trending-view-model.vala',
 
+    'views/library-view.vala',
+    'views/subscriptions-view.vala',
+    'views/trending-view.vala',
+
+    'widgets/main-header-bar.vala',
+
+    'app-theme.vala',
     'app.vala',
     'main-window.vala',
-    'main.vala',
-
-    resources
 ]
 
-dependencies = [
-    glib_dep,
-    gobject_dep,
-    gtk_dep,
-    gee_dep,
-    soup_dep,
-    handy_dep,
-    gjson_dep
-]
+valac = meson.get_compiler ('vala')
+vapidir = meson.source_root () / 'vapi'
 
 executable (
     meson.project_name (),
-    sources,
-    dependencies: dependencies,
-    gui_app: true,
-    install: true
+    sources, resources,
+    dependencies: [
+        dependency ('gtk+-3.0', version: '>= 3.24'),
+        dependency ('libhandy-0.0', version: '>= 0.0.10'),
+        dependency ('gee-0.8'),
+        valac.find_library ('config', dirs: vapidir)
+    ],
+    install: true,
+    include_directories: confinc
 )

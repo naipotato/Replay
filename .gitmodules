@@ -1,0 +1,3 @@
+[submodule "subprojects/utlib"]
+	path = subprojects/utlib
+	url = git@gitlab.com:nahuelwexd/utlib.git

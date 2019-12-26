@@ -1,90 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
-
-Copyright (C) 2019 Nucleux Software
-
-This file is part of unitube-gtk.
-
-unitube-gtk is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-unitube-gtk is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with unitube-gtk.  If not, see <http://www.gnu.org/licenses/>.
-
-Author: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
-
--->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
-  <!-- interface-license-type gplv3 -->
-  <!-- interface-name unitube-gtk -->
-  <!-- interface-description An open source client for YouTube. -->
-  <!-- interface-copyright 2019 Nucleux Software -->
-  <!-- interface-authors Nahuel Gomez Castro <nahual_gomca@outlook.com.ar> -->
-  <template class="UniTubeMainWindow" parent="GtkApplicationWindow">
-    <property name="can_focus">False</property>
-    <property name="default_width">1080</property>
-    <property name="default_height">540</property>
+
+  <requires lib="gtk+" version="3.24"/>
+  <requires lib="libhandy" version="0.0"/>
+
+  <template class="UnitubeMainWindow" parent="GtkApplicationWindow">
+
+    <signal name="key-press-event" handler="on_key_press_event"/>
+
     <child type="titlebar">
-      <object class="UniTubeHeaderBar" id="header_bar">
+      <object class="UnitubeMainHeaderBar" id="headerbar">
         <property name="visible">True</property>
+        <property name="stack">main-stack</property>
+        <accelerator key="F10" signal="toggle-menu"/>
+        <accelerator key="f" modifiers="GDK_CONTROL_MASK" signal="toggle-search-mode"/>
       </object>
     </child>
+
     <child>
       <object class="GtkBox">
+
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+
         <child>
-          <placeholder/>
-        </child>
-        <child>
-          <object class="GtkSeparator">
+
+          <object class="GtkStack" id="main-stack">
+
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="orientation">vertical</property>
+            <property name="transition-type">slide-left-right</property>
+
             <child>
-              <object class="UniTubeSearchBar" id="search_bar">
+
+              <object class="UnitubeTrendingView" id="trending_view">
                 <property name="visible">True</property>
               </object>
-            </child>
-            <child>
-              <object class="GtkStack">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <child>
-                  <placeholder/>
-                </child>
-              </object>
+
               <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="name">trending</property>
+                <property name="title">Trending</property>
+                <property name="icon-name">youtube-trending-symbolic</property>
+              </packing>
+            </child>
+
+            <child>
+
+              <object class="UnitubeSubscriptionsView" id="subs_view">
+                <property name="visible">True</property>
+              </object>
+
+              <packing>
+                <property name="name">subs</property>
+                <property name="title">Subscriptions</property>
+                <property name="icon-name">youtube-subscriptions-symbolic</property>
+              </packing>
+            </child>
+
+            <child>
+
+              <object class="UnitubeLibraryView" id="library_view">
+                <property name="visible">True</property>
+              </object>
+
+              <packing>
+                <property name="name">library</property>
+                <property name="title">Library</property>
+                <property name="icon-name">youtube-library-symbolic</property>
               </packing>
             </child>
           </object>
+
           <packing>
-            <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="expand">True</property>
           </packing>
+        </child>
+
+        <child>
+          <object class="HdyViewSwitcherBar" id="view_switcher_bar">
+            <property name="visible">True</property>
+            <property name="stack">main-stack</property>
+            <property name="reveal" bind-source="headerbar" bind-property="is-narrow-mode" bind-flags="bidirectional"/>
+          </object>
         </child>
       </object>
     </child>

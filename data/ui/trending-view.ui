@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+  <requires lib="gtk+" version="3.24"/>
+  <requires lib="libhandy" version="0.0"/>
+
+  <template class="UnitubeTrendingView" parent="GtkBin">
+    <child>
+      <object class="HdyLeaflet">
+
+        <property name="visible">True</property>
+        <property name="mode-transition-type">slide</property>
+        <property name="child-transition-type">slide</property>
+        <property name="visible-child">content</property>
+
+        <child>
+
+          <object class="GtkScrolledWindow">
+
+            <property name="visible">True</property>
+            <property name="hscrollbar-policy">never</property>
+
+            <style>
+              <class name="sidebar"/>
+            </style>
+
+            <child>
+              <object class="GtkListBox">
+
+                <property name="visible">True</property>
+
+                <child type="placeholder">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="label">Placeholder</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label">Holiwis</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+
+          <object class="GtkScrolledWindow" id="content">
+            <property name="visible">True</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

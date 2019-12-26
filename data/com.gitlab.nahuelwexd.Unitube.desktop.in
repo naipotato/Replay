@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Unitube
+GenericName=YouTube client
+Comment=View YouTube videos
+Icon=@APP_ID@
+TryExec=@EXECUTABLE@
+Exec=@EXECUTABLE@
+Terminal=false
+Categories=Network;Player;Feed;GTK;
+Keywords=YouTube;Videos;
+StartupNotify=true

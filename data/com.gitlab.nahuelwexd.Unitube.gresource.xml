@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/gitlab/nahuelwexd/Unitube">
+    <file>icons/youtube-trending-symbolic.svg</file>
+    <file>icons/youtube-subscriptions-symbolic.svg</file>
+    <file>icons/youtube-library-symbolic.svg</file>
+    <file>ui/about-dialog.ui</file>
+    <file>ui/library-view.ui</file>
+    <file>ui/main-header-bar.ui</file>
+    <file>ui/main-window.ui</file>
+    <file>ui/subscriptions-view.ui</file>
+    <file>ui/trending-view.ui</file>
+    <file>style.css</file>
+  </gresource>
+</gresources>

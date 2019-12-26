@@ -1,0 +1,96 @@
+using Hdy;
+using Gtk;
+using Gdk;
+
+namespace Unitube {
+
+    [GtkTemplate (ui = "/com/gitlab/nahuelwexd/Unitube/ui/main-header-bar.ui")]
+    public class MainHeaderBar : Hdy.HeaderBar {
+
+        [GtkChild]
+        private ViewSwitcher view_switcher;
+
+        [GtkChild]
+        private ToggleButton search_button;
+
+        [GtkChild]
+        private MenuButton menu_button;
+
+        [GtkChild]
+        private SearchEntry search_entry;
+
+        [GtkChild]
+        private Stack title_stack;
+
+        public Gtk.Stack stack { get; set; }
+        public bool is_narrow_mode { get; set; }
+        public bool search_mode { get; set; }
+
+        construct {
+            bind_property ("stack", view_switcher, "stack", BindingFlags.BIDIRECTIONAL);
+            bind_property ("search-mode", search_button, "active", BindingFlags.BIDIRECTIONAL);
+
+            var app = GLib.Application.get_default () as App;
+            app.notify["without-colored-styles"].connect (() => {
+                if (app.without_colored_styles) {
+                    get_style_context ().remove_class ("red-style");
+                } else {
+                    get_style_context ().add_class ("red-style");
+                }
+            });
+            app.notify_property ("without-colored-styles");
+        }
+
+        [Signal (action = true)]
+        public signal void toggle_menu ();
+
+        [Signal (action = true)]
+        public signal void toggle_search_mode ();
+
+        public bool handle_event (EventKey event) {
+            if (search_mode) {
+                return EVENT_PROPAGATE;
+            }
+
+            var handled = search_entry.handle_event (event);
+            if (handled == EVENT_STOP) {
+                search_mode = true;
+            }
+
+            return handled;
+        }
+
+        [GtkCallback]
+        private void on_squeezer_visible_child_changed (Object object, ParamSpec pspec) {
+            var squeezer = object as Squeezer;
+            is_narrow_mode = squeezer.visible_child.get_type () == typeof (Label);
+        }
+
+        [GtkCallback]
+        private void on_search_mode_toggled () {
+            search_mode = !search_mode;
+        }
+
+        [GtkCallback]
+        private void on_menu_toggled () {
+            menu_button.active = !menu_button.active;
+        }
+
+        [GtkCallback]
+        private void on_search_mode_changed () {
+            if (search_mode) {
+                title_stack.visible_child_name = "search";
+                search_entry.grab_focus_without_selecting ();
+                search_entry.move_cursor (MovementStep.LOGICAL_POSITIONS, int.MAX, false);
+            } else {
+                title_stack.visible_child_name = "tabs";
+                search_entry.text = "";
+            }
+        }
+
+        [GtkCallback]
+        private void on_search_entry_stop_search () {
+            search_mode = false;
+        }
+    }
+}

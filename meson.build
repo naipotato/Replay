@@ -1,36 +1,38 @@
 project (
-    'unitube-gtk',
-    ['c', 'vala'],
+    'unitube',
+    'c', 'vala',
     version: '0.1.0',
-    license: 'GPL-3.0-or-later'
+    license: 'BSD-2-Clause'
 )
 
-app_id = 'com.nucleuxsoft.UniTube'
-
-i18n = import ('i18n')
-gnome = import ('gnome')
-
-vul_proj = subproject ('vul')
-
-glib_dep = dependency ('glib-2.0')
-gobject_dep = dependency ('gobject-2.0')
-gtk_dep = dependency ('gtk+-3.0')
-gee_dep = dependency ('gee-0.8')
-soup_dep = dependency ('libsoup-2.4')
-handy_dep = dependency ('libhandy-0.0')
-gjson_dep = vul_proj.get_variable ('gjson_dep')
-
-podir = join_paths (meson.source_root (), 'po')
-
-prefix = get_option ('prefix')
-datadir = join_paths (prefix, get_option ('datadir'))
 
 add_project_arguments (
     '-DHANDY_USE_UNSTABLE_API',
     language: 'c'
 )
 
+
+application_id = 'com.gitlab.nahuelwexd.Unitube'
+version = meson.project_version ()
+package_url = 'https://gitlab.com/nahuelwexd/unitube'
+
+
+config_h = configuration_data ()
+config_h.set_quoted ('RESOURCE_PATH', '/com/gitlab/nahuelwexd/Unitube')
+config_h.set_quoted ('APP_ID', application_id)
+config_h.set_quoted ('VERSION', version)
+config_h.set_quoted ('PACKAGE_URL', package_url)
+
+configure_file (
+    output: 'config.h',
+    configuration: config_h
+)
+
+confinc = include_directories ('.')
+
+
 subdir ('data')
 subdir ('src')
 
-meson.add_install_script (join_paths ('build-aux', 'post_install.py'))
+
+meson.add_install_script ('build-aux/meson/postinstall.py')
