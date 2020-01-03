@@ -2,7 +2,7 @@ project (
     'unitube',
     'c', 'vala',
     version: '0.1.0',
-    license: 'BSD-2-Clause'
+    license: 'GPL-3.0-or-later'
 )
 
 

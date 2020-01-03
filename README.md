@@ -12,8 +12,8 @@
   <a href="https://stopthemingmy.app/">
     <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg">
   </a>
-  <a href="LICENSE">
-    <img alt="license" src="https://img.shields.io/badge/license-BSD--2--Clause-green">
+  <a href="COPYING">
+    <img alt="license" src="https://img.shields.io/badge/license-GPL--3.0-orange">
   </a>
 </div>
 
@@ -59,6 +59,4 @@ ninja -C build install
 ```
 
 ## License
-This project is licensed under the [BSD 2-Clause "Simplified" License](LICENSE).
-
-(This is not a very large license, so do not expect a TL;DR. Read it)
+This project is licensed under the [GNU General Public License v3](COPYING).
