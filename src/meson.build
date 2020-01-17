@@ -16,6 +16,7 @@ sources = [
     'widgets/main-header-bar.vala',
 
     'windows/main-window.vala',
+    'windows/preferences-window.vala',
 
     'app-theme.vala',
     'app.vala',

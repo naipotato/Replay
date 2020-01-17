@@ -89,6 +89,14 @@ namespace Unitube {
         }
 
         private void add_actions () {
+            var preferences_action = new SimpleAction ("preferences", null);
+            preferences_action.activate.connect (() => {
+                var preferences_window = new PreferencesWindow ();
+                preferences_window.transient_for = this.active_window;
+                preferences_window.present ();
+            });
+            this.add_action (preferences_action);
+
             var about_action = new SimpleAction ("about", null);
             about_action.activate.connect (() => {
                 var about_dialog = new Unitube.AboutDialog ();
