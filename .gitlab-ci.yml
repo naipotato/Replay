@@ -1,7 +1,7 @@
 image: archlinux/base
 
 before_script:
-  - pacman -Syu --noconfirm vala meson gtk3 libhandy libgee
+  - pacman -Syu --noconfirm vala meson sassc gtk3 libhandy libgee
 
 stages:
   - build
