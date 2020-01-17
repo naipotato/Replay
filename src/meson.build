@@ -15,9 +15,10 @@ sources = [
 
     'widgets/main-header-bar.vala',
 
+    'windows/main-window.vala',
+
     'app-theme.vala',
     'app.vala',
-    'main-window.vala',
 ]
 
 valac = meson.get_compiler ('vala')
