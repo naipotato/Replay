@@ -52,18 +52,6 @@
                     <property name="label">Placeholder</property>
                   </object>
                 </child>
-
-                <child>
-                  <object class="GtkListBoxRow">
-                    <property name="visible">True</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="label">Holiwis</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
               </object>
             </child>
           </object>

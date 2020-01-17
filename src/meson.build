@@ -7,8 +7,6 @@ sources = [
     'services/element-theme.vala',
     'services/settings-service.vala',
 
-    'view-models/categories-list-model.vala',
-    'view-models/category.vala',
     'view-models/trending-view-model.vala',
 
     'views/library-view.vala',
