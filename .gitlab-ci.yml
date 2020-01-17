@@ -1,0 +1,16 @@
+image: archlinux/base
+
+before_script:
+  - pacman -Syu --noconfirm vala meson gtk3 libhandy libgee
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - meson build --buildtype release --prefix /usr
+    - ninja -C build
+  artifacts:
+    paths:
+      - build/
