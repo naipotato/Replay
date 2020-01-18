@@ -31,7 +31,6 @@
         <property name="visible-child">content</property>
 
         <child>
-
           <object class="GtkScrolledWindow">
 
             <property name="visible">True</property>
@@ -45,11 +44,70 @@
               <object class="GtkListBox">
 
                 <property name="visible">True</property>
+                <property name="width-request">200</property>
 
                 <child type="placeholder">
-                  <object class="GtkLabel">
+                  <object class="GtkStack" id="placeholder_stack">
+
                     <property name="visible">True</property>
-                    <property name="label">Placeholder</property>
+                    <property name="transition-type">crossfade</property>
+
+                    <child>
+
+                      <object class="GtkSpinner">
+                        <property name="visible">True</property>
+                        <property name="active">True</property>
+                      </object>
+
+                      <packing>
+                        <property name="name">loading</property>
+                      </packing>
+                    </child>
+
+                    <child>
+
+                      <object class="GtkBox">
+
+                        <property name="visible">True</property>
+                        <property name="valign">center</property>
+                        <property name="halign">center</property>
+                        <property name="margin">10</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">10</property>
+
+                        <child>
+                          <object class="GtkImage">
+
+                            <property name="visible">True</property>
+                            <property name="pixel-size">64</property>
+                            <property name="icon-name">load-failed-symbolic</property>
+
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                          </object>
+                        </child>
+
+                        <child>
+                          <object class="GtkLabel">
+
+                            <property name="visible">True</property>
+                            <property name="wrap">True</property>
+                            <property name="wrap-mode">word</property>
+                            <property name="label" translatable="yes">Failed to retrieve the categories</property>
+                            <property name="justify">center</property>
+
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                        </child>
+                      </object>
+
+                      <packing>
+                        <property name="name">failed</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -58,9 +116,14 @@
         </child>
 
         <child>
-
           <object class="GtkScrolledWindow" id="content">
             <property name="visible">True</property>
+
+            <child>
+              <object class="GtkCheckButton" id="button">
+                <property name="visible">True</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

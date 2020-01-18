@@ -19,5 +19,6 @@ namespace Unitube {
 
     public class TrendingViewModel : Object {
 
+        public bool is_loading { get; set; }
     }
 }

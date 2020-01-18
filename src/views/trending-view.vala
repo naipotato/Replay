@@ -20,5 +20,30 @@ using Gtk;
 namespace Unitube {
 
     [GtkTemplate (ui = "/com/gitlab/nahuelwexd/Unitube/ui/trending-view.ui")]
-    public class TrendingView : Bin { }
+    public class TrendingView : Bin {
+
+        private TrendingViewModel view_model;
+
+        [GtkChild]
+        private Stack placeholder_stack;
+
+        [GtkChild]
+        private CheckButton button;
+
+        construct {
+            this.view_model = new TrendingViewModel ();
+
+            this.view_model.notify["is-loading"].connect (() => {
+                if (this.view_model.is_loading) {
+                    this.placeholder_stack.visible_child_name = "loading";
+                } else {
+                    this.placeholder_stack.visible_child_name = "failed";
+                }
+            });
+
+            this.view_model.notify_property ("is-loading");
+
+            button.bind_property ("active", this.view_model, "is-loading");
+        }
+    }
 }
