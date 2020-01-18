@@ -13,8 +13,30 @@ add_project_arguments (
 
 
 application_id = 'com.gitlab.nahuelwexd.Unitube'
-version = meson.project_version ()
 package_url = 'https://gitlab.com/nahuelwexd/unitube'
+
+git = find_program ('git', required: false)
+
+if git.found ()
+    result = run_command ('git', 'describe', '--tags', '|', 'sed', '\'s/-/.r/; s/-/./\'')
+    if result.returncode () != 0
+        result = run_command ('git', 'rev-list', '--count', 'HEAD')
+        if result.returncode () == 0
+            rev_count = result.stdout ().strip ()
+
+            result = run_command ('git', 'rev-parse', '--short', 'HEAD')
+            rev = result.stdout ().strip ()
+
+            version = 'r@0@.@1@'.format (rev_count, rev)
+        else
+            version = meson.project_version ()
+        endif
+    else
+        version = result.stdout ().strip ()
+    endif
+else
+    version = meson.project_version ()
+endif
 
 
 config_h = configuration_data ()
