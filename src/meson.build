@@ -1,10 +1,11 @@
-sources = [
+sources = files (
     'dialogs/about-dialog.vala',
 
-    'services/settings/appearance-settings.vala',
-    'services/settings/system-settings.vala',
+    'enums/app-theme.vala',
+    'enums/element-theme.vala',
 
-    'services/element-theme.vala',
+    'services/settings/appearance-settings.vala',
+
     'services/settings-service.vala',
 
     'view-models/trending-view-model.vala',
@@ -18,9 +19,8 @@ sources = [
     'windows/main-window.vala',
     'windows/preferences-window.vala',
 
-    'app-theme.vala',
     'app.vala',
-]
+)
 
 valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'
