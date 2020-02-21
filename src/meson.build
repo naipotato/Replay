@@ -5,6 +5,7 @@ sources = files (
     'enums/element-theme.vala',
 
     'services/settings/appearance-settings.vala',
+    'services/settings/system-settings.vala',
 
     'services/settings-service.vala',
 
