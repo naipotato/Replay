@@ -5,11 +5,11 @@ sources = files (
     'enums/element-theme.vala',
 
     'services/settings/appearance-settings.vala',
-    'services/settings/system-settings.vala',
 
     'services/settings-service.vala',
 
     'view-models/trending-view-model.vala',
+    'view-models/view-model-locator.vala',
 
     'views/library-view.vala',
     'views/subscriptions-view.vala',

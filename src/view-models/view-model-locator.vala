@@ -17,26 +17,20 @@
 
 namespace Unitube {
 
-    public class SystemSettings : Object {
+    public class ViewModelLocator {
 
-        private Settings settings;
-        private Gtk.Settings gtk_settings;
+        private static Once<ViewModelLocator> instance;
 
-        public string gtk_theme { get; set; }
+        public TrendingViewModel trending { get; set; }
 
-        private bool? _dark_theme;
-        public bool dark_theme {
-            get {
-                _dark_theme = _dark_theme ?? gtk_settings.gtk_application_prefer_dark_theme;
-                return _dark_theme;
-            }
+        private ViewModelLocator () {
+            this.trending = new TrendingViewModel ();
         }
 
-        public SystemSettings (string schema) {
-            settings = new Settings (schema);
-            gtk_settings = Gtk.Settings.get_default ();
-
-            settings.bind ("gtk-theme", this, "gtk-theme", SettingsBindFlags.GET);
+        public static unowned ViewModelLocator get_default () {
+            return instance.once (() => {
+                return new ViewModelLocator ();
+            });
         }
     }
 }

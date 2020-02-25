@@ -22,41 +22,32 @@ namespace Unitube {
 
     public class App : Gtk.Application {
 
-        private AppTheme _requested_theme;
+        /* --- Properties --- */
 
-        public AppTheme requested_theme {
+        public AppTheme app_theme { get; set; }
+
+        public bool is_custom_styles_enabled {
             get {
-                return this._requested_theme;
-            }
-            set {
-                var gtk_settings = Gtk.Settings.get_default ();
-                var settings = SettingsService.get_default ();
-
-                gtk_settings.gtk_application_prefer_dark_theme = value == AppTheme.DARK;
-                gtk_settings.gtk_theme_name = settings.system.gtk_theme.replace ("-dark", "");
-
-                this._requested_theme = value;
+                var settings = Gtk.Settings.get_default ();
+                return settings.gtk_theme_name == "Adwaita" ||
+                    settings.gtk_theme_name == "Adwaita-dark";
             }
         }
 
-        public bool without_colored_styles {
-            get {
-                var settings = SettingsService.get_default ();
-                return settings.system.gtk_theme != "Adwaita" &&
-                    settings.system.gtk_theme != "Adwaita-dark";
-            }
-        }
+        /* --- End of Properties --- */
 
         public App () {
             Object (
                 application_id: Config.APP_ID,
                 flags: ApplicationFlags.FLAGS_NONE
             );
+        }
 
+        construct {
             this.add_actions ();
         }
 
-        public static int main (string[] args) {
+        private static int main (string[] args) {
             Hdy.init (ref args);
 
             var app = new Unitube.App ();
@@ -64,19 +55,7 @@ namespace Unitube {
         }
 
         protected override void activate () {
-            var icon_theme = Gtk.IconTheme.get_default ();
-            icon_theme.add_resource_path (@"$(Config.RESOURCE_PATH)/icons");
-
             this.load_custom_styles ("style.css");
-
-            var settings = SettingsService.get_default ();
-            settings.appearance.notify["app-theme"].connect (this.on_app_theme_changed);
-            settings.system.notify["gtk-theme"].connect (this.on_app_theme_changed);
-
-            // Due to the fact that there's no way to emit the property changed
-            // signal every time it gets connected to a method, I've to emit it
-            // manually in order to avoid code repetition.
-            settings.appearance.notify_property ("app-theme");
 
             var win = this.active_window;
 
@@ -87,6 +66,31 @@ namespace Unitube {
 
             win.present ();
         }
+
+        //  protected override void activate () {
+        //      var icon_theme = Gtk.IconTheme.get_default ();
+        //      icon_theme.add_resource_path (@"$(Config.RESOURCE_PATH)/icons");
+
+        //      this.load_custom_styles ("style.css");
+
+        //      var settings = SettingsService.get_default ();
+        //      settings.appearance.notify["app-theme"].connect (this.on_app_theme_changed);
+        //      settings.system.notify["gtk-theme"].connect (this.on_app_theme_changed);
+
+        //      // Due to the fact that there's no way to emit the property changed
+        //      // signal every time it gets connected to a method, I've to emit it
+        //      // manually in order to avoid code repetition.
+        //      settings.appearance.notify_property ("app-theme");
+
+        //      var win = this.active_window;
+
+        //      if (win == null) {
+        //          win = new MainWindow (this);
+        //          win.show ();
+        //      }
+
+        //      win.present ();
+        //  }
 
         private void add_actions () {
             var preferences_action = new SimpleAction ("preferences", null);
@@ -124,26 +128,26 @@ namespace Unitube {
             StyleContext.add_provider_for_screen (screen, provider, 600);
         }
 
-        private void on_app_theme_changed () {
-            var settings = SettingsService.get_default ();
-            var dark_theme = false;
+        //  private void on_app_theme_changed () {
+        //      var settings = SettingsService.get_default ();
+        //      var dark_theme = false;
 
-            // Check if the system theme is dark
-            dark_theme = settings.system.gtk_theme.contains ("-dark");
+        //      // Check if the system theme is dark
+        //      dark_theme = settings.system.gtk_theme.contains ("-dark");
 
-            // Check if the user has forced the dark theme in settings.ini
-            dark_theme = settings.system.dark_theme ? true : dark_theme;
+        //      // Check if the user has forced the dark theme in settings.ini
+        //      dark_theme = settings.system.dark_theme ? true : dark_theme;
 
-            // Check the theme setted by the user
-            if (settings.appearance.app_theme != ElementTheme.SYSTEM) {
-                dark_theme = settings.appearance.app_theme == ElementTheme.DARK;
-            }
+        //      // Check the theme setted by the user
+        //      if (settings.appearance.app_theme != ElementTheme.SYSTEM) {
+        //          dark_theme = settings.appearance.app_theme == ElementTheme.DARK;
+        //      }
 
-            // Notify that the without-colored-styles property needs to be
-            // regetted
-            notify_property ("without-colored-styles");
+        //      // Notify that the without-colored-styles property needs to be
+        //      // regetted
+        //      notify_property ("without-colored-styles");
 
-            requested_theme = dark_theme ? AppTheme.DARK : AppTheme.LIGHT;
-        }
+        //      requested_theme = dark_theme ? AppTheme.DARK : AppTheme.LIGHT;
+        //  }
     }
 }
