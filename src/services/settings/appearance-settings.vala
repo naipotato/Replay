@@ -19,30 +19,31 @@ namespace Unitube {
 
     public class AppearanceSettings : Object {
 
-        private Settings settings;
+        private bool _dark_theme;
 
-        public ElementTheme app_theme {
+        public bool use_system_theme { get; set; }
+
+        public bool dark_theme {
             get {
-                var theme = settings.get_string ("app-theme");
-
-                ElementTheme result;
-                if (ElementTheme.try_parse_nick (theme, out result)) {
-                    return result;
-                } else {
-                    return ElementTheme.SYSTEM;
-                }
+                return this._dark_theme;
             }
             set {
-                settings.set_string ("app-theme", value.to_nick ());
+                var gtk_settings = Gtk.Settings.get_default ();
+                gtk_settings.gtk_application_prefer_dark_theme = _dark_theme = value;
+                message (@"$value");
             }
         }
 
         public AppearanceSettings (string schema) {
-            settings = new Settings (schema);
+            var gtk_settings = Gtk.Settings.get_default ();
+            var settings = new Settings (schema);
 
-            settings.changed["app-theme"].connect (() => {
-                notify_property ("app-theme");
-            });
+            if (gtk_settings.gtk_application_prefer_dark_theme) {
+                this.use_system_theme = true;
+            }
+
+            settings.bind ("dark-theme", this, "dark-theme",
+                SettingsBindFlags.DEFAULT);
         }
     }
 }

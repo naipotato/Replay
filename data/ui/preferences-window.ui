@@ -35,10 +35,18 @@
             <property name="visible">True</property>
 
             <child>
-              <object class="HdyComboRow" id="theme_row">
+              <object class="HdyActionRow" id="switch_row">
+
                 <property name="visible">True</property>
-                <property name="title" translatable="yes">Theme</property>
-                <property name="subtitle" translatable="yes">The theme for the app</property>
+                <property name="title" translatable="yes">Use dark theme</property>
+                <property name="subtitle" translatable="yes">Activates dark theme on the app.</property>
+
+                <child type="action">
+                  <object class="GtkSwitch" id="toggle">
+                    <property name="visible">True</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

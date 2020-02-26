@@ -47,15 +47,15 @@ namespace Unitube {
             bind_property ("stack", view_switcher, "stack", BindingFlags.BIDIRECTIONAL);
             bind_property ("search-mode", search_button, "active", BindingFlags.BIDIRECTIONAL);
 
-            var app = GLib.Application.get_default () as App;
-            app.notify["is-custom-styles-enabled"].connect (() => {
-                if (app.is_custom_styles_enabled) {
-                    get_style_context ().add_class ("red-style");
-                } else {
-                    get_style_context ().remove_class ("red-style");
-                }
-            });
-            app.notify_property ("is-custom-styles-enabled");
+            //  var app = GLib.Application.get_default () as App;
+            //  app.notify["is-custom-styles-enabled"].connect (() => {
+            //      if (app.is_custom_styles_enabled) {
+            //          get_style_context ().add_class ("red-style");
+            //      } else {
+            //          get_style_context ().remove_class ("red-style");
+            //      }
+            //  });
+            //  app.notify_property ("is-custom-styles-enabled");
         }
 
         [Signal (action = true)]

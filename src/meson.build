@@ -1,9 +1,6 @@
 sources = files (
     'dialogs/about-dialog.vala',
 
-    'enums/app-theme.vala',
-    'enums/element-theme.vala',
-
     'services/settings/appearance-settings.vala',
 
     'services/settings-service.vala',

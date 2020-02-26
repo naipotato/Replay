@@ -16,6 +16,7 @@
  */
 
 using Hdy;
+using Gtk;
 
 namespace Unitube {
 
@@ -23,29 +24,17 @@ namespace Unitube {
     public class PreferencesWindow : Hdy.PreferencesWindow {
 
         [GtkChild]
-        private ComboRow theme_row;
+        private ActionRow switch_row;
+
+        [GtkChild]
+        private Switch toggle;
 
         construct {
-            this.theme_row.set_for_enum (typeof (ElementTheme), (value) => {
-                switch (value.get_value ()) {
-                    case ElementTheme.SYSTEM:
-                        return "System";
-                    case ElementTheme.LIGHT:
-                        return "Light";
-                    case ElementTheme.DARK:
-                        return "Dark";
-                    default:
-                        return "";
-                }
-            });
+            this.switch_row.activatable_widget = this.toggle;
 
-            this.theme_row.selected_index =
-                SettingsService.get_default ().appearance.app_theme;
-
-            this.theme_row.notify["selected-index"].connect (() => {
-                SettingsService.get_default ().appearance.app_theme =
-                    (ElementTheme) this.theme_row.selected_index;
-            });
+            var settings = SettingsService.get_default ();
+            settings.bind_property ("dark-theme", toggle, "active",
+                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
         }
     }
 }
