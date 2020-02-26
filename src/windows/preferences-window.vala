@@ -33,8 +33,11 @@ namespace Unitube {
             this.switch_row.activatable_widget = this.toggle;
 
             var settings = SettingsService.get_default ();
-            settings.bind_property ("dark-theme", toggle, "active",
-                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
+            settings.appearance.bind_property ("dark-theme", this.toggle,
+                "active", BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
+            settings.appearance.bind_property ("use-system-theme",
+                this.switch_row, "sensitive", BindingFlags.SYNC_CREATE |
+                BindingFlags.INVERT_BOOLEAN);
         }
     }
 }
