@@ -64,6 +64,8 @@ namespace Unitube {
         }
 
         protected override void activate () {
+            SettingsService.get_default ();
+
             var win = this.active_window;
 
             if (win == null) {
