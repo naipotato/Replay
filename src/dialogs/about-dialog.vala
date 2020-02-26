@@ -15,15 +15,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using Gtk;
+
 namespace Unitube {
 
     [GtkTemplate (ui = "/com/gitlab/nahuelwexd/Unitube/ui/about-dialog.ui")]
     public class AboutDialog : Gtk.AboutDialog {
 
         construct {
-            logo_icon_name = Config.APP_ID;
-            version = Config.VERSION;
-            website = Config.PACKAGE_URL;
+            this.logo_icon_name = Config.APP_ID;
+            this.version = Config.VERSION;
+            this.website = Config.PACKAGE_URL;
+        }
+
+        [GtkCallback]
+        private void on_response (int response_id) {
+            if (response_id == ResponseType.CANCEL ||
+                response_id == ResponseType.DELETE_EVENT) {
+                this.hide_on_delete ();
+            }
         }
     }
 }
