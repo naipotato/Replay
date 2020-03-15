@@ -56,5 +56,4 @@ confinc = include_directories ('.')
 subdir ('data')
 subdir ('src')
 
-
-meson.add_install_script ('build-aux/meson/postinstall.py')
+meson.add_install_script ('build-aux/post_install.py')
