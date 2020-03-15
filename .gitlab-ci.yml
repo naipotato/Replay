@@ -7,7 +7,7 @@ stages:
 build:
   stage: arch
   script:
-    - pacman -Syu --noconfirm sudo
+    - pacman -Syu sudo --noconfirm
     - useradd builduser -m
     - passwd -d builduser
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
@@ -19,7 +19,7 @@ build:
 build:
   stage: flatpak
   script:
-    - pacman -Syu flatpak flatpak-builder
+    - pacman -Syu flatpak flatpak-builder --noconfirm
     - flatpak-builder builddir dist/flatpak/com.gitlab.nahuelwexd.Unitube.json
   artifacts:
     paths:
