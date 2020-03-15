@@ -47,7 +47,7 @@ desktop_file_conf.set ('APPLICATION_ID', application_id)
 desktop_file_conf.set ('EXECUTABLE', meson.project_name ())
 desktop_file = configure_file (
             input: '@0@.desktop.in'.format (rdnn_app_name),
-           output: '@0@.desktop'.format (rdnn_app_name),
+           output: '@0@.desktop'.format (application_id),
     configuration: desktop_file_conf,
           install: true,
       install_dir: get_option ('datadir') / 'applications'
