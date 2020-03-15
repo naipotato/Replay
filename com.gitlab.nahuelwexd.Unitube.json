@@ -10,6 +10,18 @@
         "--share=ipc",
         "--share=network"
     ],
+    "cleanup": [
+        "handy-0.0-demo",
+        "sassc",
+        "/include",
+        "/lib/pkgconfig",
+        "libsass*",
+        "/lib/girepository-1.0",
+        "/share/gir-1.0",
+        "/share/vala",
+        "*.a",
+        "*.la"
+    ],
     "modules": [
         {
             "name": "libsass",
