@@ -1,0 +1,28 @@
+# Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+pkgname='unitube-gtk-git'
+_pkgname='unitube-gtk'
+pkgver=r75.b4300d7
+pkgrel=1
+pkgdesc='An open source Youtube client written in Vala and GTK.'
+arch=('x86_64')
+url="https://gitlab.com/nahuelwexd/${_pkgname}"
+license=('GPL3')
+depends=('gtk3' 'libhandy' 'libgee')
+makedepends=('meson' 'git' 'vala' 'sassc')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver () {
+	cd ${_pkgname}
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+build () {
+	arch-meson ${_pkgname} build
+	ninja -C build
+}
+
+package () {
+	DESTDIR="${pkgdir}" ninja -C build install
+}
