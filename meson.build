@@ -6,12 +6,14 @@ project (
 )
 
 
+# Enable libhandy
 add_project_arguments (
     '-DHANDY_USE_UNSTABLE_API',
     language: 'c'
 )
 
 
+# Info about the app
 application_id = 'com.gitlab.nahuelwexd.Unitube'
 package_url = 'https://gitlab.com/nahuelwexd/unitube'
 
@@ -39,6 +41,7 @@ else
 endif
 
 
+# Generate a config include file with the info
 config_h = configuration_data ()
 config_h.set_quoted ('RESOURCE_PATH', '/com/gitlab/nahuelwexd/Unitube')
 config_h.set_quoted ('APP_ID', application_id)
@@ -53,7 +56,10 @@ configure_file (
 confinc = include_directories ('.')
 
 
+# Subfolders
 subdir ('data')
 subdir ('src')
 
+
+# Post install script
 meson.add_install_script ('build-aux/post_install.py')

@@ -1,3 +1,4 @@
+# Compile SASS into CSS for custom styles
 sassc = find_program ('sassc')
 
 custom_css = custom_target ('style.css',
@@ -9,6 +10,7 @@ custom_css = custom_target ('style.css',
 )
 
 
+# Compile GResources in order to include into the source
 gnome = import ('gnome')
 
 resources = gnome.compile_resources (
@@ -18,12 +20,16 @@ resources = gnome.compile_resources (
 )
 
 
+# Install GSchemas in order to get available the GSettings
 install_data (
     '@0@.appearance.gschema.xml'.format (application_id),
     install_dir: get_option ('datadir') / 'glib-2.0' / 'schemas'
 )
 
+
+# Verify if the GSchemas file is valid
 compile_schemas = find_program ('glib-compile-schemas', required: false)
+
 if compile_schemas.found ()
     test (
         'Validate schema file',
@@ -33,6 +39,8 @@ if compile_schemas.found ()
 endif
 
 
+# Configure and install the desktop file in order to get an entry in the app
+# drawer
 desktop_file_conf = configuration_data ()
 desktop_file_conf.set ('APP_ID', application_id)
 desktop_file_conf.set ('EXECUTABLE', meson.project_name ())
@@ -44,7 +52,10 @@ desktop_file = configure_file (
       install_dir: get_option ('datadir') / 'applications'
 )
 
+
+# Verify if the desktop file is valid
 desktop_file_validate = find_program ('desktop-file-validate', required: false)
+
 if desktop_file_validate.found ()
     test (
         'Validate desktop file',
@@ -54,6 +65,7 @@ if desktop_file_validate.found ()
 endif
 
 
+# Install icons
 install_data (
     'icons' / 'scalable' / 'apps' / '@0@.svg'.format (application_id),
     install_dir: get_option ('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'

@@ -1,27 +1,29 @@
 sources = files (
-    'dialogs/about-dialog.vala',
+    'dialogs' / 'about-dialog.vala',
 
-    'services/settings/appearance-settings.vala',
+    'services' / 'settings' / 'appearance-settings.vala',
 
-    'services/settings-service.vala',
+    'services' / 'settings-service.vala',
 
-    'view-models/trending-view-model.vala',
-    'view-models/view-model-locator.vala',
+    'view-models' / 'trending-view-model.vala',
+    'view-models' / 'view-model-locator.vala',
 
-    'views/library-view.vala',
-    'views/subscriptions-view.vala',
-    'views/trending-view.vala',
+    'views' / 'library-view.vala',
+    'views' / 'subscriptions-view.vala',
+    'views' / 'trending-view.vala',
 
-    'widgets/main-header-bar.vala',
+    'widgets' / 'main-header-bar.vala',
 
-    'windows/main-window.vala',
-    'windows/preferences-window.vala',
+    'windows' / 'main-window.vala',
+    'windows' / 'preferences-window.vala',
 
     'app.vala',
 )
 
+
 valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'
+
 
 executable (
     meson.project_name (),
