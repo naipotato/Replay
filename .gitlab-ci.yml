@@ -7,7 +7,7 @@ stages:
 build_arch:
   stage: arch
   script:
-    - pacman -Syu sudo grep --noconfirm
+    - pacman -Syu sudo grep git fakeroot binutils --noconfirm
     - useradd builduser -m
     - passwd -d builduser
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
