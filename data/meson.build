@@ -22,7 +22,7 @@ resources = gnome.compile_resources (
 
 # Install GSchemas in order to get available the GSettings
 install_data (
-    '@0@.appearance.gschema.xml'.format (rdnn_app_name),
+    '@0@.gschema.xml'.format (rdnn_app_name),
     install_dir: get_option ('datadir') / 'glib-2.0' / 'schemas'
 )
 
