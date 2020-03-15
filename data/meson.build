@@ -73,5 +73,6 @@ install_data (
 
 install_data (
     'icons' / 'symbolic' / 'apps' / '@0@-symbolic.svg'.format (rdnn_app_name),
-    install_dir: get_option ('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
+    install_dir: get_option ('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps',
+    rename: '@0@-symbolic.svg'.format (application_id)
 )
