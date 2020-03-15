@@ -23,6 +23,7 @@ namespace Unitube {
     public class AboutDialog : Gtk.AboutDialog {
 
         construct {
+            this.program_name = APPLICATION_NAME;
             this.logo_icon_name = APPLICATION_ID;
             this.version = VERSION;
             this.website = PACKAGE_URL;

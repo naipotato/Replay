@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Unitube
+Name=@APPLICATION_NAME@
 GenericName=YouTube client
 Comment=View YouTube videos
 Icon=@APPLICATION_ID@

@@ -1,5 +1,5 @@
 {
-    "app-id": "com.gitlab.nahuelwexd.Unitube",
+    "app-id": "com.gitlab.nahuelwexd.Unitube.Devel",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",

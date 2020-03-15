@@ -23,7 +23,6 @@
   <template class="UnitubeAboutDialog" parent="GtkAboutDialog">
     <property name="modal">True</property>
     <property name="destroy_with_parent">True</property>
-    <property name="program_name" translatable="yes">Unitube</property>
     <property name="license_type">gpl-3-0</property>
     <property name="copyright">Copyright © 2019-2020 Nahuel Gomez Castro</property>
     <property name="authors">Nahuel Gomez Castro &lt;nahual_gomca@outlook.com.ar&gt;</property>
