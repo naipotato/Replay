@@ -66,6 +66,8 @@ namespace Unitube {
         protected override void activate () {
             SettingsService.get_default ();
 
+            IconTheme.get_default ().add_resource_path (@"$RESOURCE_PATH/icons");
+
             var win = this.active_window;
 
             if (win == null) {
