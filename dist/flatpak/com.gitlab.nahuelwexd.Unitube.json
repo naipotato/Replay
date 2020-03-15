@@ -1,0 +1,91 @@
+{
+  "app-id": "com.gitlab.nahuelwexd.Unitube.Devel",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.36",
+  "sdk": "org.gnome.Sdk",
+  "command": "unitube",
+  "finish-args": [
+    "--socket=x11",
+    "--socket=wayland",
+    "--share=ipc",
+    "--share=network"
+  ],
+  "cleanup": [
+    "handy-0.0-demo",
+    "sassc",
+    "/include",
+    "/lib/pkgconfig",
+    "libsass*",
+    "/lib/girepository-1.0",
+    "/share/gir-1.0",
+    "/share/vala",
+    "*.a",
+    "*.la"
+  ],
+  "modules": [
+    {
+      "name": "libsass",
+      "buildsystem": "simple",
+      "build-options": {
+        "env": {
+          "LIBSASS_VERSION": "3.6.0"
+        }
+      },
+      "build-commands": [
+        "autoreconf -i",
+        "./configure --prefix=/app",
+        "make",
+        "make install"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/sass/libsass.git",
+          "tag": "3.6.0"
+        }
+      ]
+    },
+    {
+      "name": "sassc",
+      "buildsystem": "simple",
+      "build-commands": [
+        "autoreconf -i",
+        "./configure --prefix=/app",
+        "make",
+        "make install"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/sass/sassc.git",
+          "tag": "3.6.1"
+        }
+      ]
+    },
+    {
+      "name": "libhandy",
+      "buildsystem": "meson",
+      "builddir": true,
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://source.puri.sm/Librem5/libhandy.git",
+          "tag": "v0.0.13"
+        }
+      ]
+    },
+    {
+      "name": "unitube",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dprofile=development"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/nahuelwexd/unitube-gtk.git"
+        }
+      ]
+    }
+  ]
+}
