@@ -23,9 +23,9 @@ namespace Unitube {
     public class AboutDialog : Gtk.AboutDialog {
 
         construct {
-            this.logo_icon_name = Config.APP_ID;
-            this.version = Config.VERSION;
-            this.website = Config.PACKAGE_URL;
+            this.logo_icon_name = APPLICATION_ID;
+            this.version = VERSION;
+            this.website = PACKAGE_URL;
         }
 
         [GtkCallback]

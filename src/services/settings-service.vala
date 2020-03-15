@@ -24,7 +24,8 @@ namespace Unitube {
         public AppearanceSettings appearance { get; private set; }
 
         private SettingsService () {
-            this.appearance = new AppearanceSettings (@"$(Config.APP_ID).appearance");
+            this.appearance = new AppearanceSettings (
+                @"$(RDNN_APP_NAME).appearance");
         }
 
         public static unowned SettingsService get_default () {

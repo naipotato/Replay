@@ -13,31 +13,44 @@ add_project_arguments (
 )
 
 
+# Check the profile for this build
+if get_option ('profile') == 'development'
+    name_suffix = ' (Development)'
+    profile = 'Devel'
+else
+    name_suffix = ''
+    profile = ''
+endif
+
+
 # Info about the app
-application_id = 'com.gitlab.nahuelwexd.Unitube'
+rdnn_app_name = 'com.gitlab.nahuelwexd.Unitube'
+application_id = '@0@@1@'.format (rdnn_app_name, profile)
 package_url = 'https://gitlab.com/nahuelwexd/unitube'
+resource_path = '/com/gitlab/nahuelwexd/Unitube'
 version = run_command ('build-aux' / 'git_version.py', meson.project_version ()).stdout ().strip ()
 
 
 # Generate a config include file with the info
 config_h = configuration_data ()
-config_h.set_quoted ('RESOURCE_PATH', '/com/gitlab/nahuelwexd/Unitube')
-config_h.set_quoted ('APP_ID', application_id)
-config_h.set_quoted ('VERSION', version)
+config_h.set_quoted ('RDNN_APP_NAME', rdnn_app_name)
+config_h.set_quoted ('APPLICATION_ID', application_id)
 config_h.set_quoted ('PACKAGE_URL', package_url)
+config_h.set_quoted ('RESOURCE_PATH', resource_path)
+config_h.set_quoted ('VERSION', version)
 
 configure_file (
-    output: 'config.h',
+           output: 'config.h',
     configuration: config_h
 )
 
 confinc = include_directories ('.')
 
 
+# Post install script
+meson.add_install_script ('build-aux/post_install.py')
+
+
 # Subfolders
 subdir ('data')
 subdir ('src')
-
-
-# Post install script
-meson.add_install_script ('build-aux/post_install.py')

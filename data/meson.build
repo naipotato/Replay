@@ -3,7 +3,7 @@ sassc = find_program ('sassc')
 
 custom_css = custom_target ('style.css',
                command: [sassc, '-M', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
-                 input: 'styles/style.scss',
+                 input: 'styles' / 'style.scss',
                 output: 'style.css',
     build_always_stale: true,
       build_by_default: true
@@ -14,15 +14,15 @@ custom_css = custom_target ('style.css',
 gnome = import ('gnome')
 
 resources = gnome.compile_resources (
-    '@0@.gresource'.format (application_id),
-    '@0@.gresource.xml'.format (application_id),
+    '@0@.gresource'.format (rdnn_app_name),
+    '@0@.gresource.xml'.format (rdnn_app_name),
     dependencies: custom_css
 )
 
 
 # Install GSchemas in order to get available the GSettings
 install_data (
-    '@0@.appearance.gschema.xml'.format (application_id),
+    '@0@.appearance.gschema.xml'.format (rdnn_app_name),
     install_dir: get_option ('datadir') / 'glib-2.0' / 'schemas'
 )
 
@@ -42,11 +42,11 @@ endif
 # Configure and install the desktop file in order to get an entry in the app
 # drawer
 desktop_file_conf = configuration_data ()
-desktop_file_conf.set ('APP_ID', application_id)
+desktop_file_conf.set ('APPLICATION_ID', application_id)
 desktop_file_conf.set ('EXECUTABLE', meson.project_name ())
 desktop_file = configure_file (
-            input: '@0@.desktop.in'.format (application_id),
-           output: '@0@.desktop'.format (application_id),
+            input: '@0@.desktop.in'.format (rdnn_app_name),
+           output: '@0@.desktop'.format (rdnn_app_name),
     configuration: desktop_file_conf,
           install: true,
       install_dir: get_option ('datadir') / 'applications'
@@ -72,6 +72,6 @@ install_data (
 )
 
 install_data (
-    'icons' / 'symbolic' / 'apps' / '@0@-symbolic.svg'.format (application_id),
+    'icons' / 'symbolic' / 'apps' / '@0@-symbolic.svg'.format (rdnn_app_name),
     install_dir: get_option ('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
 )

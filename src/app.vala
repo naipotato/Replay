@@ -24,7 +24,7 @@ namespace Unitube {
 
         public App () {
             Object (
-                application_id: Config.APP_ID,
+                application_id: APPLICATION_ID,
                 flags: ApplicationFlags.FLAGS_NONE
             );
         }
