@@ -23,6 +23,6 @@ jobs:
           -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" \
           -v ${{ github.workspace }}:"/github/workspace" \
           --rm -i bilelmoussaoui/flatpak-github-actions:latest \
-            --manifest-path "dist/flatpak/com.gitlab.nahuelwexd.Unitube.json" \
-            --app-id "com.gitlab.nahuelwexd.Unitube.Devel" \
-            --bundle "com.github.nahuelwexd.Unitube.flatpak"
+          -e "MANIFEST_PATH=dist/flatpak/com.gitlab.nahuelwexd.Unitube.json" \
+          -e "BUNDLE=com.github.nahuelwexd.Unitube.Devel.flatpak" \
+          -e "APP_ID=com.gitlab.nahuelwexd.Unitube.Devel"
