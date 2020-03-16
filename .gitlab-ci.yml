@@ -1,27 +1,12 @@
-image: archlinux/base
+include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
 
-stages:
-  - arch
-  - flatpak
-
-build_arch:
-  stage: arch
-  script:
-    - pacman -Syu sudo grep git fakeroot binutils --noconfirm
-    - useradd builduser -m
-    - passwd -d builduser
-    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-    - sudo -u builduser bash -c 'cd dist/arch && makepkg -s --noconfirm'
-  artifacts:
-    paths:
-      - pkg/
-
-build_flatpak:
-  stage: flatpak
-  script:
-    - pacman -Syu flatpak flatpak-builder --noconfirm
-    - flatpak install org.gnome.Platform org.gnome.Sdk
-    - flatpak-builder builddir dist/flatpak/com.gitlab.nahuelwexd.Unitube.json
-  artifacts:
-    paths:
-      - builddir/
+flatpak:
+  image: 'registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master'
+  variables:
+    MANIFEST_PATH: "dist/flatpak/com.gitlab.nahuelwexd.Unitube.json"
+    MESON_ARGS: "-Dprofile=development"
+    FLATPAK_MODULE: "unitube"
+    APP_ID: "com.gitlab.nahuelwexd.Unitube.Devel"
+    RUNTIME_REPO: "https://dl.flathub.org/repo/flathub.flatpakrepo"
+    BUNDLE: "com.gitlab.nahuelwexd.Unitube.flatpak"
+  extends: .flatpak
