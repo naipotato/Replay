@@ -18,8 +18,8 @@ jobs:
       with:
         path: .flatpak-builder/${{ env.cache-folder }}
         key: ${{ env.cache-folder }}
-    - name: Build Docker Image
-      run: docker build -t flatpak-docker build-aux
+    - name: Pull Docker Image
+      run: docker pull nahuelwexd/flatpak-docker
     - name: Run Docker Image
       run: |
         docker run --privileged --device /dev/fuse --workdir /github/workspace \
@@ -31,7 +31,7 @@ jobs:
           -v "/var/run/docker.sock":"/var/run/docker.sock" \
           -v "/home/runner/work/_temp/_github_home":"/github/home" \
           -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" \
-          -v "$GITHUB_WORKSPACE":"/github/workspace" -i flatpak-docker \
+          -v "$GITHUB_WORKSPACE":"/github/workspace" -i nahuelwexd/flatpak-docker \
             --manifest-path "build-aux/com.gitlab.nahuelwexd.Unitube.json" \
             --app-id "com.gitlab.nahuelwexd.Unitube.Devel" \
             --bundle "com.github.nahuelwexd.Unitube.Devel.flatpak"
