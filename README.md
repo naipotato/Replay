@@ -1,18 +1,24 @@
 <p align="center">
-    <img src="data/icons/scalable/apps/com.gitlab.nahuelwexd.Unitube.svg"/>
-</p>
-<h1 align="center">UniTube GTK</h1>
-<h3 align="center">An open source YouTube client written in Vala and GTK</h3>
-<p align="center">
+  <img src="data/icons/scalable/apps/com.gitlab.nahuelwexd.Unitube.svg"/>
+
+  <h3 align="center">UniTube GTK</h3>
+
+  <p align="center">
+    An open source YouTube client written in Vala and GTK
+    <br>
+    <br>
     <a href="https://github.com/nahuelwexd/unitube-gtk/commits/master">
-        <img alt="Flatpak" src="https://github.com/nahuelwexd/unitube-gtk/workflows/Flatpak/badge.svg"/>
+      <img alt="Flatpak" src="https://github.com/nahuelwexd/unitube-gtk/workflows/Flatpak/badge.svg"/>
     </a>
-    <a href="https://stopthemingmy.app/">
-        <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg">
+    &middot;
+    <a href="https://stopthemingmy.app">
+      <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg">
     </a>
+    &middot;
     <a href="COPYING">
-        <img alt="license" src="https://img.shields.io/github/license/nahuelwexd/unitube-gtk?label=License&logo=gnu">
+      <img alt="license" src="https://img.shields.io/github/license/nahuelwexd/unitube-gtk?label=License&logo=gnu">
     </a>
+  </p>
 </p>
 
 ## About
