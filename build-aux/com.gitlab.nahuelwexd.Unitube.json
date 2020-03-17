@@ -5,7 +5,7 @@
   "sdk": "org.gnome.Sdk",
   "command": "unitube",
   "finish-args": [
-    "--socket=x11",
+    "--socket=fallback-x11",
     "--socket=wayland",
     "--share=ipc",
     "--share=network"
