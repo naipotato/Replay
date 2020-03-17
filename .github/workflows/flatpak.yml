@@ -32,8 +32,8 @@ jobs:
           -v "/home/runner/work/_temp/_github_home":"/github/home" \
           -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" \
           -v "$GITHUB_WORKSPACE":"/github/workspace" -i nahuelwexd/flatpak-docker \
-            --manifest-path "build-aux/com.gitlab.nahuelwexd.Unitube.json" \
-            --app-id "com.gitlab.nahuelwexd.Unitube.Devel" \
+            --manifest-path "build-aux/com.github.nahuelwexd.Unitube.json" \
+            --app-id "com.github.nahuelwexd.Unitube.Devel" \
             --bundle "com.github.nahuelwexd.Unitube.Devel.flatpak"
     - name: Upload Generated Bundle
       uses: actions/upload-artifact@v1

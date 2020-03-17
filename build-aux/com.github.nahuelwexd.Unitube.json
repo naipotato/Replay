@@ -1,5 +1,5 @@
 {
-  "app-id": "com.gitlab.nahuelwexd.Unitube.Devel",
+  "app-id": "com.github.nahuelwexd.Unitube.Devel",
   "runtime": "org.gnome.Platform",
   "runtime-version": "3.36",
   "sdk": "org.gnome.Sdk",
@@ -83,7 +83,7 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://gitlab.com/nahuelwexd/unitube-gtk.git"
+          "url": "https://github.com/nahuelwexd/unitube-gtk.git"
         }
       ]
     }

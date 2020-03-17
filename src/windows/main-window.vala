@@ -20,7 +20,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/gitlab/nahuelwexd/Unitube/ui/main-window.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/Unitube/ui/main-window.ui")]
     public class MainWindow : ApplicationWindow {
 
         [GtkChild]

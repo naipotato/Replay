@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="com.gitlab.nahuelwexd.Unitube.appearance"
-          path="/com/gitlab/nahuelwexd/Unitube/appearance/">
+  <schema id="com.github.nahuelwexd.Unitube.appearance"
+          path="/com/github/nahuelwexd/Unitube/appearance/">
     <key name="dark-theme" type="b">
       <default>false</default>
     </key>

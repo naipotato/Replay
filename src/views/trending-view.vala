@@ -19,7 +19,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/gitlab/nahuelwexd/Unitube/ui/trending-view.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/Unitube/ui/trending-view.ui")]
     public class TrendingView : Bin {
 
         private TrendingViewModel view_model;
