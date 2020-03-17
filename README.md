@@ -6,8 +6,8 @@
   </p>
 </div>
 <div align="center">
-  <a href="https://gitlab.com/nahuelwexd/unitube-gtk/commits/master">
-    <img alt="pipeline status" src="https://gitlab.com/nahuelwexd/unitube-gtk/badges/master/pipeline.svg"/>
+  <a href="https://github.com/nahuelwexd/unitube-gtk/commits/master">
+    <img alt="Flatpak" src="https://github.com/nahuelwexd/unitube-gtk/workflows/Flatpak/badge.svg"/>
   </a>
   <a href="https://stopthemingmy.app/">
     <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg">
@@ -46,7 +46,7 @@ dependencies:
 Then simply follow these commands:
 
 ```sh
-git clone https://gitlab.com/nahuelwexd/unitube-gtk.git
+git clone https://github.com/nahuelwexd/unitube-gtk.git
 cd unitube-gtk
 meson build --prefix=/usr
 ninja -C build
