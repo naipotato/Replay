@@ -1,0 +1,12 @@
+FROM fedora:latest
+
+# Install Flatpak
+RUN dnf install -y flatpak flatpak-builder
+
+# Setup Flathub
+RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+RUN flatpak install -y --noninteractive flathub org.freedesktop.Platform//19.08 org.freedesktop.Sdk//19.08
+
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["sh", "/entrypoint.sh"]
