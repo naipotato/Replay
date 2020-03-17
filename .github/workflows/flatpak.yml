@@ -23,3 +23,8 @@ jobs:
             --manifest-path "build-aux/com.gitlab.nahuelwexd.Unitube.json" \
             --app-id "com.gitlab.nahuelwexd.Unitube.Devel" \
             --bundle "com.github.nahuelwexd.Unitube.Devel.flatpak"
+    - name: Upload Generated Bundle
+      uses: actions/upload-artifact@v1
+      with:
+        name: Flatpak Bundle
+        path: com.github.nahuelwexd.Unitube.Devel.flatpak
