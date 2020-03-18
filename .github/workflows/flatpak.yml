@@ -18,23 +18,14 @@ jobs:
       with:
         path: .flatpak-builder/${{ env.cache-folder }}
         key: ${{ env.cache-folder }}
-    - name: Pull Docker Image
-      run: docker pull nahuelwexd/flatpak-docker
-    - name: Run Docker Image
-      run: |
-        docker run --privileged --device /dev/fuse --workdir /github/workspace \
-          --rm -e INPUT_ARGS -e HOME -e GITHUB_REF -e GITHUB_SHA \
-          -e GITHUB_REPOSITORY -e GITHUB_ACTOR -e GITHUB_WORKFLOW  \
-          -e GITHUB_HEAD_REF -e GITHUB_BASE_REF -e GITHUB_EVENT_NAME \
-          -e GITHUB_WORKSPACE -e GITHUB_ACTION -e GITHUB_EVENT_PATH \
-          -e RUNNER_OS -e RUNNER_TOOL_CACHE -e RUNNER_TEMP -e RUNNER_WORKSPACE \
-          -v "/var/run/docker.sock":"/var/run/docker.sock" \
-          -v "/home/runner/work/_temp/_github_home":"/github/home" \
-          -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" \
-          -v "$GITHUB_WORKSPACE":"/github/workspace" -i nahuelwexd/flatpak-docker \
-            --manifest-path "build-aux/com.github.nahuelwexd.Unitube.json" \
-            --app-id "com.github.nahuelwexd.Unitube.Devel" \
-            --bundle "com.github.nahuelwexd.Unitube.Devel.flatpak"
+    - name: Flatpak Builder Action
+      uses: nahuelwexd/flatpak-builder-action@0.1
+      with:
+        manifest-path: build-aux/com.github.nahuelwexd.Unitube.json
+        meson-args: -Dprofile=development
+        flatpak-module: unitube
+        app-id: com.github.nahuelwexd.Unitube.Devel
+        bundle: com.github.nahuelwexd.Unitube.Devel.flatpak
     - name: Upload Generated Bundle
       uses: actions/upload-artifact@v1
       with:
