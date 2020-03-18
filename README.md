@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="data/icons/scalable/apps/com.gitlab.nahuelwexd.Unitube.svg"/>
+  <img src="data/icons/scalable/apps/com.github.nahuelwexd.Unitube.svg"/>
 
   <h3 align="center">UniTube GTK</h3>
 
