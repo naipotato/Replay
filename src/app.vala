@@ -22,6 +22,14 @@ namespace Unitube {
 
     public class App : Gtk.Application {
 
+        public bool are_custom_styles_enabled {
+            get {
+                var gtk_settings = Gtk.Settings.get_default ();
+                return gtk_settings.gtk_theme_name == "Adwaita" ||
+                    gtk_settings.gtk_theme_name == "Adwaita-dark";
+            }
+        }
+
         public App () {
             Object (
                 application_id: APPLICATION_ID,
