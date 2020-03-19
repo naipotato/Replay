@@ -6,19 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - env:
+    - name: Cache .flatpak-builder/downloads folder
+      env:
         cache-folder: downloads
       uses: actions/cache@v1
       with:
         path: .flatpak-builder/${{ env.cache-folder }}
         key: ${{ env.cache-folder }}
-    - env:
+    - name: Cache .flatpak-builder/git folder
+      env:
         cache-folder: git
       uses: actions/cache@v1
       with:
         path: .flatpak-builder/${{ env.cache-folder }}
         key: ${{ env.cache-folder }}
-    - name: Flatpak Builder Action
+    - name: Build Flatpak bundle
       uses: nahuelwexd/flatpak-builder-action@gnome-3-36
       with:
         manifest-path: build-aux/com.github.nahuelwexd.Unitube.json
@@ -26,7 +28,7 @@ jobs:
         flatpak-module: unitube
         app-id: com.github.nahuelwexd.Unitube.Devel
         bundle: com.github.nahuelwexd.Unitube.Devel.flatpak
-    - name: Upload Generated Bundle
+    - name: Upload Flatpak Bundle
       uses: actions/upload-artifact@v1
       with:
         name: Flatpak Bundle
