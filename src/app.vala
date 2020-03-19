@@ -80,6 +80,11 @@ namespace Unitube {
             provider.load_from_resource (@"$RESOURCE_PATH/style.css");
             StyleContext.add_provider_for_screen (Screen.get_default (),
                 provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            var gtk_settings = Gtk.Settings.get_default ();
+            gtk_settings.notify["gtk-theme-name"].connect (() => {
+                this.notify_property ("are-custom-styles-enabled");
+            });
         }
 
         protected override void activate () {
