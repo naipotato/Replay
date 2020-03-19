@@ -37,10 +37,6 @@ namespace Unitube {
             );
         }
 
-        construct {
-            this.populate_actions ();
-        }
-
         private static int main (string[] args) {
             Hdy.init (ref args);
 
@@ -73,6 +69,8 @@ namespace Unitube {
 
         protected override void startup () {
             base.startup ();
+
+            this.populate_actions ();
 
             SettingsService.get_default ();
 
