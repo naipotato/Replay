@@ -33,3 +33,13 @@ jobs:
       with:
         name: Flatpak Bundle
         path: com.github.nahuelwexd.Unitube.Devel.flatpak
+    - name: Upload build logs
+      uses: actions/upload-artifact@v1
+      with:
+        name: Build logs
+        path: _build/meson-logs/meson-log.txt
+    - name: Upload test logs
+      uses: actions/upload-artifact@v1
+      with:
+        name: Test logs
+        path: _build/meson-logs/meson-log.txt
