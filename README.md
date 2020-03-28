@@ -8,7 +8,7 @@
   <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/UniTube-GTK?label=License&logo=gnu"/>
 </a>
 <p align="center">
-  <img src="data/icons/scalable/apps/com.github.nahuelwexd.Unitube.svg"/>
+  <img src="data/icons/scalable/apps/com.github.nahuelwexd.UniTube.svg"/>
   <h3 align="center">UniTube GTK</h3>
   <p align="center">
     An open source YouTube client written in Vala and GTK.
