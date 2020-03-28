@@ -23,16 +23,16 @@ jobs:
     - name: Build Flatpak bundle
       uses: nahuelwexd/flatpak-builder-action@gnome-3-36
       with:
-        manifest-path: build-aux/com.github.nahuelwexd.Unitube.json
+        manifest-path: build-aux/com.github.nahuelwexd.UniTube.json
         meson-args: -Dprofile=development
         flatpak-module: unitube
-        app-id: com.github.nahuelwexd.Unitube.Devel
-        bundle: com.github.nahuelwexd.Unitube.Devel.flatpak
+        app-id: com.github.nahuelwexd.UniTube.Devel
+        bundle: com.github.nahuelwexd.UniTube.Devel.flatpak
     - name: Upload Flatpak Bundle
       uses: actions/upload-artifact@v1
       with:
         name: Flatpak Bundle
-        path: com.github.nahuelwexd.Unitube.Devel.flatpak
+        path: com.github.nahuelwexd.UniTube.Devel.flatpak
     - name: Upload build logs
       uses: actions/upload-artifact@v1
       with:
