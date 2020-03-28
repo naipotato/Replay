@@ -19,7 +19,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Unitube/ui/subscriptions-view.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/subscriptions-view.ui")]
     public class SubscriptionsView : Box {
 
         construct {

@@ -20,7 +20,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Unitube/ui/preferences-window.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/preferences-window.ui")]
     public class PreferencesWindow : Hdy.PreferencesWindow {
 
         [GtkChild]
