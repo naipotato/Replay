@@ -78,8 +78,8 @@ namespace Unitube {
 
             var provider = new CssProvider ();
             provider.load_from_resource (@"$RESOURCE_PATH/style.css");
-            StyleContext.add_provider_for_screen (Screen.get_default (),
-                provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+            StyleContext.add_provider_for_screen (Screen.get_default (), provider,
+                STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             var gtk_settings = Gtk.Settings.get_default ();
             gtk_settings.notify["gtk-theme-name"].connect (() => {

@@ -25,15 +25,19 @@ valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'
 
 
+unitube_deps = [
+    dependency ('gtk+-3.0', version: '>= 3.24'),
+    dependency ('libhandy-0.0', version: '>= 0.0.10'),
+    dependency ('gee-0.8'),
+    valac.find_library ('config', dirs: vapidir)
+]
+
+
 executable (
     meson.project_name (),
     sources, resources,
-    dependencies: [
-        dependency ('gtk+-3.0', version: '>= 3.24'),
-        dependency ('libhandy-0.0', version: '>= 0.0.10'),
-        dependency ('gee-0.8'),
-        valac.find_library ('config', dirs: vapidir)
-    ],
-    install: true,
+
+           dependencies: unitube_deps,
+                install: true,
     include_directories: confinc
 )

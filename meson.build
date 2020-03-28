@@ -1,14 +1,11 @@
-project (
-    'unitube',
-    'c', 'vala',
+project ('unitube', 'c', 'vala',
     version: '0.1.0',
     license: 'GPL-3.0-or-later'
 )
 
 
 # Enable libhandy
-add_project_arguments (
-    '-DHANDY_USE_UNSTABLE_API',
+add_project_arguments ('-DHANDY_USE_UNSTABLE_API',
     language: 'c'
 )
 
