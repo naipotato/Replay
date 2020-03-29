@@ -22,7 +22,7 @@ endif
 
 # Info about the app
 rdnn_app_name = 'com.github.nahuelwexd.UniTube'
-application_name = 'Unitube@0@'.format (name_suffix)
+application_name = 'UniTube@0@'.format (name_suffix)
 application_id = '@0@@1@'.format (rdnn_app_name, profile)
 package_url = 'https://github.com/nahuelwexd/UniTube-GTK'
 resource_path = '/com/github/nahuelwexd/UniTube'
