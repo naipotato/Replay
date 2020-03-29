@@ -44,29 +44,6 @@ namespace Unitube {
             return app.run (args);
         }
 
-        private void populate_actions () {
-            var action = new SimpleAction ("preferences", null);
-            action.activate.connect (() => {
-                new PreferencesWindow () {
-                    transient_for = this.active_window
-                }.present ();
-            });
-            this.add_action (action);
-
-            action = new SimpleAction ("about", null);
-            action.activate.connect (() => {
-                new Unitube.AboutDialog () {
-                    transient_for = this.active_window
-                }.present ();
-            });
-            this.add_action (action);
-
-            action = new SimpleAction ("quit", null);
-            action.activate.connect (this.quit);
-            this.set_accels_for_action ("app.quit", {"<Ctrl>Q"});
-            this.add_action (action);
-        }
-
         protected override void startup () {
             base.startup ();
 
@@ -96,6 +73,37 @@ namespace Unitube {
             }
 
             win.present ();
+        }
+
+        private void populate_actions () {
+            var action = new SimpleAction ("preferences", null);
+            action.activate.connect (on_preferences_activate);
+            this.add_action (action);
+
+            action = new SimpleAction ("about", null);
+            action.activate.connect (on_about_activate);
+            this.add_action (action);
+
+            action = new SimpleAction ("quit", null);
+            action.activate.connect (this.quit);
+            this.set_accels_for_action ("app.quit", {"<Ctrl>Q"});
+            this.add_action (action);
+        }
+
+        private void on_preferences_activate () {
+            var preferences_window = new PreferencesWindow () {
+                transient_for = this.active_window
+            };
+
+            preferences_window.present ();
+        }
+
+        private void on_about_activate () {
+            var about_dialog = new Unitube.AboutDialog () {
+                transient_for = this.active_window
+            };
+
+            about_dialog.present ();
         }
     }
 }
