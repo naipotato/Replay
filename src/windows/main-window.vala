@@ -46,6 +46,11 @@ namespace Unitube {
             close_action.activate.connect (this.close);
             app.set_accels_for_action ("win.close", {"<Ctrl>W"});
             this.add_action (close_action);
+
+            if (PROFILE != "") {
+                var style_context = this.get_style_context ();
+                style_context.add_class ("devel");
+            }
         }
 
         [GtkCallback]

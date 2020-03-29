@@ -120,4 +120,14 @@ headerbar.red-style {
 
         @include button(undecorated);
     }
+
+    window.devel & {
+        $c: darken($bg_color, 10%);
+        $gradient: cross-fade(16% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
+                   linear-gradient(to right, transparent 65%, transparentize(white, 0.9)),
+                   linear-gradient(to top, lighten($c, 4%), lighten($c, 6%));
+
+        background: $c $gradient;
+    }
 }
+
