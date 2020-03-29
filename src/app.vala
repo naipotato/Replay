@@ -47,6 +47,8 @@ namespace Unitube {
         protected override void startup () {
             base.startup ();
 
+            Gtk.Window.set_default_icon_name (APPLICATION_ID);
+
             this.populate_actions ();
 
             SettingsService.get_default ();
