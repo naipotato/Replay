@@ -1,14 +1,21 @@
 # Compile SASS into CSS for custom styles
 sassc = find_program ('sassc')
 
-custom_css = custom_target ('style.css',
+custom_light_css = custom_target ('styles.css',
                command: [sassc, '-M', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
-                 input: 'styles' / 'style.scss',
-                output: 'style.css',
+                 input: 'styles' / 'styles.scss',
+                output: 'styles.css',
     build_always_stale: true,
       build_by_default: true
 )
 
+custom_dark_css = custom_target ('styles-dark.css',
+               command: [sassc, '-M', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
+                 input: 'styles' / 'styles-dark.scss',
+                output: 'styles-dark.css',
+    build_always_stale: true,
+      build_by_default: true
+)
 
 # Compile GResources in order to include into the source
 gnome = import ('gnome')
@@ -16,7 +23,7 @@ gnome = import ('gnome')
 resources = gnome.compile_resources (
     '@0@.gresource'.format (rdnn_app_name),
     '@0@.gresource.xml'.format (rdnn_app_name),
-    dependencies: custom_css
+    dependencies: [custom_light_css, custom_dark_css]
 )
 
 
