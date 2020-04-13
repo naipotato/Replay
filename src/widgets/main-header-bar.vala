@@ -50,18 +50,6 @@ namespace Unitube {
                 BindingFlags.BIDIRECTIONAL);
 
             var app = (App) GLib.Application.get_default ();
-
-            app.notify["are-custom-styles-enabled"].connect (() => {
-                var style_context = this.get_style_context ();
-
-                if (app.are_custom_styles_enabled) {
-                    style_context.add_class ("red-style");
-                } else {
-                    style_context.remove_class ("red-style");
-                }
-            });
-
-            app.notify_property ("are-custom-styles-enabled");
         }
 
         [Signal (action = true)]

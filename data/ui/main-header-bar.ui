@@ -28,10 +28,6 @@
     <signal name="toggle-menu" handler="on_menu_toggled"/>
     <signal name="notify::search-mode" handler="on_search_mode_changed"/>
 
-    <style>
-      <class name="red-style"/>
-    </style>
-
     <child type="title">
       <object class="GtkStack" id="title_stack">
 
