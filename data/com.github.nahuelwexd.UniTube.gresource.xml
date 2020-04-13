@@ -13,6 +13,7 @@
     <file>ui/preferences-window.ui</file>
     <file>ui/subscriptions-view.ui</file>
     <file>ui/trending-view.ui</file>
-    <file>style.css</file>
+    <file>styles.css</file>
+    <file>styles-dark.css</file>
   </gresource>
 </gresources>
