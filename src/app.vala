@@ -48,7 +48,7 @@ namespace Unitube {
             IconTheme.get_default ().add_resource_path (@"$RESOURCE_PATH/icons");
 
             var provider = new CssProvider ();
-            provider.load_from_resource (@"$RESOURCE_PATH/style.css");
+            provider.load_from_resource (@"$RESOURCE_PATH/styles.css");
             StyleContext.add_provider_for_screen (Screen.get_default (), provider,
                 STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
