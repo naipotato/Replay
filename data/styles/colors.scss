@@ -1,0 +1,2 @@
+$bg_color: if($variant == 'light', #f6f5f4, darken(desaturate(#3d3846, 100%), 4%));
+$selected_bg_color: if($variant == 'light', #e01b24, #c01c28);
