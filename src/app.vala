@@ -22,14 +22,6 @@ namespace Unitube {
 
     public class App : Gtk.Application {
 
-        public bool are_custom_styles_enabled {
-            get {
-                var gtk_settings = Gtk.Settings.get_default ();
-                return gtk_settings.gtk_theme_name == "Adwaita" ||
-                    gtk_settings.gtk_theme_name == "Adwaita-dark";
-            }
-        }
-
         public App () {
             Object (
                 application_id: APPLICATION_ID,
@@ -59,11 +51,6 @@ namespace Unitube {
             provider.load_from_resource (@"$RESOURCE_PATH/style.css");
             StyleContext.add_provider_for_screen (Screen.get_default (), provider,
                 STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-            var gtk_settings = Gtk.Settings.get_default ();
-            gtk_settings.notify["gtk-theme-name"].connect (() => {
-                this.notify_property ("are-custom-styles-enabled");
-            });
         }
 
         protected override void activate () {
