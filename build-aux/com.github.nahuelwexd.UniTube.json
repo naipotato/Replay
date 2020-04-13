@@ -75,7 +75,7 @@
         {
           "type" : "git",
           "url" : "https://source.puri.sm/Librem5/libhandy.git",
-          "tag" : "v0.0.13"
+          "branch" : "libhandy-0-0"
         }
       ]
     },
