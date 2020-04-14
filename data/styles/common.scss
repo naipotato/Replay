@@ -1,5 +1,7 @@
-window.devel {
-    headerbar.titlebar:not(.selection-mode) {
+headerbar {
+    border-bottom: 2px solid $selected_bg_color;
+
+    window.devel &.titlebar:not(.selection-mode) {
         $c: darken($bg_color, 10%);
         $gradient: cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat,
                    linear-gradient(to right, transparent 65%, transparentize($selected_bg_color, 0.8)),
