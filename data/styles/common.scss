@@ -1,3 +1,9 @@
+$bg_color: if($variant == 'light', #f6f5f4, darken(desaturate(#3d3846, 100%), 4%));
+$selected_bg_color: if($variant == 'light', #e01b24, #c01c28);
+$selected_borders_color: if($variant == 'light', darken($selected_bg_color, 15%), darken($selected_bg_color, 30%));
+$checkradio_bg_color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 10%));
+$checkradio_borders_color: if($variant == 'light', darken($checkradio_bg_color, 20%), darken($checkradio_bg_color, 40%));
+
 headerbar {
     border-bottom: 2px solid $selected_bg_color;
 
@@ -29,5 +35,6 @@ switch:checked {
 }
 
 entry:focus {
-    @include entry(focus);
+    border-color: if($variant == 'light', $selected_bg_color, $selected_borders_color);
+    box-shadow: inset 0 0 0 1px $selected_bg_color;
 }
