@@ -4,6 +4,7 @@ sources = files (
     'services' / 'settings' / 'appearance-settings.vala',
 
     'services' / 'settings-service.vala',
+    'services' / 'styling-service.vala',
 
     'view-models' / 'trending-view-model.vala',
     'view-models' / 'view-model-locator.vala',
