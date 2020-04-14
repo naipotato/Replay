@@ -111,3 +111,13 @@ label {
         color: mix($selected_fg_color, $link_color, 80%);
     }
 }
+
+button.emoji-section:checked {
+    border-color: $selected_bg_color;
+}
+
+popover.emoji-picker .emoji {
+    :hover {
+        background: $selected_bg_color;
+    }
+}
