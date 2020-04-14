@@ -49,3 +49,9 @@ check:checked {
     background-image: linear-gradient(to bottom, lighten($checkradio_bg_color, 5%) 20%, $checkradio_bg_color 90%);
     border-color: $checkradio_bg_color;
 }
+
+label {
+    selection {
+        background-color: $selected_bg_color;
+    }
+}
