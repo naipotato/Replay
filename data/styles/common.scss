@@ -2,13 +2,21 @@ $bg_color: if($variant == 'light', #f6f5f4, darken(desaturate(#3d3846, 100%), 4%
 $selected_fg_color: #ffffff;
 $selected_bg_color: if($variant == 'light', #e01b24, #c01c28);
 $selected_borders_color: if($variant == 'light', darken($selected_bg_color, 15%), darken($selected_bg_color, 30%));
+$borders_color: if($variant == 'light', darken($bg_color, 18%), darken($bg_color, 10%));
 $link_color: if($variant == 'light', darken($selected_bg_color, 10%), lighten($selected_bg_color, 20%));
 $link_visited_color: if($variant == 'light', darken($selected_bg_color, 20%), lighten($selected_bg_color, 10%));
 $checkradio_bg_color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 10%));
 $checkradio_borders_color: if($variant == 'light', darken($checkradio_bg_color, 20%), darken($checkradio_bg_color, 40%));
+$backdrop_borders_color: mix($borders_color, $bg_color, 80%);
 
 headerbar {
     border-bottom: 2px solid $selected_bg_color;
+
+    &:backdrop {
+        border-width: 0 0 1px;
+        border-style: solid;
+        border-color: $backdrop_borders_color;
+    }
 
     window.devel &.titlebar:not(.selection-mode) {
         $c: darken($bg_color, 10%);
