@@ -25,7 +25,7 @@ namespace Unitube {
     public class MainHeaderBar : Hdy.HeaderBar {
 
         [GtkChild]
-        private ViewSwitcher view_switcher;
+        private ViewSwitcherTitle view_switcher_title;
 
         [GtkChild]
         private ToggleButton search_button;
@@ -44,7 +44,7 @@ namespace Unitube {
         public bool search_mode { get; set; }
 
         construct {
-            bind_property ("stack", view_switcher, "stack",
+            bind_property ("stack", view_switcher_title, "stack",
                 BindingFlags.BIDIRECTIONAL);
             bind_property ("search-mode", search_button, "active",
                 BindingFlags.BIDIRECTIONAL);
@@ -69,12 +69,6 @@ namespace Unitube {
             }
 
             return handled;
-        }
-
-        [GtkCallback]
-        private void on_squeezer_visible_child_changed (Object object, ParamSpec pspec) {
-            var squeezer = object as Squeezer;
-            is_narrow_mode = squeezer.visible_child.get_type () == typeof (Label);
         }
 
         [GtkCallback]
