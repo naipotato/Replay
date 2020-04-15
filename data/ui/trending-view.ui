@@ -26,8 +26,7 @@
       <object class="HdyLeaflet">
 
         <property name="visible">True</property>
-        <property name="mode-transition-type">slide</property>
-        <property name="child-transition-type">slide</property>
+        <property name="transition-type">slide</property>
         <property name="visible-child">content</property>
 
         <child>
