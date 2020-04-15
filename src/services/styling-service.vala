@@ -75,6 +75,19 @@ namespace Unitube {
         private void on_theme_changed () {
             var gtk_settings = Gtk.Settings.get_default ();
 
+            var env_theme = Environment.get_variable ("GTK_THEME");
+            if (env_theme != null && env_theme != "") {
+                if (Regex.match_simple ("^Adwaita[-:]dark$", env_theme)) {
+                    this.switch_to_dark_css ();
+                } else if (Regex.match_simple ("^Adwaita(:.*|$)", env_theme)) {
+                    this.switch_to_light_css ();
+                } else {
+                    this.remove_all_css ();
+                }
+
+                return;
+            }
+
             switch (gtk_settings.gtk_theme_name) {
                 case "Adwaita":
                     if (gtk_settings.gtk_application_prefer_dark_theme) {
