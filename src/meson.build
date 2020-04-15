@@ -28,7 +28,7 @@ vapidir = meson.source_root () / 'vapi'
 
 unitube_deps = [
     dependency ('gtk+-3.0', version: '>= 3.24'),
-    dependency ('libhandy-0.0', version: '>= 0.0.10'),
+    dependency ('libhandy-1'),
     dependency ('gee-0.8'),
     valac.find_library ('config', dirs: vapidir)
 ]
