@@ -36,29 +36,10 @@
 
         <child>
 
-          <object class="HdySqueezer">
-
+          <object class="HdyViewSwitcherTitle" id="view_switcher_title">
             <property name="visible">True</property>
-            <property name="transition-type">crossfade</property>
-            <signal name="notify::visible-child" handler="on_squeezer_visible_child_changed"/>
-
-            <child>
-              <object class="HdyViewSwitcher" id="view_switcher">
-                <property name="visible">True</property>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Unitube</property>
-
-                <style>
-                  <class name="title"/>
-                </style>
-              </object>
-            </child>
+            <property name="has-subtitle">False</property>
+            <property name="title" translatable="yes">UniTube</property>
           </object>
 
           <packing>
