@@ -30,8 +30,6 @@ namespace Unitube {
         }
 
         private static int main (string[] args) {
-            Hdy.init (ref args);
-
             var app = new Unitube.App ();
             return app.run (args);
         }
