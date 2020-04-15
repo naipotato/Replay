@@ -16,7 +16,7 @@
  */
 
 using Gdk;
-using Gtk;
+using Hdy;
 
 namespace Unitube {
 
