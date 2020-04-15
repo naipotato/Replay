@@ -1,3 +1,7 @@
+/**********
+ * Colors *
+ **********/
+
 $base_color: if($variant == 'light', #ffffff, lighten(desaturate(#241f31, 100%), 2%));
 $text_color: if($variant == 'light', black, white);
 $bg_color: if($variant == 'light', #f6f5f4, darken(desaturate(#3d3846, 100%), 4%));
@@ -13,6 +17,11 @@ $backdrop_base_color: if($variant == 'light', darken($base_color, 1%), lighten($
 $backdrop_text_color: mix($text_color, $backdrop_base_color, 80%);
 $backdrop_selected_fg_color: if($variant == 'light', $backdrop_base_color, $backdrop_text_color);
 $backdrop_borders_color: mix($borders_color, $bg_color, 80%);
+
+
+/*************
+ * HeaderBar *
+ *************/
 
 headerbar {
     border-bottom: 2px solid $selected_bg_color;
@@ -43,12 +52,22 @@ headerbar {
     }
 }
 
+
+/**********
+ * Switch *
+ **********/
+
 switch:checked {
     border-color: $checkradio_borders_color;
     background-color: $checkradio_bg_color;
     text-shadow: 0 1px transparentize($selected_borders_color, 0.5),
                  0 0 2px transparentize(white, 0.4);
 }
+
+
+/*********
+ * Entry *
+ *********/
 
 entry {
     &:focus {
@@ -73,22 +92,42 @@ entry {
     }
 }
 
+
+/*********
+ * Menus *
+ *********/
+
 menu menuitem:hover,
 .menu menuitem:hover,
 .context-menu menuitem:hover {
     background-color: $selected_bg_color;
 }
 
+
+/***************
+ * CheckButton *
+ ***************/
+
 check:checked {
     background-image: linear-gradient(to bottom, lighten($checkradio_bg_color, 5%) 20%, $checkradio_bg_color 90%);
     border-color: $checkradio_bg_color;
 }
+
+
+/*********
+ * Label *
+ *********/
 
 label {
     selection {
         background-color: $selected_bg_color;
     }
 }
+
+
+/*********
+ * Links *
+ *********/
 
 *:link {
     color: $link_color;
@@ -134,6 +173,11 @@ label {
         color: mix($selected_fg_color, $link_color, 80%);
     }
 }
+
+
+/****************
+ * Emoji Picker *
+ ****************/
 
 button.emoji-section:checked {
     border-color: $selected_bg_color;
