@@ -49,6 +49,9 @@ namespace Unitube {
             bind_property ("search-mode", search_button, "active",
                 BindingFlags.BIDIRECTIONAL);
 
+            view_switcher_title.bind_property ("title-visible", this,
+                "is-narrow-mode", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+
             var app = (App) GLib.Application.get_default ();
         }
 
