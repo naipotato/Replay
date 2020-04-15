@@ -41,7 +41,7 @@
                 <property name="title" translatable="yes">Use dark theme</property>
                 <property name="subtitle" translatable="yes">Activates dark theme on the app.</property>
 
-                <child type="action">
+                <child>
                   <object class="GtkSwitch" id="toggle">
                     <property name="visible">True</property>
                     <property name="valign">center</property>
