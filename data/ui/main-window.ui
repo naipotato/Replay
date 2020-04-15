@@ -35,10 +35,16 @@
 
         <child>
           <object class="UnitubeMainHeaderBar" id="headerbar">
+
             <property name="visible">True</property>
             <property name="stack">main-stack</property>
             <accelerator key="F10" signal="toggle-menu"/>
             <accelerator key="f" modifiers="GDK_CONTROL_MASK" signal="toggle-search-mode"/>
+
+            <style>
+              <class name="titlebar"/>
+            </style>
+
           </object>
         </child>
 
