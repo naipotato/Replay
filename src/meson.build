@@ -40,5 +40,6 @@ executable (
 
            dependencies: unitube_deps,
                 install: true,
-    include_directories: confinc
+    include_directories: confinc,
+                gui_app: true
 )
