@@ -46,6 +46,26 @@ if compile_schemas.found ()
 endif
 
 
+# Install Appstream file in order to provide metadata for this app
+install_data (
+    '@0@.metainfo.xml'.format (rdnn_app_name),
+    install_dir: get_option ('datadir') / 'metainfo'
+)
+
+
+# Verify if the Appstream file is valid
+appstream_util = find_program ('appstream-util', required: false)
+
+if appstream_util.found ()
+    test (
+        'Validate appstream file',
+        appstream_util,
+        args: ['validate', files ('@0@.metainfo.xml'.format (rdnn_app_name))],
+        should_fail: true # Since I've no releases tag, this should fail.
+    )
+endif
+
+
 # Configure and install the desktop file in order to get an entry in the app
 # drawer
 desktop_file_conf = configuration_data ()
