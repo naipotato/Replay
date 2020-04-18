@@ -17,6 +17,9 @@
       <caption>Mockup of the app</caption>
     </screenshot>
   </screenshots>
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
   <translation type="gettext">unitube</translation>
   <launchable type="desktop-id">com.github.nahuelwexd.UniTube.desktop</launchable>
   <content_rating type="oars-1.1">
