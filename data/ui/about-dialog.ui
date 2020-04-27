@@ -22,15 +22,15 @@
 
   <template class="UnitubeAboutDialog" parent="GtkAboutDialog">
     <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="license_type">gpl-3-0</property>
+    <property name="destroy-with-parent">True</property>
+    <property name="license-type">gpl-3-0</property>
     <property name="program-name" translatable="yes">UniTube</property>
     <property name="copyright">Copyright © 2019-2020 Nahuel Gomez Castro</property>
     <property name="authors">Nahuel Gomez Castro &lt;nahual_gomca@outlook.com.ar&gt;</property>
     <!-- Translators: This is the comment for the About dialog -->
     <property name="comments" translatable="yes">An open source YouTube client written in Vala and GTK.</property>
-    <property name="website_label" translatable="yes">Project repository</property>
     <!-- Translators: This is the label used to link to the project repo -->
+    <property name="website-label" translatable="yes">Project repository</property>
     <signal name="response" handler="on_response"/>
   </template>
 </interface>
