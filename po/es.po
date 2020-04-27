@@ -1,0 +1,132 @@
+# Spanish translations for unitube package.
+# Copyright (C) 2020 THE unitube'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the unitube package.
+# Automatically generated, 2020.
+# Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: unitube\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-26 14:15-0300\n"
+"PO-Revision-Date: 2020-04-26 14:20-0300\n"
+"Last-Translator: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>\n"
+"Language-Team: Spanish - Argentina <nahual_gomca@outlook.com.ar>\n"
+"Language: es_AR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 3.36.0\n"
+
+#. Translators: This is the app name, this MUST NOT be translated
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:5
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:5
+msgid "@APPLICATION_NAME@"
+msgstr "@APPLICATION_NAME@"
+
+#. Translators: This is the generic app name
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:7
+msgid "YouTube client"
+msgstr "Cliente de YouTube"
+
+#. Translators: This is the comment of the app
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:9
+msgid "View YouTube videos"
+msgstr "Ver vídeos de YouTube"
+
+#. Translators: This is the app icon, this MUST NOT be translated
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:11
+msgid "@APPLICATION_ID@"
+msgstr "@APPLICATION_ID@"
+
+#. Translators: These are the keywords used for the search trackers. The list MUST be delimited with semicolons, and MUST finish with a semicolon
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:17
+msgid "YouTube;Videos;"
+msgstr "YouTube;Videos;"
+
+#. Translators: This is the summary of the app that will be shown on GNOME Software or the Flathub website
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:7
+msgid "An open source YouTube client for GNOME"
+msgstr "Un cliente de YouTube de código abierto para GNOME"
+
+#. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:10
+msgid "An open source YouTube client for GNOME."
+msgstr "Un cliente de YouTube de código abierto para GNOME."
+
+#. Translators: This is the name of the developer, it should not be translated
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:16
+msgid "Nahuel Gomez Castro"
+msgstr "Nahuel Gomez Castro"
+
+#. Translators: This is the caption of the first "screenshot", which is a mockup at the moment
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:21
+msgid "Mockup of the app"
+msgstr "Boceto de la aplicación"
+
+#. Translators: This is the comment for the About dialog
+#: data/ui/about-dialog.ui:30
+msgid "An open source YouTube client written in Vala and GTK."
+msgstr "Un cliente de YouTube de código abierto escrito en Vala y GTK."
+
+#. Translators: This is the label used to link to the project repo
+#: data/ui/about-dialog.ui:32
+msgid "Project repository"
+msgstr "Repositorio del proyecto"
+
+#. Translators: This is the text for the tooltip on the search button
+#: data/ui/main-header-bar.ui:77
+msgid "Search"
+msgstr "Buscar"
+
+#. Translators: This is the text for the tooltip on the menu button
+#: data/ui/main-header-bar.ui:93
+msgid "Menu"
+msgstr "Menú"
+
+#. Translators: This is the label used for the preferences item in the burger menu
+#. Translators: This is also the title for the preferences window
+#: data/ui/main-header-bar.ui:109 src/windows/preferences-window.vala:39
+msgid "Preferences"
+msgstr "Preferencias"
+
+#. Translators: This is the label used for the about item in the burger menu
+#: data/ui/main-header-bar.ui:115
+msgid "About"
+msgstr "Acerca"
+
+#. Translators: This is the title for the trending section of the app
+#: data/ui/main-window.ui:67
+msgid "Trending"
+msgstr "Tendencias"
+
+#. Translators: This is the title for the subscriptions section of the app
+#: data/ui/main-window.ui:81
+msgid "Subscriptions"
+msgstr "Suscripciones"
+
+#. Translators: This is the title for the library section of the app
+#: data/ui/main-window.ui:95
+msgid "Library"
+msgstr "Biblioteca"
+
+#. Translators: This is the title for the appearance section on the preferences window
+#: data/ui/preferences-window.ui:30
+msgid "Appearance"
+msgstr "Apariencia"
+
+#. Translators: This is the title for the dark theme toggle in the preferences window
+#: data/ui/preferences-window.ui:43
+msgid "Use dark theme"
+msgstr "Usar tema oscuro"
+
+#. Translators: This is the subtitle for the dark theme toggle in the preferences window
+#: data/ui/preferences-window.ui:45
+msgid "Activates dark theme on the app."
+msgstr "Activa el tema oscuro en la aplicación"
+
+#. Translators: This label is shown when the app fails to load categories
+#: data/ui/trending-view.ui:97
+msgid "Failed to retrieve the categories"
+msgstr "Falló al obtener las categorías"

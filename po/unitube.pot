@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the unitube package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: unitube\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-26 14:15-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Translators: This is the app name, this MUST NOT be translated
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:5
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:5
+msgid "@APPLICATION_NAME@"
+msgstr ""
+
+#. Translators: This is the generic app name
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:7
+msgid "YouTube client"
+msgstr ""
+
+#. Translators: This is the comment of the app
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:9
+msgid "View YouTube videos"
+msgstr ""
+
+#. Translators: This is the app icon, this MUST NOT be translated
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:11
+msgid "@APPLICATION_ID@"
+msgstr ""
+
+#. Translators: These are the keywords used for the search trackers. The list MUST be delimited with semicolons, and MUST finish with a semicolon
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:17
+msgid "YouTube;Videos;"
+msgstr ""
+
+#. Translators: This is the summary of the app that will be shown on GNOME Software or the Flathub website
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:7
+msgid "An open source YouTube client for GNOME"
+msgstr ""
+
+#. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:10
+msgid "An open source YouTube client for GNOME."
+msgstr ""
+
+#. Translators: This is the name of the developer, it should not be translated
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:16
+msgid "Nahuel Gomez Castro"
+msgstr ""
+
+#. Translators: This is the caption of the first "screenshot", which is a mockup at the moment
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:21
+msgid "Mockup of the app"
+msgstr ""
+
+#. Translators: This is the comment for the About dialog
+#: data/ui/about-dialog.ui:30
+msgid "An open source YouTube client written in Vala and GTK."
+msgstr ""
+
+#. Translators: This is the label used to link to the project repo
+#: data/ui/about-dialog.ui:32
+msgid "Project repository"
+msgstr ""
+
+#. Translators: This is the text for the tooltip on the search button
+#: data/ui/main-header-bar.ui:77
+msgid "Search"
+msgstr ""
+
+#. Translators: This is the text for the tooltip on the menu button
+#: data/ui/main-header-bar.ui:93
+msgid "Menu"
+msgstr ""
+
+#. Translators: This is the label used for the preferences item in the burger menu
+#. Translators: This is also the title for the preferences window
+#: data/ui/main-header-bar.ui:109 src/windows/preferences-window.vala:39
+msgid "Preferences"
+msgstr ""
+
+#. Translators: This is the label used for the about item in the burger menu
+#: data/ui/main-header-bar.ui:115
+msgid "About"
+msgstr ""
+
+#. Translators: This is the title for the trending section of the app
+#: data/ui/main-window.ui:67
+msgid "Trending"
+msgstr ""
+
+#. Translators: This is the title for the subscriptions section of the app
+#: data/ui/main-window.ui:81
+msgid "Subscriptions"
+msgstr ""
+
+#. Translators: This is the title for the library section of the app
+#: data/ui/main-window.ui:95
+msgid "Library"
+msgstr ""
+
+#. Translators: This is the title for the appearance section on the preferences window
+#: data/ui/preferences-window.ui:30
+msgid "Appearance"
+msgstr ""
+
+#. Translators: This is the title for the dark theme toggle in the preferences window
+#: data/ui/preferences-window.ui:43
+msgid "Use dark theme"
+msgstr ""
+
+#. Translators: This is the subtitle for the dark theme toggle in the preferences window
+#: data/ui/preferences-window.ui:45
+msgid "Activates dark theme on the app."
+msgstr ""
+
+#. Translators: This label is shown when the app fails to load categories
+#: data/ui/trending-view.ui:97
+msgid "Failed to retrieve the categories"
+msgstr ""
