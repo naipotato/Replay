@@ -48,13 +48,7 @@ namespace Unitube {
         }
 
         protected override void activate () {
-            var win = this.active_window;
-
-            if (win == null) {
-                win = new MainWindow (this);
-                win.show ();
-            }
-
+            var win = this.active_window ?? new MainWindow (this);
             win.present ();
         }
 
