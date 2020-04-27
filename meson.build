@@ -10,6 +10,14 @@ add_project_arguments ('-DHANDY_USE_UNSTABLE_API',
 )
 
 
+# Enable gettext
+i18n = import ('i18n')
+
+add_global_arguments ('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name ()),
+    language: 'c'
+)
+
+
 # Check the profile for this build
 if get_option ('profile') == 'development'
     profile = '.Devel'
@@ -60,4 +68,5 @@ meson.add_install_script ('build-aux/post_install.py')
 
 # Subfolders
 subdir ('data')
+subdir ('po')
 subdir ('src')

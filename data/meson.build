@@ -47,8 +47,12 @@ endif
 
 
 # Install Appstream file in order to provide metadata for this app
-install_data (
-    '@0@.metainfo.xml'.format (rdnn_app_name),
+appstream = i18n.merge_file (
+          input: '@0@.metainfo.xml.in'.format (rdnn_app_name),
+         output: '@0@.metainfo.xml'.format (application_id),
+           type: 'xml',
+         po_dir: meson.source_root () / 'po',
+        install: true,
     install_dir: get_option ('datadir') / 'metainfo'
 )
 
@@ -60,7 +64,7 @@ if appstream_util.found ()
     test (
         'Validate appstream file',
         appstream_util,
-        args: ['validate', files ('@0@.metainfo.xml'.format (rdnn_app_name))],
+        args: ['validate', appstream],
         should_fail: true # Since I've no releases tag, this should fail.
     )
 endif
@@ -71,12 +75,20 @@ endif
 desktop_file_conf = configuration_data ()
 desktop_file_conf.set ('APPLICATION_ID', application_id)
 desktop_file_conf.set ('EXECUTABLE', meson.project_name ())
-desktop_file = configure_file (
-            input: '@0@.desktop.in'.format (rdnn_app_name),
-           output: '@0@.desktop'.format (application_id),
-    configuration: desktop_file_conf,
-          install: true,
-      install_dir: get_option ('datadir') / 'applications'
+
+configured_desktop_file = configure_file (
+            input: '@0@.desktop.in.in'.format (rdnn_app_name),
+           output: '@0@.desktop.in'.format (rdnn_app_name),
+    configuration: desktop_file_conf
+)
+
+desktop_file = i18n.merge_file (
+          input: configured_desktop_file,
+         output: '@0@.desktop'.format (application_id),
+         po_dir: meson.source_root () / 'po',
+           type: 'desktop',
+        install: true,
+    install_dir: get_option ('datadir') / 'applications'
 )
 
 

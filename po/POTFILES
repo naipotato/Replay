@@ -1,0 +1,9 @@
+data/gtk/help-overlay.ui
+data/ui/about-dialog.ui
+data/ui/main-header-bar.ui
+data/ui/main-window.ui
+data/ui/preferences-window.ui
+data/ui/trending-view.ui
+data/com.github.nahuelwexd.UniTube.desktop.in.in
+data/com.github.nahuelwexd.UniTube.metainfo.xml.in
+src/windows/preferences-window.vala

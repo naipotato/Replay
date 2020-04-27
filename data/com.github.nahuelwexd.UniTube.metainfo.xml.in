@@ -3,17 +3,21 @@
   <id>com.github.nahuelwexd.UniTube</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>UniTube</name>
+  <!-- Translators: This is the summary of the app that will be shown on GNOME Software or the Flathub website -->
   <summary>An open source YouTube client for GNOME</summary>
   <description>
+    <!-- Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website -->
     <p>An open source YouTube client for GNOME.</p>
   </description>
   <url type="homepage">https://github.com/nahuelwexd/UniTube-GTK</url>
   <url type="bugtracker">https://github.com/nahuelwexd/UniTube-GTK/issues</url>
   <project_license>GPL-3.0-or-later</project_license>
+  <!-- Translators: This is the name of the developer, it should not be translated -->
   <developer_name>Nahuel Gomez Castro</developer_name>
   <screenshots>
     <screenshot>
       <image>https://github.com/nahuelwexd/UniTube-GTK/raw/master/ui-concept.png</image>
+      <!-- Translators: This is the caption of the first "screenshot", which is a mockup at the moment -->
       <caption>Mockup of the app</caption>
     </screenshot>
   </screenshots>
