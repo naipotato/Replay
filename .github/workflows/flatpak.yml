@@ -33,6 +33,11 @@ jobs:
       with:
         name: Flatpak Bundle
         path: com.github.nahuelwexd.UniTube.Devel.flatpak
+    - name: Upload repo tar
+      uses: actions/upload-artifact@v1
+      with:
+        name: Repo
+        path: repo.tar
     - name: Upload build logs
       uses: actions/upload-artifact@v1
       with:
