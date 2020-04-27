@@ -17,6 +17,7 @@
 
 using Gdk;
 using Gtk;
+using GLib.Intl;
 
 namespace Unitube {
 
@@ -30,6 +31,11 @@ namespace Unitube {
         }
 
         private static int main (string[] args) {
+            setlocale (LocaleCategory.ALL);
+            bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+            bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+            textdomain (GETTEXT_PACKAGE);
+
             var app = new Unitube.App ();
             return app.run (args);
         }
