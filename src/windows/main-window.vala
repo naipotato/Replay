@@ -17,11 +17,12 @@
 
 using Gdk;
 using Hdy;
+using Gtk;
 
 namespace Unitube {
 
     [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/main-window.ui")]
-    public class MainWindow : ApplicationWindow {
+    public class MainWindow : Hdy.ApplicationWindow {
 
         [GtkChild]
         private MainHeaderBar headerbar;
@@ -48,6 +49,13 @@ namespace Unitube {
 #if DEVEL
             var style_context = this.get_style_context ();
             style_context.add_class ("devel");
+
+            var builder = new Builder.from_resource (@"$RESOURCE_PATH/gtk/help-overlay.ui");
+            var help_overlay = (ShortcutsWindow) builder.get_object ("help_overlay");
+            this.set_help_overlay (help_overlay);
+
+            string[] accels = {"<Primary>F1", "<Primary>question"};
+            app.set_accels_for_action ("win.show-help-overlay", accels);
 #endif
         }
 

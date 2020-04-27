@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/github/nahuelwexd/UniTube">
+    <file>gtk/help-overlay.ui</file>
     <file>icons/load-failed-symbolic.svg</file>
     <file>icons/settings-appearance-symbolic.svg</file>
     <file>icons/youtube-trending-symbolic.svg</file>

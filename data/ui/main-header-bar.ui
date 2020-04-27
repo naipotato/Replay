@@ -112,6 +112,12 @@
       </item>
 
       <item>
+        <!-- Translators: This is the label used for the keyboard shortcuts item in the primary menu-->
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+
+      <item>
         <!-- Translators: This is the label used for the about item in the primary menu -->
         <attribute name="label" translatable="yes">About UniTube</attribute>
         <attribute name="action">app.about</attribute>
