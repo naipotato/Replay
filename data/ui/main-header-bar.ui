@@ -74,6 +74,7 @@
 
       <object class="GtkToggleButton" id="search_button">
         <property name="visible">True</property>
+        <!-- Translators: This is the text for the tooltip on the search button -->
         <property name="tooltip-text" translatable="yes">Search</property>
         <property name="image">search-icon</property>
       </object>
@@ -89,6 +90,7 @@
       <object class="GtkMenuButton" id="menu_button">
         <property name="visible">True</property>
         <property name="menu-model">main-menu</property>
+        <!-- Translators: This is the text for the tooltip on the primary menu button -->
         <property name="tooltip-text" translatable="yes">Menu</property>
         <property name="image">menu-icon</property>
       </object>
@@ -104,12 +106,14 @@
     <section>
 
       <item>
+        <!-- Translators: This is the label used for the preferences item in the primary menu -->
         <attribute name="label" translatable="yes">Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
       </item>
 
       <item>
-        <attribute name="label" translatable="yes">About</attribute>
+        <!-- Translators: This is the label used for the about item in the primary menu -->
+        <attribute name="label" translatable="yes">About UniTube</attribute>
         <attribute name="action">app.about</attribute>
       </item>
     </section>

@@ -93,6 +93,7 @@
                             <property name="visible">True</property>
                             <property name="wrap">True</property>
                             <property name="wrap-mode">word</property>
+                            <!-- Translators: This label is shown when the app fails to load categories -->
                             <property name="label" translatable="yes">Failed to retrieve the categories</property>
                             <property name="justify">center</property>
 

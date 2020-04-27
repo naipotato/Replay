@@ -28,6 +28,7 @@
       <object class="HdyPreferencesPage">
 
         <property name="visible">True</property>
+        <!-- Translators: This is the title for the appearance section on the preferences window -->
         <property name="title" translatable="yes">Appearance</property>
         <property name="icon-name">settings-appearance-symbolic</property>
 
@@ -40,7 +41,9 @@
               <object class="HdyActionRow" id="switch_row">
 
                 <property name="visible">True</property>
+                <!-- Translators: This is the title for the dark theme toggle in the preferences window -->
                 <property name="title" translatable="yes">Use dark theme</property>
+                <!-- Translators: This is the subtitle for the dark theme toggle in the preferences window -->
                 <property name="subtitle" translatable="yes">Activates dark theme on the app.</property>
 
                 <child>
