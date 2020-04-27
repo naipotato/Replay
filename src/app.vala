@@ -44,7 +44,9 @@ namespace Unitube {
             SettingsService.get_default ();
             StylingService.init ();
 
+#if DEVEL
             IconTheme.get_default ().add_resource_path (@"$RESOURCE_PATH/icons");
+#endif
         }
 
         protected override void activate () {

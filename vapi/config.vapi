@@ -34,7 +34,4 @@ namespace Unitube {
 
     [CCode (cheader_filename = "config.h", cname = "VERSION")]
     public const string VERSION;
-
-    [CCode (cheader_filename = "config.h", cname = "PROFILE")]
-    public const string PROFILE;
 }

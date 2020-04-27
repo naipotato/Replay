@@ -14,6 +14,10 @@ add_project_arguments ('-DHANDY_USE_UNSTABLE_API',
 if get_option ('profile') == 'development'
     name_suffix = ' (Development)'
     profile = '.Devel'
+
+    add_project_arguments ('-D', 'DEVEL',
+        language: 'vala'
+    )
 else
     name_suffix = ''
     profile = ''
@@ -37,7 +41,6 @@ config_h.set_quoted ('APPLICATION_ID', application_id)
 config_h.set_quoted ('PACKAGE_URL', package_url)
 config_h.set_quoted ('RESOURCE_PATH', resource_path)
 config_h.set_quoted ('VERSION', version)
-config_h.set_quoted ('PROFILE', profile)
 
 config_h_in = configure_file (
            output: 'config.h.in',

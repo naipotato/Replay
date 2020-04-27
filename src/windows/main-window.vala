@@ -47,10 +47,10 @@ namespace Unitube {
             app.set_accels_for_action ("win.close", {"<Primary>W"});
             this.add_action (close_action);
 
-            if (PROFILE != "") {
-                var style_context = this.get_style_context ();
-                style_context.add_class ("devel");
-            }
+#if DEVEL
+            var style_context = this.get_style_context ();
+            style_context.add_class ("devel");
+#endif
         }
 
         [GtkCallback]
