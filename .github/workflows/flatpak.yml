@@ -37,9 +37,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Build logs
-        path: _build/meson-logs/meson-log.txt
+        path: .flatpak-builder/build/unitube/_flatpak_build/meson-logs/meson-log.txt
     - name: Upload test logs
       uses: actions/upload-artifact@v1
       with:
         name: Test logs
-        path: _build/meson-logs/meson-log.txt
+        path: .flatpak-builder/build/unitube/_flatpak_build/meson-logs/testlog.txt
