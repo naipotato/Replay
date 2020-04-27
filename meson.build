@@ -12,21 +12,18 @@ add_project_arguments ('-DHANDY_USE_UNSTABLE_API',
 
 # Check the profile for this build
 if get_option ('profile') == 'development'
-    name_suffix = ' (Development)'
     profile = '.Devel'
 
     add_project_arguments ('-D', 'DEVEL',
         language: 'vala'
     )
 else
-    name_suffix = ''
     profile = ''
 endif
 
 
 # Info about the app
 rdnn_app_name = 'com.github.nahuelwexd.UniTube'
-application_name = 'UniTube@0@'.format (name_suffix)
 application_id = '@0@@1@'.format (rdnn_app_name, profile)
 package_url = 'https://github.com/nahuelwexd/UniTube-GTK'
 resource_path = '/com/github/nahuelwexd/UniTube'
@@ -36,7 +33,6 @@ version = '@0@-@VCS_TAG@'.format (meson.project_version ())
 # Generate a config include file with the info
 config_h = configuration_data ()
 config_h.set_quoted ('RDNN_APP_NAME', rdnn_app_name)
-config_h.set_quoted ('APPLICATION_NAME', application_name)
 config_h.set_quoted ('APPLICATION_ID', application_id)
 config_h.set_quoted ('PACKAGE_URL', package_url)
 config_h.set_quoted ('RESOURCE_PATH', resource_path)

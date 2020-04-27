@@ -23,6 +23,7 @@
 
   <template class="UnitubeMainWindow" parent="HdyApplicationWindow">
 
+    <property name="title" translatable="yes">UniTube</property>
     <property name="default-width">1024</property>
     <property name="default-height">600</property>
     <signal name="key-press-event" handler="on_key_press_event"/>

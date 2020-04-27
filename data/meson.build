@@ -69,7 +69,6 @@ endif
 # Configure and install the desktop file in order to get an entry in the app
 # drawer
 desktop_file_conf = configuration_data ()
-desktop_file_conf.set ('APPLICATION_NAME', application_name)
 desktop_file_conf.set ('APPLICATION_ID', application_id)
 desktop_file_conf.set ('EXECUTABLE', meson.project_name ())
 desktop_file = configure_file (

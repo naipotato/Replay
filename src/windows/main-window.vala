@@ -40,8 +40,6 @@ namespace Unitube {
                 application: app
             );
 
-            this.title = APPLICATION_NAME;
-
             var close_action = new SimpleAction ("close", null);
             close_action.activate.connect (this.close);
             app.set_accels_for_action ("win.close", {"<Primary>W"});

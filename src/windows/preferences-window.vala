@@ -35,7 +35,6 @@ namespace Unitube {
             var settings = SettingsService.get_default ();
 
             this.icon_name = APPLICATION_ID;
-            this.title = "Preferences";
 
             settings.appearance.bind_property ("dark-theme", this.toggle, "active",
                 BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);

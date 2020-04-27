@@ -22,6 +22,8 @@
 
   <template class="UnitubePreferencesWindow" parent="HdyPreferencesWindow">
 
+    <property name="title" translatable="yes">Preferences</property>
+
     <child>
       <object class="HdyPreferencesPage">
 
