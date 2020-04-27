@@ -63,7 +63,7 @@ namespace Unitube {
 
             action = new SimpleAction ("quit", null);
             action.activate.connect (this.quit);
-            this.set_accels_for_action ("app.quit", {"<Ctrl>Q"});
+            this.set_accels_for_action ("app.quit", {"<Primary>Q"});
             this.add_action (action);
         }
 
