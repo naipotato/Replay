@@ -47,8 +47,17 @@ endif
 
 
 # Install Appstream file in order to provide metadata for this app
+appstream_conf = configuration_data ()
+appstream_conf.set_quoted ('APPLICATION_ID', application_id)
+
+configured_appstream = configure_file (
+            input: '@0@.metainfo.xml.in.in'.format (rdnn_app_name),
+           output: '@0@.metainfo.xml.in'.format (rdnn_app_name),
+    configuration: appstream_conf
+)
+
 appstream = i18n.merge_file (
-          input: '@0@.metainfo.xml.in'.format (rdnn_app_name),
+          input: configured_appstream,
          output: '@0@.metainfo.xml'.format (application_id),
            type: 'xml',
          po_dir: meson.source_root () / 'po',

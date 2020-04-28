@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
-  <id>com.github.nahuelwexd.UniTube</id>
+  <id>@APPLICATION_ID@</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>UniTube</name>
   <!-- Translators: This is the summary of the app that will be shown on GNOME Software or the Flathub website -->
@@ -25,7 +25,7 @@
     <kudo>ModernToolkit</kudo>
   </kudos>
   <translation type="gettext">unitube</translation>
-  <launchable type="desktop-id">com.github.nahuelwexd.UniTube.desktop</launchable>
+  <launchable type="desktop-id">@APPLICATION_ID@.desktop</launchable>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">intense</content_attribute>
     <content_attribute id="violence-fantasy">intense</content_attribute>
