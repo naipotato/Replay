@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitube\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 00:27-0300\n"
+"POT-Creation-Date: 2020-04-27 21:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,15 +32,26 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#. Translators: This is the title for the shortcut that close main window without quit the app
+#. Translators: This is the title for the shortcut that closes main window without quit the app
 #: data/gtk/help-overlay.ui:53
 msgid "Close window"
 msgstr ""
 
-#. Translators: This is the app name, this MUST NOT be translated
+#. Translators: This is the title for the shortcut that opens the search bar
+#. Translators: This is the text for the tooltip on the search button
+#: data/gtk/help-overlay.ui:61 data/ui/main-header-bar.ui:78
+msgid "Search"
+msgstr ""
+
+#. Translators: This is the title for the shortcut that opens the primary menu
+#: data/gtk/help-overlay.ui:69
+msgid "Open/close primary menu"
+msgstr ""
+
+#. Translators: This is the app name
 #: data/ui/about-dialog.ui:27 data/ui/main-header-bar.ui:42
 #: data/ui/main-window.ui:26 data/com.github.nahuelwexd.UniTube.desktop.in.in:5
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:5
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:5
 msgid "UniTube"
 msgstr ""
 
@@ -52,11 +63,6 @@ msgstr ""
 #. Translators: This is the label used to link to the project repo
 #: data/ui/about-dialog.ui:33
 msgid "Project repository"
-msgstr ""
-
-#. Translators: This is the text for the tooltip on the search button
-#: data/ui/main-header-bar.ui:78
-msgid "Search"
 msgstr ""
 
 #. Translators: This is the text for the tooltip on the primary menu button
@@ -135,21 +141,21 @@ msgid "YouTube;Videos;"
 msgstr ""
 
 #. Translators: This is the summary of the app that will be shown on GNOME Software or the Flathub website
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:7
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:7
 msgid "An open source YouTube client for GNOME"
 msgstr ""
 
 #. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:10
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:10
 msgid "An open source YouTube client for GNOME."
 msgstr ""
 
 #. Translators: This is the name of the developer, it should not be translated
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:16
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:16
 msgid "Nahuel Gomez Castro"
 msgstr ""
 
 #. Translators: This is the caption of the first "screenshot", which is a mockup at the moment
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in:21
+#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:21
 msgid "Mockup of the app"
 msgstr ""
