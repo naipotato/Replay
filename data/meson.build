@@ -48,7 +48,7 @@ endif
 
 # Install Appstream file in order to provide metadata for this app
 appstream_conf = configuration_data ()
-appstream_conf.set_quoted ('APPLICATION_ID', application_id)
+appstream_conf.set ('APPLICATION_ID', application_id)
 
 configured_appstream = configure_file (
             input: '@0@.metainfo.xml.in.in'.format (rdnn_app_name),
