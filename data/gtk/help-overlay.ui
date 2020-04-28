@@ -49,9 +49,25 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">True</property>
-                <!-- Translators: This is the title for the shortcut that close main window without quit the app -->
+                <!-- Translators: This is the title for the shortcut that closes main window without quit the app -->
                 <property name="title" translatable="yes">Close window</property>
                 <property name="accelerator">&lt;Primary&gt;W</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
+                <!-- Translators: This is the title for the shortcut that opens the search bar -->
+                <property name="title" translatable="yes">Search</property>
+                <property name="accelerator">&lt;Primary&gt;F</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
+                <!-- Translators: This is the title for the shortcut that opens the primary menu -->
+                <property name="title" translatable="yes">Open/close primary menu</property>
+                <property name="accelerator">F10</property>
               </object>
             </child>
           </object>
