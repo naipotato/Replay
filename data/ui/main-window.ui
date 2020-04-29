@@ -54,7 +54,7 @@
           <object class="GtkStack" id="main-stack">
 
             <property name="visible">True</property>
-            <property name="transition-type">slide-left-right</property>
+            <property name="transition-type">crossfade</property>
 
             <child>
 
