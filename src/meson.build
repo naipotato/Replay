@@ -6,6 +6,8 @@ sources = files (
     'services' / 'settings-service.vala',
     'services' / 'styling-service.vala',
 
+    'utils' / 'generic-list-model.vala',
+
     'view-models' / 'trending-view-model.vala',
     'view-models' / 'view-model-locator.vala',
 
