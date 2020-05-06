@@ -3,6 +3,7 @@
   <br>
   UniTube GTK
 </h1>
+<p align="center">An open source YouTube client for GNOME.</p>
 <p align="center">
   <a href="https://github.com/nahuelwexd/UniTube-GTK/commits/master">
     <img alt="Flatpak" src="https://github.com/nahuelwexd/UniTube-GTK/workflows/Flatpak/badge.svg"/>
@@ -14,7 +15,6 @@
     <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/UniTube-GTK?label=License&logo=gnu"/>
   </a>
 <p>
-<p align="center">An open source YouTube client for GNOME.</p>
 <p align="center">
   <img alt="UI Concept" src="ui-concept.png"/>
 </p>
