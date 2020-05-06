@@ -1,17 +1,19 @@
-<a href="https://github.com/nahuelwexd/UniTube-GTK/commits/master">
-  <img alt="Flatpak" src="https://github.com/nahuelwexd/UniTube-GTK/workflows/Flatpak/badge.svg"/>
-</a>
-<a href="https://stopthemingmy.app">
-  <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg"/>
-</a>
-<a href="COPYING">
-  <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/UniTube-GTK?label=License&logo=gnu"/>
-</a>
 <h1 align="center">
   <img src="data/icons/scalable/apps/com.github.nahuelwexd.UniTube.svg"/>
   <br>
   UniTube GTK
 </h1>
+<p align="center">
+  <a href="https://github.com/nahuelwexd/UniTube-GTK/commits/master">
+    <img alt="Flatpak" src="https://github.com/nahuelwexd/UniTube-GTK/workflows/Flatpak/badge.svg"/>
+  </a>
+  <a href="https://stopthemingmy.app">
+    <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg"/>
+  </a>
+  <a href="COPYING">
+    <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/UniTube-GTK?label=License&logo=gnu"/>
+  </a>
+<p>
 <p align="center">An open source YouTube client for GNOME.</p>
 <p align="center">
   <img alt="UI Concept" src="ui-concept.png"/>
