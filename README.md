@@ -28,7 +28,21 @@ your location (or other locations).
 
 ## Install
 
-You would be able to install this from Flathub soon!
+### Stable
+
+Since this project is still under active development, there's no current stable
+build. You will see a Flathub link here when there's one 🙂️
+
+### Development
+
+Development builds are automatically generated every time a new change occurs in
+this repository, and are marked with a custom icon and style. You can install a
+development build simply by going to the [actions](https://github.com/nahuelwexd/UniTube-GTK/actions)
+tab of this repository, and downloading one of those that have been successfully
+generated.
+
+> **NOTE:** You must download the artifact called "Flatpak Bundles", which
+contains 2 flatpak files ready to install: the application and the locales
 
 ## Build
 
