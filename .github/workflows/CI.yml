@@ -25,7 +25,7 @@ jobs:
         flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - name: Build with Flatpak Builder
       run: |
-        flatpak-builder --repo repo flatpak_app build-aux/com.github.nahuelwexd.UniTube.json
+        flatpak-builder --user --disable-rofiles-fuse --repo repo flatpak_app build-aux/com.github.nahuelwexd.UniTube.json
     - uses: actions/upload-artifact@v2
       with:
         name: repo
