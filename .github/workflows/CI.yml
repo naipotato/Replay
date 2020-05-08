@@ -22,7 +22,6 @@ jobs:
         sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
         sudo apt install -y flatpak flatpak-builder
-        flatpak install -y --noninteractive flathub org.gnome.Sdk//3.36 org.gnome.Platform//3.36
         flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - name: Build with Flatpak Builder
       run: |
