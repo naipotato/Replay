@@ -22,7 +22,8 @@ jobs:
         sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
         sudo apt install -y flatpak flatpak-builder
-        flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak remote-add --user --if-not-exists flathub \
+            https://flathub.org/repo/flathub.flatpakrepo
     - name: Build with Flatpak Builder
       run: |
         flatpak-builder --user --disable-rofiles-fuse --repo=repo \
@@ -47,8 +48,10 @@ jobs:
         sudo apt install -y flatpak
     - name: Create Flatpak bundle
       run: |
-        flatpak build-bundle repo com.github.nahuelwexd.UniTube.Devel.flatpak com.github.nahuelwexd.UniTube.Devel
-        flatpak build-bundle --runtime repo com.github.nahuelwexd.Devel.Locale.flatpak com.github.nahuelwexd.UniTube.Devel.Locale
+        flatpak build-bundle repo com.github.nahuelwexd.UniTube.Devel.flatpak \
+            com.github.nahuelwexd.UniTube.Devel
+        flatpak build-bundle --runtime repo com.github.nahuelwexd.UniTube.Devel.Locale.flatpak \
+            com.github.nahuelwexd.UniTube.Devel.Locale
     - name: Upload Flatpak bundle
       uses: actions/upload-artifact@v2
       with:
