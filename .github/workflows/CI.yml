@@ -8,52 +8,40 @@ on:
     - README.md
     - ui-concept.png
     - UniTube-GTK.doap
-name: Flatpak
+name: Continuous Integration
 jobs:
-  flatpak-builder:
-    name: "Flatpak Builder"
+  build:
+    name: Build app
     runs-on: ubuntu-latest
+    container: fedora:latest
     steps:
-    - uses: actions/checkout@master
-    - name: Cache .flatpak-builder/downloads folder
-      env:
-        cache-folder: downloads
-      uses: actions/cache@v1
+    - uses: actions/checkout@v2.1.0
+    - name: Setup Flatpak environment
+      run: |
+        dnf install -y flatpak flatpak-builder
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak install -y --noninteractive flathub org.gnome.Sdk//3.36 org.gnome.Platform//3.36
+    - name: Build with Flatpak Builder
+      run: |
+        flatpak-builder --repo repo flatpak_app build-aux/com.github.nahuelwexd.UniTube.json
+    - uses: actions/upload-artifact@v2
       with:
-        path: .flatpak-builder/${{ env.cache-folder }}
-        key: ${{ env.cache-folder }}
-    - name: Cache .flatpak-builder/git folder
-      env:
-        cache-folder: git
-      uses: actions/cache@v1
-      with:
-        path: .flatpak-builder/${{ env.cache-folder }}
-        key: ${{ env.cache-folder }}
-    - name: Build Flatpak bundle
-      uses: nahuelwexd/flatpak-builder-action@gnome-3-36
-      with:
-        manifest-path: build-aux/com.github.nahuelwexd.UniTube.json
-        meson-args: -Dprofile=development
-        flatpak-module: unitube
-        app-id: com.github.nahuelwexd.UniTube.Devel
-        bundle: com.github.nahuelwexd.UniTube.Devel.flatpak
-    - name: Upload Flatpak Bundle
-      uses: actions/upload-artifact@v1
+        name: repo
+        path: repo
+  package:
+    name: Create Flatpak bundle
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+    - uses: actions/download-artifact@v2
+    - name: Install Flatpak
+      run: dnf install -y flatpak
+    - name: Create Flatpak bundle
+      run: |
+        flatpak build-bundle repo com.github.nahuelwexd.UniTube.Devel.flatpak com.github.nahuelwexd.UniTube.Devel
+        flatpak build-bundle --runtime repo com.github.nahuelwexd.Devel.Locale.flatpak com.github.nahuelwexd.UniTube.Devel.Locale
+    - name: Upload Flatpak bundle
+      uses: actions/upload-artifact@v2
       with:
         name: Flatpak Bundle
-        path: com.github.nahuelwexd.UniTube.Devel.flatpak
-    - name: Upload repo tar
-      uses: actions/upload-artifact@v1
-      with:
-        name: Repo
-        path: repo.tar
-    - name: Upload build logs
-      uses: actions/upload-artifact@v1
-      with:
-        name: Build logs
-        path: .flatpak-builder/build/unitube/_flatpak_build/meson-logs/meson-log.txt
-    - name: Upload test logs
-      uses: actions/upload-artifact@v1
-      with:
-        name: Test logs
-        path: .flatpak-builder/build/unitube/_flatpak_build/meson-logs/testlog.txt
+        path: '*.flatpak'
