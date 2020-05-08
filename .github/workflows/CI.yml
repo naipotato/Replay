@@ -13,12 +13,14 @@ jobs:
   build:
     name: Build app
     runs-on: ubuntu-latest
-    container: fedora:latest
     steps:
     - uses: actions/checkout@v2.1.0
     - name: Setup Flatpak environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
       run: |
-        dnf install -y flatpak flatpak-builder
+        sudo apt update
+        sudo apt install -y flatpak flatpak-builder
         flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
         flatpak install -y --noninteractive flathub org.gnome.Sdk//3.36 org.gnome.Platform//3.36
     - name: Build with Flatpak Builder
@@ -31,12 +33,15 @@ jobs:
   package:
     name: Create Flatpak bundle
     runs-on: ubuntu-latest
-    container: fedora:latest
     needs: build
     steps:
     - uses: actions/download-artifact@v2
     - name: Install Flatpak
-      run: dnf install -y flatpak
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo apt update
+        sudo apt install -y flatpak
     - name: Create Flatpak bundle
       run: |
         flatpak build-bundle repo com.github.nahuelwexd.UniTube.Devel.flatpak com.github.nahuelwexd.UniTube.Devel
