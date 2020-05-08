@@ -19,13 +19,10 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        echo "Installing flatpak..."
         sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
         sudo apt install -y flatpak flatpak-builder
-        echo "Adding flathub remote..."
         sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        echo "Installing SDK..."
         flatpak install -y --noninteractive flathub org.gnome.Sdk//3.36 org.gnome.Platform//3.36
     - name: Build with Flatpak Builder
       run: |
