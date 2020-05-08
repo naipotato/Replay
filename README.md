@@ -5,8 +5,8 @@
 </h1>
 <p align="center">An open source YouTube client for GNOME.</p>
 <p align="center">
-  <a href="https://github.com/nahuelwexd/UniTube-GTK/commits/master">
-    <img alt="Flatpak" src="https://github.com/nahuelwexd/UniTube-GTK/workflows/Flatpak/badge.svg"/>
+  <a href="https://github.com/nahuelwexd/UniTube-GTK/actions">
+    <img alt="Continuous Integration" src="https://github.com/nahuelwexd/UniTube-GTK/workflows/Continuous%20Integration/badge.svg"/>
   </a>
   <a href="https://stopthemingmy.app">
     <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg"/>
