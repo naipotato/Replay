@@ -87,8 +87,8 @@
       ],
       "sources" : [
         {
-          "type" : "git",
-          "url" : "https://github.com/nahuelwexd/UniTube-GTK.git"
+          "type" : "dir",
+          "path" : ".."
         }
       ]
     }
