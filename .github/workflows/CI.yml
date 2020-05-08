@@ -55,5 +55,5 @@ jobs:
     - name: Upload Flatpak bundle
       uses: actions/upload-artifact@v2
       with:
-        name: Flatpak Bundle
+        name: Flatpak Bundles
         path: '*.flatpak'
