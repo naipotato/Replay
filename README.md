@@ -72,4 +72,10 @@ ninja -C build install
 
 ## License
 
-This project is licensed under the [GNU General Public License v3](COPYING).
+This project is licensed under the [GNU General Public License v3](COPYING) or
+any later version.
+
+[tl;dr](https://www.tldrlegal.com/l/gpl-3.0): You may copy, distribute and modify
+this app as long as you track changes/dates in source files. Any modifications to
+GPL-licensed code must also be available under the GPL along with build & install
+instructions.
