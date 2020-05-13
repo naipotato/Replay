@@ -66,7 +66,7 @@ confinc = include_directories ('.')
 
 
 # Post install script
-meson.add_install_script ('build-aux/post_install.py')
+meson.add_install_script ('build-aux/post-install.vala')
 
 
 # Subfolders
