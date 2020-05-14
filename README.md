@@ -70,6 +70,7 @@ You will need to download and install all of these dependencies:
 - `gtk+-3.0`
 - `libhandy-1`
 - `gee-0.8`
+- `utlib-0.0`
 - `sassc`
 - `meson`
 - `vala`

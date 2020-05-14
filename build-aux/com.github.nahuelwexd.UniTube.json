@@ -27,7 +27,7 @@
       "buildsystem" : "simple",
       "build-options" : {
         "env" : {
-          "LIBSASS_VERSION" : "3.6.0"
+          "LIBSASS_VERSION" : "3.6.4"
         }
       },
       "build-commands" : [
@@ -40,7 +40,7 @@
         {
           "type" : "git",
           "url" : "https://github.com/sass/libsass.git",
-          "tag" : "3.6.0"
+          "tag" : "3.6.4"
         }
       ]
     },
@@ -75,6 +75,28 @@
         {
           "type" : "git",
           "url" : "https://source.puri.sm/Librem5/libhandy.git"
+        }
+      ]
+    },
+    {
+      "name" : "vul",
+      "buildsystem" : "meson",
+      "builddir" : true,
+      "sources" : [
+        {
+          "type" : "git",
+          "url" : "https://gitlab.gnome.org/BZHDeveloper/vul.git"
+        }
+      ]
+    },
+    {
+      "name" : "utlib",
+      "buildsystem" : "meson",
+      "builddir" : true,
+      "sources" : [
+        {
+          "type" : "git",
+          "url" : "https://github.com/nahuelwexd/UTLib.git"
         }
       ]
     },

@@ -33,5 +33,5 @@ void main () {
         print ("Compiling GSettings schemas...\n");
         call ({"glib-compile-schemas", Path.build_filename (datadir, "glib-2.0",
             "schemas")});
-	}
+    }
 }
