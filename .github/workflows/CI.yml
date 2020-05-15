@@ -22,7 +22,7 @@ jobs:
       run: |
         sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
-        sudo apt install -y flatpak flatpak-builder libjson-glib-dev
+        sudo apt install -y flatpak flatpak-builder libjson-glib-dev valac
         chmod +x build-aux/rewrite-manifest-with-api.vala
         ./build-aux/rewrite-manifest-with-api.vala build-aux/com.github.nahuelwexd.UniTube.json unitube
         flatpak remote-add --user --if-not-exists flathub \
