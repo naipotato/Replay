@@ -18,10 +18,13 @@ jobs:
     - name: Setup Flatpak environment
       env:
         DEBIAN_FRONTEND: noninteractive
+        API_KEY: ${{ secrets.API_KEY }}
       run: |
         sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
-        sudo apt install -y flatpak flatpak-builder
+        sudo apt install -y flatpak flatpak-builder libjson-glib-dev
+        chmod +x build-aux/rewrite-manifest-with-api.vala
+        ./build-aux/rewrite-manifest-with-api.vala build-aux/com.github.nahuelwexd.UniTube.json unitube
         flatpak remote-add --user --if-not-exists flathub \
             https://flathub.org/repo/flathub.flatpakrepo
     - name: Build with Flatpak Builder
