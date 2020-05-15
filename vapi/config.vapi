@@ -37,4 +37,7 @@ namespace Unitube {
 
     [CCode (cheader_filename = "config.h", cname = "LOCALEDIR")]
     public const string LOCALEDIR;
+
+    [CCode (cheader_filename = "config.h", cname = "API_KEY")]
+    public const string API_KEY;
 }
