@@ -20,11 +20,24 @@ using Unitube.Utils;
 
 namespace Unitube {
 
+    /**
+     * The model view of the trending view
+     */
     public class TrendingViewModel : Object {
 
+        /**
+         * A value indicating whether or not to display the loading screen
+         */
         public bool is_loading_videos { get; set; }
+
+        /**
+         * The trending video list
+         */
         public GenericListModel<Video> trending_videos { get; set; }
 
+        /**
+         * A value indicating whether or not to display the error screen
+         */
         public bool error_loading_videos { get; set; }
 
         construct {
