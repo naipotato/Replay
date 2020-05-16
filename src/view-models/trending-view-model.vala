@@ -23,5 +23,33 @@ namespace Unitube {
     public class TrendingViewModel : Object {
 
         public GenericListModel<Video> trending_videos { get; set; }
+
+        construct {
+            // Let's get for some trending videos ;)
+            load_trending_videos.begin ();
+        }
+
+        private async void load_trending_videos () {
+            // Create a new request
+            var request = App.client.videos.list ("snippet");
+
+            // Request for trending videos on US
+            // TODO: region_code should be attached to the user region
+            request.chart = "mostPopular";
+            request.region_code = "US";
+
+            try {
+                // Try to execute the request
+                var response = request.execute ();
+
+                // Once the response is received, fill the list with the videos
+                // received
+                this.trending_videos = new GenericListModel<Video>.from_list (
+                    response.items);
+            } catch (Error e) {
+                // Warn for the dev ;)
+                warning (e.message);
+            }
+        }
     }
 }
