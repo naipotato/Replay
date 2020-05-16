@@ -15,10 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using Utlib;
+using Unitube.Utils;
+
 namespace Unitube {
 
     public class TrendingViewModel : Object {
 
-        public bool is_loading { get; set; }
+        public GenericListModel<Video> trending_videos { get; set; }
     }
 }
