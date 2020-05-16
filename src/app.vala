@@ -18,10 +18,19 @@
 using Gdk;
 using Gtk;
 using GLib.Intl;
+using Utlib;
 
 namespace Unitube {
 
     public class App : Gtk.Application {
+
+        public static Client client { get; private set; }
+
+        static construct {
+            App.client = new Client () {
+                api_key = API_KEY
+            };
+        }
 
         public App () {
             Object (
