@@ -22,6 +22,7 @@ namespace Unitube {
 
     public class TrendingViewModel : Object {
 
+        public bool is_loading_videos { get; set; }
         public GenericListModel<Video> trending_videos { get; set; }
 
         construct {
@@ -39,6 +40,9 @@ namespace Unitube {
             request.region_code = "US";
 
             try {
+                // This should show a nicer loading screen to the user
+                this.is_loading_videos = true;
+
                 // Try to execute the request
                 var response = request.execute ();
 
@@ -46,6 +50,9 @@ namespace Unitube {
                 // received
                 this.trending_videos = new GenericListModel<Video>.from_list (
                     response.items);
+
+                // Hide the loading screen and show videos
+                this.is_loading_videos = false;
             } catch (Error e) {
                 // Warn for the dev ;)
                 warning (e.message);
