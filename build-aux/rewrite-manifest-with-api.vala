@@ -85,7 +85,7 @@ void main (string[] args) {
         error (@"API_KEY env var is not set");
     }
 
-    config_opts.add_string_element (@"-Dapi-key=$api_key");
+    config_opts.add_string_element (@"-Dapi_key=$api_key");
 
     // Write the JSON into the file
     write_manifest (Json.to_string (json, true), manifest_path);
