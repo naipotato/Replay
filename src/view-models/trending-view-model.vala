@@ -25,6 +25,8 @@ namespace Unitube {
         public bool is_loading_videos { get; set; }
         public GenericListModel<Video> trending_videos { get; set; }
 
+        public bool error_loading_videos { get; set; }
+
         construct {
             // Let's get for some trending videos ;)
             load_trending_videos.begin ();
@@ -54,6 +56,9 @@ namespace Unitube {
                 // Hide the loading screen and show videos
                 this.is_loading_videos = false;
             } catch (Error e) {
+                // If there was any error, show an error message to the user
+                this.error_loading_videos = true;
+
                 // Warn for the dev ;)
                 warning (e.message);
             }
