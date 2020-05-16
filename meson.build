@@ -48,7 +48,7 @@ config_h.set_quoted ('RESOURCE_PATH', resource_path)
 config_h.set_quoted ('VERSION', version)
 config_h.set_quoted ('GETTEXT_PACKAGE', meson.project_name ())
 config_h.set_quoted ('LOCALEDIR', localedir)
-config_h.set_quoted ('API_KEY', get_option ('api-key'))
+config_h.set_quoted ('API_KEY', get_option ('api_key'))
 
 config_h_in = configure_file (
            output: 'config.h.in',
@@ -61,7 +61,6 @@ vcs_tag (
        input: config_h_in,
       output: 'config.h'
 )
-
 
 confinc = include_directories ('.')
 
