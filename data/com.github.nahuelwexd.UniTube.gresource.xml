@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/github/nahuelwexd/UniTube">
+    <file>gtk/about-dialog.ui</file>
     <file>gtk/help-overlay.ui</file>
+    <file>gtk/library-view.ui</file>
+    <file>gtk/main-header-bar.ui</file>
+    <file>gtk/main-window.ui</file>
+    <file>gtk/preferences-window.ui</file>
+    <file>gtk/subscriptions-view.ui</file>
+    <file>gtk/trending-view.ui</file>
     <file>icons/load-failed-symbolic.svg</file>
     <file>icons/settings-appearance-symbolic.svg</file>
     <file>icons/youtube-trending-symbolic.svg</file>
     <file>icons/youtube-subscriptions-symbolic.svg</file>
     <file>icons/youtube-library-symbolic.svg</file>
-    <file>ui/about-dialog.ui</file>
-    <file>ui/library-view.ui</file>
-    <file>ui/main-header-bar.ui</file>
-    <file>ui/main-window.ui</file>
-    <file>ui/preferences-window.ui</file>
-    <file>ui/subscriptions-view.ui</file>
-    <file>ui/trending-view.ui</file>
     <file>styles.css</file>
     <file>styles-dark.css</file>
   </gresource>

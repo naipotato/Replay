@@ -21,7 +21,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/main-window.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/gtk/main-window.ui")]
     public class MainWindow : Hdy.ApplicationWindow {
 
         [GtkChild]

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitube\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 21:11-0300\n"
+"POT-Creation-Date: 2020-05-18 13:15-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #. Translators: This is the title for the shortcut that opens the search bar
 #. Translators: This is the text for the tooltip on the search button
-#: data/gtk/help-overlay.ui:61 data/ui/main-header-bar.ui:78
+#: data/gtk/help-overlay.ui:61 data/gtk/main-header-bar.ui:78
 msgid "Search"
 msgstr ""
 
@@ -49,75 +49,71 @@ msgid "Open/close primary menu"
 msgstr ""
 
 #. Translators: This is the app name
-#: data/ui/about-dialog.ui:27 data/ui/main-header-bar.ui:42
-#: data/ui/main-window.ui:26 data/com.github.nahuelwexd.UniTube.desktop.in.in:5
+#: data/gtk/about-dialog.ui:27 data/gtk/main-header-bar.ui:42
+#: data/gtk/main-window.ui:26
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:5
 #: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:5
 msgid "UniTube"
 msgstr ""
 
 #. Translators: This is the comment for the About dialog
-#: data/ui/about-dialog.ui:31
+#: data/gtk/about-dialog.ui:31
 msgid "An open source YouTube client written in Vala and GTK."
 msgstr ""
 
 #. Translators: This is the label used to link to the project repo
-#: data/ui/about-dialog.ui:33
+#: data/gtk/about-dialog.ui:33
 msgid "Project repository"
 msgstr ""
 
 #. Translators: This is the text for the tooltip on the primary menu button
-#: data/ui/main-header-bar.ui:94
+#: data/gtk/main-header-bar.ui:94
 msgid "Menu"
 msgstr ""
 
 #. Translators: This is the label used for the preferences item in the primary menu
-#: data/ui/main-header-bar.ui:110 data/ui/preferences-window.ui:25
+#: data/gtk/main-header-bar.ui:110 data/gtk/preferences-window.ui:25
 msgid "Preferences"
 msgstr ""
 
 #. Translators: This is the label used for the keyboard shortcuts item in the primary menu
-#: data/ui/main-header-bar.ui:116
+#: data/gtk/main-header-bar.ui:116
 msgid "Keyboard Shortcuts"
 msgstr ""
 
 #. Translators: This is the label used for the about item in the primary menu
-#: data/ui/main-header-bar.ui:122
+#: data/gtk/main-header-bar.ui:122
 msgid "About UniTube"
 msgstr ""
 
 #. Translators: This is the title for the trending section of the app
-#: data/ui/main-window.ui:68
+#: data/gtk/main-window.ui:68
 msgid "Trending"
 msgstr ""
 
 #. Translators: This is the title for the subscriptions section of the app
-#: data/ui/main-window.ui:82
+#: data/gtk/main-window.ui:82
 msgid "Subscriptions"
 msgstr ""
 
 #. Translators: This is the title for the library section of the app
-#: data/ui/main-window.ui:96
+#: data/gtk/main-window.ui:96
 msgid "Library"
 msgstr ""
 
 #. Translators: This is the title for the appearance section on the preferences window
-#: data/ui/preferences-window.ui:32
+#: data/gtk/preferences-window.ui:32
 msgid "Appearance"
 msgstr ""
 
 #. Translators: This is the title for the dark theme toggle in the preferences window
-#: data/ui/preferences-window.ui:45
+#: data/gtk/preferences-window.ui:45
 msgid "Use dark theme"
 msgstr ""
 
 #. Translators: This is the subtitle for the dark theme toggle in the preferences window
-#: data/ui/preferences-window.ui:47
+#: data/gtk/preferences-window.ui:47
 msgid "Activates dark theme on the app."
-msgstr ""
-
-#. Translators: This label is shown when the app fails to load categories
-#: data/ui/trending-view.ui:97
-msgid "Failed to retrieve the categories"
 msgstr ""
 
 #. Translators: This is the generic app name

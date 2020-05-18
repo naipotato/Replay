@@ -21,7 +21,7 @@ using Gdk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/main-header-bar.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/gtk/main-header-bar.ui")]
     public class MainHeaderBar : Hdy.HeaderBar {
 
         [GtkChild]
