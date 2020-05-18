@@ -59,7 +59,7 @@ namespace Unitube {
                 this.is_loading_videos = true;
 
                 // Try to execute the request
-                var response = request.execute ();
+                var response = yield request.execute_async ();
 
                 // Once the response is received, fill the list with the videos
                 // received
