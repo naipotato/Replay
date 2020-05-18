@@ -19,7 +19,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/about-dialog.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/gtk/about-dialog.ui")]
     public class AboutDialog : Gtk.AboutDialog {
 
         construct {

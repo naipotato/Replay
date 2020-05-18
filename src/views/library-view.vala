@@ -19,7 +19,7 @@ using Gtk;
 
 namespace Unitube {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/ui/library-view.ui")]
+    [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/gtk/library-view.ui")]
     public class LibraryView : Box {
 
         construct {

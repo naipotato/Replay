@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitube\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 21:11-0300\n"
+"POT-Creation-Date: 2020-05-18 13:15-0300\n"
 "PO-Revision-Date: 2020-04-27 21:11-0300\n"
 "Last-Translator: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>\n"
 "Language-Team: Spanish - Argentina <nahual_gomca@outlook.com.ar>\n"
@@ -41,7 +41,7 @@ msgstr "Cerrar ventana"
 
 #. Translators: This is the title for the shortcut that opens the search bar
 #. Translators: This is the text for the tooltip on the search button
-#: data/gtk/help-overlay.ui:61 data/ui/main-header-bar.ui:78
+#: data/gtk/help-overlay.ui:61 data/gtk/main-header-bar.ui:78
 msgid "Search"
 msgstr "Buscar"
 
@@ -51,76 +51,72 @@ msgid "Open/close primary menu"
 msgstr "Abrir/cerrar el menú primario"
 
 #. Translators: This is the app name
-#: data/ui/about-dialog.ui:27 data/ui/main-header-bar.ui:42
-#: data/ui/main-window.ui:26 data/com.github.nahuelwexd.UniTube.desktop.in.in:5
+#: data/gtk/about-dialog.ui:27 data/gtk/main-header-bar.ui:42
+#: data/gtk/main-window.ui:26
+#: data/com.github.nahuelwexd.UniTube.desktop.in.in:5
 #: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:5
 msgid "UniTube"
 msgstr "UniTube"
 
 #. Translators: This is the comment for the About dialog
-#: data/ui/about-dialog.ui:31
+#: data/gtk/about-dialog.ui:31
 msgid "An open source YouTube client written in Vala and GTK."
 msgstr "Un cliente de YouTube de código abierto escrito en Vala y GTK."
 
 #. Translators: This is the label used to link to the project repo
-#: data/ui/about-dialog.ui:33
+#: data/gtk/about-dialog.ui:33
 msgid "Project repository"
 msgstr "Repositorio del proyecto"
 
 #. Translators: This is the text for the tooltip on the primary menu button
-#: data/ui/main-header-bar.ui:94
+#: data/gtk/main-header-bar.ui:94
 msgid "Menu"
 msgstr "Menú"
 
 #. Translators: This is the label used for the preferences item in the primary menu
-#: data/ui/main-header-bar.ui:110 data/ui/preferences-window.ui:25
+#: data/gtk/main-header-bar.ui:110 data/gtk/preferences-window.ui:25
 msgid "Preferences"
 msgstr "Preferencias"
 
 #. Translators: This is the label used for the keyboard shortcuts item in the primary menu
-#: data/ui/main-header-bar.ui:116
+#: data/gtk/main-header-bar.ui:116
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
 #. Translators: This is the label used for the about item in the primary menu
-#: data/ui/main-header-bar.ui:122
+#: data/gtk/main-header-bar.ui:122
 msgid "About UniTube"
 msgstr "Acerca de UniTube"
 
 #. Translators: This is the title for the trending section of the app
-#: data/ui/main-window.ui:68
+#: data/gtk/main-window.ui:68
 msgid "Trending"
 msgstr "Tendencias"
 
 #. Translators: This is the title for the subscriptions section of the app
-#: data/ui/main-window.ui:82
+#: data/gtk/main-window.ui:82
 msgid "Subscriptions"
 msgstr "Suscripciones"
 
 #. Translators: This is the title for the library section of the app
-#: data/ui/main-window.ui:96
+#: data/gtk/main-window.ui:96
 msgid "Library"
 msgstr "Biblioteca"
 
 #. Translators: This is the title for the appearance section on the preferences window
-#: data/ui/preferences-window.ui:32
+#: data/gtk/preferences-window.ui:32
 msgid "Appearance"
 msgstr "Apariencia"
 
 #. Translators: This is the title for the dark theme toggle in the preferences window
-#: data/ui/preferences-window.ui:45
+#: data/gtk/preferences-window.ui:45
 msgid "Use dark theme"
 msgstr "Usar tema oscuro"
 
 #. Translators: This is the subtitle for the dark theme toggle in the preferences window
-#: data/ui/preferences-window.ui:47
+#: data/gtk/preferences-window.ui:47
 msgid "Activates dark theme on the app."
 msgstr "Activa el tema oscuro en la aplicación"
-
-#. Translators: This label is shown when the app fails to load categories
-#: data/ui/trending-view.ui:97
-msgid "Failed to retrieve the categories"
-msgstr "Falló al obtener las categorías"
 
 #. Translators: This is the generic app name
 #: data/com.github.nahuelwexd.UniTube.desktop.in.in:7
@@ -161,6 +157,9 @@ msgstr "Nahuel Gomez Castro"
 #: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:21
 msgid "Mockup of the app"
 msgstr "Boceto de la aplicación"
+
+#~ msgid "Failed to retrieve the categories"
+#~ msgstr "Falló al obtener las categorías"
 
 #~ msgid "@APPLICATION_NAME@"
 #~ msgstr "@APPLICATION_NAME@"
