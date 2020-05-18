@@ -21,5 +21,22 @@ namespace Unitube {
 
     [GtkTemplate (ui = "/com/github/nahuelwexd/UniTube/gtk/trending-view.ui")]
     public class TrendingView : Bin {
+
+        private TrendingViewModel view_model;
+        [GtkChild] private Stack stack;
+
+        construct {
+            this.view_model = ViewModelLocator.get_default ().trending;
+
+            this.view_model.notify["is-loading-videos"].connect (() => {
+                if (this.view_model.is_loading_videos) {
+                    this.stack.visible_child_name = "loading";
+                } else {
+                    this.stack.visible_child_name = "videos";
+                }
+            });
+
+            this.view_model.notify_property ("is-loading-videos");
+        }
     }
 }

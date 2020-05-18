@@ -18,5 +18,28 @@
 -->
 <interface>
   <template class="UnitubeTrendingView" parent="GtkBin">
+    <child>
+      <object class="GtkStack" id="stack">
+        <property name="visible">True</property>
+        <property name="transition-type">crossfade</property>
+        <child>
+          <object class="GtkSpinner">
+            <property name="active">True</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="name">loading</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="name">videos</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </template>
 </interface>
