@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns="http://usefulinc.com/ns/doap#">
+  <name xml:lang="en">UTLib</name>
+  <shortdesc xml:lang="en">YouTube Data API client library</shortdesc>
+  <description xml:lang="en">A YouTube Data API client library for Vala</description>
+  <homepage rdf:resource="https://github.com/nahuelwexd/UTLib"/>
+  <bug-database rdf:resource="https://github.com/nahuelwexd/UTLib/issues"/>
+  <programming-language>Vala</programming-language>
+  <license rdf:resource="https://www.gnu.org/licenses/gpl-3.0.txt"/>
+  <developer>
+    <foaf:Person>
+      <foaf:name>Nahuel Gomez Castro</foaf:name>
+      <foaf:homepage rdf:resource="https://nahuelwexd.github.io"/>
+      <foaf:mbox_sha1sum>607f7ec4de26aba4965d7459dc1299304e05e33a</foaf:mbox_sha1sum>
+    </foaf:Person>
+  </developer>
+</Project>
