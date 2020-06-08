@@ -1,0 +1,52 @@
+on:
+  push:
+    paths-ignore:
+    - COPYING
+    - README.md
+    - .editorconfig
+    - UTLib.doap
+name: Continuous Integration
+jobs:
+  lint:
+    name: Check linting
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - uses: elementary/actions/vala-lint@master
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: Install dependencies
+      run: |
+        dnf install -y vala libgee-devel libarchive-devel gobject-introspection-devel \
+            gobject-introspection meson ninja-build glib2-devel libsoup-devel git
+    - name: Build UTLib
+      run: |
+        meson build --prefix /usr
+        ninja -C build
+    - name: Upload UTLib build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    needs: build
+    steps:
+    - uses: actions/download-artifact@v2
+    - name: Install dependencies
+      run: dnf install -y meson ninja-build libgee libarchive glib2 libsoup git
+    - name: Ensure execution permissions on tests
+      run: chmod -v +x build/tests/*-test
+    - name: Test UTLib
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+      run: |
+        echo "::add-mask::$API_KEY"
+        meson test -C build --no-rebuild --print-errorlogs
