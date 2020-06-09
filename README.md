@@ -1,25 +1,25 @@
 <h1 align="center">
-  <img src="data/icons/scalable/apps/com.github.nahuelwexd.UniTube.svg"/>
+  <img src="data/icons/scalable/apps/com.github.nahuelwexd.Replay.svg"/>
   <br>
-  UniTube GTK
+  Replay
 </h1>
 <p align="center">An open source YouTube client for GNOME.</p>
 <p align="center">
-  <a href="https://github.com/nahuelwexd/UniTube-GTK/actions">
-    <img alt="Continuous Integration" src="https://github.com/nahuelwexd/UniTube-GTK/workflows/Continuous%20Integration/badge.svg"/>
+  <a href="https://github.com/nahuelwexd/replay/actions">
+    <img alt="Continuous Integration" src="https://github.com/nahuelwexd/replay/workflows/Continuous%20Integration/badge.svg"/>
   </a>
   <a href="https://stopthemingmy.app">
     <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg"/>
   </a>
   <a href="COPYING">
-    <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/UniTube-GTK?label=License&logo=gnu"/>
+    <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/replay?label=License&logo=gnu"/>
   </a>
 <p>
 <p align="center">
   <img alt="UI Concept" src="ui-concept.png"/>
 </p>
 
-UniTube GTK is a brand new app for GNOME, designed to be a faster and bulletproof
+Replay is a brand new app for GNOME, designed to be a faster and bulletproof
 YouTube client for laptops and phones. You would be able to manage all your
 suscriptions and playlists, search for videos and explore the new trendings for
 your location (or other locations).
@@ -37,7 +37,7 @@ build. You will see a Flathub link here when there's one 🙂️
 
 Development builds are automatically generated every time a new change occurs in
 this repository, and are marked with a custom icon and style. You can install a
-development build simply by going to the [actions](https://github.com/nahuelwexd/UniTube-GTK/actions)
+development build simply by going to the [actions](https://github.com/nahuelwexd/replay/actions)
 tab of this repository, and downloading one of those that have been successfully
 generated.
 
@@ -79,8 +79,8 @@ You will need to download and install all of these dependencies:
 Then run these commands on your preferred terminal emulator:
 
 ```shell
-git clone https://github.com/nahuelwexd/UniTube-GTK.git
-cd UniTube-GTK
+git clone https://github.com/nahuelwexd/replay.git
+cd replay
 meson build --buildtype plain
 ninja -C build install
 ```

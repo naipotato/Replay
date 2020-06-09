@@ -1,4 +1,4 @@
-project ('unitube', 'c', 'vala',
+project ('replay', 'c', 'vala',
     version: '0.1.0',
     license: 'GPL-3.0-or-later'
 )
@@ -31,10 +31,10 @@ endif
 
 
 # Info about the app
-rdnn_app_name = 'com.github.nahuelwexd.UniTube'
+rdnn_app_name = 'com.github.nahuelwexd.Replay'
 application_id = '@0@@1@'.format (rdnn_app_name, profile)
-package_url = 'https://github.com/nahuelwexd/UniTube-GTK'
-resource_path = '/com/github/nahuelwexd/UniTube'
+package_url = 'https://github.com/nahuelwexd/replay'
+resource_path = '/com/github/nahuelwexd/Replay'
 version = '@0@-@VCS_TAG@'.format (meson.project_version ())
 localedir = get_option ('prefix') / get_option ('localedir')
 

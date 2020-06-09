@@ -95,9 +95,9 @@ pkg = import ('pkgconfig')
 
 pkg.generate (utlib,
        requires: soup_dep,
-    description: 'Yet another wrapper to the YouTube Data API v3',
+    description: 'A YouTube Data API client library for Vala',
        filebase: utlib_api_name,
-            url: 'https://github.com/nahuelwexd/UTLib'
+            url: 'https://github.com/nahuelwexd/replay'
 )
 
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="128px" viewBox="0 0 128 128" width="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="7.999901" x2="119.999905" y1="72.000077" y2="72.000077">
+        <stop offset="0"/>
+        <stop offset="0.05" stop-color="#241f31"/>
+        <stop offset="0.1"/>
+        <stop offset="0.875"/>
+        <stop offset="0.9375" stop-color="#241f31"/>
+        <stop offset="1"/>
+    </linearGradient>
+    <path d="m 16 28 h 96 c 4.417969 0 8 3.582031 8 8 v 72 c 0 4.417969 -3.582031 8 -8 8 h -96 c -4.417969 0 -8 -3.582031 -8 -8 v -72 c 0 -4.417969 3.582031 -8 8 -8 z m 0 0" fill="url(#a)"/>
+    <path d="m 16 28 c -4.433594 0 -8 3.566406 -8 8 v 68 c 0 4.433594 3.566406 8 8 8 h 96 c 4.433594 0 8 -3.566406 8 -8 v -68 c 0 -4.433594 -3.566406 -8 -8 -8 z m 0 0" fill="#231e30"/>
+    <path d="m 38 96 c -1.425781 0 -2.746094 0.765625 -3.457031 2 h -26.542969 v 4 h 26.542969 c 0.710937 1.234375 2.03125 2 3.457031 2 s 2.746094 -0.765625 3.457031 -2 h 78.542969 v -4 h -78.542969 c -0.710937 -1.234375 -2.03125 -2 -3.457031 -2 z m 0 0" fill-opacity="0.498039"/>
+    <path d="m 8 96 h 112 v 4 h -112 z m 0 0" fill="#999994"/>
+    <path d="m 8 96 h 30 v 4 h -30 z m 0 0" fill="#de1923"/>
+    <path d="m 38 96 h 42.25 v 4 h -42.25 z m 0 0" fill="#bfbdba"/>
+    <path d="m 42 98 c 0 2.210938 -1.789062 4 -4 4 s -4 -1.789062 -4 -4 s 1.789062 -4 4 -4 s 4 1.789062 4 4 z m 0 0" fill="#ffffff"/>
+    <path d="m 74.824219 72 l -21.648438 12.5 v -25 z m 0 0" fill-opacity="0.498039"/>
+    <path d="m 74.824219 70 l -21.648438 12.5 v -25 z m 0 0" fill="#ffffff"/>
+</svg>

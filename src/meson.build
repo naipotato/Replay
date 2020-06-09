@@ -1,4 +1,4 @@
-sources = files (
+replay_sources = files (
     'dialogs' / 'about-dialog.vala',
 
     'services' / 'settings' / 'appearance-settings.vala',
@@ -28,7 +28,7 @@ valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'
 
 
-unitube_deps = [
+replay_deps = [
     glib_dep,
     gobject_dep,
     gee_dep,
@@ -43,9 +43,9 @@ unitube_deps = [
 
 executable (
     meson.project_name (),
-    sources, resources,
+    replay_sources, resources,
 
-           dependencies: unitube_deps,
+           dependencies: replay_deps,
                 install: true,
     include_directories: confinc,
                 gui_app: true

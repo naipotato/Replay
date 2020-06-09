@@ -4,6 +4,6 @@ data/gtk/main-header-bar.ui
 data/gtk/main-window.ui
 data/gtk/preferences-window.ui
 data/gtk/trending-view.ui
-data/com.github.nahuelwexd.UniTube.desktop.in.in
-data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in
+data/com.github.nahuelwexd.Replay.desktop.in.in
+data/com.github.nahuelwexd.Replay.metainfo.xml.in.in
 src/windows/preferences-window.vala

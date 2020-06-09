@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Unitube GTK - An open source YouTube client written in Vala and GTK.
+  Replay - An open source YouTube client for GNOME
   Copyright (C) 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
-  This program is free software: you can redistribute it and/or modify
+  Replay is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
+  Replay is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <interface>
 
   <requires lib="gtk+" version="3.24"/>
 
-  <template class="UnitubeAboutDialog" parent="GtkAboutDialog">
+  <template class="ReplayAboutDialog" parent="GtkAboutDialog">
     <property name="modal">True</property>
     <property name="destroy-with-parent">True</property>
     <property name="license-type">gpl-3-0</property>
-    <property name="program-name" translatable="yes">UniTube</property>
+    <property name="program-name" translatable="yes">Replay</property>
     <property name="copyright">Copyright © 2019-2020 Nahuel Gomez Castro</property>
     <property name="authors">Nahuel Gomez Castro &lt;nahual_gomca@outlook.com.ar&gt;</property>
     <!-- Translators: This is the comment for the About dialog -->
-    <property name="comments" translatable="yes">An open source YouTube client written in Vala and GTK.</property>
+    <property name="comments" translatable="yes">An open source YouTube client for GNOME.</property>
     <!-- Translators: This is the label used to link to the project repo -->
     <property name="website-label" translatable="yes">Project repository</property>
     <signal name="response" handler="on_response"/>
