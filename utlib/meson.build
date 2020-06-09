@@ -53,12 +53,12 @@ utlib_dependencies = [
 
 utlib = library (
     meson.project_name (),
-    sources,
+    utlib_sources,
 
      vala_header: utlib_header,
        vala_vapi: utlib_vapi,
         vala_gir: utlib_gir,
-    dependencies: dependencies,
+    dependencies: utlib_dependencies,
          install: true,
      install_dir: [true, true, true, true]
 )
@@ -86,7 +86,7 @@ custom_target (
 
 utlib_dep = declare_dependency (
               link_with: utlib,
-           dependencies: dependencies,
+           dependencies: utlib_dependencies,
     include_directories: [include_directories ('.')]
 )
 
@@ -101,14 +101,14 @@ pkg.generate (utlib,
 )
 
 
-requires = []
+utlib_requires = []
 
-foreach dependency : dependencies
-    requires += dependency.name ()
+foreach dependency : utlib_dependencies
+    utlib_requires += dependency.name ()
 endforeach
 
 deps_conf = configuration_data ()
-deps_conf.set ('deps', '\n'.join (requires))
+deps_conf.set ('deps', '\n'.join (utlib_requires))
 
 configure_file (
             input: 'deps.meson',
