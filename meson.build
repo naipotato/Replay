@@ -93,4 +93,5 @@ meson.add_install_script ('build-aux/post-install.vala')
 # Subfolders
 subdir ('data')
 subdir ('po')
+subdir ('utlib')
 subdir ('src')
