@@ -1,4 +1,4 @@
-sources = files (
+utlib_sources = files (
     'data/thumbnail.vala',
     'data/video.vala',
     'data/video-localization.vala',
@@ -41,7 +41,7 @@ utlib_pc = '@0@.pc'.format (utlib_api_name)
 utlib_deps = '@0@.deps'.format (utlib_api_name)
 
 
-dependencies = [
+utlib_dependencies = [
     glib_dep,
     gobject_dep,
     gee_dep,
