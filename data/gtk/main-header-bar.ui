@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Unitube GTK - An open source YouTube client written in Vala and GTK.
+  Replay - An open source YouTube client for GNOME
   Copyright (C) 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
-  This program is free software: you can redistribute it and/or modify
+  Replay is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
+  Replay is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <interface>
 
   <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="1.0"/>
 
-  <template class="UnitubeMainHeaderBar" parent="HdyHeaderBar">
+  <template class="ReplayMainHeaderBar" parent="HdyHeaderBar">
 
     <property name="show-close-button">True</property>
     <signal name="toggle-search-mode" handler="on_search_mode_toggled"/>
@@ -39,7 +39,7 @@
           <object class="HdyViewSwitcherTitle" id="view_switcher_title">
             <property name="visible">True</property>
             <property name="has-subtitle">False</property>
-            <property name="title" translatable="yes">UniTube</property>
+            <property name="title" translatable="yes">Replay</property>
           </object>
 
           <packing>
@@ -119,7 +119,7 @@
 
       <item>
         <!-- Translators: This is the label used for the about item in the primary menu -->
-        <attribute name="label" translatable="yes">About UniTube</attribute>
+        <attribute name="label" translatable="yes">About Replay</attribute>
         <attribute name="action">app.about</attribute>
       </item>
     </section>

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the unitube package.
+# This file is distributed under the same license as the replay package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: unitube\n"
+"Project-Id-Version: replay\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-18 13:15-0300\n"
+"POT-Creation-Date: 2020-06-08 23:32-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,15 +50,16 @@ msgstr ""
 
 #. Translators: This is the app name
 #: data/gtk/about-dialog.ui:27 data/gtk/main-header-bar.ui:42
-#: data/gtk/main-window.ui:26
-#: data/com.github.nahuelwexd.UniTube.desktop.in.in:5
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:5
-msgid "UniTube"
+#: data/gtk/main-window.ui:26 data/com.github.nahuelwexd.Replay.desktop.in.in:5
+#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:5
+msgid "Replay"
 msgstr ""
 
 #. Translators: This is the comment for the About dialog
+#. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
 #: data/gtk/about-dialog.ui:31
-msgid "An open source YouTube client written in Vala and GTK."
+#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:10
+msgid "An open source YouTube client for GNOME."
 msgstr ""
 
 #. Translators: This is the label used to link to the project repo
@@ -83,7 +84,7 @@ msgstr ""
 
 #. Translators: This is the label used for the about item in the primary menu
 #: data/gtk/main-header-bar.ui:122
-msgid "About UniTube"
+msgid "About Replay"
 msgstr ""
 
 #. Translators: This is the title for the trending section of the app
@@ -117,41 +118,36 @@ msgid "Activates dark theme on the app."
 msgstr ""
 
 #. Translators: This is the generic app name
-#: data/com.github.nahuelwexd.UniTube.desktop.in.in:7
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:7
 msgid "YouTube client"
 msgstr ""
 
 #. Translators: This is the comment of the app
-#: data/com.github.nahuelwexd.UniTube.desktop.in.in:9
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:9
 msgid "View YouTube videos"
 msgstr ""
 
 #. Translators: This is the app icon, this MUST NOT be translated
-#: data/com.github.nahuelwexd.UniTube.desktop.in.in:11
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:11
 msgid "@APPLICATION_ID@"
 msgstr ""
 
 #. Translators: These are the keywords used for the search trackers. The list MUST be delimited with semicolons, and MUST finish with a semicolon
-#: data/com.github.nahuelwexd.UniTube.desktop.in.in:17
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:17
 msgid "YouTube;Videos;"
 msgstr ""
 
 #. Translators: This is the summary of the app that will be shown on GNOME Software or the Flathub website
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:7
+#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:7
 msgid "An open source YouTube client for GNOME"
 msgstr ""
 
-#. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:10
-msgid "An open source YouTube client for GNOME."
-msgstr ""
-
 #. Translators: This is the name of the developer, it should not be translated
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:16
+#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:16
 msgid "Nahuel Gomez Castro"
 msgstr ""
 
 #. Translators: This is the caption of the first "screenshot", which is a mockup at the moment
-#: data/com.github.nahuelwexd.UniTube.metainfo.xml.in.in:21
+#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:21
 msgid "Mockup of the app"
 msgstr ""

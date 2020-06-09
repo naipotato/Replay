@@ -1,4 +1,4 @@
-project ('unitube', 'c', 'vala',
+project ('replay', 'c', 'vala',
     version: '0.1.0',
     license: 'GPL-3.0-or-later'
 )
@@ -31,10 +31,10 @@ endif
 
 
 # Info about the app
-rdnn_app_name = 'com.github.nahuelwexd.UniTube'
+rdnn_app_name = 'com.github.nahuelwexd.Replay'
 application_id = '@0@@1@'.format (rdnn_app_name, profile)
-package_url = 'https://github.com/nahuelwexd/UniTube-GTK'
-resource_path = '/com/github/nahuelwexd/UniTube'
+package_url = 'https://github.com/nahuelwexd/replay'
+resource_path = '/com/github/nahuelwexd/Replay'
 version = '@0@-@VCS_TAG@'.format (meson.project_version ())
 localedir = get_option ('prefix') / get_option ('localedir')
 
@@ -65,6 +65,27 @@ vcs_tag (
 confinc = include_directories ('.')
 
 
+# Common variables
+valac = meson.get_compiler ('vala')
+vapidir = meson.source_root () / 'vapi'
+
+
+# Common dependencies
+glib_dep = dependency ('glib-2.0')
+gobject_dep = dependency ('gobject-2.0')
+gee_dep = dependency ('gee-0.8')
+gio_dep = dependency ('gio-2.0')
+soup_dep = dependency ('libsoup-2.4')
+
+# Replay dependencies
+gtk_dep = dependency ('gtk+-3.0')
+handy_dep = dependency ('libhandy-1')
+config_dep = valac.find_library ('config', dirs: vapidir)
+
+# UTLib dependencies
+gjson_dep = dependency ('gjson-1.0')
+
+
 # Post install script
 meson.add_install_script ('build-aux/post-install.vala')
 
@@ -72,4 +93,6 @@ meson.add_install_script ('build-aux/post-install.vala')
 # Subfolders
 subdir ('data')
 subdir ('po')
+subdir ('utlib')
+subdir ('tests')
 subdir ('src')
