@@ -1,9 +1,9 @@
 {
-  "app-id" : "com.github.nahuelwexd.UniTube.Devel",
+  "app-id" : "com.github.nahuelwexd.Replay.Devel",
   "runtime" : "org.gnome.Platform",
   "runtime-version" : "3.36",
   "sdk" : "org.gnome.Sdk",
-  "command" : "unitube",
+  "command" : "replay",
   "finish-args" : [
     "--socket=fallback-x11",
     "--socket=wayland",
@@ -90,18 +90,7 @@
       ]
     },
     {
-      "name" : "utlib",
-      "buildsystem" : "meson",
-      "builddir" : true,
-      "sources" : [
-        {
-          "type" : "git",
-          "url" : "https://github.com/nahuelwexd/UTLib.git"
-        }
-      ]
-    },
-    {
-      "name" : "unitube",
+      "name" : "replay",
       "buildsystem" : "meson",
       "builddir" : true,
       "config-opts" : [

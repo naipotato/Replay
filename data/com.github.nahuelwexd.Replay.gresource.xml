@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/nahuelwexd/UniTube">
+  <gresource prefix="/com/github/nahuelwexd/Replay">
     <file>gtk/about-dialog.ui</file>
     <file>gtk/help-overlay.ui</file>
     <file>gtk/library-view.ui</file>
