@@ -10,6 +10,6 @@ video_test = executable (
 )
 
 test (
-    'video-test',
+    'Test VideoListRequest',
     video_test
 )
