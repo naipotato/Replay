@@ -29,11 +29,14 @@ vapidir = meson.source_root () / 'vapi'
 
 
 unitube_deps = [
-    dependency ('gtk+-3.0', version: '>= 3.24'),
-    dependency ('libhandy-1'),
-    dependency ('gee-0.8'),
-    dependency ('utlib-0.0'),
-    valac.find_library ('config', dirs: vapidir)
+    glib_dep,
+    gobject_dep,
+    gee_dep,
+    gio_dep,
+    soup_dep,
+    gtk_dep,
+    handy_dep,
+    config_dep
 ]
 
 

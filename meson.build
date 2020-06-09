@@ -62,8 +62,28 @@ vcs_tag (
       output: 'config.h'
 )
 
-
 confinc = include_directories ('.')
+
+
+# Common variables
+valac = meson.get_compiler ('vala')
+vapidir = meson.source_root () / 'vapi'
+
+
+# Common dependencies
+glib_dep = dependency ('glib-2.0')
+gobject_dep = dependency ('gobject-2.0)
+gee_dep = dependency ('gee-0.8')
+gio_dep = dependency ('gio-2.0')
+soup_dep = dependency ('libsoup-2.4')
+
+# Replay dependencies
+gtk_dep = dependency ('gtk+-3.0')
+handy_dep = dependency ('libhandy-1')
+config_dep = valac.find_library ('config', dirs: vapidir)
+
+# UTLib dependencies
+gjson_dep = dependency ('gjson-1.0')
 
 
 # Post install script
