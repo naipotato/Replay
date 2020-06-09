@@ -36,7 +36,8 @@ unitube_deps = [
     soup_dep,
     gtk_dep,
     handy_dep,
-    config_dep
+    config_dep,
+    utlib_dep
 ]
 
 
