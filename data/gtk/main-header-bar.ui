@@ -38,7 +38,6 @@
 
           <object class="HdyViewSwitcherTitle" id="view_switcher_title">
             <property name="visible">True</property>
-            <property name="has-subtitle">False</property>
             <property name="title" translatable="yes">Replay</property>
           </object>
 
