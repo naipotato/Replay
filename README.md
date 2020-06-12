@@ -50,29 +50,32 @@ You want to build this project and maybe contribute to it? Well, this is the
 right guide for you. But first, you will need to get an API key for the YouTube
 Data API v3. Go to the [Google Developers Console](https://console.console.developers.google.com),
 create a new project and get a new API key, then choose the way you want to go
-to build the app: GNOME Builder or manually.
+to build the app: [GNOME Builder](#gnome-builder) or [manually](#manually).
 
 ### GNOME Builder
 
 The GNOME Builder way is easier than any other, and it's the recommended one.
 You just need to:
 
-- Open GNOME Builder (If you haven't installed GNOME Builder yet, do it from your
-  distro repos or from [Flathub](https://flathub.org/apps/details/org.gnome.Builder)!)
-- Click on the "Clone repository" button
-- Paste the link to this repo and clone it
-- Open the terminal integrated with GNOME Builder, and enter the following
-  command:
+1. Open GNOME Builder (If you haven't installed GNOME Builder yet, do it from
+   [Flathub](https://flathub.org/apps/details/org.gnome.Builder) or from your
+   distro repos!)
+2. Click on the "Clone repository" button
+3. Paste the link to this repo and clone it
+4. Create a new file inside `src` and name it `constants.vala`:
 
-  ```shell
-  chmod +x build-aux/generate-replay-constants.vala
-  ./build-aux/generate-replay-constants.vala API_KEY src/constants.vala
-  ```
+   ```vala
+   namespace Replay {
 
-  Where you need to replace `API_KEY` with the API key you get in the Google
-  Developers Console.
+       [CCode (cname = "API_KEY")]
+       public const string API_KEY = "your_api_key";
+   }
+   ```
 
-- Hit the "Run" button (▶)
+   Where you need to replace `your_api_key` with the API key that you got from
+   the Google Developers Console.
+
+5. Hit the "Run" button (▶)
 
 GNOME Builder would automatically download and install all the needed dependencies,
 build the app and run it. Then you can export it as a bundle in order to install
@@ -80,34 +83,47 @@ it in your system.
 
 ### Manually
 
-You will need to download and install all of these dependencies:
+> **NOTE:** It is important to use a recent distro instead of an old one, since
+this app tries to use the most recent version of each library. It's even possible
+that you'll need to build some packages manually.
 
-- `glib-2.0`
-- `gobject-2.0`
-- `gee-0.8`
-- `gio-2.0`
-- `libsoup-2.4`
-- `gtk+-3.0`
-- `libhandy-1`
-- `gjson-1.0`
-- `sassc`
-- `meson`
-- `vala`
-- `git` (this is obvious, but still)
+This way is harder and will vary from one distro to another. Here I'll try to be
+as too distro agnostic as possible. First, look for the packages that contains
+the following `pkg-config` files:
 
-Then run these commands on your preferred terminal emulator:
+- `glib-2.0.pc`
+- `gobject-2.0.pc`
+- `gee-0.8.pc`
+- `gio-2.0.pc`
+- `libsoup-2.4.pc`
+- `gtk+-3.0.pc`
+- `libhandy-1.pc`
+- `gjson-1.0.pc`
+
+And then install the packages that contains the binaries for `sassc`, `meson`,
+`ninja`, `vala` and `git`. Then run these commands on your preferred terminal
+emulator:
 
 ```shell
 git clone https://github.com/nahuelwexd/replay.git
 cd replay
-chmod +x build-aux/generate-replay-constants.vala
-./build-aux/generate-replay-constants.vala API_KEY src/constants.vala
 meson build --buildtype plain
 ninja -C build install
 ```
 
-Where `API_KEY` should be replaced with the API key you get on the Google
-Developers Console.
+Inside of `src`, create a new file called `constants.vala`. It should contains
+the following code:
+
+```vala
+namespace Replay {
+
+    [CCode (cname = "API_KEY")]
+    public const string API_KEY = "your_api_key";
+}
+```
+
+Where `your_api_key` should be replaced with the API key that you got from the
+Google Developers Console.
 
 ## License
 
