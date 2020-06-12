@@ -30,10 +30,10 @@ utlib_minor_version = version_array[1].to_int ()
 utlib_micro_version = version_array[2].to_int ()
 
 utlib_api_version = '@0@.0'.format (utlib_major_version)
-utlib_api_name = '@0@-@1@'.format (meson.project_name (), utlib_api_version)
+utlib_api_name = '@0@-@1@'.format ('utlib', utlib_api_version)
 utlib_gi_name = 'Utlib-@0@'.format (utlib_api_version)
 
-utlib_header = '@0@.h'.format (meson.project_name ())
+utlib_header = '@0@.h'.format ('utlib')
 utlib_vapi = '@0@.vapi'.format (utlib_api_name)
 utlib_gir = '@0@.gir'.format (utlib_gi_name)
 utlib_typelib = '@0@.typelib'.format (utlib_gi_name)
@@ -52,7 +52,7 @@ utlib_dependencies = [
 
 
 utlib = library (
-    meson.project_name (),
+    'utlib',
     utlib_sources,
 
      vala_header: utlib_header,

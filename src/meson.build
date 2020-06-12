@@ -21,6 +21,7 @@ replay_sources = files (
     'windows' / 'preferences-window.vala',
 
     'app.vala',
+    'constants.vala',
 )
 
 

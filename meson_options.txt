@@ -4,8 +4,3 @@ option ('profile',
         choices: ['default', 'development'],
     description: 'The build profile for the app. If none specified, "default" is used'
 )
-
-option ('api_key',
-           type: 'string',
-    description: 'The default API key for the app. The user will be able to change it from settings'
-)
