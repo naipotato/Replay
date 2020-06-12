@@ -46,7 +46,11 @@ contains 2 flatpak files ready to install: the application and the locales
 
 ## Build
 
-You can build this project in two ways: GNOME Builder or manually.
+You want to build this project and maybe contribute to it? Well, this is the
+right guide for you. But first, you will need to get an API key for the YouTube
+Data API v3. Go to the [Google Developers Console](https://console.console.developers.google.com),
+create a new project and get a new API key, then choose the way you want to go
+to build the app: GNOME Builder or manually.
 
 ### GNOME Builder
 
@@ -57,6 +61,17 @@ You just need to:
   distro repos or from [Flathub](https://flathub.org/apps/details/org.gnome.Builder)!)
 - Click on the "Clone repository" button
 - Paste the link to this repo and clone it
+- Open the terminal integrated with GNOME Builder, and enter the following
+  command:
+
+  ```shell
+  chmod +x build-aux/generate-replay-constants.vala
+  ./build-aux/generate-replay-constants.vala API_KEY src/constants.vala
+  ```
+
+  Where you need to replace `API_KEY` with the API key you get in the Google
+  Developers Console.
+
 - Hit the "Run" button (▶)
 
 GNOME Builder would automatically download and install all the needed dependencies,
@@ -67,10 +82,14 @@ it in your system.
 
 You will need to download and install all of these dependencies:
 
+- `glib-2.0`
+- `gobject-2.0`
+- `gee-0.8`
+- `gio-2.0`
+- `libsoup-2.4`
 - `gtk+-3.0`
 - `libhandy-1`
-- `gee-0.8`
-- `utlib-0.0`
+- `gjson-1.0`
 - `sassc`
 - `meson`
 - `vala`
@@ -81,9 +100,14 @@ Then run these commands on your preferred terminal emulator:
 ```shell
 git clone https://github.com/nahuelwexd/replay.git
 cd replay
+chmod +x build-aux/generate-replay-constants.vala
+./build-aux/generate-replay-constants.vala API_KEY src/constants.vala
 meson build --buildtype plain
 ninja -C build install
 ```
+
+Where `API_KEY` should be replaced with the API key you get on the Google
+Developers Console.
 
 ## License
 
