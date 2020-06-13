@@ -20,9 +20,6 @@ using Replay.Utils;
 
 namespace Replay {
 
-    /**
-     * The model view of the trending view
-     */
     public class TrendingViewModel : Object {
 
         public enum State {
@@ -47,6 +44,7 @@ namespace Replay {
             // TODO: region_code should be attached to the user region
             request.chart = "mostPopular";
             request.region_code = "US";
+            request.max_results = "50";
 
             try {
                 // This should show a nicer loading screen to the user
@@ -57,8 +55,7 @@ namespace Replay {
 
                 // Once the response is received, fill the list with the videos
                 // received
-                this.trending_videos = new GenericListModel<Video>.from_list (
-                    response.items);
+                this.trending_videos.add_all (response.items);
 
                 // Hide the loading screen and show videos
                 this.state = State.SUCCESS;

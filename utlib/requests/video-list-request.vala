@@ -23,7 +23,7 @@ public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
     public string my_rating { get; set; }
     public string hl { get; set; }
     public uint max_height { get; set; }
-    public uint max_results { get; set; }
+    public string max_results { get; set; }
     public uint max_width { get; set; }
     public string on_behalf_of_content_owner { get; set; }
     public string page_token { get; set; }
