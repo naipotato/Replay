@@ -15,10 +15,57 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using Utlib;
+using Replay.Utils;
+
 namespace Replay {
 
     public class TrendingViewModel : Object {
 
-        public bool is_loading { get; set; }
+        public enum State {
+            LOADING,
+            ERROR,
+            SUCCESS
+        }
+
+        public State state { get; set; }
+        public GenericListModel<Video> trending_videos { get; set; default = new GenericListModel<Video> (); }
+
+        construct {
+            // Let's get for some trending videos ;)
+            load_trending_videos.begin ();
+        }
+
+        private async void load_trending_videos () {
+            // Create a new request
+            var request = App.client.videos.list ("snippet");
+
+            // Request for trending videos on US
+            // TODO: region_code should be attached to the user region
+            request.chart = "mostPopular";
+            request.region_code = "US";
+            request.max_results = "50";
+
+            try {
+                // This should show a nicer loading screen to the user
+                this.state = State.LOADING;
+
+                // Try to execute the request
+                var response = yield request.execute_async ();
+
+                // Once the response is received, fill the list with the videos
+                // received
+                this.trending_videos.add_all (response.items);
+
+                // Hide the loading screen and show videos
+                this.state = State.SUCCESS;
+            } catch (Error e) {
+                // If there was any error, show an error message to the user
+                this.state = State.ERROR;
+
+                // Warn for the dev ;)
+                warning (e.message);
+            }
+        }
     }
 }

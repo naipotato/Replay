@@ -53,6 +53,16 @@ namespace Replay.Utils {
             return added;
         }
 
+        public bool add_all (Collection<T> collection) {
+            foreach (var item in collection) {
+                if (!this.add (item)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public override void clear () {
             _data.clear ();
             items_changed (0, _data.size, 0);

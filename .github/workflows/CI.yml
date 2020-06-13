@@ -12,26 +12,21 @@ name: Continuous Integration
 jobs:
   build:
     name: Build app
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2.1.0
     - name: Setup Flatpak environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
-        sudo apt install -y flatpak flatpak-builder libjson-glib-dev valac
+        sudo apt install -y flatpak flatpak-builder valac
         flatpak remote-add --user --if-not-exists flathub \
             https://flathub.org/repo/flathub.flatpakrepo
     - name: Build with Flatpak Builder
-      env:
-        API_KEY: ${{ secrets.API_KEY }}
       run: |
-        vala build-aux/rewrite-manifest-with-api.vala --pkg gio-2.0 --pkg json-glib-1.0 \
-            --run-args "build-aux/com.github.nahuelwexd.Replay.json unitube"
-        flatpak-builder --user --disable-rofiles-fuse --repo=repo \
-            --install-deps-from=flathub flatpak_app \
+        ./build-aux/generate-replay-constants.vala "${{ secrets.API_KEY }}" src/constants.vala
+        flatpak-builder --user --repo=repo --install-deps-from=flathub flatpak_app \
             build-aux/com.github.nahuelwexd.Replay.json
     - uses: actions/upload-artifact@v2
       with:
@@ -47,7 +42,6 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo add-apt-repository ppa:alexlarsson/flatpak
         sudo apt update
         sudo apt install -y flatpak
     - name: Create Flatpak bundle
