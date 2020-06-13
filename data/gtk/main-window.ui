@@ -66,7 +66,7 @@
                 <property name="name">trending</property>
                 <!-- Translators: This is the title for the trending section of the app -->
                 <property name="title" translatable="yes">Trending</property>
-                <property name="icon-name">youtube-trending-symbolic</property>
+                <property name="icon-name">fire-symbolic</property>
               </packing>
             </child>
 
@@ -80,7 +80,7 @@
                 <property name="name">subs</property>
                 <!-- Translators: This is the title for the subscriptions section of the app -->
                 <property name="title" translatable="yes">Subscriptions</property>
-                <property name="icon-name">youtube-subscriptions-symbolic</property>
+                <property name="icon-name">subscriptions-symbolic</property>
               </packing>
             </child>
 
@@ -94,7 +94,7 @@
                 <property name="name">library</property>
                 <!-- Translators: This is the title for the library section of the app -->
                 <property name="title" translatable="yes">Library</property>
-                <property name="icon-name">youtube-library-symbolic</property>
+                <property name="icon-name">video-library-symbolic</property>
               </packing>
             </child>
           </object>

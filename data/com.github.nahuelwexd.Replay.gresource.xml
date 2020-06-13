@@ -11,11 +11,11 @@
     <file>gtk/trending-view.ui</file>
     <file>gtk/video-tile.ui</file>
     <file>icons/computer-fail-symbolic.svg</file>
+    <file>icons/fire-symbolic.svg</file>
     <file>icons/load-failed-symbolic.svg</file>
     <file>icons/settings-appearance-symbolic.svg</file>
-    <file>icons/youtube-trending-symbolic.svg</file>
-    <file>icons/youtube-subscriptions-symbolic.svg</file>
-    <file>icons/youtube-library-symbolic.svg</file>
+    <file>icons/subscriptions-symbolic.svg</file>
+    <file>icons/video-library-symbolic.svg</file>
     <file>styles.css</file>
     <file>styles-dark.css</file>
   </gresource>
