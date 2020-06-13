@@ -27,16 +27,24 @@ namespace Replay {
 
         construct {
             this.view_model = ViewModelLocator.get_default ().trending;
+            this.view_model.notify["state"].connect (on_view_model_state_changed);
+            this.view_model.notify_property ("state");
 
-            this.view_model.notify["is-loading-videos"].connect (() => {
-                if (this.view_model.is_loading_videos) {
+
+        private void on_view_model_state_changed () {
+            switch (this.view_model.state) {
+                case TrendingViewModel.State.LOADING:
                     this.stack.visible_child_name = "loading";
-                } else {
+                    break;
+                case TrendingViewModel.State.ERROR:
+                    this.stack.visible_child_name = "error";
+                    break;
+                case TrendingViewModel.State.SUCCESS:
                     this.stack.visible_child_name = "videos";
-                }
-            });
+                    break;
+            }
+        }
 
-            this.view_model.notify_property ("is-loading-videos");
         }
     }
 }

@@ -25,20 +25,14 @@ namespace Replay {
      */
     public class TrendingViewModel : Object {
 
-        /**
-         * A value indicating whether or not to display the loading screen
-         */
-        public bool is_loading_videos { get; set; }
+        public enum State {
+            LOADING,
+            ERROR,
+            SUCCESS
+        }
 
-        /**
-         * The trending video list
-         */
-        public GenericListModel<Video> trending_videos { get; set; }
-
-        /**
-         * A value indicating whether or not to display the error screen
-         */
-        public bool error_loading_videos { get; set; }
+        public State state { get; set; }
+        public GenericListModel<Video> trending_videos { get; set; default = new GenericListModel<Video> (); }
 
         construct {
             // Let's get for some trending videos ;)
@@ -56,7 +50,7 @@ namespace Replay {
 
             try {
                 // This should show a nicer loading screen to the user
-                this.is_loading_videos = true;
+                this.state = State.LOADING;
 
                 // Try to execute the request
                 var response = yield request.execute_async ();
@@ -67,10 +61,10 @@ namespace Replay {
                     response.items);
 
                 // Hide the loading screen and show videos
-                this.is_loading_videos = false;
+                this.state = State.SUCCESS;
             } catch (Error e) {
                 // If there was any error, show an error message to the user
-                this.error_loading_videos = true;
+                this.state = State.ERROR;
 
                 // Warn for the dev ;)
                 warning (e.message);
