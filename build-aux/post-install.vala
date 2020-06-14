@@ -6,8 +6,8 @@ void call (string[] call_args) {
         string call_stderr;
         int call_status;
 
-        var result = Process.spawn_command_line_sync (string.joinv (" ", call_args),
-            out call_stdout, out call_stderr,out call_status);
+        var result = Process.spawn_command_line_sync (string.joinv (" ", call_args), out call_stdout,
+            out call_stderr,out call_status);
 
         print (call_stdout);
         print (call_stderr);
@@ -27,11 +27,9 @@ void main () {
 
     if (destdir == null) {
         print ("Updating icon cache...\n");
-        call ({"gtk-update-icon-cache", "-qtf", Path.build_filename (datadir,
-            "icons", "hicolor")});
+        call ({"gtk-update-icon-cache", "-qtf", Path.build_filename (datadir, "icons", "hicolor")});
 
         print ("Compiling GSettings schemas...\n");
-        call ({"glib-compile-schemas", Path.build_filename (datadir, "glib-2.0",
-            "schemas")});
+        call ({"glib-compile-schemas", Path.build_filename (datadir, "glib-2.0", "schemas")});
     }
 }
