@@ -37,8 +37,8 @@ class Replay.AppearanceSettings : Object {
 
         if (gtk_settings.gtk_application_prefer_dark_theme) {
             this.use_system_theme = true;
-
-            settings.bind ("dark-theme", this, "dark-theme", SettingsBindFlags.DEFAULT);
         }
+
+        settings.bind ("dark-theme", this, "dark-theme", SettingsBindFlags.DEFAULT);
     }
 }
