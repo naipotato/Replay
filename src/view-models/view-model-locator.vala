@@ -15,22 +15,19 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Replay {
+class Replay.ViewModelLocator {
 
-    public class ViewModelLocator {
+    private static Once<ViewModelLocator> _instance;
 
-        private static Once<ViewModelLocator> instance;
+    public TrendingViewModel trending { get; set; }
 
-        public TrendingViewModel trending { get; set; }
+    private ViewModelLocator () {
+        this.trending = new TrendingViewModel ();
+    }
 
-        private ViewModelLocator () {
-            this.trending = new TrendingViewModel ();
-        }
-
-        public static unowned ViewModelLocator get_default () {
-            return instance.once (() => {
-                return new ViewModelLocator ();
-            });
-        }
+    public static unowned ViewModelLocator get_default () {
+        return _instance.once (() => {
+            return new ViewModelLocator ();
+        });
     }
 }

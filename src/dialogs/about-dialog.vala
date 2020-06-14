@@ -15,25 +15,19 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gtk;
+class Replay.AboutDialog : Gtk.AboutDialog {
 
-namespace Replay {
+    construct {
+        this.logo_icon_name = Constants.APPLICATION_ID;
+        this.version = Constants.VERSION;
+        this.website = Constants.PACKAGE_URL;
+    }
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/about-dialog.ui")]
-    public class AboutDialog : Gtk.AboutDialog {
-
-        construct {
-            this.logo_icon_name = APPLICATION_ID;
-            this.version = VERSION;
-            this.website = PACKAGE_URL;
-        }
-
-        [GtkCallback]
-        private void on_response (int response_id) {
-            if (response_id == ResponseType.CANCEL ||
-                response_id == ResponseType.DELETE_EVENT) {
-                this.hide_on_delete ();
-            }
+    [GtkCallback]
+    private void on_response (int response_id) {
+        if (response_id == Gtk.ResponseType.CANCEL ||
+            response_id == Gtk.ResponseType.DELETE_EVENT) {
+            this.hide_on_delete ();
         }
     }
 }

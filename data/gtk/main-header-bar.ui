@@ -29,14 +29,14 @@
     <signal name="notify::search-mode" handler="on_search_mode_changed"/>
 
     <child type="title">
-      <object class="GtkStack" id="title_stack">
+      <object class="GtkStack" id="_title_stack">
 
         <property name="visible">True</property>
         <property name="transition-type">crossfade</property>
 
         <child>
 
-          <object class="HdyViewSwitcherTitle" id="view_switcher_title">
+          <object class="HdyViewSwitcherTitle" id="_view_switcher_title">
             <property name="visible">True</property>
             <property name="title" translatable="yes">Replay</property>
           </object>
@@ -55,7 +55,7 @@
             <property name="linear-growth-width">400</property>
 
             <child>
-              <object class="GtkSearchEntry" id="search_entry">
+              <object class="GtkSearchEntry" id="_search_entry">
                 <property name="visible">True</property>
                 <signal name="stop-search" handler="on_search_entry_stop_search"/>
               </object>
@@ -71,7 +71,7 @@
 
     <child>
 
-      <object class="GtkToggleButton" id="search_button">
+      <object class="GtkToggleButton" id="_search_button">
         <property name="visible">True</property>
         <!-- Translators: This is the text for the tooltip on the search button -->
         <property name="tooltip-text" translatable="yes">Search</property>
@@ -86,7 +86,7 @@
 
     <child>
 
-      <object class="GtkMenuButton" id="menu_button">
+      <object class="GtkMenuButton" id="_menu_button">
         <property name="visible">True</property>
         <property name="menu-model">main-menu</property>
         <!-- Translators: This is the text for the tooltip on the primary menu button -->

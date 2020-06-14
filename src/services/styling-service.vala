@@ -15,95 +15,85 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gtk;
-using Gdk;
+class Replay.StylingService : Object {
 
-namespace Replay {
+    private static Once<StylingService> _instance;
 
-    public class StylingService : Object {
+    private Gtk.CssProvider _dark_css;
+    private Gtk.CssProvider _light_css;
 
-        private static Once<StylingService> instance;
+    private StylingService () {
+        this._dark_css = new Gtk.CssProvider ();
+        this._light_css = new Gtk.CssProvider ();
 
-        private CssProvider dark_css;
-        private CssProvider light_css;
+        // Load css respectively
+        this._dark_css.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles-dark.css");
+        this._light_css.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
 
-        private StylingService () {
-            this.dark_css = new CssProvider ();
-            this.light_css = new CssProvider ();
+        // Connect signals
+        var gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.notify["gtk-theme-name"].connect (on_theme_changed);
+        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (on_theme_changed);
 
-            // Load css respectively
-            this.dark_css.load_from_resource (@"$RESOURCE_PATH/styles-dark.css");
-            this.light_css.load_from_resource (@"$RESOURCE_PATH/styles.css");
+        // Emit signals
+        gtk_settings.notify_property ("gtk-theme-name");
+        gtk_settings.notify_property ("gtk-application-prefer-dark-theme");
+    }
 
-            // Connect signals
-            var gtk_settings = Gtk.Settings.get_default ();
-            gtk_settings.notify["gtk-theme-name"].connect (on_theme_changed);
-            gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (on_theme_changed);
+    public static void init () {
+        _instance.once (() => {
+            return new StylingService ();
+        });
+    }
 
-            // Emit signals
-            gtk_settings.notify_property ("gtk-theme-name");
-            gtk_settings.notify_property ("gtk-application-prefer-dark-theme");
+    private void switch_to_light_css () {
+        Gtk.StyleContext.remove_provider_for_screen (Gdk.Screen.get_default (), this._dark_css);
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), this._light_css,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
+    private void switch_to_dark_css () {
+        Gtk.StyleContext.remove_provider_for_screen (Gdk.Screen.get_default (), this._light_css);
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), this._dark_css,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
+    private void remove_all_css () {
+        Gtk.StyleContext.remove_provider_for_screen (Gdk.Screen.get_default (), this._light_css);
+        Gtk.StyleContext.remove_provider_for_screen (Gdk.Screen.get_default (), this._dark_css);
+    }
+
+    private void on_theme_changed () {
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        var env_theme = Environment.get_variable ("GTK_THEME");
+        if (env_theme != null && env_theme != "") {
+            if (/^Adwaita[-:]dark$/.match (env_theme)) {
+                this.switch_to_dark_css ();
+            } else if (/^Adwaita(:.*|$)/.match (env_theme)) {
+                this.switch_to_light_css ();
+            } else {
+                this.remove_all_css ();
+            }
+
+            return;
         }
 
-        public static void init () {
-            instance.once (() => {
-                return new StylingService ();
-            });
-        }
-
-        private void switch_to_light_css () {
-            StyleContext.remove_provider_for_screen (Screen.get_default (),
-                this.dark_css);
-            StyleContext.add_provider_for_screen (Screen.get_default (),
-                this.light_css, STYLE_PROVIDER_PRIORITY_APPLICATION);
-        }
-
-        private void switch_to_dark_css () {
-            StyleContext.remove_provider_for_screen (Screen.get_default (),
-                this.light_css);
-            StyleContext.add_provider_for_screen (Screen.get_default (),
-                this.dark_css, STYLE_PROVIDER_PRIORITY_APPLICATION);
-        }
-
-        private void remove_all_css () {
-            StyleContext.remove_provider_for_screen (Screen.get_default (),
-                this.light_css);
-            StyleContext.remove_provider_for_screen (Screen.get_default (),
-                this.dark_css);
-        }
-
-        private void on_theme_changed () {
-            var gtk_settings = Gtk.Settings.get_default ();
-
-            var env_theme = Environment.get_variable ("GTK_THEME");
-            if (env_theme != null && env_theme != "") {
-                if (Regex.match_simple ("^Adwaita[-:]dark$", env_theme)) {
+        switch (gtk_settings.gtk_theme_name) {
+            case "Adwaita":
+                if (gtk_settings.gtk_application_prefer_dark_theme) {
                     this.switch_to_dark_css ();
-                } else if (Regex.match_simple ("^Adwaita(:.*|$)", env_theme)) {
-                    this.switch_to_light_css ();
-                } else {
-                    this.remove_all_css ();
+                    break;
                 }
 
-                return;
-            }
-
-            switch (gtk_settings.gtk_theme_name) {
-                case "Adwaita":
-                    if (gtk_settings.gtk_application_prefer_dark_theme) {
-                        this.switch_to_dark_css ();
-                        break;
-                    }
-
-                    this.switch_to_light_css ();
-                    break;
-                case "Adwaita-dark":
-                    this.switch_to_dark_css ();
-                    break;
-                default:
-                    this.remove_all_css ();
-                    break;
-            }
+                this.switch_to_light_css ();
+                break;
+            case "Adwaita-dark":
+                this.switch_to_dark_css ();
+                break;
+            default:
+                this.remove_all_css ();
+                break;
         }
     }
 }

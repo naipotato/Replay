@@ -15,23 +15,19 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Replay {
+class Replay.SettingsService : Object {
 
-    public class SettingsService : Object {
+    private static Once<SettingsService> _instance;
 
-        private static GLib.Once<SettingsService> instance;
+    public AppearanceSettings appearance { get; private set; }
 
-        public AppearanceSettings appearance { get; private set; }
+    private SettingsService () {
+        this.appearance = new AppearanceSettings (@"$(Constants.RDNN_APP_NAME).appearance");
+    }
 
-        private SettingsService () {
-            this.appearance = new AppearanceSettings (
-                @"$(RDNN_APP_NAME).appearance");
-        }
-
-        public static unowned SettingsService get_default () {
-            return instance.once (() => {
-                return new SettingsService ();
-            });
-        }
+    public static unowned SettingsService get_default () {
+        return _instance.once (() => {
+            return new SettingsService ();
+        });
     }
 }

@@ -38,7 +38,7 @@
             <property name="visible">True</property>
 
             <child>
-              <object class="HdyActionRow" id="switch_row">
+              <object class="HdyActionRow" id="_switch_row">
 
                 <property name="visible">True</property>
                 <!-- Translators: This is the title for the dark theme toggle in the preferences window -->
@@ -47,7 +47,7 @@
                 <property name="subtitle" translatable="yes">Activates dark theme on the app.</property>
 
                 <child>
-                  <object class="GtkSwitch" id="toggle">
+                  <object class="GtkSwitch" id="_toggle">
                     <property name="visible">True</property>
                     <property name="valign">center</property>
                   </object>

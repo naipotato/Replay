@@ -15,91 +15,67 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Hdy;
-using Gtk;
-using Gdk;
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-header-bar.ui")]
+class Replay.MainHeaderBar : Hdy.HeaderBar {
 
-namespace Replay {
+    [GtkChild] private Hdy.ViewSwitcherTitle _view_switcher_title;
+    [GtkChild] private Gtk.ToggleButton _search_button;
+    [GtkChild] private Gtk.MenuButton _menu_button;
+    [GtkChild] private Gtk.SearchEntry _search_entry;
+    [GtkChild] private Gtk.Stack _title_stack;
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-header-bar.ui")]
-    public class MainHeaderBar : Hdy.HeaderBar {
+    public Gtk.Stack stack { get; set; }
+    public bool is_narrow_mode { get; set; }
+    public bool search_mode { get; set; }
 
-        [GtkChild]
-        private ViewSwitcherTitle view_switcher_title;
+    construct {
+        this.bind_property ("stack", this._view_switcher_title, "stack", BindingFlags.BIDIRECTIONAL);
+        this.bind_property ("search-mode", this._search_button, "active", BindingFlags.BIDIRECTIONAL);
 
-        [GtkChild]
-        private ToggleButton search_button;
+        this._view_switcher_title.bind_property ("title-visible", this, "is-narrow-mode",
+            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+    }
 
-        [GtkChild]
-        private MenuButton menu_button;
+    [Signal (action = true)] public signal void toggle_menu ();
+    [Signal (action = true)] public signal void toggle_search_mode ();
 
-        [GtkChild]
-        private SearchEntry search_entry;
-
-        [GtkChild]
-        private Stack title_stack;
-
-        public Gtk.Stack stack { get; set; }
-        public bool is_narrow_mode { get; set; }
-        public bool search_mode { get; set; }
-
-        construct {
-            bind_property ("stack", view_switcher_title, "stack",
-                BindingFlags.BIDIRECTIONAL);
-            bind_property ("search-mode", search_button, "active",
-                BindingFlags.BIDIRECTIONAL);
-
-            view_switcher_title.bind_property ("title-visible", this,
-                "is-narrow-mode", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
-
-            var app = (App) GLib.Application.get_default ();
+    public bool handle_event (Gdk.EventKey event) {
+        if (this.search_mode) {
+            return Gdk.EVENT_PROPAGATE;
         }
 
-        [Signal (action = true)]
-        public signal void toggle_menu ();
-
-        [Signal (action = true)]
-        public signal void toggle_search_mode ();
-
-        public bool handle_event (EventKey event) {
-            if (search_mode) {
-                return EVENT_PROPAGATE;
-            }
-
-            var handled = search_entry.handle_event (event);
-            if (handled == EVENT_STOP) {
-                search_mode = true;
-            }
-
-            return handled;
+        var handled = this._search_entry.handle_event (event);
+        if (handled == Gdk.EVENT_STOP) {
+            this.search_mode = true;
         }
 
-        [GtkCallback]
-        private void on_search_mode_toggled () {
-            search_mode = !search_mode;
-        }
+        return handled;
+    }
 
-        [GtkCallback]
-        private void on_menu_toggled () {
-            menu_button.active = !menu_button.active;
-        }
+    [GtkCallback]
+    private void on_search_mode_toggled () {
+        this.search_mode = !this.search_mode;
+    }
 
-        [GtkCallback]
-        private void on_search_mode_changed () {
-            if (search_mode) {
-                title_stack.visible_child_name = "search";
-                search_entry.grab_focus_without_selecting ();
-                search_entry.move_cursor (MovementStep.LOGICAL_POSITIONS, int.MAX,
-                    false);
-            } else {
-                title_stack.visible_child_name = "tabs";
-                search_entry.text = "";
-            }
-        }
+    [GtkCallback]
+    private void on_menu_toggled () {
+        this._menu_button.active = !this._menu_button.active;
+    }
 
-        [GtkCallback]
-        private void on_search_entry_stop_search () {
-            search_mode = false;
+    [GtkCallback]
+    private void on_search_mode_changed () {
+        if (this.search_mode) {
+            this._title_stack.visible_child_name = "search";
+            this._search_entry.grab_focus_without_selecting ();
+            this._search_entry.move_cursor (Gtk.MovementStep.LOGICAL_POSITIONS, int.MAX, false);
+        } else {
+            this._title_stack.visible_child_name = "tabs";
+            this._search_entry.text = "";
         }
+    }
+
+    [GtkCallback]
+    private void on_search_entry_stop_search () {
+        this.search_mode = false;
     }
 }

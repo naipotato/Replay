@@ -15,134 +15,129 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gee;
+public class Replay.Utils.GenericListModel<T> : Gee.AbstractList<T>, ListModel {
 
-namespace Replay.Utils {
+    private Gee.List<T> _data;
 
-    public class GenericListModel<T> : AbstractList<T>, ListModel {
+    public override bool read_only {
+        get {
+            return this._data.read_only;
+        }
+    }
 
-        private Gee.List<T> _data;
+    public override int size {
+        get {
+            return this._data.size;
+        }
+    }
 
-        public override bool read_only {
-            get {
-                return _data.read_only;
+    public GenericListModel () {
+        this._data = new Gee.ArrayList<T> ();
+    }
+
+    public GenericListModel.from_list (Gee.List<T> data) {
+        this._data = data;
+    }
+
+    public override bool add (T item) {
+        var added = this._data.add (item);
+
+        if (added) {
+            this.items_changed (this.index_of (item), 0, 1);
+        }
+
+        return added;
+    }
+
+    public bool add_all (Gee.Collection<T> collection) {
+        foreach (var item in collection) {
+            if (!this.add (item)) {
+                return false;
             }
         }
 
-        public override int size {
-            get {
-                return _data.size;
-            }
+        return true;
+    }
+
+    public override void clear () {
+        this._data.clear ();
+        items_changed (0, this._data.size, 0);
+    }
+
+    public override bool contains (T item) {
+        return item in this._data;
+    }
+
+    public override T @get (int index)
+        requires (index >= 0)
+        requires (index < this._data.size)
+    {
+        return this._data[index];
+    }
+
+    public Object? get_item (uint position)
+        requires (position >= 0)
+        requires (position < this._data.size)
+    {
+        return this._data[(int) position] as Object;
+    }
+
+    public Type get_item_type () {
+        return typeof (T);
+    }
+
+    public uint get_n_items () {
+        return this._data.size;
+    }
+
+    public override int index_of (T item) {
+        return this._data.index_of (item);
+    }
+
+    public override void insert (int index, T item)
+        requires (index >= 0)
+        requires (index < this._data.size)
+    {
+        this._data.insert (index, item);
+        this.items_changed (index, 0, 1);
+    }
+
+    public override Gee.Iterator<T> iterator () {
+        return this._data.iterator ();
+    }
+
+    public override Gee.ListIterator<T> list_iterator () {
+        return this._data.list_iterator ();
+    }
+
+    public override bool remove (T item) {
+        var removed = this._data.remove (item);
+
+        if (removed) {
+            this.items_changed (this._data.index_of (item), 1, 0);
         }
 
-        public GenericListModel () {
-            _data = new ArrayList<T> ();
-        }
+        return removed;
+    }
 
-        public GenericListModel.from_list (Gee.List<T> data) {
-            _data = data;
-        }
+    public override T remove_at (int index)
+        requires (index >= 0)
+        requires (index < this._data.size)
+    {
+        var item_removed = this._data.remove_at (index);
+        this.items_changed (index, 1, 0);
+        return item_removed;
+    }
 
-        public override bool add (T item) {
-            var added = _data.add (item);
+    public override void @set (int index, T item)
+        requires (index >= 0)
+        requires (index < this._data.size)
+    {
+        this._data[index] = item;
+        this.items_changed (index, 1, 1);
+    }
 
-            if (added) {
-                items_changed (_data.index_of (item), 0, 1);
-            }
-
-            return added;
-        }
-
-        public bool add_all (Collection<T> collection) {
-            foreach (var item in collection) {
-                if (!this.add (item)) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public override void clear () {
-            _data.clear ();
-            items_changed (0, _data.size, 0);
-        }
-
-        public override bool contains (T item) {
-            return item in _data;
-        }
-
-        public override T @get (int index)
-            requires (index >= 0)
-            requires (index < _data.size)
-        {
-            return _data[index];
-        }
-
-        public Object? get_item (uint position)
-            requires (position >= 0)
-            requires (position < _data.size)
-        {
-            return _data[(int) position] as Object;
-        }
-
-        public Type get_item_type () {
-            return typeof (T);
-        }
-
-        public uint get_n_items () {
-            return _data.size;
-        }
-
-        public override int index_of (T item) {
-            return _data.index_of (item);
-        }
-
-        public override void insert (int index, T item)
-            requires (index >= 0)
-            requires (index < _data.size)
-        {
-            _data.insert (index, item);
-            items_changed (index, 0, 1);
-        }
-
-        public override Iterator<T> iterator () {
-            return _data.iterator ();
-        }
-
-        public override ListIterator<T> list_iterator () {
-            return _data.list_iterator ();
-        }
-
-        public override bool remove (T item) {
-            var removed = _data.remove (item);
-
-            if (removed) {
-                items_changed (_data.index_of (item), 1, 0);
-            }
-
-            return removed;
-        }
-
-        public override T remove_at (int index)
-            requires (index >= 0)
-            requires (index < _data.size)
-        {
-            var item_removed = _data.remove_at (index);
-            items_changed (index, 1, 0);
-            return item_removed;
-        }
-
-        public override void @set (int index, T item)
-            requires (index >= 0)
-            requires (index < _data.size)
-        {
-            _data[index] = item;
-            items_changed (index, 1, 1);
-        }
-
-        public override Gee.List<T>? slice (int start, int stop) {
-            return _data[start:stop];
-        }
+    public override Gee.List<T>? slice (int start, int stop) {
+        return this._data[start:stop];
     }
 }

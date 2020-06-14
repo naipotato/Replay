@@ -15,31 +15,20 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Hdy;
-using Gtk;
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/preferences-window.ui")]
+class Replay.PreferencesWindow : Hdy.PreferencesWindow {
 
-namespace Replay {
+    [GtkChild] private Hdy.ActionRow _switch_row;
+    [GtkChild] private Gtk.Switch _toggle;
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/preferences-window.ui")]
-    public class PreferencesWindow : Hdy.PreferencesWindow {
+    construct {
+        this._switch_row.activatable_widget = this._toggle;
+        this.icon_name = Constants.APPLICATION_ID;
 
-        [GtkChild]
-        private ActionRow switch_row;
-
-        [GtkChild]
-        private Switch toggle;
-
-        construct {
-            this.switch_row.activatable_widget = this.toggle;
-
-            var settings = SettingsService.get_default ();
-
-            this.icon_name = APPLICATION_ID;
-
-            settings.appearance.bind_property ("dark-theme", this.toggle, "active",
-                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
-            settings.appearance.bind_property ("use-system-theme", this.switch_row,
-                "sensitive", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
-        }
+        var settings = SettingsService.get_default ();
+        settings.appearance.bind_property ("dark-theme", this._toggle, "active",
+            BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
+        settings.appearance.bind_property ("use-system-theme", this._switch_row, "sensitive",
+            BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
     }
 }

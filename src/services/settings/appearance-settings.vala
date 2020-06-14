@@ -15,34 +15,30 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Replay {
+class Replay.AppearanceSettings : Object {
 
-    public class AppearanceSettings : Object {
+    private bool _dark_theme;
 
-        private bool _dark_theme;
+    public bool use_system_theme { get; set; }
 
-        public bool use_system_theme { get; set; }
-
-        public bool dark_theme {
-            get {
-                return this._dark_theme;
-            }
-            set {
-                var gtk_settings = Gtk.Settings.get_default ();
-                gtk_settings.gtk_application_prefer_dark_theme = _dark_theme = value;
-            }
+    public bool dark_theme {
+        get {
+            return this._dark_theme;
         }
-
-        public AppearanceSettings (string schema) {
+        set {
             var gtk_settings = Gtk.Settings.get_default ();
-            var settings = new Settings (schema);
+            gtk_settings.gtk_application_prefer_dark_theme = _dark_theme = value;
+        }
+    }
 
-            if (gtk_settings.gtk_application_prefer_dark_theme) {
-                this.use_system_theme = true;
-            }
+    public AppearanceSettings (string schema) {
+        var gtk_settings = Gtk.Settings.get_default ();
+        var settings = new Settings (schema);
 
-            settings.bind ("dark-theme", this, "dark-theme",
-                SettingsBindFlags.DEFAULT);
+        if (gtk_settings.gtk_application_prefer_dark_theme) {
+            this.use_system_theme = true;
+
+            settings.bind ("dark-theme", this, "dark-theme", SettingsBindFlags.DEFAULT);
         }
     }
 }

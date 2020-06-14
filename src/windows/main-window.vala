@@ -15,53 +15,39 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gdk;
-using Hdy;
-using Gtk;
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-window.ui")]
+class Replay.MainWindow : Hdy.ApplicationWindow {
 
-namespace Replay {
+    [GtkChild] private MainHeaderBar _headerbar;
+    [GtkChild] private TrendingView _trending_view;
+    [GtkChild] private SubscriptionsView _subs_view;
+    [GtkChild] private LibraryView _library_view;
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-window.ui")]
-    public class MainWindow : Hdy.ApplicationWindow {
+    public MainWindow (App app) {
+        Object (
+            application: app
+        );
 
-        [GtkChild]
-        private MainHeaderBar headerbar;
-
-        [GtkChild]
-        private TrendingView trending_view;
-
-        [GtkChild]
-        private SubscriptionsView subs_view;
-
-        [GtkChild]
-        private LibraryView library_view;
-
-        public MainWindow (App app) {
-            Object (
-                application: app
-            );
-
-            var close_action = new SimpleAction ("close", null);
-            close_action.activate.connect (this.close);
-            app.set_accels_for_action ("win.close", {"<Primary>W"});
-            this.add_action (close_action);
+        var close_action = new SimpleAction ("close", null);
+        close_action.activate.connect (this.close);
+        app.set_accels_for_action ("win.close", { "<Primary>W" });
+        this.add_action (close_action);
 
 #if DEVEL
-            var style_context = this.get_style_context ();
-            style_context.add_class ("devel");
+        var style_context = this.get_style_context ();
+        style_context.add_class ("devel");
 
-            var builder = new Builder.from_resource (@"$RESOURCE_PATH/gtk/help-overlay.ui");
-            var help_overlay = (ShortcutsWindow) builder.get_object ("help_overlay");
-            this.set_help_overlay (help_overlay);
+        var builder = new Gtk.Builder.from_resource (@"$(Constants.RESOURCE_PATH)/gtk/help-overlay.ui");
+        var help_overlay = (Gtk.ShortcutsWindow) builder.get_object ("help_overlay");
+        this.set_help_overlay (help_overlay);
 
-            string[] accels = {"<Primary>F1", "<Primary>question"};
-            app.set_accels_for_action ("win.show-help-overlay", accels);
+        string[] accels = { "<Primary>F1", "<Primary>question" };
+        app.set_accels_for_action ("win.show-help-overlay", accels);
 #endif
-        }
+    }
 
-        [GtkCallback]
-        private bool on_key_press_event (EventKey event) {
-            return headerbar.handle_event (event);
-        }
+    [GtkCallback]
+    private bool on_key_press_event (Gdk.EventKey event) {
+        return this._headerbar.handle_event (event);
     }
 }

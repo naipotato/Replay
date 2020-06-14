@@ -35,7 +35,7 @@
         <property name="orientation">vertical</property>
 
         <child>
-          <object class="ReplayMainHeaderBar" id="headerbar">
+          <object class="ReplayMainHeaderBar" id="_headerbar">
 
             <property name="visible">True</property>
             <property name="stack">main-stack</property>
@@ -58,7 +58,7 @@
 
             <child>
 
-              <object class="ReplayTrendingView" id="trending_view">
+              <object class="ReplayTrendingView" id="_trending_view">
                 <property name="visible">True</property>
               </object>
 
@@ -72,7 +72,7 @@
 
             <child>
 
-              <object class="ReplaySubscriptionsView" id="subs_view">
+              <object class="ReplaySubscriptionsView" id="_subs_view">
                 <property name="visible">True</property>
               </object>
 
@@ -86,7 +86,7 @@
 
             <child>
 
-              <object class="ReplayLibraryView" id="library_view">
+              <object class="ReplayLibraryView" id="_library_view">
                 <property name="visible">True</property>
               </object>
 
@@ -106,7 +106,7 @@
         </child>
 
         <child>
-          <object class="HdyViewSwitcherBar" id="view_switcher_bar">
+          <object class="HdyViewSwitcherBar">
             <property name="visible">True</property>
             <property name="stack">main-stack</property>
             <property name="reveal" bind-source="headerbar" bind-property="is-narrow-mode" bind-flags="bidirectional"/>

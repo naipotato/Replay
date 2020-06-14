@@ -15,15 +15,10 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gtk;
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/library-view.ui")]
+class Replay.LibraryView : Gtk.Box {
 
-namespace Replay {
+    construct {
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/library-view.ui")]
-    public class LibraryView : Box {
-
-        construct {
-
-        }
     }
 }

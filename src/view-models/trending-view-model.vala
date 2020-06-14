@@ -15,57 +15,52 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Utlib;
-using Replay.Utils;
+class Replay.TrendingViewModel : Object {
 
-namespace Replay {
+    public enum State {
+        LOADING,
+        ERROR,
+        SUCCESS
+    }
 
-    public class TrendingViewModel : Object {
+    public State state { get; set; }
+    public Utils.GenericListModel<Utlib.Video> trending_videos { get; set;
+        default = new Utils.GenericListModel<Utlib.Video> (); }
 
-        public enum State {
-            LOADING,
-            ERROR,
-            SUCCESS
-        }
+    construct {
+        // Let's get for some trending videos ;)
+        this.load_trending_videos.begin ();
+    }
 
-        public State state { get; set; }
-        public GenericListModel<Video> trending_videos { get; set; default = new GenericListModel<Video> (); }
+    private async void load_trending_videos () {
+        // Create a new request
+        var request = App.client.videos.list ("snippet");
 
-        construct {
-            // Let's get for some trending videos ;)
-            load_trending_videos.begin ();
-        }
+        // Request for trending videos on US
+        // TODO: region_code should be attached to the user region
+        request.chart = "mostPopular";
+        request.region_code = "US";
+        request.max_results = "50";
 
-        private async void load_trending_videos () {
-            // Create a new request
-            var request = App.client.videos.list ("snippet");
+        try {
+            // This should show a nicer loading screen to the user
+            this.state = State.LOADING;
 
-            // Request for trending videos on US
-            // TODO: region_code should be attached to the user region
-            request.chart = "mostPopular";
-            request.region_code = "US";
-            request.max_results = "50";
+            // Try to execute the request
+            var response = yield request.execute_async ();
 
-            try {
-                // This should show a nicer loading screen to the user
-                this.state = State.LOADING;
+            // Once the response is received, fill the list with the videos
+            // received
+            this.trending_videos.add_all (response.items);
 
-                // Try to execute the request
-                var response = yield request.execute_async ();
+            // Hide the loading screen and show videos
+            this.state = State.SUCCESS;
+        } catch (Error e) {
+            // If there was any error, show an error message to the user
+            this.state = State.ERROR;
 
-                // Once the response is received, fill the list with the videos
-                // received
-                this.trending_videos.add_all (response.items);
-
-                // Hide the loading screen and show videos
-                this.state = State.SUCCESS;
-            } catch (Error e) {
-                // If there was any error, show an error message to the user
-                this.state = State.ERROR;
-
-                // Warn for the dev ;)
-                warning (e.message);
-            }
+            // Warn for the dev ;)
+            warning (e.message);
         }
     }
 }

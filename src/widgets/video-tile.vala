@@ -15,37 +15,26 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gtk;
-using Soup;
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/video-tile.ui")]
+class Replay.VideoTile : Gtk.Box {
 
-namespace Replay {
+    [GtkChild] private Gtk.Image _thumbnail;
 
-    [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/video-tile.ui")]
-    public class VideoTile : Gtk.Box {
+    public string thumbnail_url { get; set; }
+    public string title { get; set; }
+    public string channel_title { get; set; }
 
-        [GtkChild] private Image thumbnail;
+    construct {
+        this.notify["thumbnail-url"].connect (() => {
+            this.load_thumbnail.begin ();
+        });
+    }
 
-        public string thumbnail_url { get; set; }
-        public string title { get; set; }
-        public string channel_title { get; set; }
+    private async void load_thumbnail () {
+        var session = new Soup.Session ();
+        var message = new Soup.Message ("GET", this.thumbnail_url);
 
-        construct {
-            this.notify["thumbnail-url"].connect (() => {
-                load_thumbnail.begin ();
-            });
-        }
-
-        private async void load_thumbnail () {
-            if (thumbnail_url == null) {
-                message (@"$(this.title)");
-                return;
-            }
-
-            var session = new Session ();
-            var message = new Message ("GET", thumbnail_url);
-
-            var istream = yield session.send_async (message);
-            this.thumbnail.pixbuf = yield new Gdk.Pixbuf.from_stream_at_scale_async (istream, 360, 1000, true);
-        }
+        var istream = yield session.send_async (message);
+        this._thumbnail.pixbuf = yield new Gdk.Pixbuf.from_stream_async (istream);
     }
 }

@@ -20,7 +20,7 @@
   <template class="ReplayVideoTile" parent="GtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkImage" id="thumbnail">
+      <object class="GtkImage" id="_thumbnail">
         <property name="visible">True</property>
       </object>
     </child>

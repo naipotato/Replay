@@ -2,7 +2,7 @@
 
 const string constants_file =
 """
-namespace Replay {
+namespace Replay.Constants {
 
     [CCode (cname = "API_KEY")]
     public const string API_KEY = "%s";

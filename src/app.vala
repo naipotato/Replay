@@ -15,89 +15,81 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gdk;
-using Gtk;
-using GLib.Intl;
-using Utlib;
+class Replay.App : Gtk.Application {
 
-namespace Replay {
+    public static Utlib.Client client { get; private set; }
 
-    public class App : Gtk.Application {
+    static construct {
+        client = new Utlib.Client () {
+            api_key = Constants.API_KEY
+        };
+    }
 
-        public static Client client { get; private set; }
+    public App () {
+        Object (
+            application_id: Constants.APPLICATION_ID,
+            flags: ApplicationFlags.FLAGS_NONE
+        );
+    }
 
-        static construct {
-            App.client = new Client () {
-                api_key = API_KEY
-            };
-        }
+    private static int main (string[] args) {
+        Intl.setlocale (LocaleCategory.ALL);
+        Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
+        Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (Constants.GETTEXT_PACKAGE);
 
-        public App () {
-            Object (
-                application_id: APPLICATION_ID,
-                flags: ApplicationFlags.FLAGS_NONE
-            );
-        }
+        var app = new App ();
+        return app.run (args);
+    }
 
-        private static int main (string[] args) {
-            setlocale (LocaleCategory.ALL);
-            bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-            bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-            textdomain (GETTEXT_PACKAGE);
+    protected override void startup () {
+        base.startup ();
 
-            var app = new Replay.App ();
-            return app.run (args);
-        }
+        Gtk.Window.set_default_icon_name (Constants.APPLICATION_ID);
 
-        protected override void startup () {
-            base.startup ();
+        this.populate_actions ();
 
-            Gtk.Window.set_default_icon_name (APPLICATION_ID);
-
-            this.populate_actions ();
-
-            SettingsService.get_default ();
-            StylingService.init ();
+        SettingsService.get_default ();
+        StylingService.init ();
 
 #if DEVEL
-            IconTheme.get_default ().add_resource_path (@"$RESOURCE_PATH/icons");
+        Gtk.IconTheme.get_default ().add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
-        }
+    }
 
-        protected override void activate () {
-            var win = this.active_window ?? new MainWindow (this);
-            win.present ();
-        }
+    protected override void activate () {
+        var win = this.active_window ?? new MainWindow (this);
+        win.present ();
+    }
 
-        private void populate_actions () {
-            var action = new SimpleAction ("preferences", null);
-            action.activate.connect (on_preferences_activate);
-            this.add_action (action);
+    private void populate_actions () {
+        var action = new SimpleAction ("preferences", null);
+        action.activate.connect (this.on_preferences_activate);
+        this.add_action (action);
 
-            action = new SimpleAction ("about", null);
-            action.activate.connect (on_about_activate);
-            this.add_action (action);
+        action = new SimpleAction ("about", null);
+        action.activate.connect (this.on_about_activate);
+        this.add_action (action);
 
-            action = new SimpleAction ("quit", null);
-            action.activate.connect (this.quit);
-            this.set_accels_for_action ("app.quit", {"<Primary>Q"});
-            this.add_action (action);
-        }
+        action = new SimpleAction ("quit", null);
+        action.activate.connect (this.quit);
+        this.set_accels_for_action ("app.quit", { "<Primary>Q" });
+        this.add_action (action);
+    }
 
-        private void on_preferences_activate () {
-            var preferences_window = new PreferencesWindow () {
-                transient_for = this.active_window
-            };
+    private void on_preferences_activate () {
+        var preferences_window = new PreferencesWindow () {
+            transient_for = this.active_window
+        };
 
-            preferences_window.present ();
-        }
+        preferences_window.present ();
+    }
 
-        private void on_about_activate () {
-            var about_dialog = new Replay.AboutDialog () {
-                transient_for = this.active_window
-            };
+    private void on_about_activate () {
+        var about_dialog = new AboutDialog () {
+            transient_for = this.active_window
+        };
 
-            about_dialog.present ();
-        }
+        about_dialog.present ();
     }
 }
