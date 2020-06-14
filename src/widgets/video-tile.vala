@@ -34,7 +34,12 @@ class Replay.VideoTile : Gtk.Box {
         var session = new Soup.Session ();
         var message = new Soup.Message ("GET", this.thumbnail_url);
 
-        var istream = yield session.send_async (message);
-        this._thumbnail.pixbuf = yield new Gdk.Pixbuf.from_stream_async (istream);
+        try {
+            var istream = yield session.send_async (message);
+            this._thumbnail.pixbuf = yield new Gdk.Pixbuf.from_stream_async (istream);
+        } catch (Error e) {
+            this._thumbnail.icon_name = "image-missing";
+            warning (e.message);
+        }
     }
 }
