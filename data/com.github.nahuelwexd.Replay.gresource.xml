@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <gresources>
   <gresource prefix="/com/github/nahuelwexd/Replay">
-    <file>gtk/about-dialog.ui</file>
-    <file>gtk/help-overlay.ui</file>
-    <file>gtk/library-view.ui</file>
-    <file>gtk/main-header-bar.ui</file>
-    <file>gtk/main-window.ui</file>
-    <file>gtk/preferences-window.ui</file>
-    <file>gtk/subscriptions-view.ui</file>
-    <file>gtk/trending-view.ui</file>
-    <file>gtk/video-tile.ui</file>
-    <file>icons/computer-fail-symbolic.svg</file>
-    <file>icons/fire-symbolic.svg</file>
-    <file>icons/load-failed-symbolic.svg</file>
-    <file>icons/settings-appearance-symbolic.svg</file>
-    <file>icons/subscriptions-symbolic.svg</file>
-    <file>icons/video-library-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">gtk/about-dialog.ui</file>
+    <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+    <file preprocess="xml-stripblanks">gtk/library-view.ui</file>
+    <file preprocess="xml-stripblanks">gtk/main-header-bar.ui</file>
+    <file preprocess="xml-stripblanks">gtk/main-window.ui</file>
+    <file preprocess="xml-stripblanks">gtk/preferences-window.ui</file>
+    <file preprocess="xml-stripblanks">gtk/subscriptions-view.ui</file>
+    <file preprocess="xml-stripblanks">gtk/trending-view.ui</file>
+    <file preprocess="xml-stripblanks">gtk/video-tile.ui</file>
+    <file preprocess="xml-stripblanks">icons/computer-fail-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/fire-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/load-failed-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/settings-appearance-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/subscriptions-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/video-library-symbolic.svg</file>
     <file>styles.css</file>
     <file>styles-dark.css</file>
   </gresource>
