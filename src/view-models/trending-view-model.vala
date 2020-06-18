@@ -17,13 +17,7 @@
 
 class Replay.TrendingViewModel : Object {
 
-    public enum State {
-        LOADING,
-        ERROR,
-        SUCCESS
-    }
-
-    public State state { get; set; }
+    public Replay.ViewModelState state { get; set; }
     public Utils.GenericListModel<Utlib.Video> trending_videos { get; set;
         default = new Utils.GenericListModel<Utlib.Video> (); }
 
@@ -44,7 +38,7 @@ class Replay.TrendingViewModel : Object {
 
         try {
             // This should show a nicer loading screen to the user
-            this.state = State.LOADING;
+            this.state = Replay.ViewModelState.LOADING;
 
             // Try to execute the request
             var response = yield request.execute_async ();
@@ -54,10 +48,10 @@ class Replay.TrendingViewModel : Object {
             this.trending_videos.add_all (response.items);
 
             // Hide the loading screen and show videos
-            this.state = State.SUCCESS;
+            this.state = Replay.ViewModelState.SUCCESS;
         } catch (Error e) {
             // If there was any error, show an error message to the user
-            this.state = State.ERROR;
+            this.state = Replay.ViewModelState.ERROR;
 
             // Warn for the dev ;)
             warning (e.message);

@@ -32,13 +32,13 @@ class Replay.TrendingView : Gtk.Bin {
 
     private void on_view_model_state_changed () {
         switch (this._view_model.state) {
-            case TrendingViewModel.State.LOADING:
+            case Replay.ViewModelState.LOADING:
                 this._stack.visible_child_name = "loading";
                 break;
-            case TrendingViewModel.State.ERROR:
+            case Replay.ViewModelState.ERROR:
                 this._stack.visible_child_name = "error";
                 break;
-            case TrendingViewModel.State.SUCCESS:
+            case Replay.ViewModelState.SUCCESS:
                 this._stack.visible_child_name = "videos";
                 break;
             default:
