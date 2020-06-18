@@ -17,17 +17,17 @@
 
 class Replay.SettingsService : Object {
 
-    private static Once<SettingsService> _instance;
+    private static Once<Replay.SettingsService> _instance;
 
-    public AppearanceSettings appearance { get; private set; }
+    public Replay.AppearanceSettings appearance { get; private set; }
 
     private SettingsService () {
-        this.appearance = new AppearanceSettings (@"$(Constants.RDNN_APP_NAME).appearance");
+        this.appearance = new Replay.AppearanceSettings (@"$(Constants.RDNN_APP_NAME).appearance");
     }
 
-    public static unowned SettingsService get_default () {
+    public static unowned Replay.SettingsService get_default () {
         return _instance.once (() => {
-            return new SettingsService ();
+            return new Replay.SettingsService ();
         });
     }
 }

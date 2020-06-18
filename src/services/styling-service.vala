@@ -17,7 +17,7 @@
 
 class Replay.StylingService : Object {
 
-    private static Once<StylingService> _instance;
+    private static Once<Replay.StylingService> _instance;
 
     private Gtk.CssProvider _dark_css;
     private Gtk.CssProvider _light_css;

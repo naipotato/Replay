@@ -25,7 +25,7 @@ class Replay.PreferencesWindow : Hdy.PreferencesWindow {
         this._switch_row.activatable_widget = this._toggle;
         this.icon_name = Constants.APPLICATION_ID;
 
-        var settings = SettingsService.get_default ();
+        var settings = Replay.SettingsService.get_default ();
         settings.appearance.bind_property ("dark-theme", this._toggle, "active",
             BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
         settings.appearance.bind_property ("use-system-theme", this._switch_row, "sensitive",

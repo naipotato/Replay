@@ -17,7 +17,7 @@
 
 public class Utlib.ParametersService : Object {
 
-    private Gee.Map<string, Utlib.Parameter> parameters;
+    private Gee.Map<string, Utlib.Parameter> _parameters;
 
     public Request request { get; construct; }
 
@@ -28,21 +28,21 @@ public class Utlib.ParametersService : Object {
     }
 
     construct {
-        this.parameters = new Gee.HashMap<string, Utlib.Parameter> ();
+        this._parameters = new Gee.HashMap<string, Utlib.Parameter> ();
     }
 
     public new Utlib.Parameter @get (string prop_name) {
-        return this.parameters[prop_name];
+        return this._parameters[prop_name];
     }
 
     public new void @set (string prop_name, Utlib.Parameter param) {
-        this.parameters[prop_name] = param;
+        this._parameters[prop_name] = param;
     }
 
     public string? parse_parameters () throws Utlib.ParserError {
         var parsed_parameters = new Gee.ArrayList<string> ();
 
-        foreach (var item in this.parameters.entries) {
+        foreach (var item in this._parameters.entries) {
             var parsed_parameter = this.parse_parameter (item.key, item.value);
             if (parsed_parameter == null) {
                 debug (@"$(item.value.name) not parsed");

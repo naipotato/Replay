@@ -38,7 +38,7 @@ class Replay.App : Gtk.Application {
         Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (Constants.GETTEXT_PACKAGE);
 
-        var app = new App ();
+        var app = new Replay.App ();
         return app.run (args);
     }
 
@@ -49,8 +49,8 @@ class Replay.App : Gtk.Application {
 
         this.populate_actions ();
 
-        SettingsService.get_default ();
-        StylingService.init ();
+        Replay.SettingsService.get_default ();
+        Replay.StylingService.init ();
 
 #if DEVEL
         Gtk.IconTheme.get_default ().add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
@@ -78,7 +78,7 @@ class Replay.App : Gtk.Application {
     }
 
     private void on_preferences_activate () {
-        var preferences_window = new PreferencesWindow () {
+        var preferences_window = new Replay.PreferencesWindow () {
             transient_for = this.active_window
         };
 
@@ -86,7 +86,7 @@ class Replay.App : Gtk.Application {
     }
 
     private void on_about_activate () {
-        var about_dialog = new AboutDialog () {
+        var about_dialog = new Replay.AboutDialog () {
             transient_for = this.active_window
         };
 
