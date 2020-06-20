@@ -3,7 +3,7 @@
   "runtime" : "org.gnome.Platform",
   "runtime-version" : "3.36",
   "sdk" : "org.gnome.Sdk",
-  "command" : "replay",
+  "command" : "com.github.nahuelwexd.Replay",
   "finish-args" : [
     "--socket=fallback-x11",
     "--socket=wayland",
