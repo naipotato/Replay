@@ -73,6 +73,12 @@ public class Utlib.ParametersService : Object {
                 debug (@"$prop_name is string");
                 this.request.@get (prop_name, out param_value);
                 break;
+            case Type.INT:
+                debug (@"$prop_name is int");
+                int @value;
+                this.request.@get (prop_name, out @value);
+                param_value = @value != -1 ? @"$(@value)" : null;
+                break;
             default:
                 break;
         }
