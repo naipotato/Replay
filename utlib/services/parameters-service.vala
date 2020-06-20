@@ -71,11 +71,7 @@ public class Utlib.ParametersService : Object {
         switch (spec.value_type) {
             case Type.STRING:
                 debug (@"$prop_name is string");
-
-                Value val = Value (spec.value_type);
-                this.request.get_property (prop_name, ref val);
-
-                param_value = val.get_string ();
+                this.request.@get (prop_name, out param_value);
                 break;
             default:
                 break;
