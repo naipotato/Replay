@@ -20,13 +20,13 @@ public abstract class Utlib.Request<T> : Object {
     public Utlib.Client client { get; construct; }
     protected Utlib.ParametersService params_service { get; set; }
 
-    public string access_token { get; set; }
-    public string callback { get; set; }
-    public string fields { get; set; }
-    public string key { get; set; }
-    public string pretty_print { get; set; }
-    public string quota_user { get; set; }
-    public string user_ip { get; set; }
+    public string? access_token { get; set; }
+    public string? callback { get; set; }
+    public string? fields { get; set; }
+    public string? key { get; set; }
+    public string? pretty_print { get; set; default = "true"; }
+    public string? quota_user { get; set; }
+    public string? user_ip { get; set; }
 
     protected abstract string url { get; }
 
@@ -126,40 +126,12 @@ public abstract class Utlib.Request<T> : Object {
             params_service = new Utlib.ParametersService (this);
         }
 
-        this.params_service["access-token"] = new Utlib.Parameter () {
-            name = "access_token",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["callback"] = new Utlib.Parameter () {
-            name = "callback",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["fields"] = new Utlib.Parameter () {
-            name = "fields",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["key"] = new Utlib.Parameter () {
-            name = "key",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["pretty-print"] = new Utlib.Parameter () {
-            name = "prettyPrint",
-            is_required = false,
-            default_value = "true"
-        };
-        this.params_service["quota-user"] = new Utlib.Parameter () {
-            name = "quotaUser",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["user-ip"] = new Utlib.Parameter () {
-            name = "userIp",
-            is_required = false,
-            default_value = ""
-        };
+        this.params_service["access-token"] = new Utlib.Parameter ("access_token");
+        this.params_service["callback"] = new Utlib.Parameter ("callback");
+        this.params_service["fields"] = new Utlib.Parameter ("fields");
+        this.params_service["key"] = new Utlib.Parameter ("key");
+        this.params_service["pretty-print"] = new Utlib.Parameter ("prettyPrint");
+        this.params_service["quota-user"] = new Utlib.Parameter ("quotaUser");
+        this.params_service["user-ip"] = new Utlib.Parameter ("userIp");
     }
 }

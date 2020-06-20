@@ -17,7 +17,13 @@
 
 public class Utlib.Parameter : Object {
 
-    public string name { get; set; }
-    public bool is_required { get; set; }
-    public string default_value { get; set; }
+    public string name { get; construct; }
+    public bool is_required { get; construct; }
+
+    public Parameter (string name, bool is_required = false) {
+        Object (
+            name: name,
+            is_required: is_required
+        );
+    }
 }

@@ -66,39 +66,27 @@ public class Utlib.ParametersService : Object {
             );
         }
 
-        string param_value = "";
+        string? param_value = null;
 
         switch (spec.value_type) {
             case Type.STRING:
                 debug (@"$prop_name is string");
 
-                Value? val = Value (spec.value_type);
+                Value val = Value (spec.value_type);
                 this.request.get_property (prop_name, ref val);
 
                 param_value = val.get_string ();
-
-                if (param_value == null) {
-                    debug (@"$prop_name is string");
-                    param_value = "";
-                }
-
                 break;
             default:
                 break;
         }
 
-        if (param.is_required && param_value == "") {
-            debug (@"$(param.name) is required and is not setted");
-
-            if (param.default_value == "") {
-                throw new Utlib.ParserError.REQUIRED_PARAM_NOT_SET (
-                    @"$(param.name) is required but it is not setted and has no default value"
-                );
-            } else {
-                param_value = param.default_value;
-            }
+        if (param.is_required && param_value == null) {
+            throw new Utlib.ParserError.REQUIRED_PARAM_NOT_SET (
+                @"$(param.name) is required but it is not setted and has no default value"
+            );
         }
 
-        return param_value == "" ? null : @"$(param.name)=$param_value";
+        return param_value == null ? null : @"$(param.name)=$param_value";
     }
 }

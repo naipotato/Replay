@@ -17,18 +17,18 @@
 
 public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
 
-    public string part { get; private set; }
-    public string chart { get; set; }
-    public string id { get; set; }
-    public string my_rating { get; set; }
-    public string hl { get; set; }
-    public uint max_height { get; set; }
-    public string max_results { get; set; }
-    public uint max_width { get; set; }
-    public string on_behalf_of_content_owner { get; set; }
-    public string page_token { get; set; }
-    public string region_code { get; set; }
-    public string video_category_id { get; set; }
+    public string? part { get; private set; }
+    public string? chart { get; set; }
+    public string? id { get; set; }
+    public string? my_rating { get; set; }
+    public string? hl { get; set; }
+    public string? max_height { get; set; }
+    public string? max_results { get; set; default = "5"; }
+    public string? max_width { get; set; }
+    public string? on_behalf_of_content_owner { get; set; }
+    public string? page_token { get; set; }
+    public string? region_code { get; set; }
+    public string? video_category_id { get; set; default = "0"; }
 
     public override string url {
         get {
@@ -46,65 +46,17 @@ public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
     protected override void init_parameters () {
         base.init_parameters ();
 
-        this.params_service["part"] = new Utlib.Parameter () {
-            name = "part",
-            is_required = true,
-            default_value = ""
-        };
-        this.params_service["chart"] = new Utlib.Parameter () {
-            name = "chart",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["id"] = new Utlib.Parameter () {
-            name = "id",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["my-rating"] = new Utlib.Parameter () {
-            name = "myRating",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["hl"] = new Utlib.Parameter () {
-            name = "hl",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["max-height"] = new Utlib.Parameter () {
-            name = "maxHeight",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["max-results"] = new Utlib.Parameter () {
-            name = "maxResults",
-            is_required = false,
-            default_value = "5"
-        };
-        this.params_service["max-width"] = new Utlib.Parameter () {
-            name = "maxWidth",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["on-behalf-of-content-owner"] = new Utlib.Parameter () {
-            name = "onBehalfOfContentOwner",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["page-token"] = new Utlib.Parameter () {
-            name = "pageToken",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["region-code"] = new Utlib.Parameter () {
-            name = "regionCode",
-            is_required = false,
-            default_value = ""
-        };
-        this.params_service["video-category-id"] = new Utlib.Parameter () {
-            name = "videoCategoryId",
-            is_required = false,
-            default_value = "0"
-        };
+        this.params_service["part"] = new Utlib.Parameter ("part", true);
+        this.params_service["chart"] = new Utlib.Parameter ("chart");
+        this.params_service["id"] = new Utlib.Parameter ("id");
+        this.params_service["my-rating"] = new Utlib.Parameter ("myRating");
+        this.params_service["hl"] = new Utlib.Parameter ("hl");
+        this.params_service["max-height"] = new Utlib.Parameter ("maxHeight");
+        this.params_service["max-results"] = new Utlib.Parameter ("maxResults");
+        this.params_service["max-width"] = new Utlib.Parameter ("maxWidth");
+        this.params_service["on-behalf-of-content-owner"] = new Utlib.Parameter ("onBehalfOfContentOwner");
+        this.params_service["page-token"] = new Utlib.Parameter ("pageToken");
+        this.params_service["region-code"] = new Utlib.Parameter ("regionCode");
+        this.params_service["video-category-id"] = new Utlib.Parameter ("videoCategoryId");
     }
 }
