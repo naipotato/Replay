@@ -79,6 +79,12 @@ public class Utlib.ParametersService : Object {
                 this.request.@get (prop_name, out @value);
                 param_value = @value != -1 ? @"$(@value)" : null;
                 break;
+            case Type.BOOLEAN:
+                debug (@"$prop_name is boolean");
+                bool @value;
+                this.request.@get (prop_name, out @value);
+                param_value = @"$(@value)";
+                break;
             default:
                 break;
         }
