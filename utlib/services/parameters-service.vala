@@ -77,13 +77,13 @@ public class Utlib.ParametersService : Object {
                 debug (@"$prop_name is int");
                 int @value;
                 this.request.@get (prop_name, out @value);
-                param_value = @value != -1 ? @"$(@value)" : null;
+                param_value = should_ignore (spec, @value) ? null : @"$(@value)";
                 break;
             case Type.BOOLEAN:
                 debug (@"$prop_name is boolean");
                 bool @value;
                 this.request.@get (prop_name, out @value);
-                param_value = @"$(@value)";
+                param_value = should_ignore (spec, @value) ? null : @"$(@value)";
                 break;
             default:
                 break;
@@ -96,5 +96,17 @@ public class Utlib.ParametersService : Object {
         }
 
         return param_value == null ? null : @"$(param.name)=$param_value";
+    }
+
+    private bool should_ignore<T> (ParamSpec spec, T @value) {
+        Value val = spec.get_default_value ();
+
+        if (spec.value_type.is_a (Type.BOOLEAN)) {
+            return val.get_boolean () == (bool) @value;
+        } else if (spec.value_type.is_a (Type.INT)) {
+            return val.get_int () == (int) @value;
+        } else {
+            return false;
+        }
     }
 }
