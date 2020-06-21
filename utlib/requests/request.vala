@@ -24,7 +24,7 @@ public abstract class Utlib.Request<T> : Object {
     public string? callback { get; set; }
     public string? fields { get; set; }
     public string? key { get; set; }
-    public string? pretty_print { get; set; default = "true"; }
+    public bool pretty_print { get; set; default = true; }
     public string? quota_user { get; set; }
     public string? user_ip { get; set; }
 
