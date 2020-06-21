@@ -22,9 +22,9 @@ public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
     public string? id { get; set; }
     public string? my_rating { get; set; }
     public string? hl { get; set; }
-    public string? max_height { get; set; }
-    public string? max_results { get; set; default = "5"; }
-    public string? max_width { get; set; }
+    public int max_height { get; set; }
+    public int max_results { get; set; default = 5; }
+    public int max_width { get; set; }
     public string? on_behalf_of_content_owner { get; set; }
     public string? page_token { get; set; }
     public string? region_code { get; set; }

@@ -34,7 +34,7 @@ class Replay.TrendingViewModel : Object {
         // TODO: region_code should be attached to the user region
         request.chart = "mostPopular";
         request.region_code = "US";
-        request.max_results = "50";
+        request.max_results = 50;
 
         try {
             // This should show a nicer loading screen to the user
