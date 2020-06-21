@@ -17,5 +17,6 @@
 
 public errordomain Utlib.ParserError {
     PROPERTY_NOT_FOUND,
-    REQUIRED_PARAM_NOT_SET
+    REQUIRED_PARAM_NOT_SET,
+    TYPE_NOT_SUPPORTED;
 }
