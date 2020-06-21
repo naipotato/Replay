@@ -19,6 +19,8 @@ utlib_sources = files (
     'services/parameter.vala',
     'services/parameters-service.vala',
 
+    'utils/enum-utils.vala',
+
     'client.vala'
 )
 

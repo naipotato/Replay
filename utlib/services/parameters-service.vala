@@ -81,6 +81,12 @@ public class Utlib.ParametersService : Object {
         } else if (spec.value_type.is_a (Type.STRING)) {
             debug (@"$prop_name is a string");
             this.request.@get (prop_name, out param_value);
+        } else if (spec.value_type.is_enum ()) {
+            debug (@"$prop_name is an enum");
+            int @value;
+            this.request.@get (prop_name, out @value);
+            param_value = should_ignore (spec, @value) ? null :
+                EnumUtils.to_string (spec.value_type, @value);
         } else {
             throw new Utlib.ParserError.TYPE_NOT_SUPPORTED (
                 @"$prop_name is a $(spec.value_type.name ()) and it is not supported"
@@ -103,6 +109,8 @@ public class Utlib.ParametersService : Object {
             return val.get_boolean () == (bool) @value;
         } else if (spec.value_type.is_a (Type.INT)) {
             return val.get_int () == (int) @value;
+        } else if (spec.value_type.is_enum ()) {
+            return val.get_enum () == (int) @value;
         } else {
             return false;
         }
