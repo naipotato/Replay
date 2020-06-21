@@ -17,10 +17,18 @@
 
 public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
 
+    public enum ChartEnum {
+        UNSPECIFIED, MOST_POPULAR;
+    }
+
+    public enum MyRatingEnum {
+        NONE, DISLIKE, LIKE;
+    }
+
     public string? part { get; private set; }
-    public string? chart { get; set; }
+    public ChartEnum chart { get; set; }
     public string? id { get; set; }
-    public string? my_rating { get; set; }
+    public MyRatingEnum my_rating { get; set; }
     public string? hl { get; set; }
     public int max_height { get; set; }
     public int max_results { get; set; default = 5; }

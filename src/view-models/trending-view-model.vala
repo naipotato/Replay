@@ -32,7 +32,7 @@ class Replay.TrendingViewModel : Object {
 
         // Request for trending videos on US
         // TODO: region_code should be attached to the user region
-        request.chart = "mostPopular";
+        request.chart = Utlib.VideoListRequest.ChartEnum.MOST_POPULAR;
         request.region_code = "US";
         request.max_results = 50;
 
