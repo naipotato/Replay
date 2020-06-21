@@ -68,25 +68,23 @@ public class Utlib.ParametersService : Object {
 
         string? param_value = null;
 
-        switch (spec.value_type) {
-            case Type.STRING:
-                debug (@"$prop_name is string");
-                this.request.@get (prop_name, out param_value);
-                break;
-            case Type.INT:
-                debug (@"$prop_name is int");
-                int @value;
-                this.request.@get (prop_name, out @value);
-                param_value = should_ignore (spec, @value) ? null : @"$(@value)";
-                break;
-            case Type.BOOLEAN:
-                debug (@"$prop_name is boolean");
-                bool @value;
-                this.request.@get (prop_name, out @value);
-                param_value = should_ignore (spec, @value) ? null : @"$(@value)";
-                break;
-            default:
-                break;
+        if (spec.value_type.is_a (Type.BOOLEAN)) {
+            debug (@"$prop_name is a boolean");
+            bool @value;
+            this.request.@get (prop_name, out @value);
+            param_value = should_ignore (spec, @value) ? null : @value.to_string ();
+        } else if (spec.value_type.is_a (Type.INT)) {
+            debug (@"$prop_name is an integer");
+            int @value;
+            this.request.@get (prop_name, out @value);
+            param_value = should_ignore (spec, @value) ? null : @value.to_string ();
+        } else if (spec.value_type.is_a (Type.STRING)) {
+            debug (@"$prop_name is a string");
+            this.request.@get (prop_name, out param_value);
+        } else {
+            throw new Utlib.ParserError.TYPE_NOT_SUPPORTED (
+                @"$prop_name is a $(spec.value_type.name ()) and it is not supported"
+            );
         }
 
         if (param.is_required && param_value == null) {
