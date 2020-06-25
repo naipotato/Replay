@@ -18,6 +18,7 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/preferences-window.ui")]
 class Replay.PreferencesWindow : Hdy.PreferencesWindow {
 
+    private Replay.SettingsService _settings_service;
     [GtkChild] private Hdy.ActionRow _switch_row;
     [GtkChild] private Gtk.Switch _toggle;
 
@@ -25,10 +26,10 @@ class Replay.PreferencesWindow : Hdy.PreferencesWindow {
         this._switch_row.activatable_widget = this._toggle;
         this.icon_name = Constants.APPLICATION_ID;
 
-        var settings = Replay.SettingsService.get_default ();
-        settings.appearance.bind_property ("dark-theme", this._toggle, "active",
+        this._settings_service = new Replay.SettingsService ();
+        this._settings_service.appearance.bind_property ("dark-theme", this._toggle, "active",
             BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
-        settings.appearance.bind_property ("use-system-theme", this._switch_row, "sensitive",
+        this._settings_service.appearance.bind_property ("use-system-theme", this._switch_row, "sensitive",
             BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
     }
 }

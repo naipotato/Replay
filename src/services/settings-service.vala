@@ -15,19 +15,12 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+[SingleInstance]
 class Replay.SettingsService : Object {
-
-    private static Once<Replay.SettingsService> _instance;
 
     public Replay.AppearanceSettings appearance { get; private set; }
 
-    private SettingsService () {
+    construct {
         this.appearance = new Replay.AppearanceSettings (@"$(Constants.RDNN_APP_NAME).appearance");
-    }
-
-    public static unowned Replay.SettingsService get_default () {
-        return _instance.once (() => {
-            return new Replay.SettingsService ();
-        });
     }
 }

@@ -50,7 +50,7 @@ class Replay.App : Gtk.Application {
 
         this.populate_actions ();
 
-        Replay.SettingsService.get_default ();
+        new Replay.SettingsService ();
         Replay.StylingService.init ();
 
 #if DEVEL
