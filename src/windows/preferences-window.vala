@@ -23,7 +23,7 @@ class Replay.PreferencesWindow : Hdy.PreferencesWindow {
     [GtkChild] private Gtk.Switch _toggle;
 
     construct {
-        this._view_model = Replay.ViewModelLocator.get_default ().preferences;
+        this._view_model = new Replay.PreferencesViewModel ();
 
         this._switch_row.activatable_widget = this._toggle;
         this.icon_name = Constants.APPLICATION_ID;

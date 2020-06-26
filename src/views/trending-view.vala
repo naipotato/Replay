@@ -23,7 +23,7 @@ class Replay.TrendingView : Gtk.Bin {
     [GtkChild] private Gtk.FlowBox _videos_box;
 
     construct {
-        this._view_model = Replay.ViewModelLocator.get_default ().trending;
+        this._view_model = new Replay.TrendingViewModel ();
         this._view_model.notify["state"].connect (this.on_view_model_state_changed);
         this._view_model.notify_property ("state");
 
