@@ -25,9 +25,10 @@ jobs:
             https://flathub.org/repo/flathub.flatpakrepo
     - name: Build with Flatpak Builder
       run: |
-        ./build-aux/generate-replay-constants.vala "${{ secrets.API_KEY }}" src/constants.vala
+        ./build-aux/flatpak/generate-replay-constants.vala "${{ secrets.API_KEY }}" \
+            src/constants.vala
         flatpak-builder --user --repo=repo --install-deps-from=flathub flatpak_app \
-            build-aux/com.github.nahuelwexd.Replay.json
+            build-aux/flatpak/com.github.nahuelwexd.Replay.json
     - uses: actions/upload-artifact@v2
       with:
         name: repo

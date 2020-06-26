@@ -86,7 +86,7 @@ gjson_dep = dependency ('gjson-1.0')
 
 
 # Post install script
-meson.add_install_script ('build-aux/post-install.vala')
+meson.add_install_script ('build-aux/meson/post-install.vala')
 
 
 # Subfolders
