@@ -20,9 +20,11 @@ class Replay.ViewModelLocator {
     private static Once<ViewModelLocator> _instance;
 
     public TrendingViewModel trending { get; set; }
+    public PreferencesViewModel preferences { get; set; }
 
     private ViewModelLocator () {
         this.trending = new TrendingViewModel ();
+        this.preferences = new PreferencesViewModel ();
     }
 
     public static unowned ViewModelLocator get_default () {
