@@ -27,7 +27,7 @@ class Replay.PreferencesWindow : Hdy.PreferencesWindow {
         this.icon_name = Constants.APPLICATION_ID;
 
         this._settings_service = new Replay.SettingsService ();
-        this._settings_service.appearance.bind_property ("dark-theme", this._toggle, "active",
+        this._settings_service.bind_property ("dark-theme", this._toggle, "active",
             BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
     }
 }

@@ -18,9 +18,20 @@
 [SingleInstance]
 class Replay.SettingsService : Object {
 
-    public Replay.AppearanceSettings appearance { get; private set; }
+    private bool _dark_theme;
+
+    public bool dark_theme {
+        get {
+            return this._dark_theme;
+        }
+        set {
+            var gtk_settings = Gtk.Settings.get_default ();
+            gtk_settings.gtk_application_prefer_dark_theme = _dark_theme = value;
+        }
+    }
 
     construct {
-        this.appearance = new Replay.AppearanceSettings (@"$(Constants.RDNN_APP_NAME)");
+        var settings = new Settings (@"$(Constants.RDNN_APP_NAME)");
+        settings.bind ("dark-theme", this, "dark-theme", SettingsBindFlags.DEFAULT);
     }
 }
