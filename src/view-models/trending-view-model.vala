@@ -15,6 +15,10 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+enum Replay.ViewModelState {
+    LOADING, ERROR,SUCCESS;
+}
+
 [SingleInstance]
 class Replay.TrendingViewModel : Object {
 

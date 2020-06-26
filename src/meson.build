@@ -8,7 +8,6 @@ replay_sources = files (
 
     'view-models' / 'preferences-view-model.vala',
     'view-models' / 'trending-view-model.vala',
-    'view-models' / 'view-model-state.vala',
 
     'views' / 'library-view.vala',
     'views' / 'subscriptions-view.vala',
