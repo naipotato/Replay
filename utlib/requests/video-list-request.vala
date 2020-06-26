@@ -15,20 +15,20 @@
  * along with UTLib.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+public enum Utlib.ChartEnum {
+    UNSPECIFIED, MOST_POPULAR;
+}
+
+public enum Utlib.MyRatingEnum {
+    NONE, DISLIKE, LIKE;
+}
+
 public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
 
-    public enum ChartEnum {
-        UNSPECIFIED, MOST_POPULAR;
-    }
-
-    public enum MyRatingEnum {
-        NONE, DISLIKE, LIKE;
-    }
-
     public string? part { get; private set; }
-    public ChartEnum chart { get; set; }
+    public Utlib.ChartEnum chart { get; set; }
     public string? id { get; set; }
-    public MyRatingEnum my_rating { get; set; }
+    public Utlib.MyRatingEnum my_rating { get; set; }
     public string? hl { get; set; }
     public int max_height { get; set; }
     public int max_results { get; set; default = 5; }

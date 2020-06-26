@@ -16,7 +16,7 @@
  */
 
 enum ViewModelState {
-    LOADING, ERROR,SUCCESS;
+    LOADING, ERROR, SUCCESS;
 }
 
 [SingleInstance]
@@ -36,7 +36,7 @@ class TrendingViewModel : Object {
 
         // Request for trending videos on US
         // TODO: region_code should be attached to the user region
-        request.chart = Utlib.VideoListRequest.ChartEnum.MOST_POPULAR;
+        request.chart = Utlib.ChartEnum.MOST_POPULAR;
         request.region_code = "US";
         request.max_results = 50;
 

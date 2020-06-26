@@ -105,7 +105,7 @@ class VideoListTests {
             "/utlib/video/list/sync/most-popular-videos",
             () => {
                 var request = client.videos.list ("snippet");
-                request.chart = VideoListRequest.ChartEnum.MOST_POPULAR;
+                request.chart = ChartEnum.MOST_POPULAR;
                 request.region_code = "US";
 
                 try {
@@ -126,7 +126,7 @@ class VideoListTests {
             () => {
                 var loop = new MainLoop ();
                 var request = client.videos.list ("snippet");
-                request.chart = VideoListRequest.ChartEnum.MOST_POPULAR;
+                request.chart = ChartEnum.MOST_POPULAR;
                 request.region_code = "US";
 
                 request.execute_async.begin ((obj, res) => {
