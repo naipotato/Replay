@@ -15,24 +15,16 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-class Replay.PreferencesViewModel : Object {
+[SingleInstance]
+class Replay.ThemesService : Object {
 
-    private Replay.SettingsService _settings_service;
-    private bool _dark_theme;
-
-    public bool dark_theme {
-        get {
-            return this._dark_theme;
-        }
-        set {
-            new Replay.ThemesService ().update_theme (value);
-            this._dark_theme = value;
-        }
-    }
+    private Gtk.Settings _gtk_settings;
 
     construct {
-        this._settings_service = new Replay.SettingsService ();
-        this._settings_service.bind_property ("dark-theme", this, "dark-theme",
-            BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
+        this._gtk_settings = Gtk.Settings.get_default ();
+    }
+
+    public void update_theme (bool dark_theme) {
+        this._gtk_settings.gtk_application_prefer_dark_theme = dark_theme;
     }
 }

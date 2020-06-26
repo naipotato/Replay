@@ -3,6 +3,7 @@ replay_sources = files (
 
     'services' / 'settings-service.vala',
     'services' / 'styling-service.vala',
+    'services' / 'themes-service.vala',
 
     'utils' / 'generic-list-model.vala',
 
