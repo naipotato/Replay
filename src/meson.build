@@ -2,7 +2,6 @@ replay_sources = files (
     'dialogs' / 'about-dialog.vala',
 
     'services' / 'settings-service.vala',
-    'services' / 'styling-service.vala',
     'services' / 'themes-service.vala',
 
     'utils' / 'generic-list-model.vala',
