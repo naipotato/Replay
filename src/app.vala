@@ -50,6 +50,9 @@ class Replay.App : Gtk.Application {
 
         this.populate_actions ();
 
+        // Load theme from the user preferences
+        new Replay.ThemesService ().update_theme (new Replay.SettingsService ().dark_theme);
+
 #if DEVEL
         Gtk.IconTheme.get_default ().add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
