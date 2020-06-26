@@ -21,6 +21,6 @@ class Replay.SettingsService : Object {
     public Replay.AppearanceSettings appearance { get; private set; }
 
     construct {
-        this.appearance = new Replay.AppearanceSettings (@"$(Constants.RDNN_APP_NAME).appearance");
+        this.appearance = new Replay.AppearanceSettings (@"$(Constants.RDNN_APP_NAME)");
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
-  <schema id="com.github.nahuelwexd.Replay.appearance"
-          path="/com/github/nahuelwexd/Replay/appearance/">
+  <schema id="com.github.nahuelwexd.Replay"
+          path="/com/github/nahuelwexd/Replay/">
     <key name="dark-theme" type="b">
       <default>true</default>
     </key>
