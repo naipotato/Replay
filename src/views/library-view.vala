@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/library-view.ui")]
-class Replay.LibraryView : Gtk.Box {
+class LibraryView : Gtk.Box {
 
     construct {
 

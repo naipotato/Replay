@@ -21,7 +21,7 @@
   <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="0.0"/>
 
-  <template class="ReplayMainWindow" parent="HdyApplicationWindow">
+  <template class="MainWindow" parent="HdyApplicationWindow">
 
     <property name="title" translatable="yes">Replay</property>
     <property name="default-width">1024</property>
@@ -35,7 +35,7 @@
         <property name="orientation">vertical</property>
 
         <child>
-          <object class="ReplayMainHeaderBar" id="_headerbar">
+          <object class="MainHeaderBar" id="_headerbar">
 
             <property name="visible">True</property>
             <property name="stack">main-stack</property>
@@ -58,7 +58,7 @@
 
             <child>
 
-              <object class="ReplayTrendingView" id="_trending_view">
+              <object class="TrendingView" id="_trending_view">
                 <property name="visible">True</property>
               </object>
 
@@ -72,7 +72,7 @@
 
             <child>
 
-              <object class="ReplaySubscriptionsView" id="_subs_view">
+              <object class="SubscriptionsView" id="_subs_view">
                 <property name="visible">True</property>
               </object>
 
@@ -86,7 +86,7 @@
 
             <child>
 
-              <object class="ReplayLibraryView" id="_library_view">
+              <object class="LibraryView" id="_library_view">
                 <property name="visible">True</property>
               </object>
 

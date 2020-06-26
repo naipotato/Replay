@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-header-bar.ui")]
-class Replay.MainHeaderBar : Hdy.HeaderBar {
+class MainHeaderBar : Hdy.HeaderBar {
 
     [GtkChild] private Hdy.ViewSwitcherTitle _view_switcher_title;
     [GtkChild] private Gtk.ToggleButton _search_button;

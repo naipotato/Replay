@@ -16,14 +16,14 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/preferences-window.ui")]
-class Replay.PreferencesWindow : Hdy.PreferencesWindow {
+class PreferencesWindow : Hdy.PreferencesWindow {
 
-    private Replay.PreferencesViewModel _view_model;
+    private PreferencesViewModel _view_model;
     [GtkChild] private Hdy.ActionRow _switch_row;
     [GtkChild] private Gtk.Switch _toggle;
 
     construct {
-        this._view_model = new Replay.PreferencesViewModel ();
+        this._view_model = new PreferencesViewModel ();
 
         this._switch_row.activatable_widget = this._toggle;
         this.icon_name = Constants.APPLICATION_ID;

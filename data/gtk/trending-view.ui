@@ -17,7 +17,7 @@
   along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <interface>
-  <template class="ReplayTrendingView" parent="GtkBin">
+  <template class="TrendingView" parent="GtkBin">
     <child>
       <object class="GtkStack" id="_stack">
         <property name="visible">True</property>

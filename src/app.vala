@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-class Replay.App : Gtk.Application {
+class App : Gtk.Application {
 
     public static Utlib.Client client { get; private set; }
 
@@ -38,7 +38,7 @@ class Replay.App : Gtk.Application {
         Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (Constants.GETTEXT_PACKAGE);
 
-        var app = new Replay.App ();
+        var app = new App ();
         return app.run (args);
     }
 
@@ -51,7 +51,7 @@ class Replay.App : Gtk.Application {
         this.populate_actions ();
 
         // Load theme from the user preferences
-        new Replay.ThemesService ().update_theme (new Replay.SettingsService ().dark_theme);
+        new ThemesService ().update_theme (new SettingsService ().dark_theme);
 
 #if DEVEL
         Gtk.IconTheme.get_default ().add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
@@ -79,7 +79,7 @@ class Replay.App : Gtk.Application {
     }
 
     private void on_preferences_activate () {
-        var preferences_window = new Replay.PreferencesWindow () {
+        var preferences_window = new PreferencesWindow () {
             transient_for = this.active_window
         };
 
@@ -87,7 +87,7 @@ class Replay.App : Gtk.Application {
     }
 
     private void on_about_activate () {
-        var about_dialog = new Replay.AboutDialog () {
+        var about_dialog = new AboutDialog () {
             transient_for = this.active_window
         };
 

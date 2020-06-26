@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Replay.Utils.GenericListModel<T> : Gee.AbstractList<T>, ListModel {
+public class Utils.GenericListModel<T> : Gee.AbstractList<T>, ListModel {
 
     private Gee.List<T> _data;
 

@@ -16,12 +16,12 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-window.ui")]
-class Replay.MainWindow : Hdy.ApplicationWindow {
+class MainWindow : Hdy.ApplicationWindow {
 
-    [GtkChild] private Replay.MainHeaderBar _headerbar;
-    [GtkChild] private Replay.TrendingView _trending_view;
-    [GtkChild] private Replay.SubscriptionsView _subs_view;
-    [GtkChild] private Replay.LibraryView _library_view;
+    [GtkChild] private MainHeaderBar _headerbar;
+    [GtkChild] private TrendingView _trending_view;
+    [GtkChild] private SubscriptionsView _subs_view;
+    [GtkChild] private LibraryView _library_view;
 
     public MainWindow (App app) {
         Object (

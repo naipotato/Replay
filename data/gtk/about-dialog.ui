@@ -20,7 +20,7 @@
 
   <requires lib="gtk+" version="3.24"/>
 
-  <template class="ReplayAboutDialog" parent="GtkAboutDialog">
+  <template class="AboutDialog" parent="GtkAboutDialog">
     <property name="modal">True</property>
     <property name="destroy-with-parent">True</property>
     <property name="license-type">gpl-3-0</property>

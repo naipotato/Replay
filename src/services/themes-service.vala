@@ -16,7 +16,7 @@
  */
 
 [SingleInstance]
-class Replay.ThemesService : Object {
+class ThemesService : Object {
 
     private Gtk.Settings _gtk_settings;
     private Gtk.CssProvider _light_css;

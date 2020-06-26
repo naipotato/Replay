@@ -16,7 +16,7 @@
  */
 
 [SingleInstance]
-class Replay.SettingsService : Object {
+class SettingsService : Object {
 
     public bool dark_theme { get; set; }
 

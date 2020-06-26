@@ -20,7 +20,7 @@
 
   <requires lib="gtk+" version="3.24"/>
 
-  <template class="ReplayPreferencesWindow" parent="HdyPreferencesWindow">
+  <template class="PreferencesWindow" parent="HdyPreferencesWindow">
 
     <property name="title" translatable="yes">Preferences</property>
 

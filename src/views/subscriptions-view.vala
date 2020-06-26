@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/subscriptions-view.ui")]
-class Replay.SubscriptionsView : Gtk.Box {
+class SubscriptionsView : Gtk.Box {
 
     construct {
 

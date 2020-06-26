@@ -16,9 +16,9 @@
  */
 
 [SingleInstance]
-class Replay.PreferencesViewModel : Object {
+class PreferencesViewModel : Object {
 
-    private Replay.SettingsService _settings_service;
+    private SettingsService _settings_service;
     private bool _dark_theme;
 
     public bool dark_theme {
@@ -26,13 +26,13 @@ class Replay.PreferencesViewModel : Object {
             return this._dark_theme;
         }
         set {
-            new Replay.ThemesService ().update_theme (value);
+            new ThemesService ().update_theme (value);
             this._dark_theme = value;
         }
     }
 
     construct {
-        this._settings_service = new Replay.SettingsService ();
+        this._settings_service = new SettingsService ();
         this._settings_service.bind_property ("dark-theme", this, "dark-theme",
             BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
     }

@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/about-dialog.ui")]
-class Replay.AboutDialog : Gtk.AboutDialog {
+class AboutDialog : Gtk.AboutDialog {
 
     construct {
         this.logo_icon_name = Constants.APPLICATION_ID;

@@ -17,7 +17,7 @@
   along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <interface>
-  <template class="ReplayVideoTile" parent="GtkBox">
+  <template class="VideoTile" parent="GtkBox">
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkImage" id="_thumbnail">
@@ -27,7 +27,7 @@
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
-        <property name="label" bind-source="ReplayVideoTile" bind-property="title"/>
+        <property name="label" bind-source="VideoTile" bind-property="title"/>
         <property name="wrap">True</property>
         <property name="wrap-mode">word-char</property>
         <property name="ellipsize">end</property>
@@ -41,7 +41,7 @@
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
-        <property name="label" bind-source="ReplayVideoTile" bind-property="channel-title"/>
+        <property name="label" bind-source="VideoTile" bind-property="channel-title"/>
         <property name="wrap">True</property>
         <property name="wrap-mode">word-char</property>
         <property name="ellipsize">end</property>

@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Replay.Constants {
+namespace Constants {
 
     [CCode (cheader_filename = "config.h", cname = "RDNN_APP_NAME")]
     public const string RDNN_APP_NAME;

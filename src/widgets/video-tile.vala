@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/video-tile.ui")]
-class Replay.VideoTile : Gtk.Box {
+class VideoTile : Gtk.Box {
 
     [GtkChild] private Gtk.Image _thumbnail;
 

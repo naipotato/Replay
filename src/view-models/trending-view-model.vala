@@ -15,14 +15,14 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-enum Replay.ViewModelState {
+enum ViewModelState {
     LOADING, ERROR,SUCCESS;
 }
 
 [SingleInstance]
-class Replay.TrendingViewModel : Object {
+class TrendingViewModel : Object {
 
-    public Replay.ViewModelState state { get; set; }
+    public ViewModelState state { get; set; }
     public Utils.GenericListModel<Utlib.Video> trending_videos { get; set; }
 
     construct {
@@ -42,7 +42,7 @@ class Replay.TrendingViewModel : Object {
 
         try {
             // This should show a nicer loading screen to the user
-            this.state = Replay.ViewModelState.LOADING;
+            this.state = ViewModelState.LOADING;
 
             // Try to execute the request
             var response = yield request.execute_async ();
@@ -51,10 +51,10 @@ class Replay.TrendingViewModel : Object {
             this.trending_videos.add_all (response.items);
 
             // Hide the loading screen and show videos
-            this.state = Replay.ViewModelState.SUCCESS;
+            this.state = ViewModelState.SUCCESS;
         } catch (Error e) {
             // If there was any error, show an error message to the user
-            this.state = Replay.ViewModelState.ERROR;
+            this.state = ViewModelState.ERROR;
 
             // Warn to the dev ;)
             warning (e.message);
