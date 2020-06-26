@@ -29,7 +29,5 @@ class Replay.PreferencesWindow : Hdy.PreferencesWindow {
         this._settings_service = new Replay.SettingsService ();
         this._settings_service.appearance.bind_property ("dark-theme", this._toggle, "active",
             BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
-        this._settings_service.appearance.bind_property ("use-system-theme", this._switch_row, "sensitive",
-            BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
     }
 }

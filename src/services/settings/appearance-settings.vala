@@ -19,8 +19,6 @@ class Replay.AppearanceSettings : Object {
 
     private bool _dark_theme;
 
-    public bool use_system_theme { get; set; }
-
     public bool dark_theme {
         get {
             return this._dark_theme;
@@ -32,13 +30,7 @@ class Replay.AppearanceSettings : Object {
     }
 
     public AppearanceSettings (string schema) {
-        var gtk_settings = Gtk.Settings.get_default ();
         var settings = new Settings (schema);
-
-        if (gtk_settings.gtk_application_prefer_dark_theme) {
-            this.use_system_theme = true;
-        }
-
         settings.bind ("dark-theme", this, "dark-theme", SettingsBindFlags.DEFAULT);
     }
 }
