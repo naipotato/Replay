@@ -15,14 +15,14 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+[SingleInstance]
 class Replay.TrendingViewModel : Object {
 
     public Replay.ViewModelState state { get; set; }
-    public Utils.GenericListModel<Utlib.Video> trending_videos { get; set;
-        default = new Utils.GenericListModel<Utlib.Video> (); }
+    public Utils.GenericListModel<Utlib.Video> trending_videos { get; set; }
 
     construct {
-        // Let's get for some trending videos ;)
+        this.trending_videos = new Utils.GenericListModel<Utlib.Video> ();
         this.load_trending_videos.begin ();
     }
 
@@ -43,8 +43,7 @@ class Replay.TrendingViewModel : Object {
             // Try to execute the request
             var response = yield request.execute_async ();
 
-            // Once the response is received, fill the list with the videos
-            // received
+            // Once the response is received, fill the list with the videos received
             this.trending_videos.add_all (response.items);
 
             // Hide the loading screen and show videos
@@ -53,7 +52,7 @@ class Replay.TrendingViewModel : Object {
             // If there was any error, show an error message to the user
             this.state = Replay.ViewModelState.ERROR;
 
-            // Warn for the dev ;)
+            // Warn to the dev ;)
             warning (e.message);
         }
     }

@@ -15,6 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+[SingleInstance]
 class Replay.PreferencesViewModel : Object {
 
     private Replay.SettingsService _settings_service;
