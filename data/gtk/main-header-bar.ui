@@ -48,11 +48,9 @@
 
         <child>
 
-          <object class="HdyColumn">
+          <object class="HdyClamp">
 
             <property name="visible">True</property>
-            <property name="maximum-width">500</property>
-            <property name="linear-growth-width">400</property>
 
             <child>
               <object class="GtkSearchEntry" id="_search_entry">
