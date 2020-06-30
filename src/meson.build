@@ -1,33 +1,36 @@
+# Get the source files
 replay_sources = files (
-    'dialogs' / 'about-dialog.vala',
+    'dialogs/about-dialog.vala',
 
-    'services' / 'settings-service.vala',
-    'services' / 'themes-service.vala',
+    'services/settings-service.vala',
+    'services/themes-service.vala',
 
-    'utils' / 'generic-list-model.vala',
+    'utils/generic-list-model.vala',
 
-    'view-models' / 'preferences-view-model.vala',
-    'view-models' / 'trending-view-model.vala',
+    'view-models/preferences-view-model.vala',
+    'view-models/trending-view-model.vala',
 
-    'views' / 'library-view.vala',
-    'views' / 'subscriptions-view.vala',
-    'views' / 'trending-view.vala',
+    'views/library-view.vala',
+    'views/subscriptions-view.vala',
+    'views/trending-view.vala',
 
-    'widgets' / 'main-header-bar.vala',
-    'widgets' / 'video-tile.vala',
+    'widgets/main-header-bar.vala',
+    'widgets/video-tile.vala',
 
-    'windows' / 'main-window.vala',
-    'windows' / 'preferences-window.vala',
+    'windows/main-window.vala',
+    'windows/preferences-window.vala',
 
     'app.vala',
     'constants.vala',
 )
 
 
+# Get the compiler and the directory for vapi files
 valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'
 
 
+# Get the dependencies
 replay_deps = [
     glib_dep,
     gobject_dep,
@@ -41,6 +44,7 @@ replay_deps = [
 ]
 
 
+# Build the project
 executable (
     meson.project_name (),
     replay_sources, resources,
