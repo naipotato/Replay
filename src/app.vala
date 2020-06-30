@@ -49,6 +49,7 @@ class App : Gtk.Application {
         Environment.set_prgname (Constants.APPLICATION_ID);
 
         this.populate_actions ();
+        this.init_types ();
 
         // Load theme from the user preferences
         new ThemesService ().update_theme (new SettingsService ().dark_theme);
@@ -76,6 +77,12 @@ class App : Gtk.Application {
         action.activate.connect (this.quit);
         this.set_accels_for_action ("app.quit", { "<Primary>Q" });
         this.add_action (action);
+    }
+
+    private void init_types () {
+        typeof (LibraryView).ensure ();
+        typeof (SubscriptionsView).ensure ();
+        typeof (TrendingView).ensure ();
     }
 
     private void on_preferences_activate () {

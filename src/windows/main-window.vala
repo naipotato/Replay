@@ -19,9 +19,6 @@
 class MainWindow : Hdy.ApplicationWindow {
 
     [GtkChild] private MainHeaderBar _headerbar;
-    [GtkChild] private TrendingView _trending_view;
-    [GtkChild] private SubscriptionsView _subs_view;
-    [GtkChild] private LibraryView _library_view;
 
     public MainWindow (App app) {
         Object (
