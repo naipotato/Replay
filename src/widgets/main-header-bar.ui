@@ -22,8 +22,6 @@
 
 <template class="MainHeaderBar" parent="HdyHeaderBar">
   <property name="show-close-button">True</property>
-  <signal name="toggle-search-mode" handler="on_search_mode_toggled" />
-  <signal name="toggle-menu" handler="on_menu_toggled" />
   <signal name="notify::search-mode" handler="on_search_mode_changed" />
 
   <!-- Custom title -->

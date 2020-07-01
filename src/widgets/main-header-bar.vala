@@ -36,8 +36,15 @@ class MainHeaderBar : Hdy.HeaderBar {
             BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
     }
 
-    [Signal (action = true)] public signal void toggle_menu ();
-    [Signal (action = true)] public signal void toggle_search_mode ();
+    [Signal (action = true)]
+    public virtual signal void toggle_menu () {
+        this._menu_button.active = !this._menu_button.active;
+    }
+
+    [Signal (action = true)]
+    public virtual signal void toggle_search_mode () {
+        this.search_mode = !this.search_mode;
+    }
 
     public bool handle_event (Gdk.EventKey event) {
         if (this.search_mode) {
@@ -50,16 +57,6 @@ class MainHeaderBar : Hdy.HeaderBar {
         }
 
         return handled;
-    }
-
-    [GtkCallback]
-    private void on_search_mode_toggled () {
-        this.search_mode = !this.search_mode;
-    }
-
-    [GtkCallback]
-    private void on_menu_toggled () {
-        this._menu_button.active = !this._menu_button.active;
     }
 
     [GtkCallback]
