@@ -16,10 +16,9 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/trending-view.ui")]
-class TrendingView : Gtk.Bin {
+class TrendingView : Gtk.Stack {
 
     private TrendingViewModel _view_model;
-    [GtkChild] private Gtk.Stack _stack;
     [GtkChild] private Gtk.FlowBox _videos_box;
 
     construct {
@@ -33,13 +32,13 @@ class TrendingView : Gtk.Bin {
     private void on_view_model_state_changed () {
         switch (this._view_model.state) {
             case ViewModelState.LOADING:
-                this._stack.visible_child_name = "loading";
+                this.visible_child_name = "loading";
                 break;
             case ViewModelState.ERROR:
-                this._stack.visible_child_name = "error";
+                this.visible_child_name = "error";
                 break;
             case ViewModelState.SUCCESS:
-                this._stack.visible_child_name = "videos";
+                this.visible_child_name = "videos";
                 break;
             default:
                 assert_not_reached ();
