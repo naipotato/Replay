@@ -41,53 +41,12 @@
 
   <!-- Error message -->
   <child>
-    <object class="GtkBox">
+
+    <object class="ErrorMessage">
       <property name="visible">True</property>
-      <property name="orientation">vertical</property>
       <property name="valign">center</property>
-      <property name="spacing">20</property>
-
-      <!-- Error image -->
-      <child>
-        <object class="GtkImage">
-          <property name="visible">True</property>
-          <property name="icon-name">computer-fail-symbolic</property>
-          <property name="pixel-size">72</property>
-          <property name="halign">center</property>
-        </object>
-      </child>
-      <!-- Error image -->
-
-      <!-- Error label -->
-      <child>
-        <object class="GtkLabel">
-          <property name="visible">True</property>
-          <property name="label" translatable="yes">Failed to get trending videos</property>
-          <property name="halign">center</property>
-
-          <style>
-            <class name="heading" />
-          </style>
-
-        </object>
-      </child>
-      <!-- Error label -->
-
-      <!-- Retry button -->
-      <child>
-        <object class="GtkButton">
-          <property name="visible">True</property>
-          <property name="label" translatable="yes">Retry</property>
-          <property name="halign">center</property>
-
-          <style>
-            <class name="suggested-action" />
-          </style>
-
-        </object>
-      </child>
-      <!-- Retry button -->
-
+      <!-- Translators: This is the label shown when the app fails to get trending videos -->
+      <property name="label" translatable="yes">Failed to get trending videos</property>
     </object>
 
     <packing>

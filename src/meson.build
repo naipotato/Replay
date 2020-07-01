@@ -14,6 +14,7 @@ replay_sources = files (
     'views/subscriptions-view.vala',
     'views/trending-view.vala',
 
+    'widgets/error-message.vala',
     'widgets/main-header-bar.vala',
     'widgets/video-tile.vala',
 

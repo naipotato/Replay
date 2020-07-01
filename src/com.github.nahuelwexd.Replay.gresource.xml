@@ -28,6 +28,7 @@
     <file alias="subscriptions-view.ui" preprocess="xml-stripblanks">views/subscriptions-view.ui</file>
     <file alias="trending-view.ui" preprocess="xml-stripblanks">views/trending-view.ui</file>
 
+    <file alias="error-message.ui" preprocess="xml-stripblanks">widgets/error-message.ui</file>
     <file alias="main-header-bar.ui" preprocess="xml-stripblanks">widgets/main-header-bar.ui</file>
     <file alias="video-tile.ui" preprocess="xml-stripblanks">widgets/video-tile.ui</file>
 

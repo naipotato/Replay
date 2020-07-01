@@ -83,6 +83,7 @@ class App : Gtk.Application {
         typeof (LibraryView).ensure ();
         typeof (SubscriptionsView).ensure ();
         typeof (TrendingView).ensure ();
+        typeof (ErrorMessage).ensure ();
     }
 
     private void on_preferences_activate () {
