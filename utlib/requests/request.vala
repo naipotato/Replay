@@ -42,13 +42,12 @@ public abstract class Utlib.Request<T> : Object {
             BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
     }
 
-
     /**
-     * Execute this request synchronously.
+     * Execute this request.
      *
      * @return The parsed response of this request.
      */
-    public virtual T execute () throws Utlib.RequestError, Utlib.ParserError, Error {
+    public virtual async T execute () throws Utlib.RequestError, Utlib.ParserError, Error {
         // Parse all the parameters in the request
         var parameters = this.params_service.parse_parameters ();
         var uri = @"$(this.url)?$(parameters)";
@@ -59,9 +58,9 @@ public abstract class Utlib.Request<T> : Object {
         var session = this.client.session;
         var message = new Soup.Message ("GET", uri);
 
-        // Send the message synchronously and grab the InputStream as a DataInputStream in order to
+        // Send the message asynchronously and grab the InputStream as a DataInputStream in order to
         // read it
-        var istream = session.send (message);
+        var istream = yield session.send_async (message);
         var distream = new DataInputStream (istream);
 
         // Create a new StringBuilder to save the response body
@@ -69,11 +68,11 @@ public abstract class Utlib.Request<T> : Object {
 
         // Read it
         string line;
-        while ((line = distream.read_line ()) != null) {
+        while ((line = yield distream.read_line_async ()) != null) {
             builder.append (line);
         }
 
-        var parsed_object = GJson.Object.parse (builder.str);
+        var parsed_object = yield GJson.Object.parse_async (builder.str);
 
         if (message.status_code == Soup.Status.OK) {
             return (T) GJson.deserialize_object (typeof (T), parsed_object);
@@ -82,25 +81,6 @@ public abstract class Utlib.Request<T> : Object {
                 parsed_object.get_object_member ("error").get_string_member ("message")
             );
         }
-    }
-
-    /**
-     * Execute this request asynchronously.
-     *
-     * @return The parsed response of this request.
-     */
-    public virtual async T execute_async () throws Utlib.RequestError, Utlib.ParserError, Error {
-        T result = null;
-
-        // Create a new thread to execute the request
-        new Thread<void*> (null, () => {
-            result = this.execute ();
-            Idle.add (this.execute_async.callback);
-            return null;
-        });
-
-        yield;
-        return result;
     }
 
     protected virtual void init_parameters () {

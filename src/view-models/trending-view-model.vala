@@ -45,7 +45,7 @@ class TrendingViewModel : Object {
             this.state = ViewModelState.LOADING;
 
             // Try to execute the request
-            var response = yield request.execute_async ();
+            var response = yield request.execute ();
 
             // Once the response is received, fill the list with the videos received
             this.trending_videos.add_all (response.items);
