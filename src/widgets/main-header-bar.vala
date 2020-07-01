@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-header-bar.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-header-bar.ui")]
 class MainHeaderBar : Hdy.HeaderBar {
 
     [GtkChild] private Hdy.ViewSwitcherTitle _view_switcher_title;

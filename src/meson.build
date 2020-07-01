@@ -25,6 +25,16 @@ replay_sources = files (
 )
 
 
+# Compile GResources in order to include into the source
+gnome = import ('gnome')
+
+resources = gnome.compile_resources (
+    '@0@.gresource'.format (rdnn_app_name),
+    '@0@.gresource.xml'.format (rdnn_app_name),
+    dependencies: [custom_light_css, custom_dark_css]
+)
+
+
 # Get the compiler and the directory for vapi files
 valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'

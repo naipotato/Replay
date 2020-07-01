@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/trending-view.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/trending-view.ui")]
 class TrendingView : Gtk.Bin {
 
     private TrendingViewModel _view_model;

@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/video-tile.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/video-tile.ui")]
 class VideoTile : Gtk.Box {
 
     [GtkChild] private Gtk.Image _thumbnail;

@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/subscriptions-view.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/subscriptions-view.ui")]
 class SubscriptionsView : Gtk.Box {
 
     construct {

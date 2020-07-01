@@ -17,15 +17,6 @@ custom_dark_css = custom_target ('styles-dark.css',
       build_by_default: true
 )
 
-# Compile GResources in order to include into the source
-gnome = import ('gnome')
-
-resources = gnome.compile_resources (
-    '@0@.gresource'.format (rdnn_app_name),
-    '@0@.gresource.xml'.format (rdnn_app_name),
-    dependencies: [custom_light_css, custom_dark_css]
-)
-
 
 # Install GSchemas in order to get available the GSettings
 install_data (

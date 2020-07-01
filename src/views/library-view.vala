@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/library-view.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/library-view.ui")]
 class LibraryView : Gtk.Box {
 
     construct {

@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/about-dialog.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/about-dialog.ui")]
 class AboutDialog : Gtk.AboutDialog {
 
     construct {

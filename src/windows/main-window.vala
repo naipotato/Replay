@@ -15,7 +15,7 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/gtk/main-window.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-window.ui")]
 class MainWindow : Hdy.ApplicationWindow {
 
     [GtkChild] private MainHeaderBar _headerbar;
