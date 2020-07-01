@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the replay package.
+# This file is distributed under the same license as the com.github.nahuelwexd.Replay package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: replay\n"
+"Project-Id-Version: com.github.nahuelwexd.Replay\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 23:32-0300\n"
+"POT-Creation-Date: 2020-07-01 18:25-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #. Translators: This is the title for the shortcut that opens the search bar
 #. Translators: This is the text for the tooltip on the search button
-#: data/gtk/help-overlay.ui:61 data/gtk/main-header-bar.ui:78
+#: data/gtk/help-overlay.ui:61 src/widgets/main-header-bar.ui:80
 msgid "Search"
 msgstr ""
 
@@ -49,72 +49,11 @@ msgid "Open/close primary menu"
 msgstr ""
 
 #. Translators: This is the app name
-#: data/gtk/about-dialog.ui:27 data/gtk/main-header-bar.ui:42
-#: data/gtk/main-window.ui:26 data/com.github.nahuelwexd.Replay.desktop.in.in:5
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:5
 #: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:5
+#: src/dialogs/about-dialog.ui:27 src/widgets/main-header-bar.ui:38
+#: src/windows/main-window.ui:24
 msgid "Replay"
-msgstr ""
-
-#. Translators: This is the comment for the About dialog
-#. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
-#: data/gtk/about-dialog.ui:31
-#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:10
-msgid "An open source YouTube client for GNOME."
-msgstr ""
-
-#. Translators: This is the label used to link to the project repo
-#: data/gtk/about-dialog.ui:33
-msgid "Project repository"
-msgstr ""
-
-#. Translators: This is the text for the tooltip on the primary menu button
-#: data/gtk/main-header-bar.ui:94
-msgid "Menu"
-msgstr ""
-
-#. Translators: This is the label used for the preferences item in the primary menu
-#: data/gtk/main-header-bar.ui:110 data/gtk/preferences-window.ui:25
-msgid "Preferences"
-msgstr ""
-
-#. Translators: This is the label used for the keyboard shortcuts item in the primary menu
-#: data/gtk/main-header-bar.ui:116
-msgid "Keyboard Shortcuts"
-msgstr ""
-
-#. Translators: This is the label used for the about item in the primary menu
-#: data/gtk/main-header-bar.ui:122
-msgid "About Replay"
-msgstr ""
-
-#. Translators: This is the title for the trending section of the app
-#: data/gtk/main-window.ui:68
-msgid "Trending"
-msgstr ""
-
-#. Translators: This is the title for the subscriptions section of the app
-#: data/gtk/main-window.ui:82
-msgid "Subscriptions"
-msgstr ""
-
-#. Translators: This is the title for the library section of the app
-#: data/gtk/main-window.ui:96
-msgid "Library"
-msgstr ""
-
-#. Translators: This is the title for the appearance section on the preferences window
-#: data/gtk/preferences-window.ui:32
-msgid "Appearance"
-msgstr ""
-
-#. Translators: This is the title for the dark theme toggle in the preferences window
-#: data/gtk/preferences-window.ui:45
-msgid "Use dark theme"
-msgstr ""
-
-#. Translators: This is the subtitle for the dark theme toggle in the preferences window
-#: data/gtk/preferences-window.ui:47
-msgid "Activates dark theme on the app."
 msgstr ""
 
 #. Translators: This is the generic app name
@@ -142,6 +81,13 @@ msgstr ""
 msgid "An open source YouTube client for GNOME"
 msgstr ""
 
+#. Translators: This is the first paragraph of the description of the app. This will be shown on GNOME Software or the Flathub website
+#. Translators: This is the comment for the About dialog
+#: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:10
+#: src/dialogs/about-dialog.ui:31
+msgid "An open source YouTube client for GNOME."
+msgstr ""
+
 #. Translators: This is the name of the developer, it should not be translated
 #: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:16
 msgid "Nahuel Gomez Castro"
@@ -150,4 +96,64 @@ msgstr ""
 #. Translators: This is the caption of the first "screenshot", which is a mockup at the moment
 #: data/com.github.nahuelwexd.Replay.metainfo.xml.in.in:21
 msgid "Mockup of the app"
+msgstr ""
+
+#. Translators: This is the label used to link to the project repo
+#: src/dialogs/about-dialog.ui:33
+msgid "Project repository"
+msgstr ""
+
+#. Translators: This is the label shown when the app fails to get trending videos
+#: src/views/trending-view.ui:49
+msgid "Failed to get trending videos"
+msgstr ""
+
+#. Translators: This is the text for the tooltip on the primary menu button
+#: src/widgets/main-header-bar.ui:99
+msgid "Menu"
+msgstr ""
+
+#. Translators: This is the label used for the preferences item in the primary menu
+#: src/widgets/main-header-bar.ui:119 src/windows/preferences-window.ui:24
+msgid "Preferences"
+msgstr ""
+
+#. Translators: This is the label used for the keyboard shortcuts item in the primary menu
+#: src/widgets/main-header-bar.ui:125
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#. Translators: This is the label used for the about item in the primary menu
+#: src/widgets/main-header-bar.ui:131
+msgid "About Replay"
+msgstr ""
+
+#. Translators: This is the title for the trending section of the app
+#: src/windows/main-window.ui:67
+msgid "Trending"
+msgstr ""
+
+#. Translators: This is the title for the subscriptions section of the app
+#: src/windows/main-window.ui:84
+msgid "Subscriptions"
+msgstr ""
+
+#. Translators: This is the title for the library section of the app
+#: src/windows/main-window.ui:101
+msgid "Library"
+msgstr ""
+
+#. Translators: This is the title for the appearance section on the preferences window
+#: src/windows/preferences-window.ui:31
+msgid "Appearance"
+msgstr ""
+
+#. Translators: This is the title for the dark theme toggle in the preferences window
+#: src/windows/preferences-window.ui:44
+msgid "Use dark theme"
+msgstr ""
+
+#. Translators: This is the subtitle for the dark theme toggle in the preferences window
+#: src/windows/preferences-window.ui:46
+msgid "Activates dark theme on the app."
 msgstr ""
