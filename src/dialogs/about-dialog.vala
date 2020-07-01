@@ -24,8 +24,7 @@ class AboutDialog : Gtk.AboutDialog {
         this.website = Constants.PACKAGE_URL;
     }
 
-    [GtkCallback]
-    private void on_response (int response_id) {
+    public override void response (int response_id) {
         if (response_id == Gtk.ResponseType.CANCEL ||
             response_id == Gtk.ResponseType.DELETE_EVENT) {
             this.hide_on_delete ();

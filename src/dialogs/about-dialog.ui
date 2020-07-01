@@ -31,7 +31,6 @@
   <property name="comments" translatable="yes">An open source YouTube client for GNOME.</property>
   <!-- Translators: This is the label used to link to the project repo -->
   <property name="website-label" translatable="yes">Project repository</property>
-  <signal name="response" handler="on_response" />
 </template>
 
 </interface>
