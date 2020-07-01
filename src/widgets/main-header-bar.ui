@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
   Replay - An open source YouTube client for GNOME
   Copyright (C) 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
@@ -16,119 +17,139 @@
   You should have received a copy of the GNU General Public License
   along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
+
 <interface>
 
-  <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="1.0"/>
+<template class="MainHeaderBar" parent="HdyHeaderBar">
+  <property name="show-close-button">True</property>
+  <signal name="toggle-search-mode" handler="on_search_mode_toggled" />
+  <signal name="toggle-menu" handler="on_menu_toggled" />
+  <signal name="notify::search-mode" handler="on_search_mode_changed" />
 
-  <template class="MainHeaderBar" parent="HdyHeaderBar">
+  <!-- Custom title -->
+  <child type="title">
+    <object class="GtkStack" id="_title_stack">
+      <property name="visible">True</property>
+      <property name="transition-type">crossfade</property>
 
-    <property name="show-close-button">True</property>
-    <signal name="toggle-search-mode" handler="on_search_mode_toggled"/>
-    <signal name="toggle-menu" handler="on_menu_toggled"/>
-    <signal name="notify::search-mode" handler="on_search_mode_changed"/>
+      <!-- Tab switcher -->
+      <child>
 
-    <child type="title">
-      <object class="GtkStack" id="_title_stack">
+        <object class="HdyViewSwitcherTitle" id="_view_switcher_title">
+          <property name="visible">True</property>
+          <property name="title" translatable="yes">Replay</property>
+        </object>
 
-        <property name="visible">True</property>
-        <property name="transition-type">crossfade</property>
+        <packing>
+          <property name="name">tabs</property>
+        </packing>
 
-        <child>
+      </child>
+      <!-- Tab switcher -->
 
-          <object class="HdyViewSwitcherTitle" id="_view_switcher_title">
-            <property name="visible">True</property>
-            <property name="title" translatable="yes">Replay</property>
-          </object>
+      <!-- Search bar -->
+      <child>
 
-          <packing>
-            <property name="name">tabs</property>
-          </packing>
-        </child>
+        <object class="HdyClamp">
+          <property name="visible">True</property>
 
-        <child>
+          <child>
+            <object class="GtkSearchEntry" id="_search_entry">
+              <property name="visible">True</property>
+              <signal name="stop-search" handler="on_search_entry_stop_search" />
+            </object>
+          </child>
 
-          <object class="HdyClamp">
+        </object>
 
-            <property name="visible">True</property>
+        <packing>
+          <property name="name">search</property>
+        </packing>
 
-            <child>
-              <object class="GtkSearchEntry" id="_search_entry">
-                <property name="visible">True</property>
-                <signal name="stop-search" handler="on_search_entry_stop_search"/>
-              </object>
-            </child>
-          </object>
+      </child>
+      <!-- Search bar -->
 
-          <packing>
-            <property name="name">search</property>
-          </packing>
-        </child>
-      </object>
-    </child>
+    </object>
+  </child>
+  <!-- Custom title -->
 
-    <child>
+  <!-- Search button -->
+  <child>
 
-      <object class="GtkToggleButton" id="_search_button">
-        <property name="visible">True</property>
-        <!-- Translators: This is the text for the tooltip on the search button -->
-        <property name="tooltip-text" translatable="yes">Search</property>
-        <property name="image">search-icon</property>
-      </object>
+    <object class="GtkToggleButton" id="_search_button">
+      <property name="visible">True</property>
+      <!-- Translators: This is the text for the tooltip on the search button -->
+      <property name="tooltip-text" translatable="yes">Search</property>
+      <property name="image">search-icon</property>
+    </object>
 
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
+    <packing>
+      <property name="pack-type">end</property>
+      <property name="position">1</property>
+    </packing>
 
-    <child>
+  </child>
+  <!-- Search button -->
 
-      <object class="GtkMenuButton" id="_menu_button">
-        <property name="visible">True</property>
-        <property name="menu-model">main-menu</property>
-        <!-- Translators: This is the text for the tooltip on the primary menu button -->
-        <property name="tooltip-text" translatable="yes">Menu</property>
-        <property name="image">menu-icon</property>
-      </object>
+  <!-- Menu button -->
+  <child>
 
-      <packing>
-        <property name="pack-type">end</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-  </template>
+    <object class="GtkMenuButton" id="_menu_button">
+      <property name="visible">True</property>
+      <property name="menu-model">main-menu</property>
+      <!-- Translators: This is the text for the tooltip on the primary menu button -->
+      <property name="tooltip-text" translatable="yes">Menu</property>
+      <property name="image">menu-icon</property>
+    </object>
 
-  <menu id="main-menu">
-    <section>
+    <packing>
+      <property name="pack-type">end</property>
+      <property name="position">0</property>
+    </packing>
 
-      <item>
-        <!-- Translators: This is the label used for the preferences item in the primary menu -->
-        <attribute name="label" translatable="yes">Preferences</attribute>
-        <attribute name="action">app.preferences</attribute>
-      </item>
+  </child>
+  <!-- Menu button -->
 
-      <item>
-        <!-- Translators: This is the label used for the keyboard shortcuts item in the primary menu-->
-        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
-        <attribute name="action">win.show-help-overlay</attribute>
-      </item>
+</template>
 
-      <item>
-        <!-- Translators: This is the label used for the about item in the primary menu -->
-        <attribute name="label" translatable="yes">About Replay</attribute>
-        <attribute name="action">app.about</attribute>
-      </item>
-    </section>
-  </menu>
+<!-- Menu model -->
+<menu id="main-menu">
+  <section>
 
-  <object class="GtkImage" id="search-icon">
-    <property name="visible">True</property>
-    <property name="icon-name">system-search-symbolic</property>
-  </object>
+    <item>
+      <!-- Translators: This is the label used for the preferences item in the primary menu -->
+      <attribute name="label" translatable="yes">Preferences</attribute>
+      <attribute name="action">app.preferences</attribute>
+    </item>
 
-  <object class="GtkImage" id="menu-icon">
-    <property name="visible">True</property>
-    <property name="icon-name">open-menu-symbolic</property>
-  </object>
+    <item>
+      <!-- Translators: This is the label used for the keyboard shortcuts item in the primary menu -->
+      <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+      <attribute name="action">win.show-help-overlay</attribute>
+    </item>
+
+    <item>
+      <!-- Translators: This is the label used for the about item in the primary menu -->
+      <attribute name="label" translatable="yes">About Replay</attribute>
+      <attribute name="action">app.about</attribute>
+    </item>
+
+  </section>
+</menu>
+<!-- Menu model -->
+
+<!-- Search icon -->
+<object class="GtkImage" id="search-icon">
+  <property name="visible">True</property>
+  <property name="icon-name">system-search-symbolic</property>
+</object>
+<!-- Search icon -->
+
+<!-- Menu icon -->
+<object class="GtkImage" id="menu-icon">
+  <property name="visible">True</property>
+  <property name="icon-name">open-menu-symbolic</property>
+</object>
+<!-- Menu icon -->
+
 </interface>

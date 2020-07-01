@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   Replay - An open source YouTube client for GNOME
   Copyright (C) 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
@@ -16,47 +17,53 @@
   You should have received a copy of the GNU General Public License
   along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
+
 <interface>
 
-  <requires lib="gtk+" version="3.24"/>
+<template class="PreferencesWindow" parent="HdyPreferencesWindow">
+  <property name="title" translatable="yes">Preferences</property>
 
-  <template class="PreferencesWindow" parent="HdyPreferencesWindow">
+  <!-- Appearance preferences page -->
+  <child>
+    <object class="HdyPreferencesPage">
+      <property name="visible">True</property>
+      <!-- Translators: This is the title for the appearance section on the preferences window -->
+      <property name="title" translatable="yes">Appearance</property>
+      <property name="icon-name">settings-appearance-symbolic</property>
 
-    <property name="title" translatable="yes">Preferences</property>
+      <!-- Theme preferences group -->
+      <child>
+        <object class="HdyPreferencesGroup">
+          <property name="visible">True</property>
 
-    <child>
-      <object class="HdyPreferencesPage">
+          <!-- Dark theme row -->
+          <child>
+            <object class="HdyActionRow" id="_switch_row">
+              <property name="visible">True</property>
+              <!-- Translators: This is the title for the dark theme toggle in the preferences window -->
+              <property name="title" translatable="yes">Use dark theme</property>
+              <!-- Translators: This is the subtitle for the dark theme toggle in the preferences window -->
+              <property name="subtitle" translatable="yes">Activates dark theme on the app.</property>
 
-        <property name="visible">True</property>
-        <!-- Translators: This is the title for the appearance section on the preferences window -->
-        <property name="title" translatable="yes">Appearance</property>
-        <property name="icon-name">settings-appearance-symbolic</property>
+              <child>
+                <object class="GtkSwitch" id="_toggle">
+                  <property name="visible">True</property>
+                  <property name="valign">center</property>
+                </object>
+              </child>
 
-        <child>
-          <object class="HdyPreferencesGroup">
+            </object>
+          </child>
+          <!-- Dark theme row -->
 
-            <property name="visible">True</property>
+        </object>
+      </child>
+      <!-- Theme preferences group -->
 
-            <child>
-              <object class="HdyActionRow" id="_switch_row">
+    </object>
+  </child>
+  <!-- Appearance preferences page -->
 
-                <property name="visible">True</property>
-                <!-- Translators: This is the title for the dark theme toggle in the preferences window -->
-                <property name="title" translatable="yes">Use dark theme</property>
-                <!-- Translators: This is the subtitle for the dark theme toggle in the preferences window -->
-                <property name="subtitle" translatable="yes">Activates dark theme on the app.</property>
+</template>
 
-                <child>
-                  <object class="GtkSwitch" id="_toggle">
-                    <property name="visible">True</property>
-                    <property name="valign">center</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-      </object>
-    </child>
-  </template>
 </interface>

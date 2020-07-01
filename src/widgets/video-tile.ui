@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   Replay - An open source YouTube client for GNOME
   Copyright (C) 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
@@ -16,41 +17,58 @@
   You should have received a copy of the GNU General Public License
   along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
+
 <interface>
-  <template class="VideoTile" parent="GtkBox">
-    <property name="orientation">vertical</property>
-    <child>
-      <object class="GtkImage" id="_thumbnail">
-        <property name="visible">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="label" bind-source="VideoTile" bind-property="title"/>
-        <property name="wrap">True</property>
-        <property name="wrap-mode">word-char</property>
-        <property name="ellipsize">end</property>
-        <property name="lines">2</property>
-        <property name="xalign">0</property>
-        <style>
-          <class name="heading"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="label" bind-source="VideoTile" bind-property="channel-title"/>
-        <property name="wrap">True</property>
-        <property name="wrap-mode">word-char</property>
-        <property name="ellipsize">end</property>
-        <property name="lines">2</property>
-        <property name="xalign">0</property>
-        <style>
-          <class name="caption"/>
-        </style>
-      </object>
-    </child>
-  </template>
+
+<template class="VideoTile" parent="GtkBox">
+  <property name="orientation">vertical</property>
+
+  <!-- Video thumbnail -->
+  <child>
+    <object class="GtkImage" id="_thumbnail">
+      <property name="visible">True</property>
+    </object>
+  </child>
+  <!-- Video thumbnail -->
+
+  <!-- Video title -->
+  <child>
+    <object class="GtkLabel">
+      <property name="visible">True</property>
+      <property name="label" bind-source="VideoTile" bind-property="title" />
+      <property name="wrap">True</property>
+      <property name="wrap-mode">word-char</property>
+      <property name="ellipsize">end</property>
+      <property name="lines">2</property>
+      <property name="xalign">0</property>
+
+      <style>
+        <class name="heading" />
+      </style>
+
+    </object>
+  </child>
+  <!-- Video title -->
+
+  <!-- Channel title -->
+  <child>
+    <object class="GtkLabel">
+      <property name="visible">True</property>
+      <property name="label" bind-source="VideoTile" bind-property="channel-title" />
+      <property name="wrap">True</property>
+      <property name="wrap-mode">word-char</property>
+      <property name="ellipsize">end</property>
+      <property name="lines">2</property>
+      <property name="xalign">0</property>
+
+      <style>
+        <class name="caption" />
+      </style>
+
+    </object>
+  </child>
+  <!-- Channel title -->
+
+</template>
+
 </interface>

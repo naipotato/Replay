@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   Replay - An open source YouTube client for GNOME
   Copyright (C) 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
@@ -16,103 +17,117 @@
   You should have received a copy of the GNU General Public License
   along with Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
+
 <interface>
 
-  <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="0.0"/>
+<template class="MainWindow" parent="HdyApplicationWindow">
+  <property name="title" translatable="yes">Replay</property>
+  <property name="default-width">1024</property>
+  <property name="default-height">600</property>
+  <signal name="key-press-event" handler="on_key_press_event" />
 
-  <template class="MainWindow" parent="HdyApplicationWindow">
+  <child>
+    <object class="GtkBox">
+      <property name="visible">True</property>
+      <property name="orientation">vertical</property>
 
-    <property name="title" translatable="yes">Replay</property>
-    <property name="default-width">1024</property>
-    <property name="default-height">600</property>
-    <signal name="key-press-event" handler="on_key_press_event"/>
+      <!-- Main headerbar -->
+      <child>
+        <object class="MainHeaderBar" id="_headerbar">
+          <property name="visible">True</property>
+          <property name="stack">main-stack</property>
+          <accelerator key="F10" signal="toggle-menu"/>
+          <accelerator key="f" modifiers="GDK_CONTROL_MASK" signal="toggle-search-mode" />
 
-    <child>
-      <object class="GtkBox">
+          <style>
+            <class name="titlebar" />
+          </style>
 
-        <property name="visible">True</property>
-        <property name="orientation">vertical</property>
+        </object>
+      </child>
+      <!-- Main headerbar -->
 
-        <child>
-          <object class="MainHeaderBar" id="_headerbar">
+      <!-- Main stack -->
+      <child>
 
-            <property name="visible">True</property>
-            <property name="stack">main-stack</property>
-            <accelerator key="F10" signal="toggle-menu"/>
-            <accelerator key="f" modifiers="GDK_CONTROL_MASK" signal="toggle-search-mode"/>
+        <object class="GtkStack" id="main-stack">
+          <property name="visible">True</property>
+          <property name="transition-type">crossfade</property>
 
-            <style>
-              <class name="titlebar"/>
-            </style>
+          <!-- Trending view -->
+          <child>
 
-          </object>
-        </child>
+            <object class="TrendingView" id="_trending_view">
+              <property name="visible">True</property>
+            </object>
 
-        <child>
+            <packing>
+              <property name="name">trending</property>
+              <!-- Translators: This is the title for the trending section of the app -->
+              <property name="title" translatable="yes">Trending</property>
+              <property name="icon-name">fire-symbolic</property>
+            </packing>
 
-          <object class="GtkStack" id="main-stack">
+          </child>
+          <!-- Trending view -->
 
-            <property name="visible">True</property>
-            <property name="transition-type">crossfade</property>
+          <!-- Subscriptions view -->
+          <child>
 
-            <child>
+            <object class="SubscriptionsView" id="_subs_view">
+              <property name="visible">True</property>
+            </object>
 
-              <object class="TrendingView" id="_trending_view">
-                <property name="visible">True</property>
-              </object>
+            <packing>
+              <property name="name">subs</property>
+              <!-- Translators: This is the title for the subscriptions section of the app -->
+              <property name="title" translatable="yes">Subscriptions</property>
+              <property name="icon-name">subscriptions-symbolic</property>
+            </packing>
 
-              <packing>
-                <property name="name">trending</property>
-                <!-- Translators: This is the title for the trending section of the app -->
-                <property name="title" translatable="yes">Trending</property>
-                <property name="icon-name">fire-symbolic</property>
-              </packing>
-            </child>
+          </child>
+          <!-- Subscriptions view -->
 
-            <child>
+          <!-- Library view -->
+          <child>
 
-              <object class="SubscriptionsView" id="_subs_view">
-                <property name="visible">True</property>
-              </object>
+            <object class="LibraryView" id="_library_view">
+              <property name="visible">True</property>
+            </object>
 
-              <packing>
-                <property name="name">subs</property>
-                <!-- Translators: This is the title for the subscriptions section of the app -->
-                <property name="title" translatable="yes">Subscriptions</property>
-                <property name="icon-name">subscriptions-symbolic</property>
-              </packing>
-            </child>
+            <packing>
+              <property name="name">library</property>
+              <!-- Translators: This is the title for the library section of the app -->
+              <property name="title" translatable="yes">Library</property>
+              <property name="icon-name">video-library-symbolic</property>
+            </packing>
 
-            <child>
+          </child>
+          <!-- Library view -->
 
-              <object class="LibraryView" id="_library_view">
-                <property name="visible">True</property>
-              </object>
+        </object>
 
-              <packing>
-                <property name="name">library</property>
-                <!-- Translators: This is the title for the library section of the app -->
-                <property name="title" translatable="yes">Library</property>
-                <property name="icon-name">video-library-symbolic</property>
-              </packing>
-            </child>
-          </object>
+        <packing>
+          <property name="fill">True</property>
+          <property name="expand">True</property>
+        </packing>
 
-          <packing>
-            <property name="fill">True</property>
-            <property name="expand">True</property>
-          </packing>
-        </child>
+      </child>
+      <!-- Main stack -->
 
-        <child>
-          <object class="HdyViewSwitcherBar">
-            <property name="visible">True</property>
-            <property name="stack">main-stack</property>
-            <property name="reveal" bind-source="_headerbar" bind-property="is-narrow-mode" bind-flags="bidirectional"/>
-          </object>
-        </child>
-      </object>
-    </child>
-  </template>
+      <!-- Tab switcher bar -->
+      <child>
+        <object class="HdyViewSwitcherBar">
+          <property name="visible">True</property>
+          <property name="stack">main-stack</property>
+          <property name="reveal" bind-source="_headerbar" bind-property="is-narrow-mode" bind-flags="bidirectional" />
+        </object>
+      </child>
+      <!-- Tab switcher bar -->
+
+    </object>
+  </child>
+
+</template>
+
 </interface>
