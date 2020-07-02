@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/error-message.ui")]
-class ErrorMessage : Gtk.Widget {
+class ErrorMessage : Gtk.Box {
 
     public string label { get; set; }
 
