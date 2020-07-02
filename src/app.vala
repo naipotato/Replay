@@ -50,6 +50,7 @@ class App : Gtk.Application {
 
         this.populate_actions ();
         this.init_types ();
+        Hdy.init ();
 
         // Load theme from the user preferences
         new ThemesService ().update_theme (new SettingsService ().dark_theme);
