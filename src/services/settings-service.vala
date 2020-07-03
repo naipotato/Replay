@@ -18,9 +18,12 @@
 [SingleInstance]
 class SettingsService : Object {
 
+    private SettingsService _instance;
+
     public bool dark_theme { get; set; }
 
     construct {
+        this._instance = this;
         var settings = new Settings (@"$(Constants.RDNN_APP_NAME)");
         settings.bind ("dark-theme", this, "dark-theme", SettingsBindFlags.DEFAULT);
     }

@@ -18,12 +18,13 @@
 [SingleInstance]
 class ThemesService : Object {
 
-    private Gtk.Settings _gtk_settings;
+    private ThemesService _instance;
     private Gtk.CssProvider _light_css;
     private Gtk.CssProvider _dark_css;
 
     construct {
-        this._gtk_settings = Gtk.Settings.get_default ();
+        this._instance = this;
+
         this._light_css = new Gtk.CssProvider ();
         this._dark_css = new Gtk.CssProvider ();
 
@@ -33,7 +34,7 @@ class ThemesService : Object {
     }
 
     public void update_theme (bool dark_theme) {
-        this._gtk_settings.gtk_application_prefer_dark_theme = dark_theme;
+        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = dark_theme;
 
         // If dark theme is selected, remove light css and apply dark css, if light theme is
         // selected, remove dark css and apply light css
