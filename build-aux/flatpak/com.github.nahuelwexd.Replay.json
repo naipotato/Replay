@@ -87,6 +87,10 @@
         {
           "type" : "git",
           "url" : "https://gitlab.gnome.org/BZHDeveloper/vul.git"
+        },
+        {
+          "type" : "patch",
+          "path" : "0001-Fixed-compilation-with-Vala-0-48-7.patch"
         }
       ]
     },
