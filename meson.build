@@ -4,12 +4,6 @@ project ('com.github.nahuelwexd.Replay', 'c', 'vala',
 )
 
 
-# Enable libhandy
-add_project_arguments ('-DHANDY_USE_UNSTABLE_API',
-    language: 'c'
-)
-
-
 # Enable gettext
 i18n = import ('i18n')
 
@@ -77,8 +71,7 @@ gio_dep = dependency ('gio-2.0')
 soup_dep = dependency ('libsoup-2.4')
 
 # Replay dependencies
-gtk_dep = dependency ('gtk+-3.0')
-handy_dep = dependency ('libhandy-1')
+gtk_dep = dependency ('gtk4')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
 # UTLib dependencies

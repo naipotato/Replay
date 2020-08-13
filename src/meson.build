@@ -49,7 +49,6 @@ replay_deps = [
     gio_dep,
     soup_dep,
     gtk_dep,
-    handy_dep,
     config_dep,
     utlib_dep
 ]
