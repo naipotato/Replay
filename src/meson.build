@@ -1,7 +1,5 @@
 # Get the source files
 replay_sources = files (
-    'dialogs/about-dialog.vala',
-
     'services/settings-service.vala',
     'services/themes-service.vala',
 
@@ -10,8 +8,6 @@ replay_sources = files (
     'view-models/preferences-view-model.vala',
     'view-models/trending-view-model.vala',
 
-    'views/library-view.vala',
-    'views/subscriptions-view.vala',
     'views/trending-view.vala',
 
     'widgets/error-message.vala',
@@ -19,7 +15,6 @@ replay_sources = files (
     'widgets/video-tile.vala',
 
     'windows/main-window.vala',
-    'windows/preferences-window.vala',
 
     'app.vala',
     'constants.vala',

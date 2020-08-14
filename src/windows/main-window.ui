@@ -20,112 +20,17 @@
 
 <interface>
 
-<template class="MainWindow" parent="HdyApplicationWindow">
+<template class="MainWindow" parent="GtkApplicationWindow">
   <property name="title" translatable="yes">Replay</property>
   <property name="default-width">1024</property>
-  <property name="default-height">600</property>
-  <signal name="key-press-event" handler="on_key_press_event" />
+  <property name="default-height">550</property>
+
+  <child type="titlebar">
+    <object class="MainHeaderBar" id="_headerbar" />
+  </child>
 
   <child>
-    <object class="GtkBox">
-      <property name="visible">True</property>
-      <property name="orientation">vertical</property>
-
-      <!-- Main headerbar -->
-      <child>
-        <object class="MainHeaderBar" id="_headerbar">
-          <property name="visible">True</property>
-          <property name="stack">main-stack</property>
-          <accelerator key="F10" signal="toggle-menu"/>
-          <accelerator key="f" modifiers="GDK_CONTROL_MASK" signal="toggle-search-mode" />
-
-          <style>
-            <class name="titlebar" />
-          </style>
-
-        </object>
-      </child>
-      <!-- Main headerbar -->
-
-      <!-- Main stack -->
-      <child>
-
-        <object class="GtkStack" id="main-stack">
-          <property name="visible">True</property>
-          <property name="transition-type">crossfade</property>
-
-          <!-- Trending view -->
-          <child>
-
-            <object class="TrendingView" id="_trending_view">
-              <property name="visible">True</property>
-            </object>
-
-            <packing>
-              <property name="name">trending</property>
-              <!-- Translators: This is the title for the trending section of the app -->
-              <property name="title" translatable="yes">Trending</property>
-              <property name="icon-name">fire-symbolic</property>
-            </packing>
-
-          </child>
-          <!-- Trending view -->
-
-          <!-- Subscriptions view -->
-          <child>
-
-            <object class="SubscriptionsView" id="_subs_view">
-              <property name="visible">True</property>
-            </object>
-
-            <packing>
-              <property name="name">subs</property>
-              <!-- Translators: This is the title for the subscriptions section of the app -->
-              <property name="title" translatable="yes">Subscriptions</property>
-              <property name="icon-name">subscriptions-symbolic</property>
-            </packing>
-
-          </child>
-          <!-- Subscriptions view -->
-
-          <!-- Library view -->
-          <child>
-
-            <object class="LibraryView" id="_library_view">
-              <property name="visible">True</property>
-            </object>
-
-            <packing>
-              <property name="name">library</property>
-              <!-- Translators: This is the title for the library section of the app -->
-              <property name="title" translatable="yes">Library</property>
-              <property name="icon-name">video-library-symbolic</property>
-            </packing>
-
-          </child>
-          <!-- Library view -->
-
-        </object>
-
-        <packing>
-          <property name="fill">True</property>
-          <property name="expand">True</property>
-        </packing>
-
-      </child>
-      <!-- Main stack -->
-
-      <!-- Tab switcher bar -->
-      <child>
-        <object class="HdyViewSwitcherBar">
-          <property name="visible">True</property>
-          <property name="stack">main-stack</property>
-          <property name="reveal" bind-source="_headerbar" bind-property="is-narrow-mode" bind-flags="bidirectional" />
-        </object>
-      </child>
-      <!-- Tab switcher bar -->
-
-    </object>
+    <object class="TrendingView" id="_trending_view" />
   </child>
 
 </template>

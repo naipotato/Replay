@@ -20,134 +20,37 @@
 
 <interface>
 
-<template class="MainHeaderBar" parent="HdyHeaderBar">
-  <property name="show-close-button">True</property>
-  <signal name="notify::search-mode" handler="on_search_mode_changed" />
-
-  <!-- Custom title -->
-  <child type="title">
-    <object class="GtkStack" id="_title_stack">
-      <property name="visible">True</property>
-      <property name="transition-type">crossfade</property>
-
-      <!-- Tab switcher -->
-      <child>
-
-        <object class="HdyViewSwitcherTitle" id="_view_switcher_title">
-          <property name="visible">True</property>
-          <property name="title" translatable="yes">Replay</property>
-        </object>
-
-        <packing>
-          <property name="name">tabs</property>
-        </packing>
-
-      </child>
-      <!-- Tab switcher -->
-
-      <!-- Search bar -->
-      <child>
-
-        <object class="HdyClamp">
-          <property name="visible">True</property>
-
-          <child>
-            <object class="GtkSearchEntry" id="_search_entry">
-              <property name="visible">True</property>
-              <signal name="stop-search" handler="on_search_entry_stop_search" />
-            </object>
-          </child>
-
-        </object>
-
-        <packing>
-          <property name="name">search</property>
-        </packing>
-
-      </child>
-      <!-- Search bar -->
-
-    </object>
-  </child>
-  <!-- Custom title -->
-
-  <!-- Search button -->
+<template class="MainHeaderBar" parent="GtkWidget">
   <child>
+    <object class="GtkHeaderBar" id="_headerbar">
+      <property name="show-title-buttons">True</property>
 
-    <object class="GtkToggleButton" id="_search_button">
-      <property name="visible">True</property>
-      <!-- Translators: This is the text for the tooltip on the search button -->
-      <property name="tooltip-text" translatable="yes">Search</property>
-      <property name="image">search-icon</property>
+      <!-- Menu button -->
+      <child type="end">
+        <object class="GtkMenuButton" id="_menu_button">
+          <property name="visible">True</property>
+          <property name="menu-model">main-menu</property>
+          <!-- Translators: This is the text for the tooltip on the primary menu button -->
+          <property name="tooltip-text" translatable="yes">Menu</property>
+          <property name="direction">none</property>
+        </object>
+      </child>
+      <!-- Menu button -->
+
     </object>
-
-    <packing>
-      <property name="pack-type">end</property>
-      <property name="position">1</property>
-    </packing>
-
   </child>
-  <!-- Search button -->
-
-  <!-- Menu button -->
-  <child>
-
-    <object class="GtkMenuButton" id="_menu_button">
-      <property name="visible">True</property>
-      <property name="menu-model">main-menu</property>
-      <!-- Translators: This is the text for the tooltip on the primary menu button -->
-      <property name="tooltip-text" translatable="yes">Menu</property>
-      <property name="image">menu-icon</property>
-    </object>
-
-    <packing>
-      <property name="pack-type">end</property>
-      <property name="position">0</property>
-    </packing>
-
-  </child>
-  <!-- Menu button -->
-
 </template>
 
 <!-- Menu model -->
 <menu id="main-menu">
   <section>
-
-    <item>
-      <!-- Translators: This is the label used for the preferences item in the primary menu -->
-      <attribute name="label" translatable="yes">Preferences</attribute>
-      <attribute name="action">app.preferences</attribute>
-    </item>
-
-    <item>
-      <!-- Translators: This is the label used for the keyboard shortcuts item in the primary menu -->
-      <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
-      <attribute name="action">win.show-help-overlay</attribute>
-    </item>
-
     <item>
       <!-- Translators: This is the label used for the about item in the primary menu -->
       <attribute name="label" translatable="yes">About Replay</attribute>
       <attribute name="action">app.about</attribute>
     </item>
-
   </section>
 </menu>
 <!-- Menu model -->
-
-<!-- Search icon -->
-<object class="GtkImage" id="search-icon">
-  <property name="visible">True</property>
-  <property name="icon-name">system-search-symbolic</property>
-</object>
-<!-- Search icon -->
-
-<!-- Menu icon -->
-<object class="GtkImage" id="menu-icon">
-  <property name="visible">True</property>
-  <property name="icon-name">open-menu-symbolic</property>
-</object>
-<!-- Menu icon -->
 
 </interface>

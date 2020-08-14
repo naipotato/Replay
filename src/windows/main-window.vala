@@ -16,9 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-window.ui")]
-class MainWindow : Hdy.ApplicationWindow {
-
-    [GtkChild] private MainHeaderBar _headerbar;
+class MainWindow : Gtk.ApplicationWindow {
 
     public MainWindow (App app) {
         Object (
@@ -33,18 +31,6 @@ class MainWindow : Hdy.ApplicationWindow {
 #if DEVEL
         var style_context = this.get_style_context ();
         style_context.add_class ("devel");
-
-        var builder = new Gtk.Builder.from_resource (@"$(Constants.RESOURCE_PATH)/gtk/help-overlay.ui");
-        var help_overlay = (Gtk.ShortcutsWindow) builder.get_object ("help_overlay");
-        this.set_help_overlay (help_overlay);
-
-        string[] accels = { "<Primary>F1", "<Primary>question" };
-        app.set_accels_for_action ("win.show-help-overlay", accels);
 #endif
-    }
-
-    [GtkCallback]
-    private bool on_key_press_event (Gdk.EventKey event) {
-        return this._headerbar.handle_event (event);
     }
 }

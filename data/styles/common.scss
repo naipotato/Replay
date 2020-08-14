@@ -23,6 +23,10 @@ $backdrop_borders_color: mix($borders_color, $bg_color, 80%);
  * HeaderBar *
  *************/
 
+window {
+    border-radius: 8px;
+}
+
 headerbar {
     border-bottom: 2px solid $selected_bg_color;
 
