@@ -63,24 +63,6 @@
       ]
     },
     {
-      "name" : "libhandy",
-      "buildsystem" : "meson",
-      "builddir" : true,
-      "config-opts" : [
-        "-Dintrospection=enabled",
-        "-Dtests=false",
-        "-Dexamples=false",
-        "-Dglade_catalog=disabled"
-      ],
-      "sources" : [
-        {
-          "type" : "git",
-          "url" : "https://gitlab.gnome.org/GNOME/libhandy.git",
-          "tag" : "0.83.0"
-        }
-      ]
-    },
-    {
       "name" : "vul",
       "buildsystem" : "meson",
       "builddir" : true,
