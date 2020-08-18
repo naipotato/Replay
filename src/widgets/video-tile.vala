@@ -52,7 +52,7 @@ class VideoTile : Gtk.Box {
 
         try {
             var istream = session.send (message);
-            this._thumbnail.pixbuf = new Gdk.Pixbuf.from_stream (istream);
+            this._thumbnail.paintable = Gdk.Texture.for_pixbuf (new Gdk.Pixbuf.from_stream (istream));
         } catch (Error e) {
             this._thumbnail.icon_name = "image-missing";
             warning (e.message);

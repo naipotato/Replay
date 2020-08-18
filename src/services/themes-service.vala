@@ -38,9 +38,9 @@ class ThemesService : Object {
 
         // If dark theme is selected, remove light css and apply dark css, if light theme is
         // selected, remove dark css and apply light css
-        Gtk.StyleContext.remove_provider_for_screen (Gdk.Screen.get_default (), dark_theme ?
+        Gtk.StyleContext.remove_provider_for_display (Gdk.Display.get_default (), dark_theme ?
             this._light_css : this._dark_css);
-        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), dark_theme ?
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), dark_theme ?
             this._dark_css : this._light_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 }

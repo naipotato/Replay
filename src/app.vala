@@ -50,13 +50,13 @@ class App : Gtk.Application {
 
         this.populate_actions ();
         this.init_types ();
-        Hdy.init ();
 
         // Load theme from the user preferences
         new ThemesService ().update_theme (new SettingsService ().dark_theme);
 
 #if DEVEL
-        Gtk.IconTheme.get_default ().add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
+        var default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+        default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
     }
 
@@ -66,11 +66,7 @@ class App : Gtk.Application {
     }
 
     private void populate_actions () {
-        var action = new SimpleAction ("preferences", null);
-        action.activate.connect (this.on_preferences_activate);
-        this.add_action (action);
-
-        action = new SimpleAction ("about", null);
+        var action = new SimpleAction ("about", null);
         action.activate.connect (this.on_about_activate);
         this.add_action (action);
 
@@ -81,25 +77,27 @@ class App : Gtk.Application {
     }
 
     private void init_types () {
-        typeof (LibraryView).ensure ();
-        typeof (SubscriptionsView).ensure ();
+        typeof (MainHeaderBar).ensure ();
         typeof (TrendingView).ensure ();
         typeof (ErrorMessage).ensure ();
     }
 
-    private void on_preferences_activate () {
-        var preferences_window = new PreferencesWindow () {
-            transient_for = this.active_window
-        };
-
-        preferences_window.present ();
-    }
-
     private void on_about_activate () {
-        var about_dialog = new AboutDialog () {
-            transient_for = this.active_window
-        };
+        string[] authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" };
 
-        about_dialog.present ();
+        Gtk.show_about_dialog (
+            this.active_window,
+            "modal", true,
+            "destroy-with-parent", true,
+            "license-type", Gtk.License.GPL_3_0,
+            "program-name", _("Replay"),
+            "logo-icon-name", Constants.APPLICATION_ID,
+            "version", Constants.VERSION,
+            "copyright", "Copyright © 2019-2020 Nahuel Gomez Castro",
+            "authors", authors,
+            "comments", _("An open source YouTube client for GNOME."),
+            "website-label", _("Project repository"),
+            "website", Constants.PACKAGE_URL
+        );
     }
 }

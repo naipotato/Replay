@@ -22,10 +22,6 @@
 
   <gresource prefix="/com/github/nahuelwexd/Replay">
 
-    <file alias="about-dialog.ui" preprocess="xml-stripblanks">dialogs/about-dialog.ui</file>
-
-    <file alias="library-view.ui" preprocess="xml-stripblanks">views/library-view.ui</file>
-    <file alias="subscriptions-view.ui" preprocess="xml-stripblanks">views/subscriptions-view.ui</file>
     <file alias="trending-view.ui" preprocess="xml-stripblanks">views/trending-view.ui</file>
 
     <file alias="error-message.ui" preprocess="xml-stripblanks">widgets/error-message.ui</file>
@@ -33,15 +29,10 @@
     <file alias="video-tile.ui" preprocess="xml-stripblanks">widgets/video-tile.ui</file>
 
     <file alias="main-window.ui" preprocess="xml-stripblanks">windows/main-window.ui</file>
-    <file alias="preferences-window.ui" preprocess="xml-stripblanks">windows/preferences-window.ui</file>
 
     <file>styles.css</file>
     <file>styles-dark.css</file>
 
-  </gresource>
-
-  <gresource prefix="/com/github/nahuelwexd/Replay/gtk">
-    <file alias="help-overlay.ui" preprocess="xml-stripblanks">../data/gtk/help-overlay.ui</file>
   </gresource>
 
   <gresource prefix="/com/github/nahuelwexd/Replay/icons">

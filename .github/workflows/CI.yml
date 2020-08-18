@@ -21,13 +21,13 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y flatpak flatpak-builder valac
-        flatpak remote-add --user --if-not-exists flathub \
-            https://flathub.org/repo/flathub.flatpakrepo
+        flatpak remote-add --user --if-not-exists gnome-nightly \
+            https://nightly.gnome.org/gnome-nightly.flatpakrepo
     - name: Build with Flatpak Builder
       run: |
         ./build-aux/flatpak/generate-replay-constants.vala "${{ secrets.API_KEY }}" \
             src/constants.vala
-        flatpak-builder --user --repo=repo --install-deps-from=flathub flatpak_app \
+        flatpak-builder --user --repo=repo --install-deps-from=gnome-nightly flatpak_app \
             build-aux/flatpak/com.github.nahuelwexd.Replay.json
     - uses: actions/upload-artifact@v2
       with:

@@ -16,63 +16,27 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-header-bar.ui")]
-class MainHeaderBar : Hdy.HeaderBar {
+class MainHeaderBar : Gtk.Widget {
 
-    [GtkChild] private Hdy.ViewSwitcherTitle _view_switcher_title;
-    [GtkChild] private Gtk.ToggleButton _search_button;
+    [GtkChild] private Gtk.HeaderBar _headerbar;
     [GtkChild] private Gtk.MenuButton _menu_button;
-    [GtkChild] private Gtk.SearchEntry _search_entry;
-    [GtkChild] private Gtk.Stack _title_stack;
+    private bool _menu_opened;
 
-    public Gtk.Stack stack { get; set; }
-    public bool is_narrow_mode { get; set; }
-    public bool search_mode { get; set; }
-
-    construct {
-        this.bind_property ("stack", this._view_switcher_title, "stack", BindingFlags.BIDIRECTIONAL);
-        this.bind_property ("search-mode", this._search_button, "active", BindingFlags.BIDIRECTIONAL);
-
-        this._view_switcher_title.bind_property ("title-visible", this, "is-narrow-mode",
-            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+    static construct {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
     [Signal (action = true)]
     public virtual signal void toggle_menu () {
-        this._menu_button.active = !this._menu_button.active;
-    }
-
-    [Signal (action = true)]
-    public virtual signal void toggle_search_mode () {
-        this.search_mode = !this.search_mode;
-    }
-
-    public bool handle_event (Gdk.EventKey event) {
-        if (this.search_mode) {
-            return Gdk.EVENT_PROPAGATE;
-        }
-
-        var handled = this._search_entry.handle_event (event);
-        if (handled == Gdk.EVENT_STOP) {
-            this.search_mode = true;
-        }
-
-        return handled;
-    }
-
-    [GtkCallback]
-    private void on_search_mode_changed () {
-        if (this.search_mode) {
-            this._title_stack.visible_child_name = "search";
-            this._search_entry.grab_focus_without_selecting ();
-            this._search_entry.move_cursor (Gtk.MovementStep.LOGICAL_POSITIONS, int.MAX, false);
+        if (this._menu_opened) {
+            this._menu_button.popdown ();
         } else {
-            this._title_stack.visible_child_name = "tabs";
-            this._search_entry.text = "";
+            this._menu_button.popup ();
         }
     }
 
-    [GtkCallback]
-    private void on_search_entry_stop_search () {
-        this.search_mode = false;
+    public override void dispose () {
+        this._headerbar.unparent ();
+        base.dispose ();
     }
 }
