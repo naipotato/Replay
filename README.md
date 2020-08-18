@@ -4,13 +4,15 @@ This is a repository in which the different mockups that will be used during the
 
 ## Goals for the design
 
-- Must have variants for large, medium and small screens (mobile)
+- Should be simple and comfortable to use
 
-- Must adhere to [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/stable)
+- Should be friendly with trackpads and touchscreens
 
-- Should be self-explanatory and only provide a short text in case there's some not so obvious interaction that needs to be explained
+- Should be adaptive, for different form factors
 
-- Editable files must be an SVG file and be inside the `src/` folder, exported PNG files must be in the repository root.
+- Must feel familiar to current YouTube users
+
+- Must follow the [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/stable)
 
 ## License
 
