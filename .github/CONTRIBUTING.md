@@ -24,6 +24,18 @@ To contribute to this repository with new mockups or corrections to existing one
 
 - All the images that the mockup requires must be embedded in the SVG file
 
+## Useful Resources
+
+- [Mockup Resources for GNOME Apps](https://gitlab.gnome.org/Teams/Design/mockup-resources)
+
+- [Text Styles](https://gitlab.gnome.org/Teams/Design/os-mockups/-/tree/master/text-styles)
+
+- [GNOME Design Tools](https://world.pages.gitlab.gnome.org/design/tools/)
+
+- [Inkscape](https://flathub.org/apps/details/org.inkscape.Inkscape)
+
+## Notes
+
 All mockups present in this repository will be licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0).
 
 All interactions will be governed under the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
