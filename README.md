@@ -46,7 +46,7 @@ ready to install: the application and the locales
 
 You want to build this project and maybe contribute to it? Well, this is the right guide for you.
 But first, you will need to get an API key for the YouTube Data API v3. Go to the
-[Google Developers Console](https://console.console.developers.google.com), create a new project and
+[Google Developers Console](https://console.developers.google.com), create a new project and
 get a new API key, then choose the way you want to go to build the app:
 [GNOME Builder](#gnome-builder) or [manually](#manually).
 
