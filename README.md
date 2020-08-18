@@ -14,6 +14,10 @@ This is a repository in which the different mockups that will be used during the
 
 - Must follow the [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/stable)
 
+## Contributing
+
+Please, read our [contributing guidelines](.github/CONTRIBUTING.md) before doing anything.
+
 ## License
 
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0)
