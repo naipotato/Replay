@@ -1,27 +1,27 @@
 utlib_sources = files (
-    'data/thumbnail.vala',
-    'data/video.vala',
-    'data/video-localization.vala',
-    'data/video-snippet.vala',
+  'data/thumbnail.vala',
+  'data/video.vala',
+  'data/video-localization.vala',
+  'data/video-snippet.vala',
 
-    'errors/parser-error.vala',
-    'errors/request-error.vala',
+  'errors/parser-error.vala',
+  'errors/request-error.vala',
 
-    'requests/request.vala',
-    'requests/video-list-request.vala',
+  'requests/request.vala',
+  'requests/video-list-request.vala',
 
-    'resources/videos-resource.vala',
+  'resources/videos-resource.vala',
 
-    'responses/list-response.vala',
-    'responses/page-info.vala',
-    'responses/video-list-response.vala',
+  'responses/list-response.vala',
+  'responses/page-info.vala',
+  'responses/video-list-response.vala',
 
-    'services/parameter.vala',
-    'services/parameters-service.vala',
+  'services/parameter.vala',
+  'services/parameters-service.vala',
 
-    'utils/enum-utils.vala',
+  'utils/enum-utils.vala',
 
-    'client.vala'
+  'client.vala'
 )
 
 
@@ -44,78 +44,78 @@ utlib_deps = '@0@.deps'.format (utlib_api_name)
 
 
 utlib_dependencies = [
-    glib_dep,
-    gobject_dep,
-    gee_dep,
-    gio_dep,
-    soup_dep,
-    gjson_dep
+  glib_dep,
+  gobject_dep,
+  gee_dep,
+  gio_dep,
+  soup_dep,
+  gjson_dep
 ]
 
 
 utlib = library (
-    'utlib',
-    utlib_sources,
+  'utlib',
+  utlib_sources,
 
-     vala_header: utlib_header,
-       vala_vapi: utlib_vapi,
-        vala_gir: utlib_gir,
-    dependencies: utlib_dependencies,
-         install: true,
-     install_dir: [true, true, true, true]
+   vala_header: utlib_header,
+     vala_vapi: utlib_vapi,
+      vala_gir: utlib_gir,
+  dependencies: utlib_dependencies,
+       install: true,
+   install_dir: [true, true, true, true]
 )
 
 
 g_ir_compiler = find_program ('g-ir-compiler')
 
 custom_target (
-    utlib_typelib,
-    command: [
-        g_ir_compiler,
-        '--shared-library',
-        utlib.full_path (),
-        '--output',
-        '@OUTPUT@',
-        meson.current_build_dir () / utlib_gir
-    ],
+  utlib_typelib,
+  command: [
+    g_ir_compiler,
+    '--shared-library',
+    utlib.full_path (),
+    '--output',
+    '@OUTPUT@',
+    meson.current_build_dir () / utlib_gir
+  ],
 
-         output: utlib_typelib,
-        depends: utlib,
-        install: true,
-    install_dir: get_option ('libdir') / 'girepository-1.0'
+       output: utlib_typelib,
+      depends: utlib,
+      install: true,
+  install_dir: get_option ('libdir') / 'girepository-1.0'
 )
 
 
 utlib_dep = declare_dependency (
-              link_with: utlib,
-           dependencies: utlib_dependencies,
-    include_directories: [include_directories ('.')]
+            link_with: utlib,
+         dependencies: utlib_dependencies,
+  include_directories: [include_directories ('.')]
 )
 
 
 pkg = import ('pkgconfig')
 
 pkg.generate (utlib,
-       requires: soup_dep,
-    description: 'A YouTube Data API client library for Vala',
-       filebase: utlib_api_name,
-            url: 'https://github.com/nahuelwexd/replay'
+     requires: soup_dep,
+  description: 'A YouTube Data API client library for Vala',
+     filebase: utlib_api_name,
+          url: 'https://github.com/nahuelwexd/replay'
 )
 
 
 utlib_requires = []
 
 foreach dependency : utlib_dependencies
-    utlib_requires += dependency.name ()
+  utlib_requires += dependency.name ()
 endforeach
 
 deps_conf = configuration_data ()
 deps_conf.set ('deps', '\n'.join (utlib_requires))
 
 configure_file (
-            input: 'deps.meson',
-           output: utlib_deps,
-    configuration: deps_conf,
-          install: true,
-      install_dir: get_option ('datadir') / 'vala' / 'vapi'
+          input: 'deps.meson',
+         output: utlib_deps,
+  configuration: deps_conf,
+        install: true,
+    install_dir: get_option ('datadir') / 'vala' / 'vapi'
 )

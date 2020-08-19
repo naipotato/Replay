@@ -17,8 +17,8 @@
 
 public class Utlib.PageInfo : Object {
 
-    [Description (nick = "json::totalResults")]
-    public int total_results { get; set; }
-    [Description (nick = "json::resultsPerPage")]
-    public int results_per_page { get; set; }
+  [Description (nick = "json::totalResults")]
+  public int total_results { get; set; }
+  [Description (nick = "json::resultsPerPage")]
+  public int results_per_page { get; set; }
 }

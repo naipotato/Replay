@@ -17,15 +17,15 @@
 
 public class Utlib.VideoListResponse : ListResponse<Utlib.Video> {
 
-    private Gee.List<Utlib.Video> _items;
+  private Gee.List<Utlib.Video> _items;
 
-    public override Gee.List<Utlib.Video> items {
-        get {
-            return this._items;
-        }
+  public override Gee.List<Utlib.Video> items {
+    get {
+      return this._items;
     }
+  }
 
-    construct {
-        this._items = new Gee.ArrayList<Utlib.Video> ();
-    }
+  construct {
+    this._items = new Gee.ArrayList<Utlib.Video> ();
+  }
 }

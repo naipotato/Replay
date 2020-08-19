@@ -17,7 +17,7 @@
 
 public class Utlib.Thumbnail : Object {
 
-    public string url { get; set; }
-    public uint width { get; set; }
-    public uint height { get; set; }
+  public string url { get; set; }
+  public uint width { get; set; }
+  public uint height { get; set; }
 }

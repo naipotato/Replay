@@ -18,12 +18,12 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/error-message.ui")]
 class ErrorMessage : Gtk.Box {
 
-    public string label { get; set; }
+  public string label { get; set; }
 
-    public signal void retry_requested ();
+  public signal void retry_requested ();
 
-    [GtkCallback]
-    private void on_retry_button_clicked () {
-        retry_requested ();
-    }
+  [GtkCallback]
+  private void on_retry_button_clicked () {
+    retry_requested ();
+  }
 }

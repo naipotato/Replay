@@ -1,23 +1,23 @@
 # Get the source files
 replay_sources = files (
-    'services/settings-service.vala',
-    'services/themes-service.vala',
+  'services/settings-service.vala',
+  'services/themes-service.vala',
 
-    'utils/generic-list-model.vala',
+  'utils/generic-list-model.vala',
 
-    'view-models/preferences-view-model.vala',
-    'view-models/trending-view-model.vala',
+  'view-models/preferences-view-model.vala',
+  'view-models/trending-view-model.vala',
 
-    'views/trending-view.vala',
+  'views/trending-view.vala',
 
-    'widgets/error-message.vala',
-    'widgets/main-header-bar.vala',
-    'widgets/video-tile.vala',
+  'widgets/error-message.vala',
+  'widgets/main-header-bar.vala',
+  'widgets/video-tile.vala',
 
-    'windows/main-window.vala',
+  'windows/main-window.vala',
 
-    'app.vala',
-    'constants.vala',
+  'app.vala',
+  'constants.vala',
 )
 
 
@@ -25,9 +25,9 @@ replay_sources = files (
 gnome = import ('gnome')
 
 resources = gnome.compile_resources (
-    '@0@.gresource'.format (rdnn_app_name),
-    '@0@.gresource.xml'.format (rdnn_app_name),
-    dependencies: [custom_light_css, custom_dark_css]
+  '@0@.gresource'.format (rdnn_app_name),
+  '@0@.gresource.xml'.format (rdnn_app_name),
+  dependencies: [custom_light_css, custom_dark_css]
 )
 
 
@@ -38,24 +38,24 @@ vapidir = meson.source_root () / 'vapi'
 
 # Get the dependencies
 replay_deps = [
-    glib_dep,
-    gobject_dep,
-    gee_dep,
-    gio_dep,
-    soup_dep,
-    gtk_dep,
-    config_dep,
-    utlib_dep
+  glib_dep,
+  gobject_dep,
+  gee_dep,
+  gio_dep,
+  soup_dep,
+  gtk_dep,
+  config_dep,
+  utlib_dep
 ]
 
 
 # Build the project
 executable (
-    meson.project_name (),
-    replay_sources, resources,
+  meson.project_name (),
+  replay_sources, resources,
 
-           dependencies: replay_deps,
-                install: true,
-    include_directories: confinc,
-                gui_app: true
+         dependencies: replay_deps,
+              install: true,
+  include_directories: confinc,
+              gui_app: true
 )

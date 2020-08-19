@@ -17,22 +17,22 @@
 
 namespace Utlib.EnumUtils {
 
-    public string? to_string (Type enum_type, int @value) {
-        var enumc = (EnumClass) enum_type.class_ref ();
-        unowned EnumValue? eval = enumc.get_value (@value);
+  public string? to_string (Type enum_type, int @value) {
+    var enumc = (EnumClass) enum_type.class_ref ();
+    unowned EnumValue? eval = enumc.get_value (@value);
 
-        return_val_if_fail (eval != null, null);
+    return_val_if_fail (eval != null, null);
 
-        var builder = new StringBuilder ();
-        var words = eval.value_nick.split ("-");
-        for (int i = 0; i < words.length; i++) {
-            if (i > 0) {
-                words[i] = @"$(words[i][0].toupper ())$(words[i][1:words[i].length])";
-            }
+    var builder = new StringBuilder ();
+    var words = eval.value_nick.split ("-");
+    for (int i = 0; i < words.length; i++) {
+      if (i > 0) {
+        words[i] = @"$(words[i][0].toupper ())$(words[i][1:words[i].length])";
+      }
 
-            builder.append (words[i]);
-        }
-
-        return builder.str;
+      builder.append (words[i]);
     }
+
+    return builder.str;
+  }
 }

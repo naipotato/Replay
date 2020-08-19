@@ -18,25 +18,25 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-header-bar.ui")]
 class MainHeaderBar : Gtk.Widget {
 
-    [GtkChild] private Gtk.HeaderBar _headerbar;
-    [GtkChild] private Gtk.MenuButton _menu_button;
-    private bool _menu_opened;
+  [GtkChild] private Gtk.HeaderBar _headerbar;
+  [GtkChild] private Gtk.MenuButton _menu_button;
+  private bool _menu_opened;
 
-    static construct {
-        set_layout_manager_type (typeof (Gtk.BinLayout));
+  static construct {
+    set_layout_manager_type (typeof (Gtk.BinLayout));
+  }
+
+  [Signal (action = true)]
+  public virtual signal void toggle_menu () {
+    if (this._menu_opened) {
+      this._menu_button.popdown ();
+    } else {
+      this._menu_button.popup ();
     }
+  }
 
-    [Signal (action = true)]
-    public virtual signal void toggle_menu () {
-        if (this._menu_opened) {
-            this._menu_button.popdown ();
-        } else {
-            this._menu_button.popup ();
-        }
-    }
-
-    public override void dispose () {
-        this._headerbar.unparent ();
-        base.dispose ();
+  public override void dispose () {
+    this._headerbar.unparent ();
+    base.dispose ();
     }
 }

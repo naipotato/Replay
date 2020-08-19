@@ -17,26 +17,26 @@
 
 public class Utlib.Client : Object {
 
-    private Utlib.VideosResource _videos;
+  private Utlib.VideosResource _videos;
 
 
-    public string api_key { get; set; }
-    public Soup.Session session { get; construct; }
+  public string api_key { get; set; }
+  public Soup.Session session { get; construct; }
 
-    public Utlib.VideosResource videos {
-        get {
-            return this._videos;
-        }
+  public Utlib.VideosResource videos {
+    get {
+      return this._videos;
     }
+  }
 
 
-    public Client (Soup.Session session = new Soup.Session ()) {
-        Object (
-            session: session
-        );
-    }
+  public Client (Soup.Session session = new Soup.Session ()) {
+    Object (
+      session: session
+    );
+  }
 
-    construct {
-        this._videos = new Utlib.VideosResource (this);
-    }
+  construct {
+    this._videos = new Utlib.VideosResource (this);
+  }
 }

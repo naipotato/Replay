@@ -109,8 +109,8 @@ Inside of `src`, create a new file called `constants.vala`. It should contains t
 ```vala
 namespace Replay.Constants {
 
-    [CCode (cname = "API_KEY")]
-    public const string API_KEY = "your_api_key";
+  [CCode (cname = "API_KEY")]
+  public const string API_KEY = "your_api_key";
 }
 ```
 

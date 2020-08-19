@@ -17,6 +17,6 @@
 
 public class Utlib.VideoLocalization : Object {
 
-    public string title { get; set; }
-    public string description { get; set; }
+  public string title { get; set; }
+  public string description { get; set; }
 }

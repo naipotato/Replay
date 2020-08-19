@@ -17,8 +17,8 @@
 
 public class Utlib.Video : Object {
 
-    public string kind { get; set; }
-    public string etag { get; set; }
-    public string id { get; set; }
-    public Utlib.VideoSnippet snippet { get; set; }
+  public string kind { get; set; }
+  public string etag { get; set; }
+  public string id { get; set; }
+  public Utlib.VideoSnippet snippet { get; set; }
 }

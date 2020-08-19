@@ -18,22 +18,22 @@
 [SingleInstance]
 class PreferencesViewModel : Object {
 
-    private SettingsService _settings_service;
-    private bool _dark_theme;
+  private SettingsService _settings_service;
+  private bool _dark_theme;
 
-    public bool dark_theme {
-        get {
-            return this._dark_theme;
-        }
-        set {
-            new ThemesService ().update_theme (value);
-            this._dark_theme = value;
-        }
+  public bool dark_theme {
+    get {
+      return this._dark_theme;
     }
+    set {
+      new ThemesService ().update_theme (value);
+      this._dark_theme = value;
+    }
+  }
 
-    construct {
-        this._settings_service = new SettingsService ();
-        this._settings_service.bind_property ("dark-theme", this, "dark-theme",
-            BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
-    }
+  construct {
+    this._settings_service = new SettingsService ();
+    this._settings_service.bind_property ("dark-theme", this, "dark-theme",
+      BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
+  }
 }

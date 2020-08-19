@@ -16,5 +16,5 @@
  */
 
 public errordomain Utlib.RequestError {
-    SERVER_ERROR
+  SERVER_ERROR
 }

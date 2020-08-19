@@ -18,19 +18,19 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-window.ui")]
 class MainWindow : Gtk.ApplicationWindow {
 
-    public MainWindow (App app) {
-        Object (
-            application: app
-        );
+  public MainWindow (App app) {
+    Object (
+      application: app
+    );
 
-        var close_action = new SimpleAction ("close", null);
-        close_action.activate.connect (this.close);
-        app.set_accels_for_action ("win.close", { "<Primary>W" });
-        this.add_action (close_action);
+    var close_action = new SimpleAction ("close", null);
+    close_action.activate.connect (this.close);
+    app.set_accels_for_action ("win.close", { "<Primary>W" });
+    this.add_action (close_action);
 
 #if DEVEL
-        var style_context = this.get_style_context ();
-        style_context.add_class ("devel");
+    var style_context = this.get_style_context ();
+    style_context.add_class ("devel");
 #endif
-    }
+  }
 }
