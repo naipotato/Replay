@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="MainWindow" parent="GtkApplicationWindow">
+<template class="AppWindow" parent="GtkApplicationWindow">
   <property name="title" translatable="yes">Replay</property>
   <property name="default-width">1024</property>
   <property name="default-height">553</property>

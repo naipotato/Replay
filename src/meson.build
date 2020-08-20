@@ -14,8 +14,8 @@ replay_sources = files (
   'widgets/video-tile.vala',
 
   'app.vala',
+  'app-window.vala',
   'constants.vala',
-  'main-window.vala',
 )
 
 

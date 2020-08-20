@@ -15,10 +15,10 @@
  * along with Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/main-window.ui")]
-class MainWindow : Gtk.ApplicationWindow {
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
+class AppWindow : Gtk.ApplicationWindow {
 
-  public MainWindow (App app) {
+  public AppWindow (App app) {
     Object (
       application: app
     );

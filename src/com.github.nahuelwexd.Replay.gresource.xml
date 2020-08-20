@@ -28,7 +28,7 @@
     <file alias="main-header-bar.ui" preprocess="xml-stripblanks">widgets/main-header-bar.ui</file>
     <file alias="video-tile.ui" preprocess="xml-stripblanks">widgets/video-tile.ui</file>
 
-    <file preprocess="xml-stripblanks">main-window.ui</file>
+    <file preprocess="xml-stripblanks">app-window.ui</file>
 
     <file>styles.css</file>
     <file>styles-dark.css</file>
