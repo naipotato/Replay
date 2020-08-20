@@ -18,6 +18,8 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
 class AppWindow : Gtk.ApplicationWindow {
 
+  [GtkChild] private Gtk.Stack _root_stack;
+
   public new App application {
     get {
       return (App) base.application;
@@ -45,5 +47,6 @@ class AppWindow : Gtk.ApplicationWindow {
 #endif
   }
 
-
+  [GtkCallback]
+  private void on_visible_child_changed () {}
 }

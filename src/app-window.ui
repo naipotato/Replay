@@ -30,7 +30,9 @@
   </child>
 
   <child>
-    <object class="TrendingView" id="_trending_view" />
+    <object class="GtkStack" id="_root_stack">
+      <signal name="notify::visible-child" handler="on_visible_child_changed" />
+    </object>
   </child>
 
 </template>
