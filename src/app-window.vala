@@ -41,8 +41,9 @@ class AppWindow : Gtk.ApplicationWindow {
     this.add_action (close_action);
 
 #if DEVEL
-    var style_context = this.get_style_context ();
-    style_context.add_class ("devel");
+    base.get_style_context ().add_class ("devel");
 #endif
   }
+
+
 }
