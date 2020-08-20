@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 
 <!--
   Replay - An open source YouTube client for GNOME
@@ -23,7 +23,7 @@
 <template class="MainWindow" parent="GtkApplicationWindow">
   <property name="title" translatable="yes">Replay</property>
   <property name="default-width">1024</property>
-  <property name="default-height">550</property>
+  <property name="default-height">553</property>
 
   <child type="titlebar">
     <object class="MainHeaderBar" id="_headerbar" />
