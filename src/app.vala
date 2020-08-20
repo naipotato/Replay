@@ -46,7 +46,6 @@ class App : Gtk.Application {
     base.startup ();
 
     Gtk.Window.set_default_icon_name (Constants.APPLICATION_ID);
-    Environment.set_prgname (Constants.APPLICATION_ID);
 
     this.populate_actions ();
     this.init_types ();
