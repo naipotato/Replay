@@ -35,15 +35,20 @@ class App : Gtk.Application {
   protected override void startup () {
     base.startup ();
 
+    // Set a default icon for all the windows
     Gtk.Window.set_default_icon_name (Constants.APPLICATION_ID);
 
+    // Populate app actions and initialize types
     this.populate_actions ();
     this.init_types ();
 
-    // Load theme from the user preferences
-    new ThemesService ().update_theme (new SettingsService ().dark_theme);
+    // As this is a media app, dark theme should be used
+    var gtk_settings = Gtk.Settings.get_default ();
+    gtk_settings.gtk_application_prefer_dark_theme = true;
 
 #if DEVEL
+    // Since the resource path does not match with the ID on a devel build,
+    // icons are loaded manually
     var default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
     default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
