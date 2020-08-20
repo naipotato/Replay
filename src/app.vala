@@ -52,11 +52,12 @@ class App : Gtk.Application {
     var default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
     default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
+
+    new AppWindow () { application = this };
   }
 
   protected override void activate () {
-    var win = this.active_window ?? new AppWindow () { application = this };
-    win.present ();
+    this.active_window.present ();
   }
 
   private void populate_actions () {
