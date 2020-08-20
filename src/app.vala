@@ -61,7 +61,7 @@ class App : Gtk.Application {
   }
 
   protected override void activate () {
-    var win = this.active_window ?? new AppWindow (this);
+    var win = this.active_window ?? new AppWindow () { application = this };
     win.present ();
   }
 

@@ -18,14 +18,10 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
 class AppWindow : Gtk.ApplicationWindow {
 
-  public AppWindow (App app) {
-    Object (
-      application: app
-    );
-
+  construct {
     var close_action = new SimpleAction ("close", null);
     close_action.activate.connect (this.close);
-    app.set_accels_for_action ("win.close", { "<Primary>W" });
+    this.application.set_accels_for_action ("win.close", { "<Primary>W" });
     this.add_action (close_action);
 
 #if DEVEL
