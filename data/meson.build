@@ -84,7 +84,7 @@ configured_desktop_file = configure_file (
 desktop_file = i18n.merge_file (
         input: configured_desktop_file,
        output: '@0@.desktop'.format (application_id),
-       pr_dir: meson.source_root () / 'po',
+       po_dir: meson.source_root () / 'po',
          type: 'desktop',
       install: true,
   install_dir: get_option ('datadir') / 'applications'
