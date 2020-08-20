@@ -25,11 +25,9 @@ class App : Gtk.Application {
     };
   }
 
-  public App () {
-    Object (
-      application_id: Constants.APPLICATION_ID,
-      flags: ApplicationFlags.FLAGS_NONE
-    );
+  construct {
+    this.application_id = Constants.APPLICATION_ID;
+    this.flags = ApplicationFlags.FLAGS_NONE;
   }
 
   protected override void startup () {
@@ -53,6 +51,7 @@ class App : Gtk.Application {
     default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
 
+    // Create the app window and configure it
     new AppWindow () { application = this };
   }
 
