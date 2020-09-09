@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - An open source YouTube client for GNOME
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="ReplayAppWindow" parent="GtkApplicationWindow">
+  <property name="title">Replay</property>
+  <property name="default-width">1024</property>
+  <property name="default-height">553</property>
+
+  <style>
+    <class name="devel" />
+  </style>
+
+  <child type="titlebar">
+    <object class="ReplayHeaderBar" id="_header_bar" />
+  </child>
+
+  <child>
+    <object class="ReplayNavigationView">
+      <signal name="item-selected" handler="on_navigation_view_item_selected" />
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/home</property>
+          <property name="icon-name">go-home-symbolic</property>
+          <property name="label">Home</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-trending-symbolic</property>
+          <property name="label">Trending</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-subscriptions-symbolic</property>
+          <property name="label">Subscriptions</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-liked-symbolic</property>
+          <property name="label">Liked Videos</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-favorites-symbolic</property>
+          <property name="label">Favorites</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-history-symbolic</property>
+          <property name="label">History</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-watch-later-symbolic</property>
+          <property name="label">Watch Later</property>
+        </object>
+      </child>
+
+      <child type="item">
+        <object class="ReplayNavigationViewItem">
+          <property name="tag">/not-found</property>
+          <property name="icon-name">go-playlists-symbolic</property>
+          <property name="label">Playlists</property>
+        </object>
+      </child>
+
+      <child>
+        <object class="ReplaySection">
+          <property name="hexpand">True</property>
+
+          <child>
+            <object class="ReplayHomePage">
+              <property name="path">/home</property>
+            </object>
+          </child>
+
+          <child>
+            <object class="ReplayNotFoundPage">
+              <property name="path">/not-found</property>
+            </object>
+          </child>
+
+        </object>
+      </child>
+
+    </object>
+  </child>
+
+</template>
+
+</interface>

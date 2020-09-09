@@ -1,0 +1,11 @@
+headerbar {
+  border-bottom: 2px solid #ed333b;
+
+  entry {
+    background: cross-fade(60% -gtk-icontheme('edit-find-symbolic'), image(transparent)) no-repeat 8px 50%/16px,
+                unquote('@theme_base_color');
+    text {
+      margin-left: 16px + 8px;
+    }
+  }
+}

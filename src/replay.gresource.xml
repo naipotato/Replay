@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - An open source YouTube client for GNOME
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<gresources>
+
+<gresource prefix="/com/github/nahuelwexd/Replay">
+  <file alias="home-page.ui">pages/replay-home-page.ui</file>
+  <file alias="not-found-page.ui">pages/replay-not-found-page.ui</file>
+
+  <file alias="header-bar.ui">widgets/replay-header-bar.ui</file>
+  <file alias="navigation-view-item.ui">widgets/replay-navigation-view-item.ui</file>
+  <file alias="video-carousel-item.ui">widgets/replay-video-carousel-item.ui</file>
+
+  <file alias="app-window.ui">replay-app-window.ui</file>
+  <file alias="maxresdefault.jpg">../data/maxresdefault.jpg</file>
+  <file>styles.css</file>
+</gresource>
+
+<gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable">
+  <file alias="actions/go-trending-symbolic.svg">../data/icons/go-trending-symbolic.svg</file>
+  <file alias="actions/go-subscriptions-symbolic.svg">../data/icons/go-subscriptions-symbolic.svg</file>
+  <file alias="actions/go-liked-symbolic.svg">../data/icons/go-liked-symbolic.svg</file>
+  <file alias="actions/go-favorites-symbolic.svg">../data/icons/go-favorites-symbolic.svg</file>
+  <file alias="actions/go-history-symbolic.svg">../data/icons/go-history-symbolic.svg</file>
+  <file alias="actions/go-watch-later-symbolic.svg">../data/icons/go-watch-later-symbolic.svg</file>
+  <file alias="actions/go-playlists-symbolic.svg">../data/icons/go-playlists-symbolic.svg</file>
+
+  <file alias="status/not-found-symbolic.svg">../data/icons/not-found-symbolic.svg</file>
+</gresource>
+
+</gresources>

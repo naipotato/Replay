@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Replay
+GenericName=YouTube client
+Comment=An open source YouTube client for GNOME
+Icon=@APPLICATION_ID@
+TryExec=@EXECUTABLE@
+Exec=@EXECUTABLE@
+Terminal=false
+Categories=Network;Player;Feed;GTK;
+Keywords=youtube;videos;
+StartupNotify=true

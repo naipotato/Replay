@@ -15,20 +15,15 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Replay.Constants
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/home-page.ui")]
+public class Replay.HomePage : Page
 {
-	[CCode (cheader_filename = "config.h", cname = "RDNN_APP_NAME")]
-	public const string RDNN_APP_NAME;
+	/* GObject blocks */
 
-	[CCode (cheader_filename = "config.h", cname = "APPLICATION_ID")]
-	public const string APPLICATION_ID;
+	static construct
+	{
+		set_css_name ("homepage");
+	}
 
-	[CCode (cheader_filename = "config.h", cname = "PACKAGE_URL")]
-	public const string PACKAGE_URL;
-
-	[CCode (cheader_filename = "config.h", cname = "RESOURCE_PATH")]
-	public const string RESOURCE_PATH;
-
-	[CCode (cheader_filename = "config.h", cname = "VERSION")]
-	public const string VERSION;
+	/* GObject blocks */
 }

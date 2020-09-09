@@ -1,9 +1,0 @@
-data/gtk/help-overlay.ui
-data/com.github.nahuelwexd.Replay.desktop.in.in
-data/com.github.nahuelwexd.Replay.metainfo.xml.in.in
-src/dialogs/about-dialog.ui
-src/views/trending-view.ui
-src/widgets/main-header-bar.ui
-src/windows/main-window.ui
-src/windows/preferences-window.ui
-src/windows/preferences-window.vala

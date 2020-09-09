@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - An open source YouTube client for GNOME
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="ReplayVideoCarouselItem" parent="GtkWidget">
+
+  <property name="layout-manager">
+    <object class="GtkConstraintLayout">
+      <constraints>
+        <constraint target="super" target-attribute="height"
+                    constant="250" relation="eq" />
+        <constraint target="super" target-attribute="start"
+                    source="title-label" source-attribute="start"
+                    constant="-16" relation="eq" />
+        <constraint target="super" target-attribute="end"
+                    source="title-label" source-attribute="end"
+                    constant="16" relation="eq" />
+        <constraint target="super" target-attribute="start"
+                    source="channel-label" source-attribute="start"
+                    constant="-16" relation="eq" />
+        <constraint target="super" target-attribute="end"
+                    source="channel-label" source-attribute="end"
+                    constant="16" relation="eq" />
+        <constraint target="title-label" target-attribute="bottom"
+                    source="channel-label" source-attribute="top"
+                    constant="-12" relation="eq" />
+        <constraint target="super" target-attribute="bottom"
+                    source="channel-label" source-attribute="bottom"
+                    constant="16" relation="eq" />
+        <constraint target="super" target-attribute="start"
+                    source="frame" source-attribute="start"
+                    relation="eq" />
+        <constraint target="super" target-attribute="top"
+                    source="frame" source-attribute="top"
+                    relation="eq" />
+        <constraint target="super" target-attribute="end"
+                    source="frame" source-attribute="end"
+                    relation="eq" />
+        <constraint target="super" target-attribute="bottom"
+                    source="frame" source-attribute="bottom"
+                    relation="eq" />
+        <constraint target="super" target-attribute="start"
+                    source="_thumbnail" source-attribute="start"
+                    relation="eq" />
+        <constraint target="super" target-attribute="end"
+                    source="_thumbnail" source-attribute="end"
+                    relation="eq" />
+      </constraints>
+    </object>
+  </property>
+
+  <child>
+    <object class="GtkPicture" id="_thumbnail" />
+  </child>
+
+  <child>
+    <object class="GtkFrame" id="frame" />
+  </child>
+
+  <child>
+    <object class="GtkLabel" id="title-label">
+      <property name="label" bind-source="ReplayVideoCarouselItem" bind-property="title"
+                bind-flags="sync-create | default" />
+      <property name="wrap">True</property>
+      <property name="wrap-mode">word-char</property>
+      <property name="justify">center</property>
+      <property name="lines">2</property>
+      <property name="ellipsize">end</property>
+      <property name="yalign">1</property>
+
+      <style>
+        <class name="title-1" />
+      </style>
+
+    </object>
+  </child>
+
+  <child>
+    <object class="GtkLabel" id="channel-label">
+      <property name="label" bind-source="ReplayVideoCarouselItem" bind-property="channel-title"
+                bind-flags="sync-create | default" />
+      <property name="wrap">True</property>
+      <property name="wrap-mode">word-char</property>
+      <property name="justify">center</property>
+      <property name="lines">1</property>
+      <property name="ellipsize">end</property>
+
+      <style>
+        <class name="title-3" />
+      </style>
+
+    </object>
+  </child>
+
+</template>
+
+</interface>

@@ -15,20 +15,45 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Replay.Constants
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
+public class Replay.AppWindow : Gtk.ApplicationWindow
 {
-	[CCode (cheader_filename = "config.h", cname = "RDNN_APP_NAME")]
-	public const string RDNN_APP_NAME;
+	/* Private fields */
 
-	[CCode (cheader_filename = "config.h", cname = "APPLICATION_ID")]
-	public const string APPLICATION_ID;
+	[GtkChild] private Replay.HeaderBar _header_bar;
 
-	[CCode (cheader_filename = "config.h", cname = "PACKAGE_URL")]
-	public const string PACKAGE_URL;
+	/* End private fields */
 
-	[CCode (cheader_filename = "config.h", cname = "RESOURCE_PATH")]
-	public const string RESOURCE_PATH;
 
-	[CCode (cheader_filename = "config.h", cname = "VERSION")]
-	public const string VERSION;
+	/* Public constructors */
+
+	public AppWindow (Replay.App app)
+	{
+		Object (
+			application: app
+		);
+	}
+
+	/* End public constructors */
+
+
+	/* Private methods */
+
+	[GtkCallback]
+	private void on_navigation_view_item_selected (Replay.NavigationViewItem? item)
+	{
+		Navigator.push (item.tag);
+	}
+
+	/* End private methods */
+
+
+	/* GObject blocks */
+
+	construct
+	{
+		this._header_bar.key_capture_widget = this;
+	}
+
+	/* End GObject blocks */
 }

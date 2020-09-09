@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - An open source YouTube client for GNOME
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="ReplayNavigationViewItem" parent="GtkWidget">
+
+  <property name="layout-manager">
+    <object class="GtkConstraintLayout">
+      <constraints>
+        <constraint target="super" target-attribute="start"
+                    source="_image" source-attribute="start"
+                    relation="eq" constant="-16" />
+        <constraint target="_image" target-attribute="end"
+                    source="_gtk_label" source-attribute="start"
+                    relation="eq" constant="-8" />
+        <constraint target="super" target-attribute="end"
+                    source="_gtk_label" source-attribute="end"
+                    relation="ge" constant="16" />
+        <constraint target="super" target-attribute="top"
+                    source="_image" source-attribute="top"
+                    relation="ge" constant="-8" />
+        <constraint target="super" target-attribute="top"
+                    source="_gtk_label" source-attribute="top"
+                    relation="ge" constant="-8" />
+        <constraint target="super" target-attribute="center-y"
+                    source="_image" source-attribute="center-y"
+                    relation="eq" />
+        <constraint target="super" target-attribute="center-y"
+                    source="_gtk_label" source-attribute="center-y"
+                    relation="eq" />
+        <constraint target="super" target-attribute="bottom"
+                    source="_image" source-attribute="bottom"
+                    relation="ge" constant="8" />
+        <constraint target="super" target-attribute="bottom"
+                    source="_gtk_label" source-attribute="bottom"
+                    relation="ge" constant="8" />
+      </constraints>
+    </object>
+  </property>
+
+  <child>
+    <object class="GtkImage" id="_image">
+      <property name="icon-name" bind-source="ReplayNavigationViewItem" bind-property="icon-name"
+                bind-flags="sync-create | default" />
+    </object>
+  </child>
+
+  <child>
+    <object class="GtkLabel" id="_gtk_label">
+      <property name="label" bind-source="ReplayNavigationViewItem" bind-property="label"
+                bind-flags="sync-create | default" />
+    </object>
+  </child>
+
+</template>
+
+</interface>

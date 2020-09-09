@@ -3,7 +3,7 @@
   "runtime" : "org.gnome.Platform",
   "runtime-version" : "master",
   "sdk" : "org.gnome.Sdk",
-  "command" : "com.github.nahuelwexd.Replay",
+  "command" : "replay",
   "finish-args" : [
     "--socket=fallback-x11",
     "--socket=wayland",
@@ -12,36 +12,42 @@
     "--device=dri"
   ],
   "cleanup" : [
-    "sassc",
+    "/bin/gda-test-connection-5.0",
+    "/bin/gdaui-demo-5.0",
+    "/bin/intltool-extract",
+    "/bin/intltoolize",
+    "/bin/intltool-merge",
+    "/bin/intltool-prepare",
+    "/bin/intltool-update",
+    "/bin/sassc",
+    "/cache",
+    "/etc",
     "/include",
-    "/lib/pkgconfig",
-    "libsass*",
+    "/lib/debug",
     "/lib/girepository-1.0",
+    "/lib/pkgconfig",
+    "/lib/libsass*",
+    "/lib/*.la",
+    "/share/aclocal",
     "/share/gir-1.0",
-    "/share/vala",
-    "*.a",
-    "*.la"
+    "/share/gtk-doc",
+    "/share/intltool",
+    "/share/man",
+    "/share/vala"
   ],
   "modules" : [
     {
       "name" : "libsass",
       "buildsystem" : "simple",
-      "build-options" : {
-        "env" : {
-          "LIBSASS_VERSION" : "3.6.4"
-        }
-      },
       "build-commands" : [
-        "autoreconf -i",
-        "./configure --prefix=/app",
-        "make",
-        "make install"
+        "autoreconf --force --install",
+        "./configure --disable-tests --disable-static --enable-shared --prefix=/app",
+        "make -j5 install"
       ],
       "sources" : [
         {
           "type" : "git",
-          "url" : "https://github.com/sass/libsass.git",
-          "tag" : "3.6.4"
+          "url" : "https://github.com/sass/libsass.git"
         }
       ]
     },
@@ -49,31 +55,40 @@
       "name" : "sassc",
       "buildsystem" : "simple",
       "build-commands" : [
-        "autoreconf -i",
+        "autoreconf --force --install",
         "./configure --prefix=/app",
-        "make",
-        "make install"
+        "make -j5 install"
       ],
       "sources" : [
         {
           "type" : "git",
-          "url" : "https://github.com/sass/sassc.git",
-          "tag" : "3.6.1"
+          "url" : "https://github.com/sass/sassc.git"
         }
       ]
     },
     {
-      "name" : "vul",
-      "buildsystem" : "meson",
-      "builddir" : true,
+      "name" : "intltool",
       "sources" : [
         {
-          "type" : "git",
-          "url" : "https://gitlab.gnome.org/BZHDeveloper/vul.git"
-        },
+          "type" : "archive",
+          "url" : "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
+          "md5" : "12e517cac2b57a0121cda351570f1e63"
+        }
+      ]
+    },
+    {
+      "name" : "libgda",
+      "config-opts" : [
+        "--disable-tools",
+        "--enable-vala",
+        "--enable-system-sqlite",
+        "--disable-gtk-doc-html"
+      ],
+      "sources" : [
         {
-          "type" : "patch",
-          "path" : "0001-Fixed-compilation-with-Vala-0-48-7.patch"
+          "type" : "archive",
+          "url" : "https://download.gnome.org/sources/libgda/5.2/libgda-5.2.9.tar.xz",
+          "sha256" : "59caed8ca72b1ac6437c9844f0677f8a296d52cfd1c0049116026abfb1d87d9b"
         }
       ]
     },
