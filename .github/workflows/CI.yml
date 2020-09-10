@@ -37,6 +37,13 @@ jobs:
           sudo apt install -y flatpak flatpak-builder
           flatpak remote-add --user --if-not-exists gnome-nightly \
               https://nightly.gnome.org/gnome-nightly.flatpakrepo
+      - name: Cache dependencies
+        uses: actions/cache@v2.1.1
+        with:
+          path: .flatpak-builder
+          key: ${{ runner.os }}-flatpak-${{ hashFiles('**/com.github.nahuelwexd.Replay.json') }}
+          restore-keys: |
+            ${{ runner.os }}-flatpak-
       - name: Build
         run: |
           flatpak-builder --user --repo=repo --install-deps-from=gnome-nightly flatpak_app \
