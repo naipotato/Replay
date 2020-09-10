@@ -33,16 +33,14 @@
   <file>styles.css</file>
 </gresource>
 
-<gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable">
-  <file alias="actions/go-trending-symbolic.svg">../data/icons/go-trending-symbolic.svg</file>
-  <file alias="actions/go-subscriptions-symbolic.svg">../data/icons/go-subscriptions-symbolic.svg</file>
-  <file alias="actions/go-liked-symbolic.svg">../data/icons/go-liked-symbolic.svg</file>
-  <file alias="actions/go-favorites-symbolic.svg">../data/icons/go-favorites-symbolic.svg</file>
-  <file alias="actions/go-history-symbolic.svg">../data/icons/go-history-symbolic.svg</file>
-  <file alias="actions/go-watch-later-symbolic.svg">../data/icons/go-watch-later-symbolic.svg</file>
-  <file alias="actions/go-playlists-symbolic.svg">../data/icons/go-playlists-symbolic.svg</file>
-
-  <file alias="status/not-found-symbolic.svg">../data/icons/not-found-symbolic.svg</file>
+<gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable/actions">
+  <file alias="go-trending-symbolic.svg">../data/icons/go-trending-symbolic.svg</file>
+  <file alias="go-subscriptions-symbolic.svg">../data/icons/go-subscriptions-symbolic.svg</file>
+  <file alias="go-liked-symbolic.svg">../data/icons/go-liked-symbolic.svg</file>
+  <file alias="go-favorites-symbolic.svg">../data/icons/go-favorites-symbolic.svg</file>
+  <file alias="go-history-symbolic.svg">../data/icons/go-history-symbolic.svg</file>
+  <file alias="go-watch-later-symbolic.svg">../data/icons/go-watch-later-symbolic.svg</file>
+  <file alias="go-playlists-symbolic.svg">../data/icons/go-playlists-symbolic.svg</file>
 </gresource>
 
 </gresources>
