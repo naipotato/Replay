@@ -70,7 +70,7 @@ jobs:
         run: |
           flatpak build-bundle repo com.github.nahuelwexd.Replay.Devel.flatpak \
               com.github.nahuelwexd.Replay.Devel
-          flatpak build-bundle repo com.github.nahuelwexd.Replay.Devel.Locale.flatpak \
+          flatpak build-bundle --runtime repo com.github.nahuelwexd.Replay.Devel.Locale.flatpak \
               com.github.nahuelwexd.Replay.Devel.Locale
       - name: Upload bundle
         uses: actions/upload-artifact@v2.1.4
