@@ -80,7 +80,6 @@
       "name" : "libgda",
       "config-opts" : [
         "--disable-tools",
-        "--enable-vala",
         "--enable-system-sqlite",
         "--disable-gtk-doc-html"
       ],
