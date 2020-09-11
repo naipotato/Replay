@@ -60,6 +60,12 @@ gda_dep = dependency ('libgda-5.0')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
 
+# Add vapidir for custom vapis
+add_project_arguments ('--vapidir', vapidir,
+	language: 'vala'
+)
+
+
 # Post install script
 meson.add_install_script ('build-aux/meson/post-install.vala')
 
