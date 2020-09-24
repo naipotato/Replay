@@ -41,7 +41,8 @@ public class Replay.App : Gtk.Application
 		base.startup ();
 
 		// Set the app name
-		Environment.set_application_name ("Replay");
+		// Translators: This is the application name
+		Environment.set_application_name (_("Replay"));
 
 		// Since this is a media app, it should use the dark theme
 		Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
@@ -101,9 +102,11 @@ public class Replay.App : Gtk.Application
 				"title", "About Replay",
 				"logo-icon-name", Replay.Constants.APPLICATION_ID,
 				"version", Replay.Constants.VERSION,
-				"comments", "An open source YouTube client for GNOME",
+				// Translators: This is a little description about the application
+				"comments", _("An open source YouTube client for GNOME"),
 				"website", Replay.Constants.PACKAGE_URL,
-				"website-label", "Project repository",
+				// Translators: This is the label shown for the project repository hyperlink
+				"website-label", _("Project repository"),
 				"copyright", "© 2019-2020 Nahuel Gomez Castro",
 				"license-type", Gtk.License.GPL_3_0,
 				"authors", authors
