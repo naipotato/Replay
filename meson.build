@@ -4,6 +4,10 @@ project ('replay', 'c', 'vala',
 )
 
 
+# Enable gettext
+i18n = import ('i18n')
+
+
 # Check the profile for this build
 if get_option ('profile') == 'development'
 	profile = '.Devel'
@@ -73,3 +77,4 @@ meson.add_install_script ('build-aux/meson/post-install.vala')
 # Subfolders
 subdir ('data')
 subdir ('src')
+subdir ('po')
