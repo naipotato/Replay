@@ -72,7 +72,8 @@
 
           <child>
             <object class="GtkLabel">
-              <property name="label">Recommended</property>
+              <!-- Translators: This is the "Recommendations" label shown in the home page -->
+              <property name="label" translatable="yes">Recommendations</property>
               <property name="halign">start</property>
 
               <style>
