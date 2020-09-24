@@ -21,7 +21,8 @@
 <interface>
 
 <template class="ReplayAppWindow" parent="GtkApplicationWindow">
-  <property name="title">Replay</property>
+  <!-- Translators: This is the title of the application window -->
+  <property name="title" translatable="yes">Replay</property>
   <property name="default-width">1024</property>
   <property name="default-height">553</property>
 
@@ -41,7 +42,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/home</property>
           <property name="icon-name">go-home-symbolic</property>
-          <property name="label">Home</property>
+          <!-- Translators: This is the label for the home page on the sidebar -->
+          <property name="label" translatable="yes">Home</property>
         </object>
       </child>
 
@@ -49,7 +51,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-trending-symbolic</property>
-          <property name="label">Trending</property>
+          <!-- Translators: This is the label for the trending page on the sidebar -->
+          <property name="label" translatable="yes">Trending</property>
         </object>
       </child>
 
@@ -57,7 +60,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-subscriptions-symbolic</property>
-          <property name="label">Subscriptions</property>
+          <!-- Translators: This is the label for the subscriptions page on the sidebar -->
+          <property name="label" translatable="yes">Subscriptions</property>
         </object>
       </child>
 
@@ -65,7 +69,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-liked-symbolic</property>
-          <property name="label">Liked Videos</property>
+          <!-- Translators: This is the label for the liked videos page on the sidebar -->
+          <property name="label" translatable="yes">Liked Videos</property>
         </object>
       </child>
 
@@ -73,7 +78,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-favorites-symbolic</property>
-          <property name="label">Favorites</property>
+          <!-- Translators: This is the label for the favorites page on the sidebar -->
+          <property name="label" translatable="yes">Favorites</property>
         </object>
       </child>
 
@@ -81,7 +87,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-history-symbolic</property>
-          <property name="label">History</property>
+          <!-- Translators: This is the label for the history page on the sidebar -->
+          <property name="label" translatable="yes">History</property>
         </object>
       </child>
 
@@ -89,7 +96,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-watch-later-symbolic</property>
-          <property name="label">Watch Later</property>
+          <!-- Translators: This is the label for the watch later page on the sidebar -->
+          <property name="label" translatable="yes">Watch Later</property>
         </object>
       </child>
 
@@ -97,7 +105,8 @@
         <object class="ReplayNavigationViewItem">
           <property name="tag">/not-found</property>
           <property name="icon-name">go-playlists-symbolic</property>
-          <property name="label">Playlists</property>
+          <!-- Translators: This is the label for the playlists page on the sidebar -->
+          <property name="label" translatable="yes">Playlists</property>
         </object>
       </child>
 
