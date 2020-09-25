@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+# Translators: This is the application name
+Name=Replay
+# Translators: This is the generic name for the application
+GenericName=YouTube client
+# Translators: This is a little description about the app
+Comment=An open source YouTube client for GNOME
+# Translators: This is a placeholder for the application icon name. This MUST NO be translated.
+Icon=@APPLICATION_ID@
+TryExec=@EXECUTABLE@
+Exec=@EXECUTABLE@
+Terminal=false
+Categories=Network;Player;Feed;GTK;
+# Translators: These are the keywords used by the search trackers on DEs, MUST be delimited by semicolons and MUST have a trailing one
+Keywords=youtube;videos;
+StartupNotify=true

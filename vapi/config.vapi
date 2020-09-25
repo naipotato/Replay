@@ -31,4 +31,10 @@ namespace Replay.Constants
 
 	[CCode (cheader_filename = "config.h", cname = "VERSION")]
 	public const string VERSION;
+
+	[CCode (cheader_filename = "config.h", cname = "GETTEXT_PACKAGE")]
+	public const string GETTEXT_PACKAGE;
+
+	[CCode (cheader_filename = "config.h", cname = "LOCALEDIR")]
+	public const string LOCALEDIR;
 }
