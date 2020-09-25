@@ -7,6 +7,10 @@ project ('replay', 'c', 'vala',
 # Enable gettext
 i18n = import ('i18n')
 
+add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name ()),
+	language: 'c'
+)
+
 
 # Check the profile for this build
 if get_option ('profile') == 'development'
@@ -26,6 +30,8 @@ application_id = '@0@@1@'.format (rdnn_app_name, profile)
 package_url = 'https://github.com/nahuelwexd/Replay'
 resource_path = '/com/github/nahuelwexd/Replay'
 version = '@0@-@VCS_TAG@'.format (meson.project_version ())
+gettext_package = meson.project_name ()
+localedir = get_option ('localedir')
 
 
 # Generate a header with the info
@@ -35,6 +41,8 @@ config_h.set_quoted ('APPLICATION_ID', application_id)
 config_h.set_quoted ('PACKAGE_URL', package_url)
 config_h.set_quoted ('RESOURCE_PATH', resource_path)
 config_h.set_quoted ('VERSION', version)
+config_h.set_quoted ('GETTEXT_PACKAGE', gettext_package)
+config_h.set_quoted ('LOCALEDIR', localedir)
 
 config_h_in = configure_file (
 		   output: 'config.h.in',
