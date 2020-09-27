@@ -50,14 +50,16 @@ public class Replay.HeaderBar : Gtk.Widget
 			this._capture_widget = value;
 
 			if (this._capture_widget != null) {
-				this._capture_widget_controller = new Gtk.EventControllerKey () {
-					propagation_phase = Gtk.PropagationPhase.CAPTURE
-				};
+				this._capture_widget_controller = new Gtk.EventControllerKey ();
 
-				this._capture_widget_controller.key_pressed.connect (this.capture_widget_key_handled);
-				this._capture_widget_controller.key_released.connect (
-					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state)
-				);
+				with (this._capture_widget_controller) {
+					propagation_phase = Gtk.PropagationPhase.CAPTURE;
+
+					key_pressed.connect (this.capture_widget_key_handled);
+					key_released.connect (
+						(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state)
+					);
+				}
 
 				this._capture_widget.add_controller (this._capture_widget_controller);
 			}
@@ -99,8 +101,10 @@ public class Replay.HeaderBar : Gtk.Widget
 		bool handled = this._capture_widget_controller.forward (this);
 
 		if (handled == Gdk.EVENT_STOP) {
-			this._search_entry.grab_focus ();
-			this._search_entry.set_position (int.MAX);
+			with (this._search_entry) {
+				grab_focus ();
+				set_position (int.MAX);
+			}
 		}
 
 		return handled;
