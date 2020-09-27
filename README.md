@@ -38,48 +38,9 @@ Development builds are automatically generated every time a new change lands on 
 
 > **NOTE:** You must download the artifact called "Flatpak Bundles", which contains 2 flatpak files ready to install: the application and the locales.
 
-## Build
+## Contributing
 
-You want to build this project and maybe contribute to it? Great! 🎉
-
-There're two ways to build this app: using [GNOME Builder](#gnome-builder) (the recommended one) and [manually](#manually).
-
-### GNOME Builder
-
-The GNOME Builder way is easier than any other, and it's the way to go when developing any GNOME app. You just need to:
-
-- Open GNOME Builder (If you haven't installed yet, do it from [Flathub](https://flathub.org/apps/details/org.gnome.Builder) or from your distro repos!).
-
-- Click on the "Clone Repository..." button.
-
-- Paste the link to this repo and clone it.
-
-- Hit the "Run" button (▶️).
-
-GNOME Builder would automatically download and install all the needed dependencies, build the app and run it. Then you can export it as a bundle in order to install it in your system.
-
-### Manually
-
-> **NOTE:** It is important to use a recent distro instead of an old one, since this app tries to use the most recent version of each library. It's even possible that you'll need to build some packages manually.
-
-This way is harder and will vary from one distro to another. Here I'll try to be as too distro agnostic as possible. First, look for the packages that contains the following `pkg-config` files:
-
-- `gee-0.8`
-
-- `gtk4`
-
-- `libgda-5.0`
-
-- `libxml-2.0`
-
-And then install the packages that contains the binaries for `sassc`, `meson`, `ninja`, `valac` and `git`. Then run these commands on your preferred terminal emulator:
-
-```shell
-git clone https://github.com/nahuelwexd/Replay.git
-cd Replay
-meson build --buildtype plain
-ninja -C build install
-```
+You can read our contributing guidelines [here](CONTRIBUTING.md).
 
 ## License
 
