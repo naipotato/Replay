@@ -6,6 +6,7 @@ on:
     - .github/FUNDING.yml
     - .editorconfig
     - .gitignore
+    - CONTRIBUTING.md
     - COPYING
     - README.md
     - ui-mockup.png
@@ -17,6 +18,7 @@ on:
     - .github/FUNDING.yml
     - .editorconfig
     - .gitignore
+    - CONTRIBUTING.md
     - COPYING
     - README.md
     - ui-mockup.png
