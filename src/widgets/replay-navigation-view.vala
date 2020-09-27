@@ -111,14 +111,17 @@ public class Replay.NavigationView : Gtk.Widget, Gtk.Buildable
 
 	construct
 	{
-		this._navigation_sidebar = new Gtk.ListBox () {
-			width_request = 180,
-			css_classes	  = { "navigation-sidebar" }
+		this._navigation_sidebar = new Gtk.ListBox ();
+		with (this._navigation_sidebar) {
+			width_request = 180;
+			css_classes	  = { "navigation-sidebar" };
+
+			row_selected.connect (
+				row => this.item_selected (row != null ? row.child as Replay.NavigationViewItem : null)
+			);
+
+			set_parent (this);
 		};
-		this._navigation_sidebar.set_parent (this);
-		this._navigation_sidebar.row_selected.connect (
-			row => this.item_selected (row != null ? row.child as Replay.NavigationViewItem : null)
-		);
 
 		this._separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
 		this._separator.set_parent (this);
