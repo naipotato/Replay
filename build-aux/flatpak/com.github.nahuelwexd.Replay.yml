@@ -1,0 +1,96 @@
+---
+# This is the Flatpak manifest for Replay.
+#
+# If you change anything here, please run:
+#
+# ```
+# python build-aux/flatpak/yaml-to-json.py \
+#     build-aux/flatpak/com.github.nahuelwexd.Replay.yml \
+#     build-aux/flatpak/com.github.nahuelwexd.Replay.json
+# ```
+
+app-id: com.github.nahuelwexd.Replay.Devel
+
+runtime: org.gnome.Platform
+runtime-version: master
+sdk: org.gnome.Sdk
+
+command: replay
+
+finish-args:
+  # Network access
+  - --share=network
+
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=fallback-x11
+
+  # Wayland access
+  - --socket=wayland
+
+  # Hardware acceleration access
+  - --device=dri
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /man
+  - /share/aclocal
+  - /share/gir-1.0
+  - /share/doc
+  - /share/gtk-doc
+  - /share/man
+  - /share/pkgconfig
+  - /share/vala
+  - '*.la'
+  - '*.a'
+
+modules:
+  # sassc dependency
+  - name: libsass
+    buildsystem: simple
+    build-commands:
+      - autoreconf --force --install
+      - ./configure --disable-tests --disable-static --enable-shared --prefix=/app
+      - make -j5 install
+    sources:
+      - type: git
+        url: https://github.com/sass/libsass.git
+
+  # Replay dependency
+  - name: sassc
+    buildsystem: simple
+    build-commands:
+      - autoreconf --force --install
+      - ./configure --prefix=/app
+      - make -j5 install
+    sources:
+      - type: git
+        url: https://github.com/sass/sassc.git
+
+  # libgda dependency
+  - name: intltool
+    sources:
+      - type: archive
+        url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
+        md5: 12e517cac2b57a0121cda351570f1e63
+
+  # Replay dependency
+  - name: libgda
+    config-opts:
+      - --disable-tools
+      - --enable-system-sqlite
+      - --disable-gtk-doc-html
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libgda/5.2/libgda-5.2.9.tar.xz
+        sha256: 59caed8ca72b1ac6437c9844f0677f8a296d52cfd1c0049116026abfb1d87d9b
+
+  - name: replay
+    buildsystem: meson
+    builddir: yes
+    config-opts:
+      - -Dprofile=development
+    sources:
+      - type: git
+        path: ../..
