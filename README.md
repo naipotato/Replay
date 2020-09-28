@@ -18,6 +18,9 @@
     <a href="COPYING">
         <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/Replay?label=License&logo=gnu">
     </a>
+    <a href="https://t.me/ReplayApp">
+        <img alt="Telegram group badge" src="https://img.shields.io/badge/Telegram-Join_the_chat-2CA5E0?style=flat&logo=telegram">
+    </a>
 </p>
 
 ![UI Mockup](ui-mockup.png)
