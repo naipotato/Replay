@@ -27,13 +27,10 @@
       <constraints>
         <constraint target="super" target-attribute="start"
                     source="_image" source-attribute="start"
-                    relation="eq" constant="-16" />
+                    relation="eq" constant="-8" />
         <constraint target="_image" target-attribute="end"
                     source="_gtk_label" source-attribute="start"
-                    relation="eq" constant="-8" />
-        <constraint target="super" target-attribute="end"
-                    source="_gtk_label" source-attribute="end"
-                    relation="ge" constant="16" />
+                    relation="eq" constant="-16" />
         <constraint target="super" target-attribute="top"
                     source="_image" source-attribute="top"
                     relation="ge" constant="-8" />
