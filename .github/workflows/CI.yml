@@ -43,13 +43,13 @@ jobs:
         uses: actions/cache@v2.1.1
         with:
           path: .flatpak-builder
-          key: ${{ runner.os }}-flatpak-${{ hashFiles('**/com.github.nahuelwexd.Replay.json') }}
+          key: ${{ runner.os }}-flatpak-${{ hashFiles('**/com.github.nahuelwexd.Replay.yml') }}
           restore-keys: |
             ${{ runner.os }}-flatpak-
       - name: Build
         run: |
           flatpak-builder --user --repo=repo --install-deps-from=gnome-nightly flatpak_app \
-              build-aux/flatpak/com.github.nahuelwexd.Replay.json
+              build-aux/flatpak/com.github.nahuelwexd.Replay.yml
       - name: Upload Flatpak repository
         uses: actions/upload-artifact@v2.1.4
         with:
