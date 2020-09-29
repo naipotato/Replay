@@ -1,29 +1,32 @@
 on:
   push:
     branches:
-    - master
+      - master
     paths-ignore:
-    - .github/FUNDING.yml
-    - .editorconfig
-    - .gitignore
-    - CONTRIBUTING.md
-    - COPYING
-    - README.md
-    - ui-mockup.png
-    - Replay.doap
+      - .github/FUNDING.yml
+      - .editorconfig
+      - .gitignore
+      - CONTRIBUTING.md
+      - COPYING
+      - README.md
+      - ui-mockup.png
+      - Replay.doap
+
   pull_request:
     branches:
-    - master
+      - master
     paths-ignore:
-    - .github/FUNDING.yml
-    - .editorconfig
-    - .gitignore
-    - CONTRIBUTING.md
-    - COPYING
-    - README.md
-    - ui-mockup.png
-    - Replay.doap
+      - .github/FUNDING.yml
+      - .editorconfig
+      - .gitignore
+      - CONTRIBUTING.md
+      - COPYING
+      - README.md
+      - ui-mockup.png
+      - Replay.doap
+
 name: Continuous Integration
+
 jobs:
   build:
     name: Build the app
@@ -31,14 +34,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.2
+
       - name: Setup Flatpak environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
           sudo apt update
           sudo apt install -y flatpak flatpak-builder
-          flatpak remote-add --user --if-not-exists gnome-nightly \
-              https://nightly.gnome.org/gnome-nightly.flatpakrepo
+          flatpak remote-add --user --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+
       - name: Cache dependencies
         uses: actions/cache@v2.1.1
         with:
@@ -46,15 +50,18 @@ jobs:
           key: ${{ runner.os }}-flatpak-${{ hashFiles('**/com.github.nahuelwexd.Replay.yml') }}
           restore-keys: |
             ${{ runner.os }}-flatpak-
+
       - name: Build
         run: |
           flatpak-builder --user --repo=repo --install-deps-from=gnome-nightly flatpak_app \
               build-aux/flatpak/com.github.nahuelwexd.Replay.yml
+
       - name: Upload Flatpak repository
         uses: actions/upload-artifact@v2.1.4
         with:
           name: repo
           path: repo
+
   package:
     name: Create Flatpak bundle
     runs-on: ubuntu-20.04
@@ -63,18 +70,20 @@ jobs:
     steps:
       - name: Download Flatpak repository
         uses: actions/download-artifact@v2.0.5
+
       - name: Setup Flatpak environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
           sudo apt update
           sudo apt install -y flatpak
+
       - name: Create Flatpak bundle
         run: |
-          flatpak build-bundle repo com.github.nahuelwexd.Replay.Devel.flatpak \
-              com.github.nahuelwexd.Replay.Devel
+          flatpak build-bundle repo com.github.nahuelwexd.Replay.Devel.flatpak com.github.nahuelwexd.Replay.Devel
           flatpak build-bundle --runtime repo com.github.nahuelwexd.Replay.Devel.Locale.flatpak \
               com.github.nahuelwexd.Replay.Devel.Locale
+
       - name: Upload bundle
         uses: actions/upload-artifact@v2.1.4
         with:
