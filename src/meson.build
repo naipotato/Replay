@@ -1,5 +1,4 @@
 replay_sources = files (
-	'core/models/replay-core-thumbnail.vala',
 	'core/models/replay-core-video.vala',
 
 	'pages/replay-home-page.vala',

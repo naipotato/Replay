@@ -19,59 +19,9 @@ public class Replay.Core.Video : Object
 {
 	/* Public properties */
 
-	public string					kind	{ get; set; }
-	public string					etag	{ get; set; }
-	public string					id		{ get; set; }
-	public Replay.Core.VideoSnippet snippet { get; set; }
-
-	/* End public properties */
-}
-
-public class Replay.Core.VideoSnippet : Object
-{
-	/* Public properties */
-
-	public DateTime											  published_at			 { get; set; }
-	public string											  channel_id			 { get; set; }
-	public string											  title					 { get; set; }
-	public string											  description			 { get; set; }
-	public Gee.Map<string, Replay.Core.Thumbnail>			  thumbnails			 { get; }
-	public string											  channel_title			 { get; set; }
-	public Gee.List<string>									  tags					 { get; }
-	public string											  category_id			 { get; set; }
-	public Replay.Core.LiveBroadcastContentEnum				  live_broadcast_content { get; set; }
-	public string											  default_language		 { get; set; }
-	public Gee.Map<string, Replay.Core.VideoLocalization>	  localized				 { get; }
-	public string 											  default_audio_language { get; set; }
-
-	/* End public properties */
-
-
-	/* GObject blocks */
-
-	construct
-	{
-		this._thumbnails = new Gee.HashMap<string, Replay.Core.Thumbnail> ();
-		this._tags		 = new Gee.ArrayList<string> ();
-		this._localized	 = new Gee.HashMap<string, Replay.Core.VideoLocalization> ();
-	}
-
-	/* GObject blocks */
-}
-
-public enum Replay.Core.LiveBroadcastContentEnum
-{
-	LIVE,
-	NONE,
-	UPCOMING;
-}
-
-public class Replay.Core.VideoLocalization : Object
-{
-	/* Public properties */
-
-	public string title		  { get; set; }
-	public string description { get; set; }
+	public string id			{ get; set; }
+	public string title			{ get; set; }
+	public string thumbnail_url { get; set; }
 
 	/* End public properties */
 }
