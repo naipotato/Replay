@@ -115,31 +115,26 @@ public class Replay.Carousel : Gtk.Widget, Gtk.Buildable
 			BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT
 		);
 
-		var previous_button = new Gtk.Button ();
-		with (previous_button) {
-			halign		  = Gtk.Align.START;
-			width_request = 150;
-			css_classes	  = { "left" };
-			child		  = new Gtk.Image.from_icon_name ("go-previous-symbolic") { halign = Gtk.Align.START };
-			clicked.connect (this.on_previous_button_clicked);
-		}
-
-		var next_button = new Gtk.Button ();
-		with (next_button) {
-			halign		  = Gtk.Align.END;
-			width_request = 150;
-			css_classes	  = { "right" };
-			child		  = new Gtk.Image.from_icon_name ("go-next-symbolic") { halign = Gtk.Align.END };
-			clicked.connect (this.on_next_button_clicked);
+		var previous_button = new Gtk.Button () {
+			halign		  = Gtk.Align.START,
+			width_request = 150,
+			css_classes	  = { "left" },
+			child		  = new Gtk.Image.from_icon_name ("go-previous-symbolic") { halign = Gtk.Align.START }
 		};
+		previous_button.clicked.connect (this.on_previous_button_clicked);
 
-		this._overlay = new Gtk.Overlay ();
-		with (this._overlay) {
-			child = this._stack;
-			add_overlay (previous_button);
-			add_overlay (next_button);
-			set_parent (this);
-		}
+		var next_button = new Gtk.Button () {
+			halign		  = Gtk.Align.END,
+			width_request = 150,
+			css_classes	  = { "right" },
+			child		  = new Gtk.Image.from_icon_name ("go-next-symbolic") { halign = Gtk.Align.END }
+		};
+		next_button.clicked.connect (this.on_next_button_clicked);
+
+		this._overlay = new Gtk.Overlay () { child = this._stack };
+		this._overlay.add_overlay (previous_button);
+		this._overlay.add_overlay (next_button);
+		this._overlay.set_parent (this);
 
 		this._items = new Gee.ArrayList<Gtk.Widget> ();
 		this.interval = 5 /* seconds */ * 1000 /* miliseconds */;
