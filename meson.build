@@ -79,7 +79,7 @@ add_project_arguments ('--vapidir', vapidir,
 
 
 # Post install script
-meson.add_install_script ('build-aux/meson/post-install.vala')
+meson.add_install_script ('build-aux/meson/post-install.py')
 
 
 # Subfolders
