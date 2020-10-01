@@ -5,14 +5,19 @@ YAML to JSON Python script
 Highly inspired on https://gitlab.gnome.org/GNOME/geary/-/blob/mainline/build-aux/yaml_to_json.py
 """
 
-import os, sys, yaml, json
+import json
+import os
+import sys
+
+import yaml
 
 _, filename, output, *_ = sys.argv
 
 with open(filename) as file:
     obj = yaml.safe_load(file)
 
-comment = '/* Automatically generated from {}, do not modify. */'.format (os.path.basename(output))
+comment = '/* Automatically generated from {}, do not modify. */'.format(
+    os.path.basename(output))
 
 with open(output, 'w') as file:
     print(comment, file=file)
