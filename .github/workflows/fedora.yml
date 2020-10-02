@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - .github/**
+      - '!.github/workflows/fedora.yml'
+      - .editorconfig
+      - CONTRIBUTING.md
+      - COPYING
+      - README.md
+      - Replay.doap
+      - ui-mockup.png
+
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - .github/**
+      - '!.github/workflows/fedora.yml'
+      - .editorconfig
+      - CONTRIBUTING.md
+      - COPYING
+      - README.md
+      - Replay.doap
+      - ui-mockup.png
+
+name: Fedora
+
+jobs:
+  build:
+    name: Build the app
+    runs-on: ubuntu-20.04
+    container: fedora:33
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.2
+
+      - name: Install dependencies
+        run: |
+          dnf install -y meson vala gtk4-devel libgee-devel libxml2-devel libgda-devel sassc git
+
+      - name: Build
+        run: |
+          meson build -Dprofile=development
+          ninja -C build
