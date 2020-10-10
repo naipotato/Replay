@@ -18,118 +18,118 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/navigation-view-item.ui")]
 public class Replay.NavigationViewItem : Gtk.Widget
 {
-	/* Private fields */
+    /* Private fields */
 
-	[GtkChild] private Gtk.Image _image;
-	[GtkChild] private Gtk.Label _gtk_label;
+    [GtkChild] private Gtk.Image _image;
+    [GtkChild] private Gtk.Label _gtk_label;
 
-	/* End private fields */
-
-
-	/* Public properties */
-
-	public string tag		{ get; set; }
-	public string icon_name { get; set; }
-	public string label		{ get; set; }
-
-	/* End public properties */
+    /* End private fields */
 
 
-	/* Public methods */
+    /* Public properties */
 
-	public override void dispose ()
-	{
-		this._image.unparent ();
-		this._gtk_label.unparent ();
-		base.dispose ();
-	}
+    public string tag       { get; set; }
+    public string icon_name { get; set; }
+    public string label     { get; set; }
 
-	/* End public methods */
+    /* End public properties */
+
+
+    /* Public methods */
+
+    public override void dispose ()
+    {
+        this._image.unparent ();
+        this._gtk_label.unparent ();
+        base.dispose ();
+    }
+
+    /* End public methods */
 }
 
 public class Replay.NavigationView : Gtk.Widget, Gtk.Buildable
 {
-	/* Private fields */
+    /* Private fields */
 
-	private Gtk.ListBox	  _navigation_sidebar;
-	private Gtk.Separator _separator;
-	private Gtk.Widget	  _child;
+    private Gtk.ListBox   _navigation_sidebar;
+    private Gtk.Separator _separator;
+    private Gtk.Widget    _child;
 
-	/* End private fields */
-
-
-	/* Public properties */
-
-	public Gtk.Widget child
-	{
-		get { return this._child; }
-		set
-		{
-			if (this._child != null)
-				this._child.unparent ();
-
-			this._child = value;
-
-			if (this._child != null)
-				this._child.set_parent (this);
-		}
-	}
-
-	/* End public properties */
+    /* End private fields */
 
 
-	/* Public signals */
+    /* Public properties */
 
-	public signal void item_selected (Replay.NavigationViewItem? item);
+    public Gtk.Widget child
+    {
+        get { return this._child; }
+        set
+        {
+            if (this._child != null)
+                this._child.unparent ();
 
-	/* End public signals */
+            this._child = value;
 
+            if (this._child != null)
+                this._child.set_parent (this);
+        }
+    }
 
-	/* Public methods */
-
-	public void add_child (Gtk.Builder builder, Object child, string? type)
-		requires (child is Replay.NavigationViewItem && type == "item" || child is Gtk.Widget)
-	{
-		if (child is Replay.NavigationViewItem && type == "item")
-			this._navigation_sidebar.append ((Replay.NavigationViewItem) child);
-		else if (child is Gtk.Widget)
-			this.child = (Gtk.Widget) child;
-	}
-
-	public override void dispose ()
-	{
-		this._navigation_sidebar.unparent ();
-		this._separator.unparent ();
-		this.child = null;
-		base.dispose ();
-	}
-
-	/* End public methods */
+    /* End public properties */
 
 
-	/* GObject blocks */
+    /* Public signals */
 
-	construct
-	{
-		this._navigation_sidebar = new Gtk.ListBox () {
-			width_request = 180,
-			css_classes	  = { "navigation-sidebar" }
-		};
+    public signal void item_selected (Replay.NavigationViewItem? item);
 
-		this._navigation_sidebar.row_selected.connect (
-			row => this.item_selected (row != null ? row.child as Replay.NavigationViewItem : null)
-		);
+    /* End public signals */
 
-		this._navigation_sidebar.set_parent (this);
 
-		this._separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
-		this._separator.set_parent (this);
-	}
+    /* Public methods */
 
-	static construct
-	{
-		set_layout_manager_type (typeof (Gtk.BoxLayout));
-	}
+    public void add_child (Gtk.Builder builder, Object child, string? type)
+        requires (child is Replay.NavigationViewItem && type == "item" || child is Gtk.Widget)
+    {
+        if (child is Replay.NavigationViewItem && type == "item")
+            this._navigation_sidebar.append ((Replay.NavigationViewItem) child);
+        else if (child is Gtk.Widget)
+            this.child = (Gtk.Widget) child;
+    }
 
-	/* End GObject blocks */
+    public override void dispose ()
+    {
+        this._navigation_sidebar.unparent ();
+        this._separator.unparent ();
+        this.child = null;
+        base.dispose ();
+    }
+
+    /* End public methods */
+
+
+    /* GObject blocks */
+
+    construct
+    {
+        this._navigation_sidebar = new Gtk.ListBox () {
+            width_request = 180,
+            css_classes   = { "navigation-sidebar" }
+        };
+
+        this._navigation_sidebar.row_selected.connect (
+            row => this.item_selected (row != null ? row.child as Replay.NavigationViewItem : null)
+        );
+
+        this._navigation_sidebar.set_parent (this);
+
+        this._separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
+        this._separator.set_parent (this);
+    }
+
+    static construct
+    {
+        set_layout_manager_type (typeof (Gtk.BoxLayout));
+    }
+
+    /* End GObject blocks */
 }

@@ -17,134 +17,134 @@
 
 public class Replay.Carousel : Gtk.Widget, Gtk.Buildable
 {
-	/* Private fields */
+    /* Private fields */
 
-	private Gtk.Overlay			 _overlay;
-	private Gtk.Stack			 _stack;
-	private Gee.List<Gtk.Widget> _items;
-	private uint				 _interval;
-	private uint				 _source_id;
+    private Gtk.Overlay          _overlay;
+    private Gtk.Stack            _stack;
+    private Gee.List<Gtk.Widget> _items;
+    private uint                 _interval;
+    private uint                 _source_id;
 
-	/* End private fields */
-
-
-	/* Public properties */
-
-	public uint transition_duration { get; set; default = 500; }
-
-	public uint interval
-	{
-		get { return this._interval; }
-		set
-		{
-			if (this._interval != 0 && this._source_id != 0)
-				Source.remove (this._source_id);
-
-			this._interval = value;
-
-			if (this._interval != 0) {
-				this._source_id = Timeout.add (this._interval, () => {
-					this.on_next_button_clicked ();
-
-					return Source.CONTINUE;
-				});
-			}
-		}
-	}
-
-	/* End public properties */
+    /* End private fields */
 
 
-	/* Public methods */
+    /* Public properties */
 
-	public void add_child (Gtk.Builder builder, Object child, string? type)
-		requires (child is Gtk.Widget)
-	{
-		this.add_item ((Gtk.Widget) child);
-	}
+    public uint transition_duration { get; set; default = 500; }
 
-	public void add_item (Gtk.Widget item)
-	{
-		this._stack.add_named (item, null);
-		this._items.add (item);
-	}
+    public uint interval
+    {
+        get { return this._interval; }
+        set
+        {
+            if (this._interval != 0 && this._source_id != 0)
+                Source.remove (this._source_id);
 
-	public override void dispose ()
-	{
-		this._overlay.unparent ();
-		base.dispose ();
-	}
+            this._interval = value;
 
-	/* End public methods */
+            if (this._interval != 0) {
+                this._source_id = Timeout.add (this._interval, () => {
+                    this.on_next_button_clicked ();
 
+                    return Source.CONTINUE;
+                });
+            }
+        }
+    }
 
-	/* Private methods */
-
-	private void on_previous_button_clicked ()
-		requires (this._items.contains (this._stack.visible_child))
-	{
-		int current_index = this._items.index_of (this._stack.visible_child);
-
-		if (current_index != 0)
-			this._stack.visible_child = this._items[current_index - 1];
-		else
-			this._stack.visible_child = this._items.last ();
-  	}
-
-	private void on_next_button_clicked ()
-		requires (this._items.contains (this._stack.visible_child))
-	{
-		int current_index = this._items.index_of (this._stack.visible_child);
-
-		if (current_index < (this._items.size - 1))
-			this._stack.visible_child = this._items[current_index + 1];
-		else
-			this._stack.visible_child = this._items.first ();
-	}
-
-	/* End private methods */
+    /* End public properties */
 
 
-	/* GObject blocks */
+    /* Public methods */
 
-	construct
-	{
-		this._stack = new Gtk.Stack () { transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT };
-		this.bind_property ("transition-duration",
-			this._stack, "transition-duration",
-			BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT
-		);
+    public void add_child (Gtk.Builder builder, Object child, string? type)
+        requires (child is Gtk.Widget)
+    {
+        this.add_item ((Gtk.Widget) child);
+    }
 
-		var previous_button = new Gtk.Button () {
-			halign		  = Gtk.Align.START,
-			width_request = 150,
-			css_classes	  = { "left" },
-			child		  = new Gtk.Image.from_icon_name ("go-previous-symbolic") { halign = Gtk.Align.START }
-		};
-		previous_button.clicked.connect (this.on_previous_button_clicked);
+    public void add_item (Gtk.Widget item)
+    {
+        this._stack.add_named (item, null);
+        this._items.add (item);
+    }
 
-		var next_button = new Gtk.Button () {
-			halign		  = Gtk.Align.END,
-			width_request = 150,
-			css_classes	  = { "right" },
-			child		  = new Gtk.Image.from_icon_name ("go-next-symbolic") { halign = Gtk.Align.END }
-		};
-		next_button.clicked.connect (this.on_next_button_clicked);
+    public override void dispose ()
+    {
+        this._overlay.unparent ();
+        base.dispose ();
+    }
 
-		this._overlay = new Gtk.Overlay () { child = this._stack };
-		this._overlay.add_overlay (previous_button);
-		this._overlay.add_overlay (next_button);
-		this._overlay.set_parent (this);
+    /* End public methods */
 
-		this._items = new Gee.ArrayList<Gtk.Widget> ();
-		this.interval = 5 /* seconds */ * 1000 /* miliseconds */;
-	}
 
-	static construct
-	{
-		set_layout_manager_type (typeof (Gtk.BinLayout));
-		set_css_name ("carousel");
-	}
+    /* Private methods */
 
-	/* End GObject blocks */
+    private void on_previous_button_clicked ()
+        requires (this._items.contains (this._stack.visible_child))
+    {
+        int current_index = this._items.index_of (this._stack.visible_child);
+
+        if (current_index != 0)
+            this._stack.visible_child = this._items[current_index - 1];
+        else
+            this._stack.visible_child = this._items.last ();
+      }
+
+    private void on_next_button_clicked ()
+        requires (this._items.contains (this._stack.visible_child))
+    {
+        int current_index = this._items.index_of (this._stack.visible_child);
+
+        if (current_index < (this._items.size - 1))
+            this._stack.visible_child = this._items[current_index + 1];
+        else
+            this._stack.visible_child = this._items.first ();
+    }
+
+    /* End private methods */
+
+
+    /* GObject blocks */
+
+    construct
+    {
+        this._stack = new Gtk.Stack () { transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT };
+        this.bind_property ("transition-duration",
+            this._stack, "transition-duration",
+            BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT
+        );
+
+        var previous_button = new Gtk.Button () {
+            halign        = Gtk.Align.START,
+            width_request = 150,
+            css_classes   = { "left" },
+            child         = new Gtk.Image.from_icon_name ("go-previous-symbolic") { halign = Gtk.Align.START }
+        };
+        previous_button.clicked.connect (this.on_previous_button_clicked);
+
+        var next_button = new Gtk.Button () {
+            halign        = Gtk.Align.END,
+            width_request = 150,
+            css_classes   = { "right" },
+            child         = new Gtk.Image.from_icon_name ("go-next-symbolic") { halign = Gtk.Align.END }
+        };
+        next_button.clicked.connect (this.on_next_button_clicked);
+
+        this._overlay = new Gtk.Overlay () { child = this._stack };
+        this._overlay.add_overlay (previous_button);
+        this._overlay.add_overlay (next_button);
+        this._overlay.set_parent (this);
+
+        this._items = new Gee.ArrayList<Gtk.Widget> ();
+        this.interval = 5 /* seconds */ * 1000 /* milliseconds */;
+    }
+
+    static construct
+    {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
+        set_css_name ("carousel");
+    }
+
+    /* End GObject blocks */
 }

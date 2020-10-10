@@ -17,11 +17,11 @@
 
 public class Replay.Core.Video : Object
 {
-	/* Public properties */
+    /* Public properties */
 
-	public string id			{ get; set; }
-	public string title			{ get; set; }
-	public string thumbnail_url { get; set; }
+    public string id            { get; set; }
+    public string title         { get; set; }
+    public string thumbnail_url { get; set; }
 
-	/* End public properties */
+    /* End public properties */
 }

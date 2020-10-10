@@ -18,42 +18,42 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
 public class Replay.AppWindow : Gtk.ApplicationWindow
 {
-	/* Private fields */
+    /* Private fields */
 
-	[GtkChild] private Replay.HeaderBar _header_bar;
+    [GtkChild] private Replay.HeaderBar _header_bar;
 
-	/* End private fields */
-
-
-	/* Public constructors */
-
-	public AppWindow (Replay.App app)
-	{
-		Object (
-			application: app
-		);
-	}
-
-	/* End public constructors */
+    /* End private fields */
 
 
-	/* Private methods */
+    /* Public constructors */
 
-	[GtkCallback]
-	private void on_navigation_view_item_selected (Replay.NavigationViewItem? item)
-	{
-		Navigator.push (item.tag);
-	}
+    public AppWindow (Replay.App app)
+    {
+        Object (
+            application: app
+        );
+    }
 
-	/* End private methods */
+    /* End public constructors */
 
 
-	/* GObject blocks */
+    /* Private methods */
 
-	construct
-	{
-		this._header_bar.key_capture_widget = this;
-	}
+    [GtkCallback]
+    private void on_navigation_view_item_selected (Replay.NavigationViewItem? item)
+    {
+        Navigator.push (item.tag);
+    }
 
-	/* End GObject blocks */
+    /* End private methods */
+
+
+    /* GObject blocks */
+
+    construct
+    {
+        this._header_bar.key_capture_widget = this;
+    }
+
+    /* End GObject blocks */
 }

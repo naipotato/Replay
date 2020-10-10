@@ -17,59 +17,59 @@
 
 public class Replay.Page : Gtk.Widget, Gtk.Buildable
 {
-	/* Private fields */
+    /* Private fields */
 
-	private Gtk.Widget _child;
+    private Gtk.Widget _child;
 
-	/* End private fields */
-
-
-	/* Public properties */
-
-	public Gtk.Widget child
-	{
-		get { return this._child; }
-		set
-		{
-			if (this._child != null)
-				this._child.unparent ();
-
-			this._child = value;
-
-			if (this._child != null)
-				this._child.set_parent (this);
-		}
-	}
-
-	public bool	  exact { get; set; }
-	public string path	{ get; set; }
-
-	/* End public properties */
+    /* End private fields */
 
 
-	/* Public methods */
+    /* Public properties */
 
-	public void add_child (Gtk.Builder builder, Object child, string? type)
-		requires (child is Gtk.Widget)
-	{
-		this.child = (Gtk.Widget) child;
-	}
+    public Gtk.Widget child
+    {
+        get { return this._child; }
+        set
+        {
+            if (this._child != null)
+                this._child.unparent ();
 
-	public override void dispose ()
-	{
-		this.child = null;
-		base.dispose ();
-	}
+            this._child = value;
 
-	/* End public methods */
+            if (this._child != null)
+                this._child.set_parent (this);
+        }
+    }
+
+    public bool   exact { get; set; }
+    public string path  { get; set; }
+
+    /* End public properties */
 
 
-	/* GObject blocks */
+    /* Public methods */
 
-	static construct
-	{
-		set_layout_manager_type (typeof (Gtk.BinLayout));
-	}
+    public void add_child (Gtk.Builder builder, Object child, string? type)
+        requires (child is Gtk.Widget)
+    {
+        this.child = (Gtk.Widget) child;
+    }
 
-	/* GObject blocks */
+    public override void dispose ()
+    {
+        this.child = null;
+        base.dispose ();
+    }
+
+    /* End public methods */
+
+
+    /* GObject blocks */
+
+    static construct
+    {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
+    }
+
+    /* GObject blocks */
 }

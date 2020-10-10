@@ -18,114 +18,114 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
 public class Replay.HeaderBar : Gtk.Widget
 {
-	/* Private fields */
+    /* Private fields */
 
-	private weak Gtk.Widget				_capture_widget;
-	private		 Gtk.EventControllerKey _capture_widget_controller;
+    private weak Gtk.Widget             _capture_widget;
+    private      Gtk.EventControllerKey _capture_widget_controller;
 
-	[GtkChild] private Gtk.HeaderBar   _header_bar;
-	[GtkChild] private Gtk.SearchEntry _search_entry;
-	[GtkChild] private Gtk.Button	   _back_button;
+    [GtkChild] private Gtk.HeaderBar   _header_bar;
+    [GtkChild] private Gtk.SearchEntry _search_entry;
+    [GtkChild] private Gtk.Button      _back_button;
 
-	/* End private fields */
-
-
-	/* Public properties */
-
-	public bool can_go_back { get; set; }
-
-	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
-	// ported to Vala.
-	public weak Gtk.Widget key_capture_widget
-	{
-		get { return this._capture_widget; }
-		set
-		{
-			if (this._capture_widget == value)
-				return;
-
-			if (this._capture_widget != null)
-				this._capture_widget.remove_controller (this._capture_widget_controller);
-
-			this._capture_widget = value;
-
-			if (this._capture_widget != null) {
-				this._capture_widget_controller = new Gtk.EventControllerKey () {
-					propagation_phase = Gtk.PropagationPhase.CAPTURE
-				};
-
-				this._capture_widget_controller.key_pressed.connect (this.capture_widget_key_handled);
-				this._capture_widget_controller.key_released.connect (
-					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state)
-				);
-
-				this._capture_widget.add_controller (this._capture_widget_controller);
-			}
-		}
-	}
-
-	public string title			{ get; set; }
-	public bool	  title_visible { get; set; }
-
-	/* End public properties */
+    /* End private fields */
 
 
-	/* Public methods */
+    /* Public properties */
 
-	public override void dispose ()
-	{
-		this._header_bar.unparent ();
-		base.dispose ();
-	}
+    public bool can_go_back { get; set; }
 
-	/* End public methods */
+    // Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
+    // ported to Vala.
+    public weak Gtk.Widget key_capture_widget
+    {
+        get { return this._capture_widget; }
+        set
+        {
+            if (this._capture_widget == value)
+                return;
 
+            if (this._capture_widget != null)
+                this._capture_widget.remove_controller (this._capture_widget_controller);
 
-	/* Private methods */
+            this._capture_widget = value;
 
-	// More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
-	// ported to Vala and modified for Replay
-	private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state)
-	{
-		if (!this.get_mapped ())
-			return Gdk.EVENT_PROPAGATE;
+            if (this._capture_widget != null) {
+                this._capture_widget_controller = new Gtk.EventControllerKey () {
+                    propagation_phase = Gtk.PropagationPhase.CAPTURE
+                };
 
-		if (this.title_visible)
-			return Gdk.EVENT_PROPAGATE;
+                this._capture_widget_controller.key_pressed.connect (this.capture_widget_key_handled);
+                this._capture_widget_controller.key_released.connect (
+                    (keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state)
+                );
 
-		if (this._search_entry.has_focus)
-			return Gdk.EVENT_PROPAGATE;
+                this._capture_widget.add_controller (this._capture_widget_controller);
+            }
+        }
+    }
 
-		bool handled = this._capture_widget_controller.forward (this);
+    public string title         { get; set; }
+    public bool   title_visible { get; set; }
 
-		if (handled == Gdk.EVENT_STOP) {
-			this._search_entry.grab_focus ();
-			this._search_entry.set_position (int.MAX);
-		}
-
-		return handled;
-	}
-
-	[GtkCallback]
-	private void on_search_entry_stop_search ()
-	{
-		this._search_entry.text = "";
-	}
-
-	/* End private methods */
+    /* End public properties */
 
 
-	/* GObject blocks */
+    /* Public methods */
 
-	construct
-	{
-		this._search_entry.set_key_capture_widget (this);
+    public override void dispose ()
+    {
+        this._header_bar.unparent ();
+        base.dispose ();
+    }
 
-		this.bind_property ("can-go-back",
-			this._back_button, "visible",
-			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-		);
-	}
+    /* End public methods */
 
-	/* GObject blocks */
+
+    /* Private methods */
+
+    // More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
+    // ported to Vala and modified for Replay
+    private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state)
+    {
+        if (!this.get_mapped ())
+            return Gdk.EVENT_PROPAGATE;
+
+        if (this.title_visible)
+            return Gdk.EVENT_PROPAGATE;
+
+        if (this._search_entry.has_focus)
+            return Gdk.EVENT_PROPAGATE;
+
+        bool handled = this._capture_widget_controller.forward (this);
+
+        if (handled == Gdk.EVENT_STOP) {
+            this._search_entry.grab_focus ();
+            this._search_entry.set_position (int.MAX);
+        }
+
+        return handled;
+    }
+
+    [GtkCallback]
+    private void on_search_entry_stop_search ()
+    {
+        this._search_entry.text = "";
+    }
+
+    /* End private methods */
+
+
+    /* GObject blocks */
+
+    construct
+    {
+        this._search_entry.set_key_capture_widget (this);
+
+        this.bind_property ("can-go-back",
+            this._back_button, "visible",
+            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+        );
+    }
+
+    /* GObject blocks */
 }

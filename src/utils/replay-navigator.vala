@@ -17,76 +17,76 @@
 
 namespace Replay.Navigator
 {
-	/* Private fields */
+    /* Private fields */
 
-	private Gee.Deque<string>		 _history;
-	private Gee.List<Replay.Section> _sections;
+    private Gee.Deque<string>        _history;
+    private Gee.List<Replay.Section> _sections;
 
-	/* End private fields */
-
-
-	/* Public methods */
-
-	public void register_section (Replay.Section section)
-		ensures (Replay.Navigator._sections != null)
-		ensures (Replay.Navigator._sections.size > 0)
-	{
-		if (Replay.Navigator._sections == null)
-			Replay.Navigator._sections = new Gee.ArrayList<Section> ();
-
-		Replay.Navigator._sections.add (section);
-	}
-
-	public bool push (string path)
-		ensures (Replay.Navigator._history != null)
-		ensures (Replay.Navigator._history.size > 1)
-	{
-		if (Replay.Navigator._history == null) {
-			Replay.Navigator._history = new Gee.ArrayQueue<string> ();
-			Replay.Navigator._history.offer_head ("/");
-    	}
-
-		if (Replay.Navigator.navigate (path)) {
-			Replay.Navigator._history.offer_head (path);
-
-			return true;
-		}
-
-		return false;
-	}
-
-	public bool pop ()
-		requires (Replay.Navigator._history != null)
-		requires (Replay.Navigator._history.size > 1)
-	{
-		string last_entry = Replay.Navigator._history.poll_head ();
-
-		if (!Replay.Navigator.navigate (Replay.Navigator._history.peek_head ())) {
-			Replay.Navigator._history.offer_head (last_entry);
-
-			return false;
-		}
-
-		return true;
-	}
-
-	/* End public methods */
+    /* End private fields */
 
 
-	/* Private methods */
+    /* Public methods */
 
-	private bool navigate (string path)
-	{
-		var result = false;
+    public void register_section (Replay.Section section)
+        ensures (Replay.Navigator._sections != null)
+        ensures (Replay.Navigator._sections.size > 0)
+    {
+        if (Replay.Navigator._sections == null)
+            Replay.Navigator._sections = new Gee.ArrayList<Section> ();
 
-		Replay.Navigator._sections.@foreach (section => {
-			result = section.navigate (path) || result;
+        Replay.Navigator._sections.add (section);
+    }
 
-			return true;
-		});
+    public bool push (string path)
+        ensures (Replay.Navigator._history != null)
+        ensures (Replay.Navigator._history.size > 1)
+    {
+        if (Replay.Navigator._history == null) {
+            Replay.Navigator._history = new Gee.ArrayQueue<string> ();
+            Replay.Navigator._history.offer_head ("/");
+        }
 
-		return result;
-	}
+        if (Replay.Navigator.navigate (path)) {
+            Replay.Navigator._history.offer_head (path);
 
-	/* End private methods */
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool pop ()
+        requires (Replay.Navigator._history != null)
+        requires (Replay.Navigator._history.size > 1)
+    {
+        string last_entry = Replay.Navigator._history.poll_head ();
+
+        if (!Replay.Navigator.navigate (Replay.Navigator._history.peek_head ())) {
+            Replay.Navigator._history.offer_head (last_entry);
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /* End public methods */
+
+
+    /* Private methods */
+
+    private bool navigate (string path)
+    {
+        var result = false;
+
+        Replay.Navigator._sections.@foreach (section => {
+            result = section.navigate (path) || result;
+
+            return true;
+        });
+
+        return result;
+    }
+
+    /* End private methods */
 }
