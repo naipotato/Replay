@@ -17,7 +17,7 @@ with open(filename) as file:
     obj = yaml.safe_load(file)
 
 comment = '/* Automatically generated from {}, do not modify. */'.format(
-    os.path.basename(output))
+    os.path.basename(filename))
 
 with open(output, 'w') as file:
     print(comment, file=file)
