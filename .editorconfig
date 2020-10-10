@@ -1,18 +1,14 @@
 root = true
 
 [*]
-indent_style = tab
-indent_size = 4
-charset = utf-8
-end_of_line = lf
-max_line_length = 120
-trim_trailing_whitespace = true
-insert_final_newline = true
+indent_style = space               # We use spaces to indent
+indent_size = tab                  # The indent size must be a tab stop
+tab_width = 4                      # The tab stop must have a width of 4 columns
+charset = utf-8                    # Encode your files with UTF-8
+end_of_line = lf                   # Use Linux-style to end your lines
+max_line_length = 120              # Limit your lines to 120 columns
+trim_trailing_whitespace = true    # Do not leave any trailing whitespace
+insert_final_newline = true        # Always end any file with a newline
 
 [*.yml]
-indent_style = space
-indent_size = 2
-
-[*.py]
-indent_style = space
-indent_size = 4
+tab_width = 2                      # The tab stop on YAML files must have a width of 2 columns
