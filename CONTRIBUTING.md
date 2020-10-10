@@ -95,7 +95,7 @@ bool result = GLib.Process.spawn_command_line_sync (...);
 
 - The opening brace must be in the following line, on the same indentation level as its header only for classes, enums, structs and methods.
 
-- Always use 4 (four) column tabs to indent, and spaces to align
+- Always use spaces to indent and align
 
 - Always use string templates for string interpolation, except with error messages, which must be localizables, so they must use printf-style
 
