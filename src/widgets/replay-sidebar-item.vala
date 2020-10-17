@@ -45,4 +45,14 @@ public class Replay.SidebarItem : Gtk.Widget
     }
 
     /* End public methods */
+
+
+    /* GObject blocks */
+
+    static construct
+    {
+        set_css_name ("sidebaritem");
+    }
+
+    /* End GObject blocks */
 }

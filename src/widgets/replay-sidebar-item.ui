@@ -23,33 +23,8 @@
 <template class="ReplaySidebarItem" parent="GtkWidget">
 
   <property name="layout-manager">
-    <object class="GtkConstraintLayout">
-      <constraints>
-        <constraint target="super" target-attribute="start"
-                    source="_image" source-attribute="start"
-                    relation="eq" constant="-8" />
-        <constraint target="_image" target-attribute="end"
-                    source="_gtk_label" source-attribute="start"
-                    relation="eq" constant="-16" />
-        <constraint target="super" target-attribute="top"
-                    source="_image" source-attribute="top"
-                    relation="ge" constant="-8" />
-        <constraint target="super" target-attribute="top"
-                    source="_gtk_label" source-attribute="top"
-                    relation="ge" constant="-8" />
-        <constraint target="super" target-attribute="center-y"
-                    source="_image" source-attribute="center-y"
-                    relation="eq" />
-        <constraint target="super" target-attribute="center-y"
-                    source="_gtk_label" source-attribute="center-y"
-                    relation="eq" />
-        <constraint target="super" target-attribute="bottom"
-                    source="_image" source-attribute="bottom"
-                    relation="ge" constant="8" />
-        <constraint target="super" target-attribute="bottom"
-                    source="_gtk_label" source-attribute="bottom"
-                    relation="ge" constant="8" />
-      </constraints>
+    <object class="GtkBoxLayout">
+      <property name="spacing">16</property>
     </object>
   </property>
 

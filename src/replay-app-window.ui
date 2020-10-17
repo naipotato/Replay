@@ -40,7 +40,6 @@
 
           <child>
             <object class="GtkListBox">
-              <property name="width-request">180</property>
 
               <style>
                 <class name="navigation-sidebar" />
