@@ -41,18 +41,27 @@
       </child>
 
       <child type="title">
-        <object class="GtkStack">
+        <object class="GtkStack" id="_title_stack">
+          <property name="transition-type">crossfade</property>
+          <property name="hexpand">True</property>
 
           <child>
             <object class="GtkStackPage">
               <property name="name">search</property>
 
               <property name="child">
-                <object class="GtkSearchEntry" id="_search_entry">
-                  <!-- Translators: This is the placeholder shown in the search entry -->
-                  <property name="placeholder-text" translatable="yes">Search</property>
-                  <property name="width-request">500</property>
-                  <signal name="stop-search" handler="on_search_entry_stop_search" />
+                <object class="HdyClamp">
+                  <property name="tightening-threshold">400</property>
+                  <property name="maximum-size">600</property>
+
+                  <child>
+                    <object class="GtkSearchEntry" id="_search_entry">
+                      <!-- Translators: This is the placeholder shown in the search entry -->
+                      <property name="placeholder-text" translatable="yes">Search</property>
+                      <signal name="stop-search" handler="on_search_entry_stop_search" />
+                    </object>
+                  </child>
+
                 </object>
               </property>
 
@@ -65,9 +74,13 @@
 
               <property name="child">
                 <object class="GtkLabel">
+                  <!-- Translators: This is the title shown in the application window on mobile view -->
+                  <property name="label" translatable="yes">Replay</property>
+
                   <style>
                     <class name="title" />
                   </style>
+
                 </object>
               </property>
 
