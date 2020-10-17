@@ -26,10 +26,6 @@
   <property name="default-width">1024</property>
   <property name="default-height">553</property>
 
-  <style>
-    <class name="devel" />
-  </style>
-
   <child type="titlebar">
     <object class="ReplayHeaderBar" id="_header_bar" />
   </child>

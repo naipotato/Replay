@@ -53,6 +53,10 @@ public class Replay.AppWindow : Gtk.ApplicationWindow
     construct
     {
         this._header_bar.key_capture_widget = this;
+
+#if DEVEL
+        this.add_css_class ("devel");
+#endif
     }
 
     /* End GObject blocks */
