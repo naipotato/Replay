@@ -1,4 +1,4 @@
-/* Automatically generated from com.github.nahuelwexd.Replay.json, do not modify. */
+/* Automatically generated from com.github.nahuelwexd.Replay.yml, do not modify. */
 {
   "app-id": "com.github.nahuelwexd.Replay.Devel",
   "runtime": "org.gnome.Platform",
@@ -54,31 +54,6 @@
         {
           "type": "git",
           "url": "https://github.com/sass/sassc.git"
-        }
-      ]
-    },
-    {
-      "name": "intltool",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
-          "md5": "12e517cac2b57a0121cda351570f1e63"
-        }
-      ]
-    },
-    {
-      "name": "libgda",
-      "config-opts": [
-        "--disable-tools",
-        "--enable-system-sqlite",
-        "--disable-gtk-doc-html"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/libgda/5.2/libgda-5.2.9.tar.xz",
-          "sha256": "59caed8ca72b1ac6437c9844f0677f8a296d52cfd1c0049116026abfb1d87d9b"
         }
       ]
     },

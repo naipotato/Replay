@@ -67,8 +67,6 @@ vapidir = meson.source_root () / 'vapi'
 # Dependencies
 gtk_dep = dependency ('gtk4')
 gee_dep = dependency ('gee-0.8')
-xml_dep = dependency ('libxml-2.0')
-gda_dep = dependency ('libgda-5.0')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
 

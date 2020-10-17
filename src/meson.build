@@ -31,9 +31,7 @@ replay_sources += gnome.compile_resources (
 replay_dependencies = [
     gtk_dep,
     gee_dep,
-    gda_dep,
-    xml_dep,
-    config_dep
+    config_dep,
 ]
 
 
