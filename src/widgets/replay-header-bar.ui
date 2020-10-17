@@ -27,7 +27,7 @@
   </property>
 
   <child>
-    <object class="GtkHeaderBar" id="_header_bar">
+    <object class="HdyHeaderBar" id="_header_bar">
       <property name="show-title-buttons">True</property>
 
       <style>
