@@ -37,17 +37,6 @@ public class Replay.AppWindow : Hdy.ApplicationWindow
     /* End public constructors */
 
 
-    /* Private methods */
-
-    [GtkCallback]
-    private void on_navigation_view_item_selected (Replay.NavigationViewItem? item)
-    {
-        Navigator.push (item.tag);
-    }
-
-    /* End private methods */
-
-
     /* GObject blocks */
 
     construct

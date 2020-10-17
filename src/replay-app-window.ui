@@ -35,79 +35,89 @@
       </child>
 
       <child>
-        <object class="ReplayNavigationView">
+        <object class="HdyLeaflet">
           <property name="vexpand">True</property>
-          <signal name="item-selected" handler="on_navigation_view_item_selected" />
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/home</property>
-              <property name="icon-name">go-home-symbolic</property>
-              <!-- Translators: This is the label for the home page on the sidebar -->
-              <property name="label" translatable="yes">Home</property>
-            </object>
-          </child>
+          <child>
+            <object class="GtkListBox">
+              <property name="width-request">180</property>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-trending-symbolic</property>
-              <!-- Translators: This is the label for the trending page on the sidebar -->
-              <property name="label" translatable="yes">Trending</property>
-            </object>
-          </child>
+              <style>
+                <class name="navigation-sidebar" />
+              </style>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-subscriptions-symbolic</property>
-              <!-- Translators: This is the label for the subscriptions page on the sidebar -->
-              <property name="label" translatable="yes">Subscriptions</property>
-            </object>
-          </child>
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/home</property>
+                  <property name="icon-name">go-home-symbolic</property>
+                  <!-- Translators: This is the label for the home page on the sidebar -->
+                  <property name="label" translatable="yes">Home</property>
+                </object>
+              </child>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-liked-symbolic</property>
-              <!-- Translators: This is the label for the liked videos page on the sidebar -->
-              <property name="label" translatable="yes">Liked Videos</property>
-            </object>
-          </child>
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-trending-symbolic</property>
+                  <!-- Translators: This is the label for the trending page on the sidebar -->
+                  <property name="label" translatable="yes">Trending</property>
+                </object>
+              </child>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-favorites-symbolic</property>
-              <!-- Translators: This is the label for the favorites page on the sidebar -->
-              <property name="label" translatable="yes">Favorites</property>
-            </object>
-          </child>
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-subscriptions-symbolic</property>
+                  <!-- Translators: This is the label for the subscriptions page on the sidebar -->
+                  <property name="label" translatable="yes">Subscriptions</property>
+                </object>
+              </child>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-history-symbolic</property>
-              <!-- Translators: This is the label for the history page on the sidebar -->
-              <property name="label" translatable="yes">History</property>
-            </object>
-          </child>
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-liked-symbolic</property>
+                  <!-- Translators: This is the label for the liked videos page on the sidebar -->
+                  <property name="label" translatable="yes">Liked Videos</property>
+                </object>
+              </child>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-watch-later-symbolic</property>
-              <!-- Translators: This is the label for the watch later page on the sidebar -->
-              <property name="label" translatable="yes">Watch Later</property>
-            </object>
-          </child>
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-favorites-symbolic</property>
+                  <!-- Translators: This is the label for the favorites page on the sidebar -->
+                  <property name="label" translatable="yes">Favorites</property>
+                </object>
+              </child>
 
-          <child type="item">
-            <object class="ReplayNavigationViewItem">
-              <property name="tag">/not-found</property>
-              <property name="icon-name">go-playlists-symbolic</property>
-              <!-- Translators: This is the label for the playlists page on the sidebar -->
-              <property name="label" translatable="yes">Playlists</property>
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-history-symbolic</property>
+                  <!-- Translators: This is the label for the history page on the sidebar -->
+                  <property name="label" translatable="yes">History</property>
+                </object>
+              </child>
+
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-watch-later-symbolic</property>
+                  <!-- Translators: This is the label for the watch later page on the sidebar -->
+                  <property name="label" translatable="yes">Watch Later</property>
+                </object>
+              </child>
+
+              <child>
+                <object class="ReplayNavigationViewItem">
+                  <property name="tag">/not-found</property>
+                  <property name="icon-name">go-playlists-symbolic</property>
+                  <!-- Translators: This is the label for the playlists page on the sidebar -->
+                  <property name="label" translatable="yes">Playlists</property>
+                </object>
+              </child>
+
             </object>
           </child>
 
@@ -118,12 +128,6 @@
               <child>
                 <object class="ReplayHomePage">
                   <property name="path">/home</property>
-                </object>
-              </child>
-
-              <child>
-                <object class="ReplayNotFoundPage">
-                  <property name="path">/not-found</property>
                 </object>
               </child>
 
