@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
-public class Replay.AppWindow : Gtk.ApplicationWindow
+public class Replay.AppWindow : Hdy.ApplicationWindow
 {
     /* Private fields */
 
