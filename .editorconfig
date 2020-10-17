@@ -10,5 +10,5 @@ max_line_length = 120              # Limit your lines to 120 columns
 trim_trailing_whitespace = true    # Do not leave any trailing whitespace
 insert_final_newline = true        # Always end any file with a newline
 
-[*.yml]
-tab_width = 2                      # The tab stop on YAML files must have a width of 2 columns
+[*.{yml,ui}]
+tab_width = 2                      # The tab stop on YAML and UI files must have a width of 2 columns
