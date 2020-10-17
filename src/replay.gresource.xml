@@ -25,7 +25,7 @@
   <file alias="not-found-page.ui">pages/replay-not-found-page.ui</file>
 
   <file alias="header-bar.ui">widgets/replay-header-bar.ui</file>
-  <file alias="navigation-view-item.ui">widgets/replay-navigation-view-item.ui</file>
+  <file alias="sidebar-item.ui">widgets/replay-sidebar-item.ui</file>
   <file alias="video-carousel-item.ui">widgets/replay-video-carousel-item.ui</file>
 
   <file alias="app-window.ui">replay-app-window.ui</file>

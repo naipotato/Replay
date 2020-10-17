@@ -8,9 +8,9 @@ replay_sources = files (
 
     'widgets/replay-carousel.vala',
     'widgets/replay-header-bar.vala',
-    'widgets/replay-navigation-view-item.vala',
     'widgets/replay-page.vala',
     'widgets/replay-section.vala',
+    'widgets/replay-sidebar-item.vala',
     'widgets/replay-video-carousel-item.vala',
 
     'replay-app.vala',

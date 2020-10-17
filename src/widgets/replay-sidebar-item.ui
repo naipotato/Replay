@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="ReplayNavigationViewItem" parent="GtkWidget">
+<template class="ReplaySidebarItem" parent="GtkWidget">
 
   <property name="layout-manager">
     <object class="GtkConstraintLayout">
@@ -55,15 +55,14 @@
 
   <child>
     <object class="GtkImage" id="_image">
-      <property name="icon-name" bind-source="ReplayNavigationViewItem" bind-property="icon-name"
+      <property name="icon-name" bind-source="ReplaySidebarItem" bind-property="icon-name"
                 bind-flags="sync-create | default" />
     </object>
   </child>
 
   <child>
     <object class="GtkLabel" id="_gtk_label">
-      <property name="label" bind-source="ReplayNavigationViewItem" bind-property="label"
-                bind-flags="sync-create | default" />
+      <property name="label" bind-source="ReplaySidebarItem" bind-property="label" bind-flags="sync-create | default" />
     </object>
   </child>
 

@@ -15,8 +15,8 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/navigation-view-item.ui")]
-public class Replay.NavigationViewItem : Gtk.Widget
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/sidebar-item.ui")]
+public class Replay.SidebarItem : Gtk.Widget
 {
     /* Private fields */
 

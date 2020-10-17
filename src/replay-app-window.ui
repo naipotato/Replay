@@ -48,7 +48,7 @@
               </style>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/home</property>
                   <property name="icon-name">go-home-symbolic</property>
                   <!-- Translators: This is the label for the home page on the sidebar -->
@@ -57,7 +57,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-trending-symbolic</property>
                   <!-- Translators: This is the label for the trending page on the sidebar -->
@@ -66,7 +66,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-subscriptions-symbolic</property>
                   <!-- Translators: This is the label for the subscriptions page on the sidebar -->
@@ -75,7 +75,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-liked-symbolic</property>
                   <!-- Translators: This is the label for the liked videos page on the sidebar -->
@@ -84,7 +84,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-favorites-symbolic</property>
                   <!-- Translators: This is the label for the favorites page on the sidebar -->
@@ -93,7 +93,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-history-symbolic</property>
                   <!-- Translators: This is the label for the history page on the sidebar -->
@@ -102,7 +102,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-watch-later-symbolic</property>
                   <!-- Translators: This is the label for the watch later page on the sidebar -->
@@ -111,7 +111,7 @@
               </child>
 
               <child>
-                <object class="ReplayNavigationViewItem">
+                <object class="ReplaySidebarItem">
                   <property name="tag">/not-found</property>
                   <property name="icon-name">go-playlists-symbolic</property>
                   <!-- Translators: This is the label for the playlists page on the sidebar -->
