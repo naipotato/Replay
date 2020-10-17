@@ -58,6 +58,22 @@
       ]
     },
     {
+      "name": "libhandy",
+      "buildsystem": "meson",
+      "builddir": true,
+      "config-opts": [
+        "-Dexamples=false",
+        "-Dtests=false"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/exalm/libhandy.git",
+          "branch": "gtk4"
+        }
+      ]
+    },
+    {
       "name": "replay",
       "buildsystem": "meson",
       "builddir": true,

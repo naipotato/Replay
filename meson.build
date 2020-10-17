@@ -69,6 +69,18 @@ gtk_dep = dependency ('gtk4')
 gee_dep = dependency ('gee-0.8')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
+libhandy_dep = dependency ('libhandy-1', required: false)
+if not libhandy_dep.found ()
+    libhandy = subproject ('libhandy',
+        default_options: [
+            'examples=false',
+            'package_subdir=replay',
+            'tests=false',
+        ],
+    )
+    libhandy_dep = libhandy.get_variable ('libhandy_vapi')
+endif
+
 
 # Add vapidir for custom vapis
 add_project_arguments ('--vapidir', vapidir,

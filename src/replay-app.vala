@@ -57,6 +57,9 @@ public class Replay.App : Gtk.Application
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
 
+        // Initialize libhandy
+        Hdy.init ();
+
         this.init_types ();
         this.populate_actions ();
 
