@@ -21,6 +21,7 @@
 <interface>
 
 <template class="ReplayVideoCarouselItem" parent="GtkWidget">
+  <property name="hexpand">True</property>
 
   <property name="layout-manager">
     <object class="GtkConstraintLayout">
