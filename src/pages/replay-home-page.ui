@@ -30,7 +30,8 @@
           <property name="orientation">vertical</property>
 
           <child>
-            <object class="ReplayCarousel">
+            <object class="HdyCarousel">
+              <property name="animation-duration">500</property>
 
               <child>
                 <object class="ReplayVideoCarouselItem">
