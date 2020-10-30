@@ -69,7 +69,7 @@ gtk_dep = dependency ('gtk4')
 gee_dep = dependency ('gee-0.8')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
-libhandy_dep = dependency ('libhandy-1', required: false)
+libhandy_dep = dependency ('libhandy-4', required: false)
 if not libhandy_dep.found ()
     libhandy = subproject ('libhandy',
         default_options: [
