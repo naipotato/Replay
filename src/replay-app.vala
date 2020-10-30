@@ -18,6 +18,7 @@
 public class Replay.App : Gtk.Application
 {
     /* Public constructors */
+
     public App ()
     {
         Object (
@@ -32,8 +33,9 @@ public class Replay.App : Gtk.Application
     /* Public methods */
 
     public override void activate ()
+        requires (this.active_window != null)
     {
-        this.active_window.present ();
+        this.active_window.present_with_time (Gdk.CURRENT_TIME);
     }
 
     public override void startup ()
