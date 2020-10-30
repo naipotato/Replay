@@ -28,52 +28,6 @@
   ],
   "modules": [
     {
-      "name": "libsass",
-      "buildsystem": "simple",
-      "build-commands": [
-        "autoreconf --force --install",
-        "./configure --disable-tests --disable-static --enable-shared --prefix=/app",
-        "make -j5 install"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/sass/libsass.git"
-        }
-      ]
-    },
-    {
-      "name": "sassc",
-      "buildsystem": "simple",
-      "build-commands": [
-        "autoreconf --force --install",
-        "./configure --prefix=/app",
-        "make -j5 install"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/sass/sassc.git"
-        }
-      ]
-    },
-    {
-      "name": "libhandy",
-      "buildsystem": "meson",
-      "builddir": true,
-      "config-opts": [
-        "-Dexamples=false",
-        "-Dtests=false"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/exalm/libhandy.git",
-          "branch": "gtk4"
-        }
-      ]
-    },
-    {
       "name": "replay",
       "buildsystem": "meson",
       "builddir": true,
@@ -84,6 +38,56 @@
         {
           "type": "git",
           "path": "../.."
+        }
+      ],
+      "modules": [
+        {
+          "name": "sassc",
+          "buildsystem": "simple",
+          "build-commands": [
+            "autoreconf --force --install",
+            "./configure --prefix=/app",
+            "make -j5 install"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/sass/sassc.git"
+            }
+          ],
+          "modules": [
+            {
+              "name": "libsass",
+              "buildsystem": "simple",
+              "build-commands": [
+                "autoreconf --force --install",
+                "./configure --disable-tests --disable-static --enable-shared --prefix=/app",
+                "make -j5 install"
+              ],
+              "sources": [
+                {
+                  "type": "git",
+                  "url": "https://github.com/sass/libsass.git"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "libhandy",
+          "buildsystem": "meson",
+          "builddir": true,
+          "config-opts": [
+            "-Dexamples=false",
+            "-Dtests=false"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://gitlab.gnome.org/exalm/libhandy.git",
+              "branch": "gtk4"
+            }
+          ]
         }
       ]
     }
