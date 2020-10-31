@@ -48,7 +48,7 @@ cleanup:
 modules:
   - name: replay
     buildsystem: meson
-    builddir: yes
+    builddir: true
 
     config-opts:
       - -Dprofile=development
@@ -88,7 +88,7 @@ modules:
       # Adaptive design
       - name: libhandy
         buildsystem: meson
-        builddir: yes
+        builddir: true
 
         config-opts:
           - -Dexamples=false
