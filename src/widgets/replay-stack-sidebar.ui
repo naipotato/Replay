@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - An open source YouTube client for GNOME
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="ReplayStackSidebar" parent="GtkWidget">
+
+  <property name="layout-manager">
+    <object class="GtkBinLayout" />
+  </property>
+
+  <style>
+    <class name="sidebar" />
+  </style>
+
+  <child>
+    <object class="GtkScrolledWindow">
+
+      <property name="hscrollbar-policy">never</property>
+      <property name="vscrollbar-policy">automatic</property>
+
+      <child>
+        <object class="GtkListBox" id="_list_box">
+          <property name="selection-mode">browse</property>
+          <!--
+            FIXME: We should be using row-selected signal instead of this, but
+                   for some reason it doesn't work
+          -->
+          <signal name="row-activated" handler="on_list_box_row_activated" />
+
+          <style>
+            <class name="navigation-sidebar" />
+          </style>
+
+        </object>
+      </child>
+
+    </object>
+  </child>
+
+</template>
+
+</interface>

@@ -26,6 +26,7 @@
 
   <file alias="header-bar.ui">widgets/replay-header-bar.ui</file>
   <file alias="sidebar-item.ui">widgets/replay-sidebar-item.ui</file>
+  <file alias="stack-sidebar.ui">widgets/replay-stack-sidebar.ui</file>
   <file alias="video-carousel-item.ui">widgets/replay-video-carousel-item.ui</file>
 
   <file alias="app-window.ui">replay-app-window.ui</file>
