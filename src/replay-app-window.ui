@@ -126,8 +126,15 @@
               <property name="hexpand">True</property>
 
               <child>
-                <object class="ReplayHomePage">
-                  <property name="path">/home</property>
+                <object class="GtkStackPage">
+                  <!-- Translators: This is the label for the home page on the sidebar -->
+                  <property name="title" translatable="yes">Home</property>
+                  <property name="icon-name">go-home-symbolic</property>
+
+                  <property name="child">
+                    <object class="ReplayHomePage" />
+                  </property>
+
                 </object>
               </child>
 
@@ -143,3 +150,4 @@
 </template>
 
 </interface>
+
