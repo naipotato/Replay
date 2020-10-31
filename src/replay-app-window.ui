@@ -122,7 +122,7 @@
           </child>
 
           <child>
-            <object class="ReplaySection">
+            <object class="GtkStack">
               <property name="hexpand">True</property>
 
               <child>
