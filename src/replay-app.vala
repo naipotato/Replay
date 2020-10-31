@@ -85,7 +85,6 @@ public class Replay.App : Gtk.Application
         typeof (Replay.HeaderBar).ensure ();
         typeof (Replay.HomePage).ensure ();
         typeof (Replay.NotFoundPage).ensure ();
-        typeof (Replay.Section).ensure ();
         typeof (Replay.SidebarItem).ensure ();
         typeof (Replay.VideoCarouselItem).ensure ();
     }

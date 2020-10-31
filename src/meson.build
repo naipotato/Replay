@@ -4,12 +4,9 @@ replay_sources = files (
     'pages/replay-home-page.vala',
     'pages/replay-not-found-page.vala',
 
-    'utils/replay-navigator.vala',
-
     'widgets/replay-carousel.vala',
     'widgets/replay-header-bar.vala',
     'widgets/replay-page.vala',
-    'widgets/replay-section.vala',
     'widgets/replay-sidebar-item.vala',
     'widgets/replay-video-carousel-item.vala',
 
