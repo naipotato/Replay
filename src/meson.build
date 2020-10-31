@@ -2,7 +2,6 @@ replay_sources = files (
     'core/models/replay-core-video.vala',
 
     'pages/replay-home-page.vala',
-    'pages/replay-not-found-page.vala',
 
     'widgets/replay-header-bar.vala',
     'widgets/replay-page.vala',
