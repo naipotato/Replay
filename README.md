@@ -1,29 +1,13 @@
-<h1 align="center">
-    <img alt="Project logo" src="data/icons/scalable/apps/com.github.nahuelwexd.Replay.svg">
-    <br>
-    Replay
-</h1>
+<img align="left" alt="Project logo" src="data/icons/scalable/apps/com.github.nahuelwexd.Replay.svg" />
 
-<p align="center">
-    An open source YouTube client for GNOME
-</p>
+# [WIP] Replay
 
-<p align="center">
-    <a href="https://github.com/nahuelwexd/Replay/actions?query=workflow:Flatpak">
-        <img alt="Flatpak CI badge" src="https://github.com/nahuelwexd/Replay/workflows/Flatpak/badge.svg">
-    </a>
-    <a href="https://stopthemingmy.app">
-        <img alt="Please do not theme this app" src="https://stopthemingmy.app/badge.svg">
-    </a>
-    <a href="COPYING">
-        <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/Replay?label=License&logo=gnu">
-    </a>
-    <a href="https://t.me/ReplayApp">
-        <img alt="Telegram group badge" src="https://img.shields.io/badge/Telegram-Join_the_chat-2CA5E0?style=flat&logo=telegram">
-    </a>
-</p>
+An open source YouTube client for GNOME
 
-![UI Mockup](ui-mockup.png)
+[![Flatpak CI badge](https://github.com/nahuelwexd/Replay/workflows/Flatpak/badge.svg)](https://github.com/nahuelwexd/Replay/actions?query=workflow:Flatpak)
+[![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
+[![License](https://img.shields.io/github/license/nahuelwexd/Replay?label=License&logo=gnu)](COPYING)
+[![Telegram group badge](https://img.shields.io/badge/Telegram-Join_the_chat-2CA5E0?style=flat&logo=telegram)](https://t.me/ReplayApp)
 
 > **IMPORTANT:** This project is work in progress. It's still in very early stages of development and isn't ready for use.
 
