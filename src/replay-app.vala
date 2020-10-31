@@ -22,7 +22,7 @@ public class Replay.App : Gtk.Application
     public App ()
     {
         Object (
-            application_id: Replay.Constants.APPLICATION_ID,
+            application_id: Constants.APPLICATION_ID,
             flags:          ApplicationFlags.FLAGS_NONE
         );
     }
@@ -52,7 +52,7 @@ public class Replay.App : Gtk.Application
 
         // Load custom styles
         var css_provider = new Gtk.CssProvider ();
-        css_provider.load_from_resource (@"$(Replay.Constants.RESOURCE_PATH)/styles.css");
+        css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
         Gtk.StyleContext.add_provider_for_display (
             Gdk.Display.get_default (),
             css_provider,
@@ -68,10 +68,10 @@ public class Replay.App : Gtk.Application
 #if DEVEL
         // Load custom icons
         Gtk.IconTheme default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
-        default_theme.add_resource_path (@"$(Replay.Constants.RESOURCE_PATH)/icons");
+        default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
 
-        new Replay.AppWindow (this);
+        new AppWindow (this);
     }
 
     /* End public methods */
@@ -81,11 +81,11 @@ public class Replay.App : Gtk.Application
 
     private void init_types ()
     {
-        typeof (Replay.HeaderBar).ensure ();
-        typeof (Replay.HomePage).ensure ();
-        typeof (Replay.NotFoundPage).ensure ();
-        typeof (Replay.SidebarItem).ensure ();
-        typeof (Replay.VideoCarouselItem).ensure ();
+        typeof (HeaderBar).ensure ();
+        typeof (HomePage).ensure ();
+        typeof (NotFoundPage).ensure ();
+        typeof (SidebarItem).ensure ();
+        typeof (VideoCarouselItem).ensure ();
     }
 
     private void populate_actions ()
@@ -99,11 +99,11 @@ public class Replay.App : Gtk.Application
                 "modal", true,
                 "destroy-with-parent", true,
                 "title", "About Replay",
-                "logo-icon-name", Replay.Constants.APPLICATION_ID,
-                "version", Replay.Constants.VERSION,
+                "logo-icon-name", Constants.APPLICATION_ID,
+                "version", Constants.VERSION,
                 // Translators: This is a little description about the application
                 "comments", _("An open source YouTube client for GNOME"),
-                "website", Replay.Constants.PACKAGE_URL,
+                "website", Constants.PACKAGE_URL,
                 // Translators: This is the label shown for the project repository hyperlink
                 "website-label", _("Project repository"),
                 "copyright", "© 2019-2020 Nahuel Gomez Castro",
