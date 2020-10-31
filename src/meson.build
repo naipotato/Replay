@@ -4,7 +4,6 @@ replay_sources = files (
     'pages/replay-home-page.vala',
     'pages/replay-not-found-page.vala',
 
-    'widgets/replay-carousel.vala',
     'widgets/replay-header-bar.vala',
     'widgets/replay-page.vala',
     'widgets/replay-sidebar-item.vala',

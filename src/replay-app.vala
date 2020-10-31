@@ -81,7 +81,6 @@ public class Replay.App : Gtk.Application
 
     private void init_types ()
     {
-        typeof (Replay.Carousel).ensure ();
         typeof (Replay.HeaderBar).ensure ();
         typeof (Replay.HomePage).ensure ();
         typeof (Replay.NotFoundPage).ensure ();
