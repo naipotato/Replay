@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/home-page.ui")]
-public class Replay.HomePage : Page
+public class Replay.HomePage : Gtk.Widget
 {
     /* GObject blocks */
 

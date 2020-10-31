@@ -20,7 +20,12 @@
 
 <interface>
 
-<template class="ReplayHomePage" parent="ReplayPage">
+<template class="ReplayHomePage" parent="GtkWidget">
+
+  <property name="layout-manager">
+    <object class="GtkBinLayout" />
+  </property>
+
   <child>
     <object class="GtkScrolledWindow">
       <property name="hscrollbar-policy">never</property>
@@ -99,6 +104,7 @@
 
     </object>
   </child>
+
 </template>
 
 </interface>
