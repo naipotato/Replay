@@ -17,8 +17,6 @@
 
 public class Replay.App : Gtk.Application
 {
-    /* Public constructors */
-
     public App ()
     {
         Object (
@@ -27,10 +25,6 @@ public class Replay.App : Gtk.Application
         );
     }
 
-    /* End public constructors */
-
-
-    /* Public methods */
 
     public override void activate ()
         requires (this.active_window != null)
@@ -74,10 +68,6 @@ public class Replay.App : Gtk.Application
         new AppWindow (this);
     }
 
-    /* End public methods */
-
-
-    /* Private methods */
 
     private void init_types ()
     {
@@ -117,6 +107,4 @@ public class Replay.App : Gtk.Application
         this.set_accels_for_action ("app.quit", { "<Primary>Q" });
         this.add_action (action);
     }
-
-    /* End private methods */
 }
