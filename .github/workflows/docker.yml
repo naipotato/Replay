@@ -1,11 +1,6 @@
 on:
-  push:
-    - main
-  paths:
-    - .github/workflows/docker.yml
-    - build-aux/docker/**
   schedule:
-    - cron: '0 7 1/7 * *' # This should run once a week
+    - cron: '0 7 */7 * *' # This should run once a week
 
 name: Docker image
 
