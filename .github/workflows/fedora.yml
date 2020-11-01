@@ -4,7 +4,7 @@ on:
       - main
     paths:
       - .github/workflows/fedora.yml
-      - build-aux/**
+      - build-aux/meson/**
       - data/**
       - po/**
       - src/**
