@@ -2,28 +2,30 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - .github/**
-      - '!.github/workflows/fedora.yml'
-      - .editorconfig
-      - CONTRIBUTING.md
-      - COPYING
-      - README.md
-      - Replay.doap
-      - ui-mockup.png
+    paths:
+      - .github/workflows/fedora.yml
+      - build-aux/**
+      - data/**
+      - po/**
+      - src/**
+      - subprojects/**
+      - vapi/**
+      - meson.build
+      - meson_options.txt
 
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - .github/**
-      - '!.github/workflows/fedora.yml'
-      - .editorconfig
-      - CONTRIBUTING.md
-      - COPYING
-      - README.md
-      - Replay.doap
-      - ui-mockup.png
+    paths:
+      - .github/workflows/fedora.yml
+      - build-aux/**
+      - data/**
+      - po/**
+      - src/**
+      - subprojects/**
+      - vapi/**
+      - meson.build
+      - meson_options.txt
 
 name: Fedora
 
@@ -31,14 +33,10 @@ jobs:
   build:
     name: Build the app
     runs-on: ubuntu-20.04
-    container: fedora:33
+    container: nahuelwexd/replay-ci-image:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.2
-
-      - name: Install dependencies
-        run: |
-          dnf install -y meson vala gtk4-devel libgee-devel libxml2-devel libgda-devel sassc git
 
       - name: Build
         run: |
