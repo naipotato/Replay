@@ -1,12 +1,13 @@
-homepage > scrolledwindow > viewport > box {
-  > carousel {
-    margin: 12px 0 6px 0;
+homepage {
+  carousel {
+    margin: 12px 0 0;
   }
 
-  > label {
-    margin-left: 20px;
-    margin-top: 6px;
-    margin-right: 20px;
-    margin-bottom: 6px;
+  carouselindicatordots {
+    margin: 2px 0 6px;
+  }
+
+  .title-2 {
+    margin: 0px 20px;
   }
 }
