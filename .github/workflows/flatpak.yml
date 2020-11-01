@@ -2,28 +2,32 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - .github/**
-      - '!.github/workflows/flatpak.yml'
-      - .editorconfig
-      - CONTRIBUTING.md
-      - COPYING
-      - README.md
-      - Replay.doap
-      - ui-mockup.png
+    paths:
+      - .github/workflows/flatpak.yml
+      - build-aux/flatpak/**
+      - build-aux/meson/**
+      - data/**
+      - po/**
+      - src/**
+      - subprojects/**
+      - vapi/**
+      - meson.build
+      - meson_options.txt
 
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - .github/**
-      - '!.github/workflows/flatpak.yml'
-      - .editorconfig
-      - CONTRIBUTING.md
-      - COPYING
-      - README.md
-      - Replay.doap
-      - ui-mockup.png
+    paths:
+      - .github/workflows/flatpak.yml
+      - build-aux/flatpak/**
+      - build-aux/meson/**
+      - data/**
+      - po/**
+      - src/**
+      - subprojects/**
+      - vapi/**
+      - meson.build
+      - meson_options.txt
 
 name: Flatpak
 
@@ -31,17 +35,12 @@ jobs:
   build:
     name: Build the app
     runs-on: ubuntu-20.04
+    container:
+      image: nahuelwexd/replay-ci-image:latest
+      options: --privileged
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.2
-
-      - name: Setup Flatpak environment
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          sudo apt update
-          sudo apt install -y flatpak flatpak-builder
-          flatpak remote-add --user --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 
       - name: Cache dependencies
         uses: actions/cache@v2.1.1
@@ -53,7 +52,7 @@ jobs:
 
       - name: Build
         run: |
-          flatpak-builder --user --repo=repo --install-deps-from=gnome-nightly flatpak_app \
+          flatpak-builder --repo=repo --install-deps-from=gnome-nightly flatpak_app \
               build-aux/flatpak/com.github.nahuelwexd.Replay.yml
 
       - name: Upload Flatpak repository
@@ -65,17 +64,13 @@ jobs:
   package:
     name: Create Flatpak bundle
     runs-on: ubuntu-20.04
+    container:
+      image: nahuelwexd/replay-ci-image:latest
+      options: --privileged
     needs: build
     steps:
       - name: Download Flatpak repository
         uses: actions/download-artifact@v2.0.5
-
-      - name: Setup Flatpak environment
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          sudo apt update
-          sudo apt install -y flatpak
 
       - name: Create Flatpak bundle
         run: |
