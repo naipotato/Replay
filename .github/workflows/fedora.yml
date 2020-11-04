@@ -36,7 +36,7 @@ jobs:
     container: nahuelwexd/replay-ci-image:latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v2.3.4
 
       - name: Build
         run: |
