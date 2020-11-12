@@ -18,23 +18,48 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
 public class Replay.AppWindow : Hdy.ApplicationWindow
 {
-    [GtkChild] private Replay.HeaderBar _header_bar;
+    [GtkChild] private Gtk.Stack _content_stack;
+    [GtkChild] private Gtk.Revealer _revealer;
 
 
-    public AppWindow (Replay.App app)
+    public new Gtk.Application application
     {
-        Object (
-            application: app
-        );
+        get { return base.application; }
+        construct
+        {
+            if (base.application == value) return;
+            base.application = value;
+        }
+    }
+
+    public Helpers.AdaptivenessManager adaptiveness_manager { get; construct; }
+
+
+    public override void size_allocate (int width, int height, int baseline)
+    {
+        base.size_allocate (width, height, baseline);
+        this.adaptiveness_manager.inform_new_width (width);
+    }
+
+
+    private void on_adaptiveness_manager_state_changed (Helpers.AdaptiveStates new_state)
+    {
+        switch (new_state) {
+        case Helpers.AdaptiveStates.EXTRA_SMALL:
+            this._revealer.reveal_child = false;
+            break;
+        case Helpers.AdaptiveStates.SMALL:
+        case Helpers.AdaptiveStates.MEDIUM:
+        case Helpers.AdaptiveStates.LARGE:
+        case Helpers.AdaptiveStates.EXTRA_LARGE:
+            this._revealer.reveal_child = true;
+            break;
+        }
     }
 
 
     construct
     {
-        this._header_bar.key_capture_widget = this;
-
-#if DEVEL
-        this.add_css_class ("devel");
-#endif
+        this.adaptiveness_manager.state_changed.connect (this.on_adaptiveness_manager_state_changed);
     }
 }

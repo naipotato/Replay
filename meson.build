@@ -7,7 +7,7 @@ project ('replay', 'c', 'vala',
 # Enable gettext
 i18n = import ('i18n')
 
-add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name ()),
+add_project_arguments ('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name ()),
     language: 'c'
 )
 
@@ -67,6 +67,8 @@ vapidir = meson.source_root () / 'vapi'
 # Dependencies
 gtk_dep = dependency ('gtk4')
 gee_dep = dependency ('gee-0.8')
+sqlite_dep = dependency ('sqlite3')
+vadi_dep = dependency ('vadi-0.0')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
 libhandy_dep = dependency ('libhandy-4', required: false)
@@ -80,12 +82,6 @@ if not libhandy_dep.found ()
     )
     libhandy_dep = libhandy.get_variable ('libhandy_vapi')
 endif
-
-
-# Add vapidir for custom vapis
-add_project_arguments ('--vapidir', vapidir,
-    language: 'vala'
-)
 
 
 # Post install script

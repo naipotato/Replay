@@ -15,22 +15,47 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
-public class Replay.HeaderBar : Gtk.Widget
+public class Replay.Page : Gtk.Widget, Gtk.Buildable
 {
-    [GtkChild] private Gtk.HeaderBar _header_bar;
-    [GtkChild] private Gtk.SearchEntry _search_entry;
-    [GtkChild] private Gtk.Label _title_label;
-    [GtkChild] private Gtk.Stack _title_stack;
+    private Gtk.Widget _child;
 
 
-    public Helpers.AdaptivenessManager adaptiveness_manager { get; construct; }
+    public Gtk.Widget child
+    {
+        get { return this._child; }
+        set
+        {
+            if (this._child != null) {
+                this._child.unparent ();
+            }
+
+            this._child = value;
+
+            if (this._child != null) {
+                this._child.set_parent (this);
+            }
+        }
+    }
+
+    public string icon_name { get; set; }
     public string title { get; set; }
 
 
+    public void add_child (Gtk.Builder builder, GLib.Object child, string? type)
+        requires (child is Gtk.Widget)
+    {
+        this.child = (Gtk.Widget) child;
+    }
+
     public override void dispose ()
     {
-        this._header_bar.unparent ();
+        this.child = null;
         base.dispose ();
+    }
+
+
+    static construct
+    {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 }

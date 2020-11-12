@@ -15,9 +15,18 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Replay.Core.Video : Object
+namespace Replay.Helpers
 {
-    public string id            { get; set; }
-    public string title         { get; set; }
-    public string thumbnail_url { get; set; }
+    public Vdi.ObjectFactory get_factory (App app)
+    {
+        var factory = new Vdi.ObjectFactory ();
+
+        var result = factory.order_with_recipe (typeof (Gtk.Application), factory => {
+            return app;
+        });
+        result = factory.order (typeof (AdaptivenessManager));
+        result = factory.order (typeof (AppWindow));
+
+        return factory;
+    }
 }

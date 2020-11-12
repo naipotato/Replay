@@ -48,7 +48,6 @@ cleanup:
 modules:
   - name: replay
     buildsystem: meson
-    builddir: true
 
     config-opts:
       - -Dprofile=development
@@ -88,7 +87,6 @@ modules:
       # Adaptive design
       - name: libhandy
         buildsystem: meson
-        builddir: true
 
         config-opts:
           - -Dexamples=false
@@ -98,3 +96,12 @@ modules:
           - type: git
             url: https://gitlab.gnome.org/exalm/libhandy.git
             branch: gtk4
+
+      # Dependency Injection utilities
+      - name: vadi
+        buildsystem: meson
+
+        sources:
+          - type: git
+            url: https://github.com/nahuelwexd/Vadi.git
+            branch: new-api

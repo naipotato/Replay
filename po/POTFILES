@@ -1,6 +1,6 @@
 data/com.github.nahuelwexd.Replay.desktop.in.in
 src/pages/replay-home-page.ui
-src/pages/replay-not-found-page.ui
 src/widgets/replay-header-bar.ui
 src/replay-app.vala
 src/replay-app-window.ui
+src/replay-app-window.vala

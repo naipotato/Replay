@@ -17,10 +17,10 @@
 
 int main (string[] args)
 {
-    Intl.setlocale (LocaleCategory.ALL);
-    Intl.bindtextdomain (Replay.Constants.GETTEXT_PACKAGE, Replay.Constants.LOCALEDIR);
-    Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
-    Intl.textdomain (Replay.Constants.GETTEXT_PACKAGE);
+    GLib.Intl.setlocale (LocaleCategory.ALL);
+    GLib.Intl.bindtextdomain (Replay.Constants.GETTEXT_PACKAGE, Replay.Constants.LOCALEDIR);
+    GLib.Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
+    GLib.Intl.textdomain (Replay.Constants.GETTEXT_PACKAGE);
 
     return new Replay.App ().run (args);
 }

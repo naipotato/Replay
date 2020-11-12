@@ -21,7 +21,6 @@
 <interface>
 
 <template class="ReplayAppWindow" parent="HdyApplicationWindow">
-  <!-- Translators: This is the title of the application window -->
   <property name="title" translatable="yes">Replay</property>
   <property name="default-width">1024</property>
   <property name="default-height">600</property>
@@ -31,36 +30,30 @@
       <property name="orientation">vertical</property>
 
       <child>
-        <object class="ReplayHeaderBar" id="_header_bar" />
+        <object class="ReplayHeaderBar" />
       </child>
 
       <child>
-        <object class="HdyLeaflet">
+        <object class="GtkBox">
           <property name="vexpand">True</property>
 
           <child>
-            <object class="ReplayStackSidebar">
-              <property name="stack">content-stack</property>
+            <object class="GtkRevealer" id="_revealer">
+              <property name="transition-type">slide-right</property>
+
+              <child>
+                <object class="ReplayStackSidebar">
+                  <property name="stack">_content_stack</property>
+                </object>
+              </child>
+
             </object>
           </child>
 
           <child>
-            <object class="GtkStack" id="content-stack">
+            <object class="GtkStack" id="_content_stack">
               <property name="hexpand">True</property>
-
-              <child>
-                <object class="GtkStackPage">
-                  <!-- Translators: This is the label for the home page on the sidebar -->
-                  <property name="title" translatable="yes">Home</property>
-                  <property name="icon-name">go-home-symbolic</property>
-
-                  <property name="child">
-                    <object class="ReplayHomePage" />
-                  </property>
-
-                </object>
-              </child>
-
+              <property name="transition-type">crossfade</property>
             </object>
           </child>
 
@@ -73,4 +66,3 @@
 </template>
 
 </interface>
-

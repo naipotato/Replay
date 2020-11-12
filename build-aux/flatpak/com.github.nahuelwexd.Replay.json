@@ -30,14 +30,14 @@
     {
       "name": "replay",
       "buildsystem": "meson",
-      "builddir": true,
       "config-opts": [
         "-Dprofile=development"
       ],
       "sources": [
         {
           "type": "git",
-          "path": "../.."
+          "path": "../..",
+          "branch": "main"
         }
       ],
       "modules": [
@@ -76,7 +76,6 @@
         {
           "name": "libhandy",
           "buildsystem": "meson",
-          "builddir": true,
           "config-opts": [
             "-Dexamples=false",
             "-Dtests=false"
@@ -86,6 +85,17 @@
               "type": "git",
               "url": "https://gitlab.gnome.org/exalm/libhandy.git",
               "branch": "gtk4"
+            }
+          ]
+        },
+        {
+          "name": "vadi",
+          "buildsystem": "meson",
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/nahuelwexd/Vadi.git",
+              "branch": "new-api"
             }
           ]
         }

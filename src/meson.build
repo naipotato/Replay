@@ -1,11 +1,13 @@
 replay_sources = files (
-    'core/models/replay-core-video.vala',
+    'helpers/replay-helpers-adaptiveness-manager.vala',
+    'helpers/replay-helpers-container.vala',
 
     'pages/replay-home-page.vala',
+    'pages/replay-search-page.vala',
 
     'widgets/replay-header-bar.vala',
+    'widgets/replay-page.vala',
     'widgets/replay-stack-sidebar.vala',
-    'widgets/replay-video-carousel-item.vala',
 
     'replay-app.vala',
     'replay-app-window.vala',
@@ -27,6 +29,8 @@ replay_dependencies = [
     gee_dep,
     config_dep,
     libhandy_dep,
+    sqlite_dep,
+    vadi_dep,
 ]
 
 

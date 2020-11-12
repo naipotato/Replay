@@ -22,24 +22,13 @@
 
 <gresource prefix="/com/github/nahuelwexd/Replay">
   <file alias="home-page.ui">pages/replay-home-page.ui</file>
+  <file alias="search-page.ui">pages/replay-search-page.ui</file>
 
   <file alias="header-bar.ui">widgets/replay-header-bar.ui</file>
   <file alias="stack-sidebar.ui">widgets/replay-stack-sidebar.ui</file>
-  <file alias="video-carousel-item.ui">widgets/replay-video-carousel-item.ui</file>
 
   <file alias="app-window.ui">replay-app-window.ui</file>
-  <file alias="maxresdefault.jpg">../data/maxresdefault.jpg</file>
   <file>styles.css</file>
-</gresource>
-
-<gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable/actions">
-  <file alias="go-trending-symbolic.svg">../data/icons/go-trending-symbolic.svg</file>
-  <file alias="go-subscriptions-symbolic.svg">../data/icons/go-subscriptions-symbolic.svg</file>
-  <file alias="go-liked-symbolic.svg">../data/icons/go-liked-symbolic.svg</file>
-  <file alias="go-favorites-symbolic.svg">../data/icons/go-favorites-symbolic.svg</file>
-  <file alias="go-history-symbolic.svg">../data/icons/go-history-symbolic.svg</file>
-  <file alias="go-watch-later-symbolic.svg">../data/icons/go-watch-later-symbolic.svg</file>
-  <file alias="go-playlists-symbolic.svg">../data/icons/go-playlists-symbolic.svg</file>
 </gresource>
 
 </gresources>
