@@ -70,7 +70,7 @@ jobs:
     needs: build
     steps:
       - name: Download Flatpak repository
-        uses: actions/download-artifact@v2.0.5
+        uses: actions/download-artifact@v2.0.6
 
       - name: Create Flatpak bundle
         run: |
