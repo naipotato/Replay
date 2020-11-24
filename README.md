@@ -2,7 +2,7 @@
 
 # [WIP] Replay
 
-An open source YouTube client for GNOME
+A new way to watch YouTube videos
 
 [![Flatpak CI badge](https://github.com/nahuelwexd/Replay/workflows/Flatpak/badge.svg)](https://github.com/nahuelwexd/Replay/actions?query=workflow:Flatpak)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)

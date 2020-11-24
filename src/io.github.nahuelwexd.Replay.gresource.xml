@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - A new way to watch YouTube videos
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahuel.gomezcastro@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<gresources>
+
+<gresource prefix="/io/github/nahuelwexd/Replay">
+	<file alias="SearchPage.ui">Pages/SearchPage.ui</file>
+	<file alias="TrendingPage.ui">Pages/TrendingPage.ui</file>
+	<file alias="VideoPage.ui">Pages/VideoPage.ui</file>
+
+	<file alias="HeaderBar.ui">Widgets/HeaderBar.ui</file>
+	<file alias="StackSidebar.ui">Widgets/StackSidebar.ui</file>
+
+	<file alias="ApplicationWindow.ui">Windows/ApplicationWindow.ui</file>
+	<file alias="PreferencesWindow.ui">Windows/PreferencesWindow.ui</file>
+
+	<file alias="gtk/help-overlay.ui">../data/gtk/help-overlay.ui</file>
+
+	<file>styles.css</file>
+</gresource>
+
+</gresources>

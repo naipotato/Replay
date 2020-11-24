@@ -1,0 +1,6 @@
+# List of files installed by Meson
+# Does not contain files installed by custom scripts.
+/app/share/applications/io.github.nahuelwexd.Replay.Devel.desktop
+/app/bin/io.github.nahuelwexd.Replay
+/app/share/icons/hicolor/scalable/apps/io.github.nahuelwexd.Replay.Devel.svg
+/app/share/icons/hicolor/symbolic/apps/io.github.nahuelwexd.Replay.Devel-symbolic.svg

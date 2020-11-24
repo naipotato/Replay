@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - A new way to watch YouTube videos
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahuel.gomezcastro@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="RpyApplicationWindow" parent="HdyApplicationWindow">
+	<property name="default-width">1024</property>
+	<property name="default-height">600</property>
+
+	<child>
+		<object class="HdyDeck">
+			<property name="can-swipe-back">True</property>
+
+			<child>
+				<object class="GtkBox">
+					<property name="orientation">vertical</property>
+
+					<child>
+						<object class="RpyMainHeaderBar" id="_header_bar">
+							<property name="title" bind-property="title" bind-source="RpyApplicationWindow"
+							          bind-flags="sync-create|bidirectional" />
+						</object>
+					</child>
+
+					<child>
+						<object class="GtkBox">
+							<property name="vexpand">True</property>
+
+							<child>
+								<object class="RpyNavigationSidebar" id="_navigation_sidebar" />
+							</child>
+
+							<child>
+								<object class="GtkStack">
+									<property name="hexpand">True</property>
+								</object>
+							</child>
+
+						</object>
+					</child>
+
+					<child>
+						<object class="RpyBottomNavigationBar" id="_bottom_navigation_bar">
+							<property name="reveal">True</property>
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+</interface>

@@ -46,14 +46,14 @@ jobs:
         uses: actions/cache@v2.1.2
         with:
           path: .flatpak-builder
-          key: ${{ runner.os }}-flatpak-${{ hashFiles('**/com.github.nahuelwexd.Replay.yml') }}
+          key: ${{ runner.os }}-flatpak-${{ hashFiles('**/io.github.nahuelwexd.Replay.yml') }}
           restore-keys: |
             ${{ runner.os }}-flatpak-
 
       - name: Build
         run: |
           flatpak-builder --repo=repo --install-deps-from=gnome-nightly flatpak_app \
-              build-aux/flatpak/com.github.nahuelwexd.Replay.yml
+              build-aux/flatpak/io.github.nahuelwexd.Replay.yml
 
       - name: Upload Flatpak repository
         uses: actions/upload-artifact@v2.2.0
@@ -74,9 +74,9 @@ jobs:
 
       - name: Create Flatpak bundle
         run: |
-          flatpak build-bundle repo com.github.nahuelwexd.Replay.Devel.flatpak com.github.nahuelwexd.Replay.Devel
-          flatpak build-bundle --runtime repo com.github.nahuelwexd.Replay.Devel.Locale.flatpak \
-              com.github.nahuelwexd.Replay.Devel.Locale
+          flatpak build-bundle repo io.github.nahuelwexd.Replay.Devel.flatpak io.github.nahuelwexd.Replay.Devel
+          flatpak build-bundle --runtime repo io.github.nahuelwexd.Replay.Devel.Locale.flatpak \
+              io.github.nahuelwexd.Replay.Devel.Locale
 
       - name: Upload bundle
         uses: actions/upload-artifact@v2.2.0

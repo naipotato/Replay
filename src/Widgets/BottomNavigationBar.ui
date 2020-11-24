@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - A new way to watch YouTube videos
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahuel.gomezcastro@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="RpyBottomNavigationBar" parent="GtkWidget">
+
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
+
+	<child>
+		<object class="GtkRevealer" id="_revealer">
+			<property name="reveal-child" bind-property="reveal" bind-source="RpyBottomNavigationBar"
+			          bind-flags="sync-create|bidirectional" />
+		</object>
+	</child>
+
+</template>
+
+</interface>

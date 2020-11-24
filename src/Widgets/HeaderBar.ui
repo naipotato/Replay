@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - An open source YouTube client for GNOME
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahuel.gomezcastro@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="RpyHeaderBar" parent="GtkWidget">
+
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
+
+	<child>
+		<object class="HdyHeaderBar" id="_header_bar">
+
+			<style>
+				<class name="titlebar" />
+			</style>
+
+			<child type="start">
+				<object class="GtkRevealer">
+					<property name="reveal-child">True</property>
+
+					<child>
+						<object class="GtkToggleButton">
+							<property name="tooltip-text">Search</property>
+
+							<child>
+								<object class="GtkImage">
+									<property name="icon-name">edit-find-symbolic</property>
+								</object>
+							</child>
+
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+			<child type="title">
+				<object class="GtkStack" id="_stack">
+					<property name="transition-type">crossfade</property>
+
+					<child>
+						<object class="GtkLabel" id="_label">
+							<property name="label" bind-property="title" bind-source="RpyHeaderBar"
+							          bind-flags="sync-create|bidirectional" />
+							<property name="single-line-mode">True</property>
+							<property name="ellipsize">end</property>
+							<property name="width-chars">5</property>
+
+							<style>
+								<class name="title" />
+							</style>
+
+						</object>
+					</child>
+
+					<child>
+						<object class="HdyClamp" id="_clamp">
+							<child>
+								<object class="GtkSearchEntry" id="_search_entry">
+									<property name="placeholder-text" translatable="yes">Search</property>
+								</object>
+							</child>
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+			<child type="end">
+				<object class="GtkMenuButton">
+					<property name="direction">none</property>
+					<property name="menu-model">primary-menu</property>
+					<property name="tooltip-text">Menu</property>
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+<menu id="primary-menu">
+	<section>
+
+		<item>
+			<attribute name="label" translatable="yes">_Preferences</attribute>
+			<attribute name="action">app.preferences</attribute>
+		</item>
+
+		<item>
+			<attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+			<attribute name="action">win.show-help-overlay</attribute>
+		</item>
+
+		<item>
+			<attribute name="label" translatable="yes">_About Replay</attribute>
+			<attribute name="action">app.about</attribute>
+		</item>
+
+	</section>
+</menu>
+
+</interface>

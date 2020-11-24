@@ -1,0 +1,1 @@
+[{"cmd": ["/usr/bin/desktop-file-validate", "data/io.github.nahuelwexd.Replay.Devel.desktop"], "env": {}, "name": "validate-desktop-file", "workdir": null, "timeout": 30, "suite": ["io.github.nahuelwexd.Replay"], "is_parallel": true, "priority": 0, "protocol": "exitcode"}]

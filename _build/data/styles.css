@@ -1,0 +1,23 @@
+headerbar { border-bottom: 2px solid #ed333b; }
+
+homepage carousel { margin: 12px 0 0; }
+
+homepage carouselindicatordots { margin: 2px 0 6px; }
+
+homepage .title-2 { margin: 0px 20px; }
+
+stacksidebar { min-width: 180px; }
+
+stacksidebar box { margin: 0 4px; }
+
+trendingpage gridview { background: transparent; }
+
+videocarouselitem { margin: 0 12px; }
+
+videocarouselitem > frame { border-radius: 0; border: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)); }
+
+videocarouselitem > label + label { color: alpha(@theme_fg_color, 0.6); }
+
+window.devel headerbar.titlebar { background: @theme_bg_color cross-fade(10% -gtk-icontheme('system-run-symbolic'), image(transparent)) 90% 0/256px 256px no-repeat, linear-gradient(to right, transparent 65%, alpha(#ed333b, 0.1)), linear-gradient(to top, shade(shade(@theme_bg_color, 0.52), 1.26), shade(shade(@theme_bg_color, 0.52), 1.44)); }
+
+window.devel headerbar.titlebar:backdrop { background: @theme_bg_color cross-fade(10% -gtk-icontheme('system-run-symbolic'), image(transparent)) 90% 0/256px 256px no-repeat, image(@theme_bg_color); }
