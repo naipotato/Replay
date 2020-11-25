@@ -15,38 +15,15 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/app-window.ui")]
-public class Replay.AppWindow : Hdy.ApplicationWindow
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HomePage.ui")]
+public class Replay.HomePage : Gtk.Widget
 {
-    /* Private fields */
-
-    [GtkChild] private Replay.HeaderBar _header_bar;
-
-    /* End private fields */
-
-
-    /* Public constructors */
-
-    public AppWindow (Replay.App app)
-    {
-        Object (
-            application: app
-        );
-    }
-
-    /* End public constructors */
-
-
     /* GObject blocks */
 
-    construct
+    static construct
     {
-        this._header_bar.key_capture_widget = this;
-
-#if DEVEL
-        this.add_css_class ("devel");
-#endif
+        set_css_name ("homepage");
     }
 
-    /* End GObject blocks */
+    /* GObject blocks */
 }
