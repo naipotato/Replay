@@ -15,7 +15,7 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/home-page.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HomePage.ui")]
 public class Replay.HomePage : Gtk.Widget
 {
     /* GObject blocks */

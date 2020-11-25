@@ -15,7 +15,7 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/video-carousel-item.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/VideoCarouselItem.ui")]
 public class Replay.VideoCarouselItem : Gtk.Widget
 {
     /* Private fields */
