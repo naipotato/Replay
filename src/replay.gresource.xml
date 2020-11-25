@@ -21,11 +21,11 @@
 <gresources>
 
 <gresource prefix="/com/github/nahuelwexd/Replay">
-  <file alias="home-page.ui">pages/HomePage.ui</file>
+  <file alias="home-page.ui">Pages/HomePage.ui</file>
 
-  <file alias="header-bar.ui">widgets/HeaderBar.ui</file>
-  <file alias="stack-sidebar.ui">widgets/StackSidebar.ui</file>
-  <file alias="video-carousel-item.ui">widgets/VideoCarouselItem.ui</file>
+  <file alias="header-bar.ui">Widgets/HeaderBar.ui</file>
+  <file alias="stack-sidebar.ui">Widgets/StackSidebar.ui</file>
+  <file alias="video-carousel-item.ui">Widgets/VideoCarouselItem.ui</file>
 
   <file alias="app-window.ui">AppWindow.ui</file>
   <file alias="maxresdefault.jpg">../data/maxresdefault.jpg</file>
