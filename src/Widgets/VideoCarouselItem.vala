@@ -1,4 +1,4 @@
-/* Replay - An open source YouTube client for GNOME
+/* Replay - Explore and watch YouTube videos
  * Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
  *
  * Replay is free software: you can redistribute it and/or modify it under the
