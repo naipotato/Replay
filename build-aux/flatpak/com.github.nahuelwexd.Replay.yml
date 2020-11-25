@@ -31,6 +31,9 @@ finish-args:
   # Hardware acceleration access
   - --device=dri
 
+  # A11Y access
+  - --talk-name=org.a11y.Bus
+
 cleanup:
   - /include
   - /lib/pkgconfig
