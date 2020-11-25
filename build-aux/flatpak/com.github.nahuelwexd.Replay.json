@@ -38,8 +38,7 @@
       "sources": [
         {
           "type": "git",
-          "path": "../..",
-          "branch": "main"
+          "path": "../.."
         }
       ],
       "modules": [

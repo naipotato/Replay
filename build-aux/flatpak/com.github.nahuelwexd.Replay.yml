@@ -59,7 +59,6 @@ modules:
     sources:
       - type: git
         path: ../..
-        branch: main
 
     modules:
       # Compile SCSS files
