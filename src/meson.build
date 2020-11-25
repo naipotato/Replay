@@ -1,15 +1,15 @@
 replay_sources = files (
-    'core/models/replay-core-video.vala',
+    'core/models/Video.vala',
 
-    'pages/replay-home-page.vala',
+    'pages/HomePage.vala',
 
-    'widgets/replay-header-bar.vala',
-    'widgets/replay-stack-sidebar.vala',
-    'widgets/replay-video-carousel-item.vala',
+    'widgets/HeaderBar.vala',
+    'widgets/StackSidebar.vala',
+    'widgets/VideoCarouselItem.vala',
 
-    'replay-app.vala',
-    'replay-app-window.vala',
-    'replay-main.vala',
+    'App.vala',
+    'AppWindow.vala',
+    'Main.vala',
 )
 
 
