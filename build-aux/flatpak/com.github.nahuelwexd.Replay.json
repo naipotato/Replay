@@ -10,7 +10,8 @@
     "--share=ipc",
     "--socket=fallback-x11",
     "--socket=wayland",
-    "--device=dri"
+    "--device=dri",
+    "--talk-name=org.a11y.Bus"
   ],
   "cleanup": [
     "/include",
@@ -36,7 +37,7 @@
       ],
       "sources": [
         {
-          "type": "git",
+          "type": "dir",
           "path": "../.."
         }
       ],
