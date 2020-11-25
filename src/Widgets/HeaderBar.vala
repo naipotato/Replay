@@ -15,7 +15,7 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HeaderBar.ui")]
 public class Replay.HeaderBar : Gtk.Widget
 {
     /* Private fields */
