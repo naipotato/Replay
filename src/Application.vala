@@ -26,6 +26,17 @@ public class Replay.Application : Gtk.Application
     }
 
 
+    public static int main (string[] args)
+    {
+        Intl.setlocale (LocaleCategory.ALL);
+        Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
+        Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (Constants.GETTEXT_PACKAGE);
+
+        return new Replay.Application ().run (args);
+    }
+
+
     public override void activate ()
         requires (this.active_window != null)
     {
