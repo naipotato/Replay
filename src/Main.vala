@@ -22,5 +22,5 @@ int main (string[] args)
     Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Replay.Constants.GETTEXT_PACKAGE);
 
-    return new Replay.App ().run (args);
+    return new Replay.Application ().run (args);
 }

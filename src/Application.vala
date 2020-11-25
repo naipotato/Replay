@@ -15,11 +15,11 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Replay.App : Gtk.Application
+public class Replay.Application : Gtk.Application
 {
     /* Public constructors */
 
-    public App ()
+    public Application ()
     {
         Object (
             application_id: Constants.APPLICATION_ID,

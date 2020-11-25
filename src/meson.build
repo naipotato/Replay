@@ -7,7 +7,7 @@ replay_sources = files (
     'Widgets/StackSidebar.vala',
     'Widgets/VideoCarouselItem.vala',
 
-    'App.vala',
+    'Application.vala',
     'AppWindow.vala',
     'Main.vala',
 )

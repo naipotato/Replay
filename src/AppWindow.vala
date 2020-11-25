@@ -27,7 +27,7 @@ public class Replay.AppWindow : Hdy.ApplicationWindow
 
     /* Public constructors */
 
-    public AppWindow (Replay.App app)
+    public AppWindow (Replay.Application app)
     {
         Object (
             application: app
