@@ -17,8 +17,6 @@
 
 public class Replay.Application : Gtk.Application
 {
-    /* Public constructors */
-
     public Application ()
     {
         Object (
@@ -27,10 +25,6 @@ public class Replay.Application : Gtk.Application
         );
     }
 
-    /* End public constructors */
-
-
-    /* Public methods */
 
     public override void activate ()
         requires (this.active_window != null)
@@ -42,7 +36,6 @@ public class Replay.Application : Gtk.Application
     {
         base.startup ();
 
-        // Set the app name
         // Translators: This is the application name
         Environment.set_application_name (_("Replay"));
 
@@ -50,7 +43,6 @@ public class Replay.Application : Gtk.Application
         Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
         gtk_settings.gtk_application_prefer_dark_theme = true;
 
-        // Load custom styles
         var css_provider = new Gtk.CssProvider ();
         css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
         Gtk.StyleContext.add_provider_for_display (
@@ -59,7 +51,6 @@ public class Replay.Application : Gtk.Application
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
 
-        // Initialize libhandy
         Hdy.init ();
 
         this.init_types ();
@@ -74,10 +65,6 @@ public class Replay.Application : Gtk.Application
         new ApplicationWindow (this);
     }
 
-    /* End public methods */
-
-
-    /* Private methods */
 
     private void init_types ()
     {
@@ -117,6 +104,4 @@ public class Replay.Application : Gtk.Application
         this.set_accels_for_action ("app.quit", { "<Primary>Q" });
         this.add_action (action);
     }
-
-    /* End private methods */
 }

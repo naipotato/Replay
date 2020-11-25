@@ -18,8 +18,6 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HeaderBar.ui")]
 public class Replay.HeaderBar : Gtk.Widget
 {
-    /* Private fields */
-
     private weak Gtk.Widget             _capture_widget;
     private      Gtk.EventControllerKey _capture_widget_controller;
 
@@ -27,10 +25,6 @@ public class Replay.HeaderBar : Gtk.Widget
     [GtkChild] private Gtk.SearchEntry _search_entry;
     [GtkChild] private Gtk.Button      _back_button;
 
-    /* End private fields */
-
-
-    /* Public properties */
 
     public bool can_go_back { get; set; }
 
@@ -67,10 +61,6 @@ public class Replay.HeaderBar : Gtk.Widget
     public string title         { get; set; }
     public bool   title_visible { get; set; }
 
-    /* End public properties */
-
-
-    /* Public methods */
 
     public override void dispose ()
     {
@@ -78,10 +68,6 @@ public class Replay.HeaderBar : Gtk.Widget
         base.dispose ();
     }
 
-    /* End public methods */
-
-
-    /* Private methods */
 
     // More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
     // ported to Vala and modified for Replay
@@ -112,10 +98,6 @@ public class Replay.HeaderBar : Gtk.Widget
         this._search_entry.text = "";
     }
 
-    /* End private methods */
-
-
-    /* GObject blocks */
 
     construct
     {
@@ -126,6 +108,4 @@ public class Replay.HeaderBar : Gtk.Widget
             BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
         );
     }
-
-    /* GObject blocks */
 }

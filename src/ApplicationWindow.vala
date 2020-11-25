@@ -18,14 +18,8 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
 public class Replay.ApplicationWindow : Hdy.ApplicationWindow
 {
-    /* Private fields */
-
     [GtkChild] private Replay.HeaderBar _header_bar;
 
-    /* End private fields */
-
-
-    /* Public constructors */
 
     public ApplicationWindow (Replay.Application app)
     {
@@ -34,10 +28,6 @@ public class Replay.ApplicationWindow : Hdy.ApplicationWindow
         );
     }
 
-    /* End public constructors */
-
-
-    /* GObject blocks */
 
     construct
     {
@@ -47,6 +37,4 @@ public class Replay.ApplicationWindow : Hdy.ApplicationWindow
         this.add_css_class ("devel");
 #endif
     }
-
-    /* End GObject blocks */
 }

@@ -18,23 +18,13 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/VideoCarouselItem.ui")]
 public class Replay.VideoCarouselItem : Gtk.Widget
 {
-    /* Private fields */
-
     [GtkChild] private Gtk.Picture _thumbnail;
 
-    /* End private fields */
-
-
-    /* Public properties */
 
     public string thumbnail_url { get; set; }
     public string title         { get; set; }
     public string channel_title { get; set; }
 
-    /* End public properties */
-
-
-    /* Public methods */
 
     public override void snapshot (Gtk.Snapshot snapshot)
     {
@@ -48,10 +38,6 @@ public class Replay.VideoCarouselItem : Gtk.Widget
         snapshot.pop ();
     }
 
-    /* End public methods */
-
-
-    /* Private methods */
 
     private void build_extra_constraints (Gtk.ConstraintLayout layout_manager)
     {
@@ -73,10 +59,6 @@ public class Replay.VideoCarouselItem : Gtk.Widget
         ));
     }
 
-    /* End private methods */
-
-
-    /* GObject blocks */
 
     construct
     {
@@ -90,6 +72,4 @@ public class Replay.VideoCarouselItem : Gtk.Widget
     {
         set_css_name ("videocarouselitem");
     }
-
-    /* End GObject blocks */
 }
