@@ -4,7 +4,7 @@
          xmlns="http://usefulinc.com/ns/doap#">
   <name xml:lang="en">Replay</name>
   <shortdesc xml:lang="en">YouTube client</shortdesc>
-  <description xml:lang="en">An open source YouTube client for GNOME</description>
+  <description xml:lang="en">Explore and watch YouTube videos</description>
   <homepage rdf:resource="https://github.com/nahuelwexd/Replay" />
   <bug-database rdf:resource="https://github.com/nahuelwexd/Replay/issues" />
   <programming-language>Vala</programming-language>

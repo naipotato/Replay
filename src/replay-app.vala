@@ -1,4 +1,4 @@
-/* Replay - An open source YouTube client for GNOME
+/* Replay - Explore and watch YouTube videos
  * Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
  *
  * Replay is free software: you can redistribute it and/or modify it under the
@@ -100,8 +100,8 @@ public class Replay.App : Gtk.Application
                 "title", "About Replay",
                 "logo-icon-name", Constants.APPLICATION_ID,
                 "version", Constants.VERSION,
-                // Translators: This is a little description about the application
-                "comments", _("An open source YouTube client for GNOME"),
+                // Translators: This is a little summary about the application
+                "comments", _("Explore and watch YouTube videos"),
                 "website", Constants.PACKAGE_URL,
                 // Translators: This is the label shown for the project repository hyperlink
                 "website-label", _("Project repository"),
