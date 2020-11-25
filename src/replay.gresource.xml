@@ -27,7 +27,7 @@
   <file alias="StackSidebar.ui">Widgets/StackSidebar.ui</file>
   <file alias="VideoCarouselItem.ui">Widgets/VideoCarouselItem.ui</file>
 
-  <file alias="AppWindow.ui">AppWindow.ui</file>
+  <file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
   <file alias="maxresdefault.jpg">../data/maxresdefault.jpg</file>
   <file>styles.css</file>
 </gresource>

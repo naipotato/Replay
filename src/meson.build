@@ -8,7 +8,7 @@ replay_sources = files (
     'Widgets/VideoCarouselItem.vala',
 
     'Application.vala',
-    'AppWindow.vala',
+    'ApplicationWindow.vala',
     'Main.vala',
 )
 

@@ -15,8 +15,8 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/AppWindow.ui")]
-public class Replay.AppWindow : Hdy.ApplicationWindow
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
+public class Replay.ApplicationWindow : Hdy.ApplicationWindow
 {
     /* Private fields */
 
@@ -27,7 +27,7 @@ public class Replay.AppWindow : Hdy.ApplicationWindow
 
     /* Public constructors */
 
-    public AppWindow (Replay.Application app)
+    public ApplicationWindow (Replay.Application app)
     {
         Object (
             application: app

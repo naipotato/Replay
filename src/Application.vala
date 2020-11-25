@@ -71,7 +71,7 @@ public class Replay.Application : Gtk.Application
         default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
 #endif
 
-        new AppWindow (this);
+        new ApplicationWindow (this);
     }
 
     /* End public methods */

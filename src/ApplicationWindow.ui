@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="ReplayAppWindow" parent="HdyApplicationWindow">
+<template class="ReplayApplicationWindow" parent="HdyApplicationWindow">
   <!-- Translators: This is the title of the application window -->
   <property name="title" translatable="yes">Replay</property>
   <property name="default-width">1024</property>
