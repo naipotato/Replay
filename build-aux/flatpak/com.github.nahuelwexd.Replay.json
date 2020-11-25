@@ -37,7 +37,7 @@
       ],
       "sources": [
         {
-          "type": "git",
+          "type": "dir",
           "path": "../.."
         }
       ],

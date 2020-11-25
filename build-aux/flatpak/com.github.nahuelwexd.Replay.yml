@@ -57,7 +57,7 @@ modules:
       - -Dprofile=development
 
     sources:
-      - type: git
+      - type: dir
         path: ../..
 
     modules:
