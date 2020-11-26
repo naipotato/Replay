@@ -51,8 +51,7 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 				this._capture_widget_controller.key_pressed.connect (this.capture_widget_key_handled);
 				this._capture_widget_controller.key_released.connect (
-					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state)
-				);
+					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state));
 
 				((!) this._capture_widget).add_controller (this._capture_widget_controller);
             }
@@ -85,7 +84,8 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 		bool handled = this._capture_widget_controller.forward (this);
 
-		if (handled == Gdk.EVENT_STOP) {
+		if (handled == Gdk.EVENT_STOP)
+		{
 			this._search_entry.grab_focus ();
 			this._search_entry.set_position (int.MAX);
 		}
@@ -104,9 +104,7 @@ public class Rpy.HeaderBar : Gtk.Widget
 	{
 		this._search_entry.set_key_capture_widget (this);
 
-		this.bind_property ("can-go-back",
-			this._back_button, "visible",
-			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE
-		);
+		this.bind_property ("can-go-back", this._back_button, "visible",
+			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 	}
 }

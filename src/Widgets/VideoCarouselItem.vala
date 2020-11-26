@@ -41,22 +41,12 @@ public class Rpy.VideoCarouselItem : Gtk.Widget
 
 	private void build_extra_constraints (Gtk.ConstraintLayout layout_manager)
 	{
-		layout_manager.add_constraint (new Gtk.Constraint (
-			this._thumbnail,
-			Gtk.ConstraintAttribute.TOP,
-			Gtk.ConstraintRelation.EQ,
-			this._thumbnail,
-			Gtk.ConstraintAttribute.WIDTH,
-			-0.28125, 125, Gtk.ConstraintStrength.REQUIRED
-		));
-		layout_manager.add_constraint (new Gtk.Constraint (
-			this._thumbnail,
-			Gtk.ConstraintAttribute.BOTTOM,
-			Gtk.ConstraintRelation.EQ,
-			this._thumbnail,
-			Gtk.ConstraintAttribute.WIDTH,
-			0.28125, 125, Gtk.ConstraintStrength.REQUIRED
-		));
+		layout_manager.add_constraint (new Gtk.Constraint (this._thumbnail, Gtk.ConstraintAttribute.TOP,
+			Gtk.ConstraintRelation.EQ, this._thumbnail, Gtk.ConstraintAttribute.WIDTH, -0.28125, 125,
+			Gtk.ConstraintStrength.REQUIRED));
+		layout_manager.add_constraint (new Gtk.Constraint (this._thumbnail, Gtk.ConstraintAttribute.BOTTOM,
+			Gtk.ConstraintRelation.EQ, this._thumbnail, Gtk.ConstraintAttribute.WIDTH, 0.28125, 125,
+			Gtk.ConstraintStrength.REQUIRED));
 	}
 
 
