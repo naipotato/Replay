@@ -1,6 +1,6 @@
 project ('replay', 'c', 'vala',
-    version: '0.1.0',
-    license: 'GPL-3.0-or-later'
+	version: '0.1.0',
+	license: 'GPL-3.0-or-later'
 )
 
 
@@ -8,30 +8,30 @@ project ('replay', 'c', 'vala',
 i18n = import ('i18n')
 
 add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name ()),
-    language: 'c'
+	language: 'c'
 )
 
 
 # Check the profile for this build
 if get_option ('profile') == 'development'
-    profile = '.Devel'
+	profile = '.Devel'
 
-    add_project_arguments ('-D', 'DEVEL',
-        language: 'vala'
-    )
+	add_project_arguments ('-D', 'DEVEL',
+		language: 'vala'
+	)
 else
-    profile = ''
+	profile = ''
 endif
 
 
 # Info about the app
-rdnn_app_name = 'com.github.nahuelwexd.Replay'
-application_id = '@0@@1@'.format (rdnn_app_name, profile)
-package_url = 'https://github.com/nahuelwexd/Replay'
-resource_path = '/com/github/nahuelwexd/Replay'
-version = '@0@-@VCS_TAG@'.format (meson.project_version ())
+rdnn_app_name   = 'com.github.nahuelwexd.Replay'
+application_id  = '@0@@1@'.format (rdnn_app_name, profile)
+package_url     = 'https://github.com/nahuelwexd/Replay'
+resource_path   = '/com/github/nahuelwexd/Replay'
+version         = '@0@-@VCS_TAG@'.format (meson.project_version ())
 gettext_package = meson.project_name ()
-localedir = get_option ('localedir')
+localedir       = get_option ('localedir')
 
 
 # Generate a header with the info
@@ -45,15 +45,15 @@ config_h.set_quoted ('GETTEXT_PACKAGE', gettext_package)
 config_h.set_quoted ('LOCALEDIR', localedir)
 
 config_h_in = configure_file (
-           output: 'config.h.in',
-    configuration: config_h
+	       output: 'config.h.in',
+	configuration: config_h
 )
 
 vcs_tag (
-     command: ['git', 'rev-parse', '--short', 'HEAD'],
-    fallback: get_option ('profile') != 'default' ? 'devel' : 'stable',
-       input: config_h_in,
-      output: 'config.h'
+	 command: ['git', 'rev-parse', '--short', 'HEAD'],
+	fallback: get_option ('profile') != 'default' ? 'devel' : 'stable',
+	   input: config_h_in,
+	  output: 'config.h'
 )
 
 confinc = include_directories ('.')
@@ -71,20 +71,20 @@ config_dep = valac.find_library ('config', dirs: vapidir)
 
 libhandy_dep = dependency ('libhandy-4', required: false)
 if not libhandy_dep.found ()
-    libhandy = subproject ('libhandy',
-        default_options: [
-            'examples=false',
-            'package_subdir=replay',
-            'tests=false',
-        ],
-    )
-    libhandy_dep = libhandy.get_variable ('libhandy_vapi')
+	libhandy = subproject ('libhandy',
+		default_options: [
+			'examples=false',
+			'package_subdir=replay',
+			'tests=false',
+		],
+	)
+	libhandy_dep = libhandy.get_variable ('libhandy_vapi')
 endif
 
 
 # Add vapidir for custom vapis
 add_project_arguments ('--vapidir', vapidir,
-    language: 'vala'
+	language: 'vala'
 )
 
 

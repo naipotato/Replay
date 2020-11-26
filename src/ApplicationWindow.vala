@@ -18,23 +18,23 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
 public class Replay.ApplicationWindow : Hdy.ApplicationWindow
 {
-    [GtkChild] private Replay.HeaderBar _header_bar;
+	[GtkChild] private Replay.HeaderBar _header_bar;
 
 
-    public ApplicationWindow (Replay.Application app)
-    {
-        Object (
-            application: app
-        );
-    }
+	public ApplicationWindow (Replay.Application app)
+	{
+		Object (
+			application: app
+		);
+	}
 
 
-    construct
-    {
-        this._header_bar.key_capture_widget = this;
+	construct
+	{
+		this._header_bar.key_capture_widget = this;
 
 #if DEVEL
-        this.add_css_class ("devel");
+		this.add_css_class ("devel");
 #endif
-    }
+	}
 }

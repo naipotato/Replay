@@ -18,8 +18,8 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HomePage.ui")]
 public class Replay.HomePage : Gtk.Widget
 {
-    static construct
-    {
-        set_css_name ("homepage");
-    }
+	static construct
+	{
+		set_css_name ("homepage");
+	}
 }

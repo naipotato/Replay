@@ -18,58 +18,58 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/VideoCarouselItem.ui")]
 public class Replay.VideoCarouselItem : Gtk.Widget
 {
-    [GtkChild] private Gtk.Picture _thumbnail;
+	[GtkChild] private Gtk.Picture _thumbnail;
 
 
-    public string thumbnail_url { get; set; }
-    public string title         { get; set; }
-    public string channel_title { get; set; }
+	public string thumbnail_url { get; set; }
+	public string title         { get; set; }
+	public string channel_title { get; set; }
 
 
-    public override void snapshot (Gtk.Snapshot snapshot)
-    {
-        var rect = Graphene.Rect ().init (0, 0, this.get_width (), this.get_height ());
-        var rounded_rect = Gsk.RoundedRect ().init_from_rect (rect, 6.0f);
+	public override void snapshot (Gtk.Snapshot snapshot)
+	{
+		var rect = Graphene.Rect ().init (0, 0, this.get_width (), this.get_height ());
+		var rounded_rect = Gsk.RoundedRect ().init_from_rect (rect, 6.0f);
 
-        snapshot.push_rounded_clip (rounded_rect);
+		snapshot.push_rounded_clip (rounded_rect);
 
-        base.snapshot (snapshot);
+		base.snapshot (snapshot);
 
-        snapshot.pop ();
-    }
-
-
-    private void build_extra_constraints (Gtk.ConstraintLayout layout_manager)
-    {
-        layout_manager.add_constraint (new Gtk.Constraint (
-            this._thumbnail,
-            Gtk.ConstraintAttribute.TOP,
-            Gtk.ConstraintRelation.EQ,
-            this._thumbnail,
-            Gtk.ConstraintAttribute.WIDTH,
-            -0.28125, 125, Gtk.ConstraintStrength.REQUIRED
-        ));
-        layout_manager.add_constraint (new Gtk.Constraint (
-            this._thumbnail,
-            Gtk.ConstraintAttribute.BOTTOM,
-            Gtk.ConstraintRelation.EQ,
-            this._thumbnail,
-            Gtk.ConstraintAttribute.WIDTH,
-            0.28125, 125, Gtk.ConstraintStrength.REQUIRED
-        ));
-    }
+		snapshot.pop ();
+	}
 
 
-    construct
-    {
-        // FIXME: This thing is hardcoded, it should be loaded from an URL
-        this._thumbnail.set_resource ("/com/github/nahuelwexd/Replay/maxresdefault.jpg");
+	private void build_extra_constraints (Gtk.ConstraintLayout layout_manager)
+	{
+		layout_manager.add_constraint (new Gtk.Constraint (
+			this._thumbnail,
+			Gtk.ConstraintAttribute.TOP,
+			Gtk.ConstraintRelation.EQ,
+			this._thumbnail,
+			Gtk.ConstraintAttribute.WIDTH,
+			-0.28125, 125, Gtk.ConstraintStrength.REQUIRED
+		));
+		layout_manager.add_constraint (new Gtk.Constraint (
+			this._thumbnail,
+			Gtk.ConstraintAttribute.BOTTOM,
+			Gtk.ConstraintRelation.EQ,
+			this._thumbnail,
+			Gtk.ConstraintAttribute.WIDTH,
+			0.28125, 125, Gtk.ConstraintStrength.REQUIRED
+		));
+	}
 
-        this.build_extra_constraints ((Gtk.ConstraintLayout) this.layout_manager);
-    }
 
-    static construct
-    {
-        set_css_name ("videocarouselitem");
-    }
+	construct
+	{
+		// FIXME: This thing is hardcoded, it should be loaded from an URL
+		this._thumbnail.set_resource ("/com/github/nahuelwexd/Replay/maxresdefault.jpg");
+
+		this.build_extra_constraints ((Gtk.ConstraintLayout) this.layout_manager);
+	}
+
+	static construct
+	{
+		set_css_name ("videocarouselitem");
+	}
 }

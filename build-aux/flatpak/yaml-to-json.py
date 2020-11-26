@@ -14,11 +14,10 @@ import yaml
 _, filename, output, *_ = sys.argv
 
 with open(filename) as file:
-    obj = yaml.safe_load(file)
+	obj = yaml.safe_load(file)
 
-comment = '/* Automatically generated from {}, do not modify. */'.format(
-    os.path.basename(filename))
+comment = '/* Automatically generated from {}, do not modify. */'.format(os.path.basename(filename))
 
 with open(output, 'w') as file:
-    print(comment, file=file)
-    json.dump(obj, file, indent=2)
+	print(comment, file=file)
+	json.dump(obj, file, indent=2)

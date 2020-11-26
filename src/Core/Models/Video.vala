@@ -17,7 +17,7 @@
 
 public class Replay.Core.Video : Object
 {
-    public string id            { get; set; }
-    public string title         { get; set; }
-    public string thumbnail_url { get; set; }
+	public string id            { get; set; }
+	public string title         { get; set; }
+	public string thumbnail_url { get; set; }
 }

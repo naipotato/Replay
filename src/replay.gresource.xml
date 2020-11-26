@@ -21,25 +21,25 @@
 <gresources>
 
 <gresource prefix="/com/github/nahuelwexd/Replay">
-  <file alias="HomePage.ui">Pages/HomePage.ui</file>
+	<file alias="HomePage.ui">Pages/HomePage.ui</file>
 
-  <file alias="HeaderBar.ui">Widgets/HeaderBar.ui</file>
-  <file alias="StackSidebar.ui">Widgets/StackSidebar.ui</file>
-  <file alias="VideoCarouselItem.ui">Widgets/VideoCarouselItem.ui</file>
+	<file alias="HeaderBar.ui">Widgets/HeaderBar.ui</file>
+	<file alias="StackSidebar.ui">Widgets/StackSidebar.ui</file>
+	<file alias="VideoCarouselItem.ui">Widgets/VideoCarouselItem.ui</file>
 
-  <file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
-  <file alias="maxresdefault.jpg">../data/maxresdefault.jpg</file>
-  <file>styles.css</file>
+	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
+	<file alias="maxresdefault.jpg">../data/maxresdefault.jpg</file>
+	<file>styles.css</file>
 </gresource>
 
 <gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable/actions">
-  <file alias="go-trending-symbolic.svg">../data/icons/go-trending-symbolic.svg</file>
-  <file alias="go-subscriptions-symbolic.svg">../data/icons/go-subscriptions-symbolic.svg</file>
-  <file alias="go-liked-symbolic.svg">../data/icons/go-liked-symbolic.svg</file>
-  <file alias="go-favorites-symbolic.svg">../data/icons/go-favorites-symbolic.svg</file>
-  <file alias="go-history-symbolic.svg">../data/icons/go-history-symbolic.svg</file>
-  <file alias="go-watch-later-symbolic.svg">../data/icons/go-watch-later-symbolic.svg</file>
-  <file alias="go-playlists-symbolic.svg">../data/icons/go-playlists-symbolic.svg</file>
+	<file alias="go-trending-symbolic.svg">../data/icons/go-trending-symbolic.svg</file>
+	<file alias="go-subscriptions-symbolic.svg">../data/icons/go-subscriptions-symbolic.svg</file>
+	<file alias="go-liked-symbolic.svg">../data/icons/go-liked-symbolic.svg</file>
+	<file alias="go-favorites-symbolic.svg">../data/icons/go-favorites-symbolic.svg</file>
+	<file alias="go-history-symbolic.svg">../data/icons/go-history-symbolic.svg</file>
+	<file alias="go-watch-later-symbolic.svg">../data/icons/go-watch-later-symbolic.svg</file>
+	<file alias="go-playlists-symbolic.svg">../data/icons/go-playlists-symbolic.svg</file>
 </gresource>
 
 </gresources>
