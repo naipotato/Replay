@@ -20,98 +20,98 @@
 
 <interface>
 
-<template class="ReplayHeaderBar" parent="GtkWidget">
+<template class="RpyHeaderBar" parent="GtkWidget">
 
-  <property name="layout-manager">
-    <object class="GtkBinLayout" />
-  </property>
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
 
-  <child>
-    <object class="HdyHeaderBar" id="_header_bar">
-      <property name="show-title-buttons">True</property>
+	<child>
+		<object class="HdyHeaderBar" id="_header_bar">
+			<property name="show-title-buttons">True</property>
 
-      <style>
-        <class name="titlebar" />
-      </style>
+			<style>
+				<class name="titlebar" />
+			</style>
 
-      <child type="start">
-        <object class="GtkButton" id="_back_button">
-          <property name="icon-name">go-previous-symbolic</property>
-        </object>
-      </child>
+			<child type="start">
+				<object class="GtkButton" id="_back_button">
+					<property name="icon-name">go-previous-symbolic</property>
+				</object>
+			</child>
 
-      <child type="title">
-        <object class="GtkStack" id="_title_stack">
-          <property name="transition-type">crossfade</property>
-          <property name="hexpand">True</property>
+			<child type="title">
+				<object class="GtkStack" id="_title_stack">
+					<property name="transition-type">crossfade</property>
+					<property name="hexpand">True</property>
 
-          <child>
-            <object class="GtkStackPage">
-              <property name="name">search</property>
+					<child>
+						<object class="GtkStackPage">
+							<property name="name">search</property>
 
-              <property name="child">
-                <object class="HdyClamp">
-                  <property name="tightening-threshold">400</property>
-                  <property name="maximum-size">600</property>
+							<property name="child">
+								<object class="HdyClamp">
+									<property name="tightening-threshold">400</property>
+									<property name="maximum-size">600</property>
 
-                  <child>
-                    <object class="GtkSearchEntry" id="_search_entry">
-                      <!-- Translators: This is the placeholder shown in the search entry -->
-                      <property name="placeholder-text" translatable="yes">Search</property>
-                      <signal name="stop-search" handler="on_search_entry_stop_search" />
-                    </object>
-                  </child>
+									<child>
+										<object class="GtkSearchEntry" id="_search_entry">
+											<!-- Translators: This is the placeholder shown in the search entry -->
+											<property name="placeholder-text" translatable="yes">Search</property>
+											<signal name="stop-search" handler="on_search_entry_stop_search" />
+										</object>
+									</child>
 
-                </object>
-              </property>
+								</object>
+							</property>
 
-            </object>
-          </child>
+						</object>
+					</child>
 
-          <child>
-            <object class="GtkStackPage">
-              <property name="name">title</property>
+					<child>
+						<object class="GtkStackPage">
+							<property name="name">title</property>
 
-              <property name="child">
-                <object class="GtkLabel">
-                  <!-- Translators: This is the title shown in the application window on mobile view -->
-                  <property name="label" translatable="yes">Replay</property>
+							<property name="child">
+								<object class="GtkLabel">
+									<!-- Translators: This is the title shown in the application window on mobile view -->
+									<property name="label" translatable="yes">Replay</property>
 
-                  <style>
-                    <class name="title" />
-                  </style>
+									<style>
+										<class name="title" />
+									</style>
 
-                </object>
-              </property>
+								</object>
+							</property>
 
-            </object>
-          </child>
+						</object>
+					</child>
 
-        </object>
-      </child>
+				</object>
+			</child>
 
-      <child type="end">
-        <object class="GtkMenuButton" id="_menu_button">
-          <property name="menu-model">primary-menu</property>
-          <!-- Translators: This is the tooltip shown for the button that opens the primary menu -->
-          <property name="tooltip-text" translatable="yes">Menu</property>
-          <property name="direction">none</property>
-        </object>
-      </child>
+			<child type="end">
+				<object class="GtkMenuButton" id="_menu_button">
+					<property name="menu-model">primary-menu</property>
+					<!-- Translators: This is the tooltip shown for the button that opens the primary menu -->
+					<property name="tooltip-text" translatable="yes">Menu</property>
+					<property name="direction">none</property>
+				</object>
+			</child>
 
-    </object>
-  </child>
+		</object>
+	</child>
 
 </template>
 
 <menu id="primary-menu">
-  <section>
-    <item>
-      <!-- Translators: This the label for the item in the primary menu that opens the about dialog -->
-      <attribute name="label" translatable="yes">About Replay</attribute>
-      <attribute name="action">app.about</attribute>
-    </item>
-  </section>
+	<section>
+		<item>
+			<!-- Translators: This the label for the item in the primary menu that opens the about dialog -->
+			<attribute name="label" translatable="yes">About Replay</attribute>
+			<attribute name="action">app.about</attribute>
+		</item>
+	</section>
 </menu>
 
 </interface>

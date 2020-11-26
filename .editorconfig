@@ -1,14 +1,20 @@
 root = true
 
 [*]
-indent_style = space               # We use spaces to indent
-indent_size = tab                  # The indent size must be a tab stop
-tab_width = 4                      # The tab stop must have a width of 4 columns
-charset = utf-8                    # Encode your files with UTF-8
-end_of_line = lf                   # Use Linux-style to end your lines
-max_line_length = 120              # Limit your lines to 120 columns
-trim_trailing_whitespace = true    # Do not leave any trailing whitespace
-insert_final_newline = true        # Always end any file with a newline
+indent_style             = tab      # We use tabs to indent
+indent_size              = 4        # The indent size must have a width of 4 columns
+charset                  = utf-8    # Encode your files with UTF-8
+end_of_line              = lf       # Use Linux-style to end your lines
+max_line_length          = 120      # Limit your lines to 120 columns
+trim_trailing_whitespace = true     # Do not leave any trailing whitespace
+insert_final_newline     = true     # Always end any file with a newline
 
-[*.{yml,ui}]
-tab_width = 2                      # The tab stop on YAML and UI files must have a width of 2 columns
+[*.{ui,xml,doap}]
+indent_size = 2                     # The indent size on UI, XML, and DOAP files must have a width of 2 columns
+
+[*.scss]
+indent_size = 2                     # The indent size on SCSS files must have a width of 2 columns
+
+[*.{yaml,yml}]
+indent_style = spaces               # We use spaces to indent on YAML files
+indent_size  = 2                    # The indent size on YAML files must have a width of 2 columns

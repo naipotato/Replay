@@ -15,7 +15,7 @@ runtime: org.gnome.Platform
 runtime-version: master
 sdk: org.gnome.Sdk
 
-command: replay
+command: com.github.nahuelwexd.Replay
 
 finish-args:
   # Network access

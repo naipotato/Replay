@@ -1,13 +1,13 @@
 videocarouselitem {
-  margin: 0 12px;
+	margin: 0 12px;
 
-  > frame {
-    border-radius: 0;
-    border: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-  }
+	> frame {
+		border-radius: 0;
+		border: 0;
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+	}
 
-  > label + label {
-    color: unquote('alpha(@theme_fg_color, 0.6)');
-  }
+	> label + label {
+		color: unquote('alpha(@theme_fg_color, 0.6)');
+	}
 }

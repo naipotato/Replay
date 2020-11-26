@@ -15,13 +15,9 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Replay.Core.Video : Object
+public class Rpy.Core.Video : Object
 {
-    /* Public properties */
-
-    public string id            { get; set; }
-    public string title         { get; set; }
-    public string thumbnail_url { get; set; }
-
-    /* End public properties */
+	public string id            { get; set; }
+	public string title         { get; set; }
+	public string thumbnail_url { get; set; }
 }

@@ -9,5 +9,5 @@ datadir = join(prefix, 'share')
 destdir = getenv('DESTDIR')
 
 if not destdir:
-    print('Updating icon cache...')
-    call(['gtk-update-icon-cache', '-qtf', join(datadir, 'icons', 'hicolor')])
+	print('Updating icon cache...')
+	call(['gtk-update-icon-cache', '-qtf', join(datadir, 'icons', 'hicolor')])
