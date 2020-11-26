@@ -35,6 +35,7 @@ public class Replay.Application : Gtk.Application
 
 	public static int main (string[] args)
 	{
+		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		GLib.Intl.setlocale (GLib.LocaleCategory.ALL);
 		GLib.Intl.bindtextdomain (Replay.Constants.GETTEXT_PACKAGE, Replay.Constants.LOCALEDIR);
 		GLib.Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
