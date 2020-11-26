@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="ReplayHomePage" parent="GtkWidget">
+<template class="RpyHomePage" parent="GtkWidget">
 
 	<property name="layout-manager">
 		<object class="GtkBinLayout" />
@@ -39,35 +39,35 @@
 							<property name="animation-duration">500</property>
 
 							<child>
-								<object class="ReplayVideoCarouselItem">
+								<object class="RpyVideoCarouselItem">
 									<property name="title">Nightcore - Kill Me Slowly (BRAN &amp; Finnet ft. Annamarie Rosanio) - (Lyrics)</property>
 									<property name="channel-title">Syrex</property>
 								</object>
 							</child>
 
 							<child>
-								<object class="ReplayVideoCarouselItem">
+								<object class="RpyVideoCarouselItem">
 									<property name="title">Nightcore - Kill Me Slowly (BRAN &amp; Finnet ft. Annamarie Rosanio) - (Lyrics)</property>
 									<property name="channel-title">Syrex</property>
 								</object>
 							</child>
 
 							<child>
-								<object class="ReplayVideoCarouselItem">
+								<object class="RpyVideoCarouselItem">
 									<property name="title">Nightcore - Kill Me Slowly (BRAN &amp; Finnet ft. Annamarie Rosanio) - (Lyrics)</property>
 									<property name="channel-title">Syrex</property>
 								</object>
 							</child>
 
 							<child>
-								<object class="ReplayVideoCarouselItem">
+								<object class="RpyVideoCarouselItem">
 									<property name="title">Nightcore - Kill Me Slowly (BRAN &amp; Finnet ft. Annamarie Rosanio) - (Lyrics)</property>
 									<property name="channel-title">Syrex</property>
 								</object>
 							</child>
 
 							<child>
-								<object class="ReplayVideoCarouselItem">
+								<object class="RpyVideoCarouselItem">
 									<property name="title">Nightcore - Kill Me Slowly (BRAN &amp; Finnet ft. Annamarie Rosanio) - (Lyrics)</property>
 									<property name="channel-title">Syrex</property>
 								</object>

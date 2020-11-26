@@ -16,12 +16,12 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
-public class Replay.ApplicationWindow : Hdy.ApplicationWindow
+public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 {
-	[GtkChild] private Replay.HeaderBar _header_bar;
+	[GtkChild] private Rpy.HeaderBar _header_bar;
 
 
-	public ApplicationWindow (Replay.Application app)
+	public ApplicationWindow (Rpy.Application app)
 	{
 		GLib.Object (
 			application: app

@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="ReplayVideoCarouselItem" parent="GtkWidget">
+<template class="RpyVideoCarouselItem" parent="GtkWidget">
 	<property name="hexpand">True</property>
 
 	<property name="layout-manager">
@@ -78,7 +78,7 @@
 
 	<child>
 		<object class="GtkLabel" id="title-label">
-			<property name="label" bind-source="ReplayVideoCarouselItem" bind-property="title"
+			<property name="label" bind-source="RpyVideoCarouselItem" bind-property="title"
 			          bind-flags="sync-create | default" />
 			<property name="wrap">True</property>
 			<property name="wrap-mode">word-char</property>
@@ -96,7 +96,7 @@
 
 	<child>
 		<object class="GtkLabel" id="channel-label">
-			<property name="label" bind-source="ReplayVideoCarouselItem" bind-property="channel-title"
+			<property name="label" bind-source="RpyVideoCarouselItem" bind-property="channel-title"
 			          bind-flags="sync-create | default" />
 			<property name="wrap">True</property>
 			<property name="wrap-mode">word-char</property>

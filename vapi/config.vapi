@@ -16,7 +16,7 @@
  */
 
 [CCode (cheader_filename = "config.h", lower_case_cprefix = "")]
-namespace Replay.Constants
+namespace Rpy.Constants
 {
 	public const string APPLICATION_ID;
 	public const string PROJECT_WEBSITE;

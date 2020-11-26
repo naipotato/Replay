@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="ReplayStackSidebar" parent="GtkWidget">
+<template class="RpyStackSidebar" parent="GtkWidget">
 
 	<property name="layout-manager">
 		<object class="GtkBinLayout" />

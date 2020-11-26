@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HeaderBar.ui")]
-public class Replay.HeaderBar : Gtk.Widget
+public class Rpy.HeaderBar : Gtk.Widget
 {
 	private weak Gtk.Widget             _capture_widget;
 	private      Gtk.EventControllerKey _capture_widget_controller;

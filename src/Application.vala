@@ -15,7 +15,7 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Replay.Application : Gtk.Application
+public class Rpy.Application : Gtk.Application
 {
 	public Application ()
 	{
@@ -25,9 +25,9 @@ public class Replay.Application : Gtk.Application
 			// same as that of release builds, to not have to manually load the
 			// icons, shortcuts window and other automatic resources, avoiding
 			// future headaches.
-			resource_base_path: Replay.Constants.RESOURCE_PATH,
+			resource_base_path: Rpy.Constants.RESOURCE_PATH,
 #endif
-			application_id: Replay.Constants.APPLICATION_ID,
+			application_id: Rpy.Constants.APPLICATION_ID,
 			         flags: GLib.ApplicationFlags.FLAGS_NONE
 		);
 	}
@@ -37,11 +37,11 @@ public class Replay.Application : Gtk.Application
 	{
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		GLib.Intl.setlocale (GLib.LocaleCategory.ALL);
-		GLib.Intl.bindtextdomain (Replay.Constants.GETTEXT_PACKAGE, Replay.Constants.LOCALEDIR);
-		GLib.Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
-		GLib.Intl.textdomain (Replay.Constants.GETTEXT_PACKAGE);
+		GLib.Intl.bindtextdomain (Rpy.Constants.GETTEXT_PACKAGE, Rpy.Constants.LOCALEDIR);
+		GLib.Intl.bind_textdomain_codeset (Rpy.Constants.GETTEXT_PACKAGE, "UTF-8");
+		GLib.Intl.textdomain (Rpy.Constants.GETTEXT_PACKAGE);
 
-		return new Replay.Application ().run (args);
+		return new Rpy.Application ().run (args);
 	}
 
 
@@ -63,7 +63,7 @@ public class Replay.Application : Gtk.Application
 		gtk_settings.gtk_application_prefer_dark_theme = true;
 
 		var css_provider = new Gtk.CssProvider ();
-		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
+		css_provider.load_from_resource (@"$(Rpy.Constants.RESOURCE_PATH)/styles.css");
 		Gtk.StyleContext.add_provider_for_display (
 			Gdk.Display.get_default (),
 			css_provider,
@@ -75,16 +75,16 @@ public class Replay.Application : Gtk.Application
 		this.init_types ();
 		this.populate_actions ();
 
-		new Replay.ApplicationWindow (this);
+		new Rpy.ApplicationWindow (this);
 	}
 
 
 	private void init_types ()
 	{
-		typeof (Replay.HeaderBar).ensure ();
-		typeof (Replay.HomePage).ensure ();
-		typeof (Replay.StackSidebar).ensure ();
-		typeof (Replay.VideoCarouselItem).ensure ();
+		typeof (Rpy.HeaderBar).ensure ();
+		typeof (Rpy.HomePage).ensure ();
+		typeof (Rpy.StackSidebar).ensure ();
+		typeof (Rpy.VideoCarouselItem).ensure ();
 	}
 
 	private void populate_actions ()
@@ -98,11 +98,11 @@ public class Replay.Application : Gtk.Application
 				"modal", true,
 				"destroy-with-parent", true,
 				"title", "About Replay",
-				"logo-icon-name", Replay.Constants.APPLICATION_ID,
-				"version", Replay.Constants.VERSION,
+				"logo-icon-name", Rpy.Constants.APPLICATION_ID,
+				"version", Rpy.Constants.VERSION,
 				// Translators: This is a little summary about the application
 				"comments", _("Explore and watch YouTube videos"),
-				"website", Replay.Constants.PROJECT_WEBSITE,
+				"website", Rpy.Constants.PROJECT_WEBSITE,
 				// Translators: This is the label shown for the project repository hyperlink
 				"website-label", _("Project repository"),
 				"copyright", "© 2019-2020 Nahuel Gomez Castro",

@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/StackSidebar.ui")]
-public class Replay.StackSidebar : Gtk.Widget
+public class Rpy.StackSidebar : Gtk.Widget
 {
 	[GtkChild] private Gtk.ListBox _list_box;
 

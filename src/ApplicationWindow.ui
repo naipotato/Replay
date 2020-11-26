@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="ReplayApplicationWindow" parent="HdyApplicationWindow">
+<template class="RpyApplicationWindow" parent="HdyApplicationWindow">
 	<!-- Translators: This is the title of the application window -->
 	<property name="title" translatable="yes">Replay</property>
 	<property name="default-width">1024</property>
@@ -31,7 +31,7 @@
 			<property name="orientation">vertical</property>
 
 			<child>
-				<object class="ReplayHeaderBar" id="_header_bar" />
+				<object class="RpyHeaderBar" id="_header_bar" />
 			</child>
 
 			<child>
@@ -39,7 +39,7 @@
 					<property name="vexpand">True</property>
 
 					<child>
-						<object class="ReplayStackSidebar">
+						<object class="RpyStackSidebar">
 							<property name="stack">content-stack</property>
 						</object>
 					</child>
@@ -55,7 +55,7 @@
 									<property name="icon-name">go-home-symbolic</property>
 
 									<property name="child">
-										<object class="ReplayHomePage" />
+										<object class="RpyHomePage" />
 									</property>
 
 								</object>

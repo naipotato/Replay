@@ -16,7 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HomePage.ui")]
-public class Replay.HomePage : Gtk.Widget
+public class Rpy.HomePage : Gtk.Widget
 {
 	static construct
 	{
