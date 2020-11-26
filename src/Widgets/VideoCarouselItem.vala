@@ -29,9 +29,9 @@ public class Rpy.VideoCarouselItem : Gtk.Widget
 	public override void snapshot (Gtk.Snapshot snapshot)
 	{
 		var rect = Graphene.Rect ().init (0, 0, this.get_width (), this.get_height ());
-		var rounded_rect = Gsk.RoundedRect ().init_from_rect (rect, 6.0f);
+		var rounded_rect = Gsk.RoundedRect ().init_from_rect ((!) rect, 6.0f);
 
-		snapshot.push_rounded_clip (rounded_rect);
+		snapshot.push_rounded_clip ((!) rounded_rect);
 
 		base.snapshot (snapshot);
 

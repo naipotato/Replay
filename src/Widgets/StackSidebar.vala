@@ -20,26 +20,26 @@ public class Rpy.StackSidebar : Gtk.Widget
 {
 	[GtkChild] private Gtk.ListBox _list_box;
 
-	private Gtk.Stack _stack;
+	private Gtk.Stack? _stack;
 
 
-	public Gtk.Stack stack
+	public Gtk.Stack? stack
 	{
 		get { return this._stack; }
 		set
 		{
-			if (this._stack != null) {
-				this._stack.pages.selection_changed.disconnect (this.on_stack_pages_selection_changed);
-			}
+			if (this._stack != null)
+				((!) this._stack).pages.selection_changed.disconnect (this.on_stack_pages_selection_changed);
 
 			this._stack = value;
 
-			if (this._stack != null) {
-				this._list_box.bind_model (this._stack.pages, this.get_row_from_page);
-				this._stack.pages.selection_changed.connect (this.on_stack_pages_selection_changed);
+			if (this._stack != null)
+			{
+				this._list_box.bind_model (((!) this._stack).pages, this.get_row_from_page);
+				((!) this._stack).pages.selection_changed.connect (this.on_stack_pages_selection_changed);
 
 				// The first selection always needs to be done manually
-				Gtk.Bitset selection = this._stack.pages.get_selection ();
+				Gtk.Bitset selection = ((!) this._stack).pages.get_selection ();
 				this.on_stack_pages_selection_changed (selection.get_nth (0), 0);
 			}
 		}
@@ -66,7 +66,7 @@ public class Rpy.StackSidebar : Gtk.Widget
 	{
 		// Due to the fact that the pages of the stack are binded to the list
 		// box, we can assume that the items are in the same order
-		this._stack.pages.select_item (row.get_index (), true);
+		((!) this._stack).pages.select_item (row.get_index (), true);
 		this._list_box.select_row (row);
 	}
 

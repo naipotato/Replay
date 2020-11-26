@@ -18,7 +18,7 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HeaderBar.ui")]
 public class Rpy.HeaderBar : Gtk.Widget
 {
-	private weak Gtk.Widget             _capture_widget;
+	private weak Gtk.Widget?            _capture_widget;
 	private      Gtk.EventControllerKey _capture_widget_controller;
 
 	[GtkChild] private Hdy.HeaderBar   _header_bar;
@@ -30,21 +30,22 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
 	// ported to Vala.
-	public weak Gtk.Widget key_capture_widget
+	public weak Gtk.Widget? key_capture_widget
 	{
 		get { return this._capture_widget; }
 		set
 		{
-			if (this._capture_widget == value)
-				return;
+			if (this._capture_widget == value) return;
 
 			if (this._capture_widget != null)
-				this._capture_widget.remove_controller (this._capture_widget_controller);
+				((!) this._capture_widget).remove_controller (this._capture_widget_controller);
 
 			this._capture_widget = value;
 
-			if (this._capture_widget != null) {
-				this._capture_widget_controller = new Gtk.EventControllerKey () {
+			if (this._capture_widget != null)
+			{
+				this._capture_widget_controller = new Gtk.EventControllerKey ()
+				{
 					propagation_phase = Gtk.PropagationPhase.CAPTURE
 				};
 
@@ -53,7 +54,7 @@ public class Rpy.HeaderBar : Gtk.Widget
 					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state)
 				);
 
-				this._capture_widget.add_controller (this._capture_widget_controller);
+				((!) this._capture_widget).add_controller (this._capture_widget_controller);
             }
         }
     }

@@ -46,7 +46,7 @@ public class Rpy.Application : Gtk.Application
 
 
 	public override void activate ()
-		requires (this.active_window != null)
+		requires (this.get_active_window () != null)
 	{
 		this.active_window.present_with_time (Gdk.CURRENT_TIME);
 	}
@@ -58,17 +58,20 @@ public class Rpy.Application : Gtk.Application
 		// Translators: This is the application name
 		GLib.Environment.set_application_name (_("Replay"));
 
-		// Since this is a media app, it should use the dark theme
-		Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
-		gtk_settings.gtk_application_prefer_dark_theme = true;
+		// Since this is a media app, the dark theme is used
+		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
+		if (gtk_settings != null)
+			((!) gtk_settings).gtk_application_prefer_dark_theme = true;
 
 		var css_provider = new Gtk.CssProvider ();
 		css_provider.load_from_resource (@"$(Rpy.Constants.RESOURCE_PATH)/styles.css");
-		Gtk.StyleContext.add_provider_for_display (
-			Gdk.Display.get_default (),
-			css_provider,
-			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-		);
+
+		Gdk.Display? display = Gdk.Display.get_default ();
+		if (display != null)
+		{
+			Gtk.StyleContext.add_provider_for_display ((!) display, css_provider,
+				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+		}
 
 		Hdy.init ();
 
@@ -90,17 +93,17 @@ public class Rpy.Application : Gtk.Application
 	private void register_actions ()
 	{
 		var about_action = new GLib.SimpleAction ("about", null);
-		action.activate.connect (parameter => this.show_about_dialog ());
-		this.add_action (action);
+		about_action.activate.connect (parameter => this.show_about_dialog ());
+		this.add_action (about_action);
 
 		var quit_action = new GLib.SimpleAction ("quit", null);
-		action.activate.connect (parameter => this.quit ());
+		quit_action.activate.connect (parameter => this.quit ());
 		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
-		this.add_action (action);
+		this.add_action (quit_action);
 	}
 
 	private void show_about_dialog ()
-		requires (this.active_window != null)
+		requires (this.get_active_window () != null)
 	{
 		var about_dialog = new Gtk.AboutDialog ()
 		{
