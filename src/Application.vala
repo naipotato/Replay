@@ -20,8 +20,15 @@ public class Replay.Application : Gtk.Application
 	public Application ()
 	{
 		Object (
+#if DEVEL
+			// In development builds, we force the resource base path to be the
+			// same as that of release builds, to not have to manually load the
+			// icons, shortcuts window and other automatic resources, avoiding
+			// future headaches.
+			resource_base_path: Constants.RESOURCE_PATH,
+#endif
 			application_id: Constants.APPLICATION_ID,
-			flags:          ApplicationFlags.FLAGS_NONE
+			         flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
 
@@ -66,12 +73,6 @@ public class Replay.Application : Gtk.Application
 
 		this.init_types ();
 		this.populate_actions ();
-
-#if DEVEL
-		// Load custom icons
-		Gtk.IconTheme default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
-		default_theme.add_resource_path (@"$(Constants.RESOURCE_PATH)/icons");
-#endif
 
 		new ApplicationWindow (this);
 	}
