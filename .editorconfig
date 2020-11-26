@@ -1,13 +1,13 @@
 root = true
 
 [*]
-indent_style = tab                 # We use tabs to indent
-indent_size = 4                    # The indent size must have a width of 4 columns
-charset = utf-8                    # Encode your files with UTF-8
-end_of_line = lf                   # Use Linux-style to end your lines
-max_line_length = 120              # Limit your lines to 120 columns
-trim_trailing_whitespace = true    # Do not leave any trailing whitespace
-insert_final_newline = true        # Always end any file with a newline
+indent_style             = tab      # We use tabs to indent
+indent_size              = 4        # The indent size must have a width of 4 columns
+charset                  = utf-8    # Encode your files with UTF-8
+end_of_line              = lf       # Use Linux-style to end your lines
+max_line_length          = 120      # Limit your lines to 120 columns
+trim_trailing_whitespace = true     # Do not leave any trailing whitespace
+insert_final_newline     = true     # Always end any file with a newline
 
 [*.{yml,ui}]
-indent_size = 2                    # The indent size on YAML and UI files must have a width of 2 columns
+indent_size = 2                     # The indent size on YAML and UI files must have a width of 2 columns
