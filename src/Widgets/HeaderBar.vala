@@ -105,7 +105,7 @@ public class Replay.HeaderBar : Gtk.Widget
 
 		this.bind_property ("can-go-back",
 			this._back_button, "visible",
-			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE
 		);
 	}
 }

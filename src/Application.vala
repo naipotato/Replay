@@ -19,26 +19,26 @@ public class Replay.Application : Gtk.Application
 {
 	public Application ()
 	{
-		Object (
+		GLib.Object (
 #if DEVEL
 			// In development builds, we force the resource base path to be the
 			// same as that of release builds, to not have to manually load the
 			// icons, shortcuts window and other automatic resources, avoiding
 			// future headaches.
-			resource_base_path: Constants.RESOURCE_PATH,
+			resource_base_path: Replay.Constants.RESOURCE_PATH,
 #endif
-			application_id: Constants.APPLICATION_ID,
-			         flags: ApplicationFlags.FLAGS_NONE
+			application_id: Replay.Constants.APPLICATION_ID,
+			         flags: GLib.ApplicationFlags.FLAGS_NONE
 		);
 	}
 
 
 	public static int main (string[] args)
 	{
-		Intl.setlocale (LocaleCategory.ALL);
-		Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
-		Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
-		Intl.textdomain (Constants.GETTEXT_PACKAGE);
+		GLib.Intl.setlocale (GLib.LocaleCategory.ALL);
+		GLib.Intl.bindtextdomain (Replay.Constants.GETTEXT_PACKAGE, Replay.Constants.LOCALEDIR);
+		GLib.Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
+		GLib.Intl.textdomain (Replay.Constants.GETTEXT_PACKAGE);
 
 		return new Replay.Application ().run (args);
 	}
@@ -55,7 +55,7 @@ public class Replay.Application : Gtk.Application
 		base.startup ();
 
 		// Translators: This is the application name
-		Environment.set_application_name (_("Replay"));
+		GLib.Environment.set_application_name (_("Replay"));
 
 		// Since this is a media app, it should use the dark theme
 		Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
@@ -74,21 +74,21 @@ public class Replay.Application : Gtk.Application
 		this.init_types ();
 		this.populate_actions ();
 
-		new ApplicationWindow (this);
+		new Replay.ApplicationWindow (this);
 	}
 
 
 	private void init_types ()
 	{
-		typeof (HeaderBar).ensure ();
-		typeof (HomePage).ensure ();
-		typeof (StackSidebar).ensure ();
-		typeof (VideoCarouselItem).ensure ();
+		typeof (Replay.HeaderBar).ensure ();
+		typeof (Replay.HomePage).ensure ();
+		typeof (Replay.StackSidebar).ensure ();
+		typeof (Replay.VideoCarouselItem).ensure ();
 	}
 
 	private void populate_actions ()
 	{
-		var action = new SimpleAction ("about", null);
+		var action = new GLib.SimpleAction ("about", null);
 		action.activate.connect (parameter => {
 			string[] authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" };
 
@@ -97,11 +97,11 @@ public class Replay.Application : Gtk.Application
 				"modal", true,
 				"destroy-with-parent", true,
 				"title", "About Replay",
-				"logo-icon-name", Constants.APPLICATION_ID,
-				"version", Constants.VERSION,
+				"logo-icon-name", Replay.Constants.APPLICATION_ID,
+				"version", Replay.Constants.VERSION,
 				// Translators: This is a little summary about the application
 				"comments", _("Explore and watch YouTube videos"),
-				"website", Constants.PACKAGE_URL,
+				"website", Replay.Constants.PACKAGE_URL,
 				// Translators: This is the label shown for the project repository hyperlink
 				"website-label", _("Project repository"),
 				"copyright", "© 2019-2020 Nahuel Gomez Castro",
@@ -111,7 +111,7 @@ public class Replay.Application : Gtk.Application
 		});
 		this.add_action (action);
 
-		action = new SimpleAction ("quit", null);
+		action = new GLib.SimpleAction ("quit", null);
 		action.activate.connect (parameter => this.quit ());
 		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
 		this.add_action (action);

@@ -23,7 +23,7 @@ public class Replay.ApplicationWindow : Hdy.ApplicationWindow
 
 	public ApplicationWindow (Replay.Application app)
 	{
-		Object (
+		GLib.Object (
 			application: app
 		);
 	}
