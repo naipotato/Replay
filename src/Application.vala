@@ -89,11 +89,11 @@ public class Rpy.Application : Gtk.Application
 
 	private void register_actions ()
 	{
-		var action = new GLib.SimpleAction ("about", null);
+		var about_action = new GLib.SimpleAction ("about", null);
 		action.activate.connect (parameter => this.show_about_dialog ());
 		this.add_action (action);
 
-		action = new GLib.SimpleAction ("quit", null);
+		var quit_action = new GLib.SimpleAction ("quit", null);
 		action.activate.connect (parameter => this.quit ());
 		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
 		this.add_action (action);
