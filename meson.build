@@ -26,7 +26,7 @@ endif
 
 # Info about the app
 application_id  = '@0@@1@'.format (meson.project_name (), profile)
-package_url     = 'https://github.com/nahuelwexd/Replay'
+project_website = 'https://github.com/nahuelwexd/Replay'
 resource_path   = '/com/github/nahuelwexd/Replay'
 version         = '@0@-@VCS_TAG@'.format (meson.project_version ())
 gettext_package = meson.project_name ()
@@ -36,7 +36,7 @@ localedir       = get_option ('localedir')
 # Generate a header with the info
 config_h = configuration_data ()
 config_h.set_quoted ('APPLICATION_ID', application_id)
-config_h.set_quoted ('PACKAGE_URL', package_url)
+config_h.set_quoted ('PROJECT_WEBSITE', project_website)
 config_h.set_quoted ('RESOURCE_PATH', resource_path)
 config_h.set_quoted ('VERSION', version)
 config_h.set_quoted ('GETTEXT_PACKAGE', gettext_package)

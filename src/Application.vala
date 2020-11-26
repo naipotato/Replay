@@ -101,7 +101,7 @@ public class Replay.Application : Gtk.Application
 				"version", Replay.Constants.VERSION,
 				// Translators: This is a little summary about the application
 				"comments", _("Explore and watch YouTube videos"),
-				"website", Replay.Constants.PACKAGE_URL,
+				"website", Replay.Constants.PROJECT_WEBSITE,
 				// Translators: This is the label shown for the project repository hyperlink
 				"website-label", _("Project repository"),
 				"copyright", "© 2019-2020 Nahuel Gomez Castro",
