@@ -72,14 +72,14 @@ public class Rpy.Application : Gtk.Application
 
 		Hdy.init ();
 
-		this.init_types ();
-		this.populate_actions ();
+		this.ensure_type_registration ();
+		this.register_actions ();
 
 		new Rpy.ApplicationWindow (this);
 	}
 
 
-	private void init_types ()
+	private void ensure_type_registration ()
 	{
 		typeof (Rpy.HeaderBar).ensure ();
 		typeof (Rpy.HomePage).ensure ();
@@ -87,7 +87,7 @@ public class Rpy.Application : Gtk.Application
 		typeof (Rpy.VideoCarouselItem).ensure ();
 	}
 
-	private void populate_actions ()
+	private void register_actions ()
 	{
 		var action = new GLib.SimpleAction ("about", null);
 		action.activate.connect (parameter => {
