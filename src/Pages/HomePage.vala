@@ -16,14 +16,10 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HomePage.ui")]
-public class Replay.HomePage : Gtk.Widget
+public class Rpy.HomePage : Gtk.Widget
 {
-    /* GObject blocks */
-
-    static construct
-    {
-        set_css_name ("homepage");
-    }
-
-    /* GObject blocks */
+	static construct
+	{
+		set_css_name ("homepage");
+	}
 }

@@ -1,14 +1,10 @@
-window {
-  &.devel {
-    headerbar.titlebar {
-      background: unquote('@theme_bg_color') cross-fade(10% unquote('-gtk-icontheme(\'system-run-symbolic\')'), image(transparent)) 90% 0/256px 256px no-repeat,
-                  linear-gradient(to right, transparent 65%, unquote('alpha(#ed333b, 0.1)')),
-                  linear-gradient(to top, unquote('shade(shade(@theme_bg_color, 0.52), 1.26)'), unquote('shade(shade(@theme_bg_color, 0.52), 1.44)'));
+window.devel headerbar.titlebar {
+	background: unquote('@theme_bg_color') cross-fade(10% unquote('-gtk-icontheme(\'system-run-symbolic\')'), image(transparent)) 90% 0/256px 256px no-repeat,
+	            linear-gradient(to right, transparent 65%, unquote('alpha(#ed333b, 0.1)')),
+	            linear-gradient(to top, unquote('shade(shade(@theme_bg_color, 0.52), 1.26)'), unquote('shade(shade(@theme_bg_color, 0.52), 1.44)'));
 
-      &:backdrop {
-        background: unquote('@theme_bg_color') cross-fade(10% unquote('-gtk-icontheme(\'system-run-symbolic\')'), image(transparent)) 90% 0/256px 256px no-repeat,
-                    image(unquote('@theme_bg_color'));
-      }
-    }
-  }
+	&:backdrop {
+		background: unquote('@theme_bg_color') cross-fade(10% unquote('-gtk-icontheme(\'system-run-symbolic\')'), image(transparent)) 90% 0/256px 256px no-repeat,
+		            image(unquote('@theme_bg_color'));
+	}
 }

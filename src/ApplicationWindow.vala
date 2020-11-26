@@ -15,12 +15,26 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-int main (string[] args)
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
+public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 {
-    Intl.setlocale (LocaleCategory.ALL);
-    Intl.bindtextdomain (Replay.Constants.GETTEXT_PACKAGE, Replay.Constants.LOCALEDIR);
-    Intl.bind_textdomain_codeset (Replay.Constants.GETTEXT_PACKAGE, "UTF-8");
-    Intl.textdomain (Replay.Constants.GETTEXT_PACKAGE);
+	[GtkChild] private Rpy.HeaderBar _header_bar;
 
-    return new Replay.App ().run (args);
+
+	public ApplicationWindow (Rpy.Application app)
+	{
+		GLib.Object (
+			application: app
+		);
+	}
+
+
+	construct
+	{
+		this._header_bar.key_capture_widget = this;
+
+#if DEVEL
+		this.add_css_class ("devel");
+#endif
+	}
 }
