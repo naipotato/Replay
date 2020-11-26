@@ -15,7 +15,7 @@ replay_sources = files (
 gnome = import ('gnome')
 
 replay_sources += gnome.compile_resources (
-	'replay-resources',
+	'@0@.gresource'.format (meson.project_name ()),
 	'@0@.gresource.xml'.format (meson.project_name ()),
 	dependencies: custom_css
 )

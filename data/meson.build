@@ -16,8 +16,8 @@ desktop_file_conf.set ('APPLICATION_ID', application_id)
 desktop_file_conf.set ('EXECUTABLE', meson.project_name ())
 
 configured_desktop_file = configure_file (
-	        input: '@0@.desktop.in.in'.format (rdnn_app_name),
-	       output: '@0@.desktop.in'.format (rdnn_app_name),
+	        input: '@0@.desktop.in.in'.format (meson.project_name ()),
+	       output: '@0@.desktop.in'.format (meson.project_name ()),
 	configuration: desktop_file_conf
 )
 
@@ -47,7 +47,7 @@ install_data ('icons/scalable/apps/@0@.svg'.format (application_id),
 	install_dir: get_option ('datadir') / 'icons/hicolor/scalable/apps'
 )
 
-install_data ('icons/symbolic/apps/@0@-symbolic.svg'.format (rdnn_app_name),
+install_data ('icons/symbolic/apps/@0@-symbolic.svg'.format (meson.project_name ()),
 	install_dir: get_option ('datadir') / 'icons/hicolor/symbolic/apps',
 	     rename: '@0@-symbolic.svg'.format (application_id)
 )

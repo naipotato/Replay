@@ -18,7 +18,6 @@
 [CCode (cheader_filename = "config.h", lower_case_cprefix = "")]
 namespace Replay.Constants
 {
-	public const string RDNN_APP_NAME;
 	public const string APPLICATION_ID;
 	public const string PACKAGE_URL;
 	public const string RESOURCE_PATH;

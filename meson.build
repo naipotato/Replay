@@ -1,4 +1,4 @@
-project ('replay', 'c', 'vala',
+project ('com.github.nahuelwexd.Replay', 'c', 'vala',
 	version: '0.1.0',
 	license: 'GPL-3.0-or-later'
 )
@@ -25,8 +25,7 @@ endif
 
 
 # Info about the app
-rdnn_app_name   = 'com.github.nahuelwexd.Replay'
-application_id  = '@0@@1@'.format (rdnn_app_name, profile)
+application_id  = '@0@@1@'.format (meson.project_name (), profile)
 package_url     = 'https://github.com/nahuelwexd/Replay'
 resource_path   = '/com/github/nahuelwexd/Replay'
 version         = '@0@-@VCS_TAG@'.format (meson.project_version ())
@@ -36,7 +35,6 @@ localedir       = get_option ('localedir')
 
 # Generate a header with the info
 config_h = configuration_data ()
-config_h.set_quoted ('RDNN_APP_NAME', rdnn_app_name)
 config_h.set_quoted ('APPLICATION_ID', application_id)
 config_h.set_quoted ('PACKAGE_URL', package_url)
 config_h.set_quoted ('RESOURCE_PATH', resource_path)
