@@ -90,31 +90,37 @@ public class Rpy.Application : Gtk.Application
 	private void register_actions ()
 	{
 		var action = new GLib.SimpleAction ("about", null);
-		action.activate.connect (parameter => {
-			string[] authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" };
-
-			Gtk.show_about_dialog (
-				this.active_window,
-				"modal", true,
-				"destroy-with-parent", true,
-				"title", "About Replay",
-				"logo-icon-name", Rpy.Constants.APPLICATION_ID,
-				"version", Rpy.Constants.VERSION,
-				// Translators: This is a little summary about the application
-				"comments", _("Explore and watch YouTube videos"),
-				"website", Rpy.Constants.PROJECT_WEBSITE,
-				// Translators: This is the label shown for the project repository hyperlink
-				"website-label", _("Project repository"),
-				"copyright", "© 2019-2020 Nahuel Gomez Castro",
-				"license-type", Gtk.License.GPL_3_0,
-				"authors", authors
-			);
-		});
+		action.activate.connect (parameter => this.show_about_dialog ());
 		this.add_action (action);
 
 		action = new GLib.SimpleAction ("quit", null);
 		action.activate.connect (parameter => this.quit ());
 		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
 		this.add_action (action);
+	}
+
+	private void show_about_dialog ()
+		requires (this.active_window != null)
+	{
+		var about_dialog = new Gtk.AboutDialog ()
+		{
+			      transient_for = this.active_window,
+			              modal = true,
+			destroy_with_parent = true,
+			                      // Translators: This is the title of the About dialog
+			              title = _("About Replay"),
+			     logo_icon_name = Rpy.Constants.APPLICATION_ID,
+			            version = Rpy.Constants.VERSION,
+			                      // Translators: This is the summary of the app
+			           comments = _("Explore and watch YouTube videos"),
+			            website = Rpy.Constants.PROJECT_WEBSITE,
+			                      // Translators: This is the label of the link to the app's repository
+			      website_label = _("Project repository"),
+			          copyright = "© 2019 - 2020 Nahuel Gomez Castro",
+			       license_type = Gtk.License.GPL_3_0,
+			            authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" }
+		};
+
+		about_dialog.present_with_time (Gdk.CURRENT_TIME);
 	}
 }
