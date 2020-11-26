@@ -9,8 +9,8 @@ max_line_length          = 120      # Limit your lines to 120 columns
 trim_trailing_whitespace = true     # Do not leave any trailing whitespace
 insert_final_newline     = true     # Always end any file with a newline
 
-[*.ui]
-indent_size = 2                     # The indent size on UI files must have a width of 2 columns
+[*.{ui,xml,doap}]
+indent_size = 2                     # The indent size on UI, XML, and DOAP files must have a width of 2 columns
 
 [*.{yaml,yml}]
 indent_style = spaces               # We use spaces to indent on YAML files
