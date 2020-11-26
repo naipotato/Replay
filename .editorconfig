@@ -12,6 +12,9 @@ insert_final_newline     = true     # Always end any file with a newline
 [*.{ui,xml,doap}]
 indent_size = 2                     # The indent size on UI, XML, and DOAP files must have a width of 2 columns
 
+[*.scss]
+indent_size = 2                     # The indent size on SCSS files must have a width of 2 columns
+
 [*.{yaml,yml}]
 indent_style = spaces               # We use spaces to indent on YAML files
 indent_size  = 2                    # The indent size on YAML files must have a width of 2 columns
