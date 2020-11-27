@@ -18,3 +18,6 @@ indent_size = 2                     # The indent size on SCSS files must have a 
 [*.{yaml,yml}]
 indent_style = spaces               # We use spaces to indent on YAML files
 indent_size  = 2                    # The indent size on YAML files must have a width of 2 columns
+
+[*.md]
+max_line_length = 80                # Limit your lines to 80 columns on Markdown files
