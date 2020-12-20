@@ -21,10 +21,18 @@
 <interface>
 
 <template class="RpyApplicationWindow" parent="HdyApplicationWindow">
-	<!-- Translators: This is the title of the application window -->
-	<property name="title" translatable="yes">Replay</property>
-	<property name="default-width">1024</property>
 	<property name="default-height">600</property>
+	<property name="default-width">1024</property>
+
+	<child>
+		<object class="HdyLeaflet" id="_leaflet">
+			<property name="can-unfold">False</property>
+			<property name="can-swipe-back">True</property>
+			<signal name="notify::child-transition-running" handler="try_remove_page" />
+			<signal name="notify::visible-child" handler="try_remove_page" />
+		</object>
+	</child>
+
 </template>
 
 </interface>
