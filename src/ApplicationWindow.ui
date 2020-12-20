@@ -25,27 +25,6 @@
 	<property name="title" translatable="yes">Replay</property>
 	<property name="default-width">1024</property>
 	<property name="default-height">600</property>
-
-	<child>
-		<object class="GtkBox">
-			<property name="orientation">vertical</property>
-
-			<child>
-				<object class="HdyLeaflet">
-					<property name="vexpand">True</property>
-
-					<child>
-						<object class="GtkStack" id="content-stack">
-							<property name="hexpand">True</property>
-						</object>
-					</child>
-
-				</object>
-			</child>
-
-		</object>
-	</child>
-
 </template>
 
 </interface>
