@@ -1,12 +1,4 @@
 replay_sources = files (
-	'Core/Models/Video.vala',
-
-	'Pages/HomePage.vala',
-
-	'Widgets/HeaderBar.vala',
-	'Widgets/StackSidebar.vala',
-	'Widgets/VideoCarouselItem.vala',
-
 	'Application.vala',
 	'ApplicationWindow.vala',
 )
