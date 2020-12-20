@@ -18,9 +18,6 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
 public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 {
-	[GtkChild] private Rpy.HeaderBar _header_bar;
-
-
 	public ApplicationWindow (Rpy.Application app)
 	{
 		GLib.Object (
@@ -31,8 +28,6 @@ public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 
 	construct
 	{
-		this._header_bar.key_capture_widget = this;
-
 #if DEVEL
 		this.add_css_class ("devel");
 #endif

@@ -84,10 +84,6 @@ public class Rpy.Application : Gtk.Application
 
 	private void ensure_type_registration ()
 	{
-		typeof (Rpy.HeaderBar).ensure ();
-		typeof (Rpy.HomePage).ensure ();
-		typeof (Rpy.StackSidebar).ensure ();
-		typeof (Rpy.VideoCarouselItem).ensure ();
 	}
 
 	private void register_actions ()
