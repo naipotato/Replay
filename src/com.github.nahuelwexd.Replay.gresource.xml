@@ -21,6 +21,8 @@
 <gresources>
 
 <gresource prefix="/com/github/nahuelwexd/Replay">
+	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
+
 	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
 	<file>styles.css</file>
 </gresource>

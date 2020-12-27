@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - Explore and watch YouTube videos
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="RpyMainHeaderBar" parent="GtkWidget">
+
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
+
+	<child>
+		<object class="GtkShortcutController">
+			<property name="scope">managed</property>
+
+			<child>
+				<object class="GtkShortcut" id="_shortcut">
+					<property name="trigger">&lt;Primary&gt;F</property>
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+	<child>
+		<object class="GtkHeaderBar">
+
+			<style>
+				<class name="titlebar" />
+			</style>
+
+			<child type="start">
+				<object class="GtkRevealer">
+					<property name="transition-type">slide-right</property>
+					<property name="reveal-child" bind-property="narrow-mode" bind-source="RpyMainHeaderBar"
+					          bind-flags="sync-create | default" />
+
+					<child>
+						<object class="GtkToggleButton">
+							<property name="icon-name">edit-find-symbolic</property>
+							<property name="active" bind-property="search-mode" bind-source="RpyMainHeaderBar"
+							          bind-flags="sync-create | bidirectional" />
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+			<child type="title">
+				<object class="HdyClamp">
+					<property name="hexpand">True</property>
+
+					<child>
+						<object class="GtkStack" id="_title_stack">
+							<property name="transition-type">crossfade</property>
+
+							<child>
+								<object class="GtkLabel" id="_title_label">
+									<property name="label" bind-property="title" bind-source="RpyMainHeaderBar"
+											      bind-flags="sync-create|bidirectional" />
+									<property name="single-line-mode">True</property>
+									<property name="ellipsize">end</property>
+									<property name="width-chars">5</property>
+
+									<style>
+										<class name="title" />
+									</style>
+
+								</object>
+							</child>
+
+							<child>
+								<object class="GtkSearchEntry" id="_search_entry">
+									<property name="placeholder-text" translatable="yes">Search</property>
+									<signal name="stop-search" handler="on_search_entry_stop_search" />
+								</object>
+							</child>
+
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+			<child type="end">
+				<object class="GtkMenuButton">
+					<property name="direction">none</property>
+					<property name="menu-model">primary-menu</property>
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+<menu id="primary-menu">
+	<item>
+		<attribute name="label" translatable="yes">About Replay</attribute>
+		<attribute name="action">app.about</attribute>
+	</item>
+</menu>
+
+</interface>

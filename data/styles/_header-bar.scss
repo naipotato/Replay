@@ -1,0 +1,7 @@
+headerbar {
+	border-bottom: 2px solid #ED333B;
+
+	&:backdrop {
+		border-bottom: 1px solid unquote('@unfocused_borders');
+	}
+}

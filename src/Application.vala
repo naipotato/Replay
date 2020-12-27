@@ -85,6 +85,7 @@ public class Rpy.Application : Gtk.Application
 
 	private void ensure_type_registration ()
 	{
+		typeof (Rpy.MainHeaderBar).ensure ();
 	}
 
 	private void register_actions ()
