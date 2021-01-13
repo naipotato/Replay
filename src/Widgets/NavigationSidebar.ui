@@ -18,15 +18,32 @@
   Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<gresources>
+<interface>
 
-<gresource prefix="/com/github/nahuelwexd/Replay">
-	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
-	<file alias="NavigationSidebar.ui">Widgets/NavigationSidebar.ui</file>
-	<file alias="NavigationSidebarRow.ui">Widgets/NavigationSidebarRow.ui</file>
+<template class="RpyNavigationSidebar" parent="GtkWidget">
 
-	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
-	<file>styles.css</file>
-</gresource>
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
 
-</gresources>
+	<child>
+		<object class="GtkScrolledWindow">
+			<property name="hscrollbar-policy">never</property>
+
+			<child>
+				<object class="GtkListBox" id="_list_box">
+					<signal name="row-selected" handler="on_list_box_row_selected" />
+
+					<style>
+						<class name="navigation-sidebar" />
+					</style>
+
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+</interface>

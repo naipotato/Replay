@@ -18,15 +18,31 @@
   Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<gresources>
+<interface>
 
-<gresource prefix="/com/github/nahuelwexd/Replay">
-	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
-	<file alias="NavigationSidebar.ui">Widgets/NavigationSidebar.ui</file>
-	<file alias="NavigationSidebarRow.ui">Widgets/NavigationSidebarRow.ui</file>
+<template class="RpyNavigationSidebarRow" parent="GtkListBoxRow">
 
-	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
-	<file>styles.css</file>
-</gresource>
+	<child>
+		<object class="GtkBox">
+			<property name="spacing">12</property>
 
-</gresources>
+			<child>
+				<object class="GtkImage">
+					<property name="icon-name" bind-property="icon-name" bind-source="RpyNavigationSidebarRow"
+							      bind-flags="default|sync-create" />
+				</object>
+			</child>
+
+			<child>
+				<object class="GtkLabel">
+					<property name="label" bind-property="label" bind-source="RpyNavigationSidebarRow"
+							      bind-flags="default|sync-create" />
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+</interface>
