@@ -11,6 +11,7 @@ replay_sources = files (
 	'Views/View.vala',
 
 	'Widgets/MainHeaderBar.vala',
+	'Widgets/ViewList.vala',
 
 	'Application.vala',
 	'ApplicationWindow.vala',
