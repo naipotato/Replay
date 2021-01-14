@@ -80,6 +80,14 @@ public class Rpy.Application : Gtk.Application
 
 		var nav_service = new Rpy.NavigationService ();
 		new Rpy.ApplicationWindow (this, nav_service);
+
+		Gee.Map<Rpy.PageKey, GLib.Type> page_keys = nav_service.get_page_keys ();
+		page_keys[Rpy.PageKey.MAIN_PAGE] = typeof (Rpy.MainPage);
+
+		var parameter = GLib.Value (typeof (Rpy.ObservableList));
+		parameter.set_object (new Rpy.ObservableList<Rpy.View> ({}));
+
+		nav_service.navigate (Rpy.PageKey.MAIN_PAGE, parameter);
 	}
 
 

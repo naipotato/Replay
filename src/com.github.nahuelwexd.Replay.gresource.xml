@@ -21,6 +21,8 @@
 <gresources>
 
 <gresource prefix="/com/github/nahuelwexd/Replay">
+	<file alias="MainPage.ui">Pages/MainPage.ui</file>
+
 	<file alias="LibraryView.ui">Views/LibraryView.ui</file>
 	<file alias="SearchView.ui">Views/SearchView.ui</file>
 

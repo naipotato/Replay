@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - Explore and watch YouTube videos
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="RpyMainPage" parent="RpyPage">
+
+	<child type="titlebar">
+		<object class="RpyMainHeaderBar" id="_header_bar">
+			<signal name="notify::search-mode" handler="update_ui_mode" />
+		</object>
+	</child>
+
+	<child>
+		<object class="HdyFlap" id="_flap">
+			<property name="swipe-to-open">False</property>
+			<property name="transition-type">slide</property>
+
+			<child type="flap">
+				<object class="RpyViewList" id="_sidebar">
+					<property name="selected-view" bind-property="visible-child" bind-source="_content_stack"
+					          bind-flags="bidirectional|sync-create" />
+				</object>
+			</child>
+
+			<child type="separator">
+				<object class="GtkSeparator">
+					<property name="orientation">vertical</property>
+				</object>
+			</child>
+
+			<child>
+				<object class="GtkBox">
+					<property name="orientation">vertical</property>
+
+					<child>
+						<object class="GtkStack" id="_content_stack">
+							<property name="transition-type">crossfade</property>
+							<property name="vexpand">True</property>
+						</object>
+					</child>
+
+					<child>
+						<object class="HdyViewSwitcherBar" id="_bottom_bar">
+							<property name="stack">_content_stack</property>
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+</interface>
