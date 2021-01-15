@@ -5,6 +5,8 @@ replay_sources = files (
 
 	'Utils/ObservableList.vala',
 
+	'ViewModels/MainViewModel.vala',
+
 	'Views/View.vala',
 
 	'Application.vala',
