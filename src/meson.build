@@ -1,5 +1,7 @@
 replay_sources = files (
+	'Pages/MainPage.vala',
 	'Pages/Page.vala',
+	'Pages/PageKey.vala',
 
 	'Services/NavigationService.vala',
 

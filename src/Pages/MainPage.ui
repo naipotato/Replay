@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Replay - Explore and watch YouTube videos
+  Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+
+  Replay is free software: you can redistribute it and/or modify it under the
+  terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  Replay is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  Replay.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<interface>
+
+<template class="RpyMainPage" parent="RpyPage">
+
+	<child type="titlebar">
+		<object class="RpyMainHeaderBar" id="_header_bar">
+			<signal name="notify::search-mode" handler="on_header_bar_search_mode_changed" />
+		</object>
+	</child>
+
+	<child>
+		<object class="HdyFlap" id="_flap">
+			<property name="transition-type">slide</property>
+			<property name="swipe-to-open">False</property>
+			<signal name="notify::folded" handler="on_flap_folded_changed" />
+
+			<child type="flap">
+				<object class="RpyNavigationSidebar" id="_navigation_sidebar">
+					<signal name="view-selected" handler="on_navigation_sidebar_view_selected" />
+				</object>
+			</child>
+
+			<child type="separator">
+				<object class="GtkSeparator">
+					<property name="orientation">vertical</property>
+				</object>
+			</child>
+
+			<child>
+				<object class="GtkBox">
+					<property name="orientation">vertical</property>
+
+					<child>
+						<object class="GtkStack" id="_stack">
+							<property name="transition-type">crossfade</property>
+							<property name="vexpand">True</property>
+							<signal name="notify::visible-child" handler="on_stack_visible_child_changed" />
+						</object>
+					</child>
+
+					<child>
+						<object class="HdyViewSwitcherBar" id="_view_switcher_bar">
+							<property name="stack">_stack</property>
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+</interface>

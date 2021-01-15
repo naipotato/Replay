@@ -21,6 +21,8 @@
 <gresources>
 
 <gresource prefix="/com/github/nahuelwexd/Replay">
+	<file alias="MainPage.ui">Pages/MainPage.ui</file>
+
 	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
 	<file alias="NavigationSidebar.ui">Widgets/NavigationSidebar.ui</file>
 	<file alias="NavigationSidebarRow.ui">Widgets/NavigationSidebarRow.ui</file>
