@@ -25,6 +25,16 @@
 	<property name="title" translatable="yes">Replay</property>
 	<property name="default-width">1024</property>
 	<property name="default-height">600</property>
+
+	<child>
+		<object class="HdyLeaflet" id="_leaflet">
+			<property name="can-unfold">False</property>
+			<property name="can-swipe-back">True</property>
+			<signal name="notify::child-transition-running" handler="on_leaflet_child_transition_running_changed" />
+			<signal name="notify::visible-child" handler="on_leaflet_visible_child_changed" />
+		</object>
+	</child>
+
 </template>
 
 </interface>

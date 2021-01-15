@@ -78,7 +78,8 @@ public class Rpy.Application : Gtk.Application
 		this.ensure_type_registration ();
 		this.register_actions ();
 
-		new Rpy.ApplicationWindow (this);
+		var nav_service = new Rpy.NavigationService ();
+		new Rpy.ApplicationWindow (this, nav_service);
 	}
 
 

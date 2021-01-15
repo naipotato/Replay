@@ -18,11 +18,77 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
 public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 {
-	public ApplicationWindow (Rpy.Application app)
+	[GtkChild] private Hdy.Leaflet _leaflet;
+
+	private Rpy.NavigationService? _navigation_service;
+
+
+	public Rpy.NavigationService? navigation_service
+	{
+		construct
+		{
+			if (this._navigation_service == value)
+				return;
+
+			this._navigation_service = value;
+
+			((!) this._navigation_service).navigation_requested.connect (this.on_navigation_requested);
+			((!) this._navigation_service).go_back.connect (this.on_back_requested);
+		}
+	}
+
+
+	public ApplicationWindow (Rpy.Application app, Rpy.NavigationService nav_service)
 	{
 		GLib.Object (
-			application: app
+			application: app,
+			navigation_service: nav_service
 		);
+	}
+
+
+	private void on_back_requested ()
+	{
+		this._leaflet.navigate (Hdy.NavigationDirection.BACK);
+	}
+
+	[GtkCallback]
+	private void on_leaflet_child_transition_running_changed ()
+	{
+		this.try_remove_page ();
+	}
+
+	[GtkCallback]
+	private void on_leaflet_visible_child_changed ()
+	{
+		this.try_remove_page ();
+	}
+
+	private void on_navigation_requested (Rpy.Page page)
+	{
+		if (page.get_parent () != this._leaflet)
+			this._leaflet.append (page);
+
+		this._leaflet.visible_child = page;
+	}
+
+	// TODO: We need to do this in a less hacky way
+	private void try_remove_page ()
+	{
+		if (this._leaflet.child_transition_running)
+			return;
+
+		Gtk.Widget? child = this._leaflet.get_first_child ();
+		while (child != null)
+		{
+			Gtk.Widget page = (!) child;
+			child = page.get_next_sibling ();
+
+			if (page == this._leaflet.visible_child)
+				break;
+
+			this._leaflet.remove ((!) page);
+		}
 	}
 
 
