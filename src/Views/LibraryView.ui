@@ -18,22 +18,16 @@
   Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<gresources>
+<interface>
 
-<gresource prefix="/com/github/nahuelwexd/Replay">
-	<file alias="LibraryView.ui">Views/LibraryView.ui</file>
-	<file alias="SearchView.ui">Views/SearchView.ui</file>
+<template class="RpyLibraryView" parent="RpyView">
+	<property name="icon-name">rpy-library-symbolic</property>
+	<property name="title" translatable="yes">Library</property>
 
-	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
-	<file alias="ViewList.ui">Widgets/ViewList.ui</file>
-	<file alias="ViewListRow.ui">Widgets/ViewListRow.ui</file>
+	<child>
+		<object class="RpyViewList" id="_view_list" />
+	</child>
 
-	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
-	<file>styles.css</file>
-</gresource>
+</template>
 
-<gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable/places">
-	<file alias="rpy-library-symbolic.svg">../data/icons/rpy-library-symbolic.svg</file>
-</gresource>
-
-</gresources>
+</interface>
