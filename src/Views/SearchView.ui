@@ -18,17 +18,14 @@
   Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<gresources>
+<interface>
 
-<gresource prefix="/com/github/nahuelwexd/Replay">
-	<file alias="SearchView.ui">Views/SearchView.ui</file>
+<template class="RpySearchView" parent="RpyView">
+	<child>
+		<object class="GtkLabel">
+			<property name="label">Search page</property>
+		</object>
+	</child>
+</template>
 
-	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
-	<file alias="ViewList.ui">Widgets/ViewList.ui</file>
-	<file alias="ViewListRow.ui">Widgets/ViewListRow.ui</file>
-
-	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
-	<file>styles.css</file>
-</gresource>
-
-</gresources>
+</interface>
