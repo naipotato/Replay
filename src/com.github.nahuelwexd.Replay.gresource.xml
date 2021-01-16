@@ -28,6 +28,7 @@
 	<file alias="HomeView.ui">Views/HomeView.ui</file>
 	<file alias="LibraryView.ui">Views/LibraryView.ui</file>
 	<file alias="PlaylistsView.ui">Views/PlaylistsView.ui</file>
+	<file alias="SearchView.ui">Views/SearchView.ui</file>
 	<file alias="SubscriptionsView.ui">Views/SubscriptionsView.ui</file>
 	<file alias="TrendsView.ui">Views/TrendsView.ui</file>
 	<file alias="WatchLaterView.ui">Views/WatchLaterView.ui</file>

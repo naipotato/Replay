@@ -15,31 +15,8 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Rpy.MainViewModel : GLib.Object
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/SearchView.ui")]
+public class Rpy.SearchView : Rpy.View
 {
-	private Rpy.ObservableList<Rpy.View> _views;
 
-
-	public Rpy.View current_view { get; set; }
-
-	public Rpy.ObservableList<Rpy.View> views
-	{
-		get { return this._views; }
-	}
-
-
-	construct
-	{
-		this._views = new Rpy.ObservableList<Rpy.View>.wrap ({
-			new Rpy.HomeView (),
-			new Rpy.TrendsView (),
-			new Rpy.SubscriptionsView (),
-			new Rpy.LibraryView (),
-			new Rpy.FavoritesView (),
-			new Rpy.HistoryView (),
-			new Rpy.WatchLaterView (),
-			new Rpy.PlaylistsView (),
-			new Rpy.SearchView ()
-		});
-	}
 }
