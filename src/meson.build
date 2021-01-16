@@ -3,6 +3,8 @@ replay_sources = files (
 
 	'Services/NavigationService.vala',
 
+	'Views/View.vala',
+
 	'Application.vala',
 	'ApplicationWindow.vala',
 )
