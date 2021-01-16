@@ -18,23 +18,19 @@
   Replay.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<gresources>
+<interface>
 
-<gresource prefix="/com/github/nahuelwexd/Replay">
-	<file alias="MainPage.ui">Pages/MainPage.ui</file>
+<template class="RpyHomeView" parent="RpyView">
+	<property name="icon-name">rpy-home-symbolic</property>
+	<property name="name">home</property>
+	<property name="title" translatable="yes">Home</property>
 
-	<file alias="HomeView.ui">Views/HomeView.ui</file>
+	<child>
+		<object class="GtkLabel">
+			<property name="label">Home page</property>
+		</object>
+	</child>
 
-	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
-	<file alias="NavigationSidebar.ui">Widgets/NavigationSidebar.ui</file>
-	<file alias="NavigationSidebarRow.ui">Widgets/NavigationSidebarRow.ui</file>
+</template>
 
-	<file alias="ApplicationWindow.ui">ApplicationWindow.ui</file>
-	<file>styles.css</file>
-</gresource>
-
-<gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable/places">
-	<file alias="rpy-home-symbolic.svg">../data/icons/rpy-home-symbolic.svg</file>
-</gresource>
-
-</gresources>
+</interface>
