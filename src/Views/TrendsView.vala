@@ -15,24 +15,8 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Rpy.MainViewModel : GLib.Object
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/TrendsView.ui")]
+public class Rpy.TrendsView : Rpy.View
 {
-	private Rpy.ObservableList<Rpy.View> _views;
 
-
-	public Rpy.View current_view { get; set; }
-
-	public Rpy.ObservableList<Rpy.View> views
-	{
-		get { return this._views; }
-	}
-
-
-	construct
-	{
-		this._views = new Rpy.ObservableList<Rpy.View>.wrap ({
-			new Rpy.HomeView (),
-			new Rpy.TrendsView ()
-		});
-	}
 }
