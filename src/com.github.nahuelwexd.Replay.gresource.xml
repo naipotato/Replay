@@ -23,6 +23,7 @@
 <gresource prefix="/com/github/nahuelwexd/Replay">
 	<file alias="MainPage.ui">Pages/MainPage.ui</file>
 
+	<file alias="HomeView.ui">Views/HomeView.ui</file>
 	<file alias="LibraryView.ui">Views/LibraryView.ui</file>
 	<file alias="SearchView.ui">Views/SearchView.ui</file>
 
@@ -35,6 +36,7 @@
 </gresource>
 
 <gresource prefix="/com/github/nahuelwexd/Replay/icons/scalable/places">
+	<file alias="rpy-home-symbolic.svg">../data/icons/rpy-home-symbolic.svg</file>
 	<file alias="rpy-library-symbolic.svg">../data/icons/rpy-library-symbolic.svg</file>
 </gresource>
 
