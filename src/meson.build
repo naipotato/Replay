@@ -1,7 +1,11 @@
 replay_sources = files (
+	'Enums/ViewCategory.vala',
+
 	'Pages/Page.vala',
 
 	'Services/NavigationService.vala',
+
+	'Views/View.vala',
 
 	'Application.vala',
 	'ApplicationWindow.vala',
