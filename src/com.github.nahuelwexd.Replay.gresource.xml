@@ -27,6 +27,7 @@
 	<file alias="HistoryView.ui">Views/HistoryView.ui</file>
 	<file alias="HomeView.ui">Views/HomeView.ui</file>
 	<file alias="LibraryView.ui">Views/LibraryView.ui</file>
+	<file alias="PlaylistsView.ui">Views/PlaylistsView.ui</file>
 	<file alias="SubscriptionsView.ui">Views/SubscriptionsView.ui</file>
 	<file alias="TrendsView.ui">Views/TrendsView.ui</file>
 	<file alias="WatchLaterView.ui">Views/WatchLaterView.ui</file>
@@ -44,6 +45,7 @@
 	<file alias="rpy-history-symbolic.svg">../data/icons/rpy-history-symbolic.svg</file>
 	<file alias="rpy-home-symbolic.svg">../data/icons/rpy-home-symbolic.svg</file>
 	<file alias="rpy-library-symbolic.svg">../data/icons/rpy-library-symbolic.svg</file>
+	<file alias="rpy-playlists-symbolic.svg">../data/icons/rpy-playlists-symbolic.svg</file>
 	<file alias="rpy-subscriptions-symbolic.svg">../data/icons/rpy-subscriptions-symbolic.svg</file>
 	<file alias="rpy-trends-symbolic.svg">../data/icons/rpy-trends-symbolic.svg</file>
 	<file alias="rpy-watch-later-symbolic.svg">../data/icons/rpy-watch-later-symbolic.svg</file>
