@@ -91,7 +91,8 @@ public class Rpy.Application : Gtk.Application
 			new Rpy.SubscriptionsView (),
 			new Rpy.FavoritesView (),
 			new Rpy.HistoryView (),
-			new Rpy.WatchLaterView ()
+			new Rpy.WatchLaterView (),
+			new Rpy.PlaylistsView ()
 		}));
 
 		nav_service.navigate (Rpy.PageKey.MAIN_PAGE, parameter);
