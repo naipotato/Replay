@@ -88,7 +88,8 @@ public class Rpy.Application : Gtk.Application
 		parameter.set_object (new Rpy.ObservableList<Rpy.View> ({
 			new Rpy.HomeView (),
 			new Rpy.TrendsView (),
-			new Rpy.SubscriptionsView ()
+			new Rpy.SubscriptionsView (),
+			new Rpy.FavoritesView ()
 		}));
 
 		nav_service.navigate (Rpy.PageKey.MAIN_PAGE, parameter);
