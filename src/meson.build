@@ -11,6 +11,7 @@ replay_sources = files (
 	'Utils/ObservableList.vala',
 
 	'Views/FavoritesView.vala',
+	'Views/HistoryView.vala',
 	'Views/HomeView.vala',
 	'Views/LibraryView.vala',
 	'Views/SearchView.vala',
