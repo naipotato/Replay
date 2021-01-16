@@ -10,6 +10,7 @@ replay_sources = files (
 	'ViewModels/MainViewModel.vala',
 
 	'Views/HomeView.vala',
+	'Views/LibraryView.vala',
 	'Views/SubscriptionsView.vala',
 	'Views/TrendsView.vala',
 	'Views/View.vala',
