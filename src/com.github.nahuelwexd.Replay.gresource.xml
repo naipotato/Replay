@@ -30,6 +30,7 @@
 	<file alias="SearchView.ui">Views/SearchView.ui</file>
 	<file alias="SubscriptionsView.ui">Views/SubscriptionsView.ui</file>
 	<file alias="TrendsView.ui">Views/TrendsView.ui</file>
+	<file alias="WatchLaterView.ui">Views/WatchLaterView.ui</file>
 
 	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
 	<file alias="ViewList.ui">Widgets/ViewList.ui</file>
@@ -46,6 +47,7 @@
 	<file alias="rpy-library-symbolic.svg">../data/icons/rpy-library-symbolic.svg</file>
 	<file alias="rpy-subscriptions-symbolic.svg">../data/icons/rpy-subscriptions-symbolic.svg</file>
 	<file alias="rpy-trends-symbolic.svg">../data/icons/rpy-trends-symbolic.svg</file>
+	<file alias="rpy-watch-later-symbolic.svg">../data/icons/rpy-watch-later-symbolic.svg</file>
 </gresource>
 
 </gresources>
