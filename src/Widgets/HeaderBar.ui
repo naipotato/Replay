@@ -28,8 +28,6 @@
 
 	<child>
 		<object class="HdyHeaderBar" id="_header_bar">
-			<property name="show-title-buttons">True</property>
-
 			<style>
 				<class name="titlebar" />
 			</style>
