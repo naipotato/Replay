@@ -18,11 +18,11 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/MainPage.ui")]
 public class Rpy.MainPage : Rpy.Page
 {
-	[GtkChild] private Hdy.Flap _flap;
-	[GtkChild] private Rpy.MainHeaderBar _header_bar;
-	[GtkChild] private Rpy.NavigationSidebar _navigation_sidebar;
-	[GtkChild] private Gtk.Stack _stack;
-	[GtkChild] private Hdy.ViewSwitcherBar _view_switcher_bar;
+	[GtkChild] private unowned Hdy.Flap _flap;
+	[GtkChild] private unowned Rpy.MainHeaderBar _header_bar;
+	[GtkChild] private unowned Rpy.NavigationSidebar _navigation_sidebar;
+	[GtkChild] private unowned Gtk.Stack _stack;
+	[GtkChild] private unowned Hdy.ViewSwitcherBar _view_switcher_bar;
 
 	private string? _current_view_name;
 	private unowned GLib.Binding _header_bar_binding;

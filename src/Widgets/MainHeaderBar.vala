@@ -18,10 +18,10 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/MainHeaderBar.ui")]
 public class Rpy.MainHeaderBar : Gtk.Widget
 {
-	[GtkChild] private Gtk.SearchEntry _search_entry;
-	[GtkChild] private Gtk.Shortcut _shortcut;
-	[GtkChild] private Gtk.Label _title_label;
-	[GtkChild] private Gtk.Stack _title_stack;
+	[GtkChild] private unowned Gtk.SearchEntry _search_entry;
+	[GtkChild] private unowned Gtk.Shortcut _shortcut;
+	[GtkChild] private unowned Gtk.Label _title_label;
+	[GtkChild] private unowned Gtk.Stack _title_stack;
 
 	private weak Gtk.Widget? _capture_widget;
 	private Gtk.EventControllerKey _capture_widget_controller;

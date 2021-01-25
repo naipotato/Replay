@@ -18,7 +18,7 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
 public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 {
-	[GtkChild] private Hdy.Leaflet _leaflet;
+	[GtkChild] private unowned Hdy.Leaflet _leaflet;
 
 	private Rpy.NavigationService? _navigation_service;
 

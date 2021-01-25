@@ -52,7 +52,7 @@ public class Rpy.NavigationSidebarRow : Gtk.ListBoxRow
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/NavigationSidebar.ui")]
 public class Rpy.NavigationSidebar : Gtk.Widget
 {
-	[GtkChild] private Gtk.ListBox _list_box;
+	[GtkChild] private unowned Gtk.ListBox _list_box;
 
 	private GLib.ListModel? _model;
 
