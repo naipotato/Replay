@@ -5,6 +5,7 @@ replay_sources = files (
 
 	'Services/NavigationService.vala',
 
+	'Utils/ListModel.vala',
 	'Utils/ObservableList.vala',
 
 	'Views/View.vala',
