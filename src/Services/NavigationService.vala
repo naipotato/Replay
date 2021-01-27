@@ -30,7 +30,9 @@ public class Rpy.NavigationService : GLib.Object
 		requires (typeof (TKey).is_enum ())
 	{
 		if (this._page_keys != null && ((!) this._page_keys).key_type.is_a (typeof (TKey)))
+		{
 			return (!) this._page_keys;
+		}
 
 		return (!) (this._page_keys = new Gee.HashMap<TKey, GLib.Type> ());
 	}

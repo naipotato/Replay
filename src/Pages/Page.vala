@@ -28,7 +28,9 @@ public abstract class Rpy.Page : Gtk.Widget, Gtk.Buildable
 		set
 		{
 			if (value == this._child)
+			{
 				return;
+			}
 
 			if (this._child != null)
 			{
@@ -54,15 +56,21 @@ public abstract class Rpy.Page : Gtk.Widget, Gtk.Buildable
 		set
 		{
 			if (value == this._titlebar)
+			{
 				return;
+			}
 
 			if (this._titlebar != null)
+			{
 				((!) this._titlebar).unparent ();
+			}
 
 			this._titlebar = value;
 
 			if (this._titlebar != null)
+			{
 				((!) this._titlebar).set_parent (this);
+			}
 		}
 	}
 
@@ -70,11 +78,17 @@ public abstract class Rpy.Page : Gtk.Widget, Gtk.Buildable
 	public void add_child (Gtk.Builder builder, GLib.Object child, string? type)
 	{
 		if (child is Gtk.Widget && type == "titlebar")
+		{
 			this.titlebar = (Gtk.Widget) child;
+		}
 		else if (child is Gtk.Widget)
+		{
 			this.child = (Gtk.Widget) child;
+		}
 		else
+		{
 			base.add_child (builder, child, type);
+		}
 	}
 
 	public override void dispose ()

@@ -29,7 +29,9 @@ public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 		construct
 		{
 			if (value == null)
+			{
 				return;
+			}
 
 			this._navigation_service = value;
 
@@ -56,7 +58,9 @@ public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 	private void navigate_to (Rpy.Page page)
 	{
 		if (page.get_parent () != this._leaflet)
+		{
 			this._leaflet.append (page);
+		}
 
 		this._leaflet.visible_child = page;
 	}
@@ -66,7 +70,9 @@ public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 	private void try_remove_page ()
 	{
 		if (this._leaflet.child_transition_running)
+		{
 			return;
+		}
 
 		Gtk.Widget? child = this._leaflet.get_first_child ();
 		while (child != null)
@@ -75,7 +81,9 @@ public class Rpy.ApplicationWindow : Hdy.ApplicationWindow
 			child = ((!) child).get_next_sibling ();
 
 			if (page == this._leaflet.visible_child)
+			{
 				break;
+			}
 
 			this._leaflet.remove ((!) page);
 		}
