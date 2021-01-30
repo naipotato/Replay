@@ -84,8 +84,8 @@ public class Rpy.Application : Gtk.Application
 		Gee.Map<Rpy.PageKey, GLib.Type> page_keys = nav_service.get_page_keys ();
 		page_keys[Rpy.PageKey.MAIN_PAGE] = typeof (Rpy.MainPage);
 
-		var parameter = GLib.Value (typeof (Rpy.ObservableList));
-		parameter.set_object (new Rpy.ObservableList<Rpy.View> ({
+		var main_page_parameters = Rpy.MainPageParameters ();
+		main_page_parameters.views = new Rpy.ObservableList<Rpy.View> ({
 			new Rpy.HomeView (),
 			new Rpy.TrendsView (),
 			new Rpy.SubscriptionsView (),
@@ -93,7 +93,13 @@ public class Rpy.Application : Gtk.Application
 			new Rpy.HistoryView (),
 			new Rpy.WatchLaterView (),
 			new Rpy.PlaylistsView ()
-		}));
+		});
+		main_page_parameters.library_view = new Rpy.LibraryView (new Gtk.FilterListModel (main_page_parameters.views,
+			new Gtk.CustomFilter (view => ((Rpy.View) view).category == Rpy.ViewCategory.SECONDARY)));
+		main_page_parameters.search_view = new Rpy.SearchView ();
+
+		var parameter = GLib.Value (typeof (Rpy.MainPageParameters));
+		parameter.set_boxed (&main_page_parameters);
 
 		nav_service.navigate (Rpy.PageKey.MAIN_PAGE, parameter);
 	}

@@ -15,6 +15,13 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+public struct Rpy.MainPageParameters
+{
+	public Rpy.ObservableList<Rpy.View>? views;
+	public Rpy.LibraryView? library_view;
+	public Rpy.SearchView? search_view;
+}
+
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/MainPage.ui")]
 public class Rpy.MainPage : Rpy.Page
 {
@@ -32,13 +39,14 @@ public class Rpy.MainPage : Rpy.Page
 
 	public override void on_navigated_to (GLib.Value? parameter = null)
 		requires (parameter != null)
-		requires (((!) parameter).holds (typeof (Rpy.ObservableList)))
+		requires (((!) parameter).holds (typeof (Rpy.MainPageParameters)))
 	{
-		var views = (Rpy.ObservableList<Rpy.View>) ((!) parameter).get_object ();
+		var parameters = (Rpy.MainPageParameters*) ((!) parameter).get_boxed ();
+		GLib.return_if_fail (parameters.views != null);
 
-		this._sidebar.model = views;
+		this._sidebar.model = parameters.views;
 
-		foreach (Rpy.View view in views)
+		foreach (Rpy.View view in (!) parameters.views)
 		{
 			Gtk.StackPage page = this._content_stack.add_child (view);
 
@@ -51,11 +59,12 @@ public class Rpy.MainPage : Rpy.Page
 			}
 		}
 
-		this._search_view = new Rpy.SearchView ();
+		GLib.return_if_fail (parameters.search_view != null);
+		this._search_view = parameters.search_view;
 		this._content_stack.add_child ((!) this._search_view);
 
-		var library_view = new Rpy.LibraryView (new Gtk.FilterListModel (views, new Gtk.CustomFilter (view =>
-			((Rpy.View) view).category == Rpy.ViewCategory.SECONDARY)));
+		GLib.return_if_fail (parameters.library_view != null);
+		Rpy.LibraryView library_view = (!) parameters.library_view;
 
 		Gtk.StackPage page = this._content_stack.add_child (library_view);
 		library_view.bind_property ("icon-name", page, "icon-name",
