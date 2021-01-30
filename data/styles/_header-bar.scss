@@ -1,5 +1,5 @@
 headerbar {
-	border-bottom: 2px solid #ed333b;
+	border-bottom: 2px solid unquote('shade(#e01b24, 1.6)');
 
 	&:backdrop {
 		border-bottom: 1px solid unquote('@unfocused_borders');

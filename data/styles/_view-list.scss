@@ -1,7 +1,50 @@
 viewlist {
 	min-width: 180px;
 
+	separator {
+		background-color: unquote('mix(@theme_bg_color, @borders, 0.7)');
+		margin: 10px 5px;
+	}
+
 	row {
 		padding: 0 18px;
+		transition: all ease-out 75ms;
+
+		&:hover,
+		&:focus-visible:focus-within {
+			background-color: unquote('alpha(@theme_fg_color, 0.1)');
+
+			&:backdrop {
+				background-color: unquote('alpha(@theme_unfocused_fg_color, 0.1)');
+			}
+		}
+
+		&:selected {
+			background-color: unquote('alpha(shade(#e01b24, 1.6), 0.15)');
+			color: unquote('shade(#e01b24, 1.6)');
+			font-weight: bold;
+
+			&:hover {
+				background-color: unquote('alpha(shade(#e01b24, 1.6), 0.3)');
+			}
+
+			&:focus-visible:focus-within {
+				background-color: unquote('shade(#e01b24, 1.6)');
+				color: black;
+
+				&:hover {
+					background-color: unquote('shade(#e01b24, 1.4)');
+				}
+			}
+
+			&:backdrop {
+				background-color: unquote('alpha(@theme_unfocused_fg_color, 0.15)');
+				color: unset;
+
+				&:hover {
+					background-color: unquote('alpha(@theme_unfocused_fg_color, 0.2)');
+				}
+			}
+		}
 	}
 }
