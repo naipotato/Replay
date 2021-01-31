@@ -20,20 +20,20 @@ viewlist {
 		}
 
 		&:selected {
-			background-color: unquote('alpha(shade(#e01b24, 1.6), 0.15)');
-			color: unquote('shade(#e01b24, 1.6)');
+			background-color: unquote('alpha(#f89997, 0.15)');
+			color: unquote('#f89997');
 			font-weight: bold;
 
 			&:hover {
-				background-color: unquote('alpha(shade(#e01b24, 1.6), 0.3)');
+				background-color: unquote('alpha(#f89997, 0.3)');
 			}
 
 			&:focus-visible:focus-within {
-				background-color: unquote('shade(#e01b24, 1.6)');
+				background-color: unquote('#fb4b48');
 				color: black;
 
 				&:hover {
-					background-color: unquote('shade(#e01b24, 1.4)');
+					background-color: unquote('shade(#fb4b48, 0.8)');
 				}
 			}
 
