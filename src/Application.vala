@@ -94,8 +94,7 @@ public class Rpy.Application : Gtk.Application
 			new Rpy.WatchLaterView (),
 			new Rpy.PlaylistsView ()
 		});
-		main_page_parameters.library_view = new Rpy.LibraryView (new Gtk.FilterListModel (main_page_parameters.views,
-			new Gtk.CustomFilter (view => ((Rpy.View) view).category == Rpy.ViewCategory.SECONDARY)));
+		main_page_parameters.library_view = new Rpy.LibraryView ();
 		main_page_parameters.search_view = new Rpy.SearchView ();
 
 		var parameter = GLib.Value (typeof (Rpy.MainPageParameters));

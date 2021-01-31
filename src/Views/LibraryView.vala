@@ -20,30 +20,10 @@ public class Rpy.LibraryView : Rpy.View
 {
 	[GtkChild] private unowned Rpy.ViewList _view_list;
 
-	private GLib.ListModel? _views;
-
 
 	public GLib.ListModel? views
 	{
-		get { return this._views; }
-		construct
-		{
-			if (value == null)
-			{
-				return;
-			}
-
-			this._views = value;
-
-			this._view_list.model = this._views;
-		}
-	}
-
-
-	public LibraryView (GLib.ListModel views)
-	{
-		GLib.Object (
-			views: views
-		);
+		get { return this._view_list.model; }
+		set { this._view_list.model = value; }
 	}
 }
