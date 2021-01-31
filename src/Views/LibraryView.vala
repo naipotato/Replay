@@ -26,4 +26,20 @@ public class Rpy.LibraryView : Rpy.View
 		get { return this._view_list.model; }
 		set { this._view_list.model = value; }
 	}
+
+
+	public signal void view_selected (Rpy.View view);
+
+
+	[GtkCallback]
+	private void emit_view_selected_signal ()
+	{
+		if (this._view_list.selected_view != null)
+		{
+			return;
+		}
+
+		this.view_selected ((!) this._view_list.selected_view);
+		this._view_list.selected_view = null;
+	}
 }

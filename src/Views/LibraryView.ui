@@ -25,7 +25,9 @@
 	<property name="title" translatable="yes">Library</property>
 
 	<child>
-		<object class="RpyViewList" id="_view_list" />
+		<object class="RpyViewList" id="_view_list">
+			<signal name="notify::selected-view" handler="emit_view_selected_signal" />
+		</object>
 	</child>
 
 </template>
