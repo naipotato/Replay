@@ -125,7 +125,6 @@ public class Rpy.MainPage : Rpy.Page
 			this._header_bar.key_capture_widget = gtk_app.active_window;
 		}
 
-		this._header_bar.title = GLib.Environment.get_application_name ();
 		this.update_ui_mode ();
 	}
 }

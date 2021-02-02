@@ -25,6 +25,11 @@
 	<child type="titlebar">
 		<object class="RpyMainHeaderBar" id="_header_bar">
 			<signal name="notify::search-mode" handler="update_ui_mode" />
+
+			<binding name="title">
+				<closure type="gchararray" function="g_get_application_name" />
+			</binding>
+
 		</object>
 	</child>
 
