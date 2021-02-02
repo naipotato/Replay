@@ -34,6 +34,7 @@
 	<file alias="WatchLaterView.ui">Views/WatchLaterView.ui</file>
 
 	<file alias="MainHeaderBar.ui">Widgets/MainHeaderBar.ui</file>
+	<file alias="SecondaryHeaderBar.ui">Widgets/SecondaryHeaderBar.ui</file>
 	<file alias="ViewList.ui">Widgets/ViewList.ui</file>
 	<file alias="ViewListRow.ui">Widgets/ViewListRow.ui</file>
 
