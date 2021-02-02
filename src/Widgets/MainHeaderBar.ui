@@ -50,9 +50,11 @@
 
 			<child type="start">
 				<object class="GtkRevealer">
-					<property name="reveal-child" bind-property="narrow-mode" bind-source="RpyMainHeaderBar"
-					          bind-flags="default|sync-create" />
 					<property name="transition-type">slide-right</property>
+
+					<binding name="reveal-child">
+						<lookup name="narrow-mode">RpyMainHeaderBar</lookup>
+					</binding>
 
 					<child>
 						<object class="GtkToggleButton">
