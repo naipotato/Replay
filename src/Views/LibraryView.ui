@@ -25,8 +25,22 @@
 	<property name="title" translatable="yes">Library</property>
 
 	<child>
-		<object class="RpyViewList" id="_view_list">
-			<signal name="notify::selected-view" handler="emit_view_selected_signal" />
+		<object class="HdyLeaflet" id="_leaflet">
+			<property name="can-unfold">False</property>
+			<property name="can-swipe-back">True</property>
+
+			<child>
+				<object class="RpyViewList" id="_view_list">
+					<signal name="notify::selected-view" handler="on_view_list_selected_view_changed" />
+				</object>
+			</child>
+
+			<child>
+				<object class="GtkStack" id="_stack">
+					<property name="transition-type">crossfade</property>
+				</object>
+			</child>
+
 		</object>
 	</child>
 
