@@ -84,10 +84,12 @@
 							<child>
 								<object class="GtkLabel" id="_title_label">
 									<property name="ellipsize">end</property>
-									<property name="label" bind-property="title" bind-source="RpyMainHeaderBar"
-									          bind-flags="default|sync-create" />
 									<property name="single-line-mode">True</property>
 									<property name="width-chars">5</property>
+
+									<binding name="label">
+										<lookup name="title">RpyMainHeaderBar</lookup>
+									</binding>
 
 									<style>
 										<class name="title" />
