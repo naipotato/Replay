@@ -88,11 +88,7 @@ public class Rpy.Application : Gtk.Application
 		main_page_parameters.views = new Rpy.ObservableList<Rpy.View> ({
 			new Rpy.HomeView (),
 			new Rpy.TrendsView (),
-			new Rpy.SubscriptionsView (),
-			new Rpy.FavoritesView (),
-			new Rpy.HistoryView (),
-			new Rpy.WatchLaterView (),
-			new Rpy.PlaylistsView ()
+			new Rpy.SubscriptionsView ()
 		});
 		main_page_parameters.library_view = new Rpy.LibraryView ();
 		main_page_parameters.search_view = new Rpy.SearchView ();
