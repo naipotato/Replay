@@ -20,26 +20,29 @@ public class Rpy.LibraryView : Rpy.View
 {
 	[GtkChild] private unowned Rpy.ViewList _view_list;
 
+	private Rpy.ObservableList<Rpy.View>? _views;
 
-	public GLib.ListModel? views
+
+	public Rpy.ObservableList<Rpy.View>? views
 	{
-		get { return this._view_list.model; }
-		set { this._view_list.model = value; }
+		get { return this._views; }
+		construct
+		{
+			if (value == null)
+			{
+				return;
+			}
+
+			this._views = value;
+			this._view_list.model = this._views;
+		}
 	}
 
 
-	public signal void view_selected (Rpy.View view);
-
-
-	[GtkCallback]
-	private void emit_view_selected_signal ()
+	public LibraryView (Rpy.ObservableList<Rpy.View> views)
 	{
-		if (this._view_list.selected_view != null)
-		{
-			return;
-		}
-
-		this.view_selected ((!) this._view_list.selected_view);
-		this._view_list.selected_view = null;
+		GLib.Object (
+			views: views
+		);
 	}
 }
