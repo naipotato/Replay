@@ -27,15 +27,21 @@
 
 			<child>
 				<object class="GtkImage">
-					<property name="icon-name" bind-property="icon-name" bind-source="RpyViewListRow"
-							      bind-flags="default|sync-create" />
+					<binding name="icon-name">
+						<lookup name="icon-name" type="RpyView">
+							<lookup name="view">RpyViewListRow</lookup>
+						</lookup>
+					</binding>
 				</object>
 			</child>
 
 			<child>
 				<object class="GtkLabel">
-					<property name="label" bind-property="label" bind-source="RpyViewListRow"
-							      bind-flags="default|sync-create" />
+					<binding name="label">
+						<lookup name="title" type="RpyView">
+							<lookup name="view">RpyViewListRow</lookup>
+						</lookup>
+					</binding>
 				</object>
 			</child>
 

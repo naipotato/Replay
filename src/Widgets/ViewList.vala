@@ -18,30 +18,7 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ViewListRow.ui")]
 public class Rpy.ViewListRow : Gtk.ListBoxRow
 {
-	private Rpy.View? _view;
-
-
-	public string? icon_name { get; set; }
-	public string? label { get; set; }
-
-	public Rpy.View? view
-	{
-		get { return this._view; }
-		construct
-		{
-			if (value == null)
-			{
-				return;
-			}
-
-			this._view = value;
-
-			((!) this._view).bind_property ("icon-name", this, "icon-name",
-				GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
-			((!) this._view).bind_property ("title", this, "label",
-				GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
-		}
-	}
+	public Rpy.View? view { get; construct; }
 
 
 	public ViewListRow (Rpy.View view)
