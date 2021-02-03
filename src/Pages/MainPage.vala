@@ -32,7 +32,7 @@ public class Rpy.MainPage : Rpy.Page
 	[GtkChild] private unowned Rpy.ViewList _sidebar;
 
 	private unowned GLib.Binding? _narrow_header_bar_binding;
-	private Rpy.View? _previous_view;
+	private Rpy.View? _view_before_searching;
 	private unowned GLib.Binding? _reveal_bottom_bar_binding;
 	private Rpy.SearchView? _search_view;
 
@@ -88,7 +88,7 @@ public class Rpy.MainPage : Rpy.Page
 			this._flap.fold_policy = Hdy.FlapFoldPolicy.ALWAYS;
 			this._bottom_bar.reveal = false;
 
-			this._previous_view = (Rpy.View) this._content_stack.visible_child;
+			this._view_before_searching = (Rpy.View) this._content_stack.visible_child;
 			if (this._search_view != null)
 			{
 				this._content_stack.visible_child = (!) this._search_view;
@@ -96,9 +96,9 @@ public class Rpy.MainPage : Rpy.Page
 		}
 		else
 		{
-			if (this._previous_view != null)
+			if (this._view_before_searching != null)
 			{
-				this._content_stack.visible_child = (!) this._previous_view;
+				this._content_stack.visible_child = (!) this._view_before_searching;
 			}
 
 			this._flap.fold_policy = Hdy.FlapFoldPolicy.AUTO;
