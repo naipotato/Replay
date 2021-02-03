@@ -18,12 +18,16 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/LibraryView.ui")]
 public class Rpy.LibraryView : Rpy.View
 {
-	[GtkChild] private unowned Hdy.Leaflet _leaflet;
-	[GtkChild] private unowned Gtk.Stack _stack;
 	[GtkChild] private unowned Rpy.ViewList _view_list;
 
 	private Rpy.ObservableList<Rpy.View>? _views;
 
+
+	[GtkChild]
+	public unowned Hdy.Leaflet leaflet { get; }
+
+	[GtkChild]
+	public unowned Gtk.Stack stack { get; }
 
 	public Rpy.ObservableList<Rpy.View>? views
 	{
@@ -62,8 +66,8 @@ public class Rpy.LibraryView : Rpy.View
 			return;
 		}
 
-		this._leaflet.visible_child = this._stack;
-		this._stack.visible_child = (!) this._view_list.selected_view;
+		this.leaflet.visible_child = this.stack;
+		this.stack.visible_child = (!) this._view_list.selected_view;
 		this._view_list.selected_view = null;
 	}
 }
