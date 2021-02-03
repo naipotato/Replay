@@ -35,6 +35,19 @@ public class Rpy.ObservableList<T> : Gee.ArrayList<T>, GLib.ListModel
 		return added;
 	}
 
+	public new bool add_all (Gee.Collection<T> collection)
+	{
+		int index = this.size;
+		bool added = base.add_all (collection);
+
+		if (added)
+		{
+			this.items_changed (index, 0, collection.size);
+		}
+
+		return added;
+	}
+
 	public override void clear ()
 	{
 		base.clear ();
