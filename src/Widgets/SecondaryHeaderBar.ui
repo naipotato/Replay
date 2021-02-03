@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="RpySubviewHeaderBar" parent="GtkWidget">
+<template class="RpySecondaryHeaderBar" parent="GtkWidget">
 
 	<property name="layout-manager">
 		<object class="GtkBinLayout" />
@@ -43,7 +43,7 @@
 					<property name="width-chars">5</property>
 
 					<binding name="label">
-						<lookup name="title">RpySubviewHeaderBar</lookup>
+						<lookup name="title">RpySecondaryHeaderBar</lookup>
 					</binding>
 
 					<style>
