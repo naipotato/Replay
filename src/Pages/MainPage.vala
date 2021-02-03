@@ -50,13 +50,10 @@ public class Rpy.MainPage : Rpy.Page
 		{
 			Gtk.StackPage page = this._content_stack.add_child (view);
 
-			if (view.category == Rpy.ViewCategory.MAIN)
-			{
-				view.bind_property ("icon-name", page, "icon-name",
-					GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
-				view.bind_property ("title", page, "title",
-					GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
-			}
+			view.bind_property ("icon-name", page, "icon-name",
+				GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
+			view.bind_property ("title", page, "title",
+				GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 		}
 
 		GLib.return_if_fail (parameters.search_view != null);
