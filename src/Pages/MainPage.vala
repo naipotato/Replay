@@ -68,6 +68,8 @@ public class Rpy.MainPage : Rpy.Page
 			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 		library_view.bind_property ("title", page, "title",
 			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
+
+		((!) parameters.views).add_all ((!) library_view.views);
 	}
 
 	[GtkCallback]
