@@ -35,8 +35,7 @@
 
 			<child type="flap">
 				<object class="RpyViewList" id="_sidebar">
-					<property name="selected-view" bind-property="visible-child" bind-source="_content_stack"
-					          bind-flags="bidirectional|sync-create" />
+					<signal name="notify::selected-view" handler="navigate" />
 				</object>
 			</child>
 
@@ -54,6 +53,7 @@
 						<object class="GtkStack" id="_content_stack">
 							<property name="transition-type">crossfade</property>
 							<property name="vexpand">True</property>
+							<signal name="notify::transition-running" handler="update_sidebar_selected_view" />
 						</object>
 					</child>
 

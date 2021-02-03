@@ -31,6 +31,7 @@ public class Rpy.MainPage : Rpy.Page
 	[GtkChild] private unowned Rpy.MainHeaderBar _header_bar;
 	[GtkChild] private unowned Rpy.ViewList _sidebar;
 
+	private Rpy.LibraryView? _library_view;
 	private unowned GLib.Binding? _narrow_header_bar_binding;
 	private Rpy.View? _view_before_searching;
 	private unowned GLib.Binding? _reveal_bottom_bar_binding;
@@ -70,6 +71,33 @@ public class Rpy.MainPage : Rpy.Page
 			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 
 		((!) parameters.views).add_all ((!) library_view.views);
+
+		this.update_sidebar_selected_view ();
+	}
+
+
+	[GtkCallback]
+	private void navigate ()
+		requires (this._sidebar.selected_view != null)
+	{
+		if (((!) this._sidebar.selected_view).category != Rpy.ViewCategory.MAIN)
+		{
+			return;
+		}
+
+		this._content_stack.visible_child = (!) this._sidebar.selected_view;
+	}
+
+	[GtkCallback]
+	private void update_sidebar_selected_view ()
+		requires (this._content_stack.visible_child is Rpy.View)
+	{
+		if (this._content_stack.visible_child == (!) this._library_view)
+		{
+			return;
+		}
+
+		this._sidebar.selected_view = (Rpy.View) this._content_stack.visible_child;
 	}
 
 	[GtkCallback]
