@@ -23,8 +23,22 @@
 <template class="RpyMainPage" parent="RpyPage">
 
 	<child type="titlebar">
-		<object class="RpyMainHeaderBar" id="_header_bar">
-			<signal name="notify::search-mode" handler="update_ui_mode" />
+		<object class="HdyLeaflet" id="_headerbar_leaflet">
+			<property name="can-unfold">False</property>
+			<property name="can-swipe-back">True</property>
+
+			<child>
+				<object class="RpyMainHeaderBar" id="_header_bar">
+					<signal name="notify::search-mode" handler="update_ui_mode" />
+				</object>
+			</child>
+
+			<child>
+				<object class="RpySecondaryHeaderBar" id="_secondary_header_bar">
+					<signal name="back-requested" handler="on_secondary_header_bar_back_requested" />
+				</object>
+			</child>
+
 		</object>
 	</child>
 
@@ -32,6 +46,7 @@
 		<object class="HdyFlap" id="_flap">
 			<property name="swipe-to-open">False</property>
 			<property name="transition-type">slide</property>
+			<signal name="notify::folded" handler="on_flap_folded" />
 
 			<child type="flap">
 				<object class="RpyViewList" id="_sidebar">
@@ -53,7 +68,7 @@
 						<object class="GtkStack" id="_content_stack">
 							<property name="transition-type">crossfade</property>
 							<property name="vexpand">True</property>
-							<signal name="notify::transition-running" handler="update_sidebar_selected_view" />
+							<signal name="notify::visible-child" handler="update_sidebar_selected_view" />
 						</object>
 					</child>
 
@@ -70,5 +85,11 @@
 	</child>
 
 </template>
+
+<object class="HdySwipeGroup" id="_headerbar_swipe_group">
+	<swipeables>
+		<swipeable name="_headerbar_leaflet" />
+	</swipeables>
+</object>
 
 </interface>

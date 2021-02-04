@@ -30,9 +30,13 @@ public class Rpy.MainPage : Rpy.Page
 	[GtkChild] private unowned Hdy.Flap _flap;
 	[GtkChild] private unowned Rpy.MainHeaderBar _header_bar;
 	[GtkChild] private unowned Rpy.ViewList _sidebar;
+	[GtkChild] private unowned Hdy.SwipeGroup _headerbar_swipe_group;
+	[GtkChild] private unowned Hdy.Leaflet _headerbar_leaflet;
+	[GtkChild] private unowned Rpy.SecondaryHeaderBar _secondary_header_bar;
 
 	private Rpy.LibraryView? _library_view;
 	private unowned GLib.Binding? _narrow_header_bar_binding;
+	private Rpy.View? _view_before_library;
 	private Rpy.View? _view_before_searching;
 	private unowned GLib.Binding? _reveal_bottom_bar_binding;
 	private Rpy.SearchView? _search_view;
@@ -62,15 +66,15 @@ public class Rpy.MainPage : Rpy.Page
 		this._content_stack.add_child ((!) this._search_view);
 
 		GLib.return_if_fail (parameters.library_view != null);
-		Rpy.LibraryView library_view = (!) parameters.library_view;
+		this._library_view = (!) parameters.library_view;
 
-		Gtk.StackPage page = this._content_stack.add_child (library_view);
-		library_view.bind_property ("icon-name", page, "icon-name",
+		Gtk.StackPage page = this._content_stack.add_child ((!) this._library_view);
+		((!) this._library_view).bind_property ("icon-name", page, "icon-name",
 			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
-		library_view.bind_property ("title", page, "title",
+		((!) this._library_view).bind_property ("title", page, "title",
 			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 
-		((!) parameters.views).add_all ((!) library_view.views);
+		((!) parameters.views).add_all ((!) ((!) this._library_view).views);
 
 		this.update_sidebar_selected_view ();
 	}
@@ -80,19 +84,70 @@ public class Rpy.MainPage : Rpy.Page
 	private void navigate ()
 		requires (this._sidebar.selected_view != null)
 	{
-		if (((!) this._sidebar.selected_view).category != Rpy.ViewCategory.MAIN)
+		if (this._content_stack.visible_child != (!) this._library_view &&
+		    ((!) this._sidebar.selected_view).category == Rpy.ViewCategory.SECONDARY)
 		{
-			return;
+			this._view_before_library = (Rpy.View) this._content_stack.visible_child;
 		}
 
-		this._content_stack.visible_child = (!) this._sidebar.selected_view;
+		switch (((!) this._sidebar.selected_view).category)
+		{
+			case Rpy.ViewCategory.MAIN:
+				this._content_stack.visible_child = (!) this._sidebar.selected_view;
+				break;
+			case Rpy.ViewCategory.SECONDARY:
+				((!) this._library_view).leaflet.visible_child = ((!) this._library_view).stack;
+				((!) this._library_view).stack.visible_child = (!) this._sidebar.selected_view;
+				this._content_stack.visible_child = (!) this._library_view;
+				break;
+		}
+	}
+
+	[GtkCallback]
+	private void on_flap_folded ()
+	{
+		if (this._flap.folded)
+		{
+			this._headerbar_swipe_group.add_swipeable (((!) this._library_view).leaflet);
+
+			if (((!) this._library_view).leaflet.visible_child == ((!) this._library_view).stack)
+			{
+				this._headerbar_leaflet.visible_child = this._secondary_header_bar;
+			}
+		}
+		else
+		{
+			unowned GLib.SList<Hdy.Swipeable> swipeables = this._headerbar_swipe_group.get_swipeables ();
+			if (swipeables.index (((!) this._library_view).leaflet) != -1)
+			{
+				this._headerbar_swipe_group.remove_swipeable (((!) this._library_view).leaflet);
+				this._headerbar_leaflet.visible_child = this._header_bar;
+			}
+
+			if (((!) this._library_view).leaflet.visible_child == ((!) this._library_view).stack)
+			{
+				this._sidebar.selected_view = (Rpy.View) ((!) this._library_view).stack.visible_child;
+			}
+			else if (this._content_stack.visible_child == (!) this._library_view)
+			{
+				this._content_stack.visible_child = (!) this._view_before_library;
+			}
+		}
+	}
+
+	[GtkCallback]
+	private void on_secondary_header_bar_back_requested ()
+	{
+		((!) this._library_view).leaflet.navigate (Hdy.NavigationDirection.BACK);
 	}
 
 	[GtkCallback]
 	private void update_sidebar_selected_view ()
 		requires (this._content_stack.visible_child is Rpy.View)
 	{
-		if (this._content_stack.visible_child == (!) this._library_view)
+		if (this._content_stack.transition_running ||
+		    this._content_stack.visible_child == (!) this._library_view ||
+		    this._content_stack.visible_child == (!) this._search_view)
 		{
 			return;
 		}
