@@ -21,9 +21,9 @@ public class Rpy.HeaderBar : Gtk.Widget
 	private weak Gtk.Widget?            _capture_widget;
 	private      Gtk.EventControllerKey _capture_widget_controller;
 
-	[GtkChild] private Adw.HeaderBar   _header_bar;
-	[GtkChild] private Gtk.SearchEntry _search_entry;
-	[GtkChild] private Gtk.Button      _back_button;
+	[GtkChild] private unowned Adw.HeaderBar   _header_bar;
+	[GtkChild] private unowned Gtk.SearchEntry _search_entry;
+	[GtkChild] private unowned Gtk.Button      _back_button;
 
 
 	public bool can_go_back { get; set; }

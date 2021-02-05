@@ -18,7 +18,7 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
 public class Rpy.ApplicationWindow : Adw.ApplicationWindow
 {
-	[GtkChild] private Rpy.HeaderBar _header_bar;
+	[GtkChild] private unowned Rpy.HeaderBar _header_bar;
 
 
 	public ApplicationWindow (Rpy.Application app)
