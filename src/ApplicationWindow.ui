@@ -20,7 +20,7 @@
 
 <interface>
 
-<template class="RpyApplicationWindow" parent="HdyApplicationWindow">
+<template class="RpyApplicationWindow" parent="AdwApplicationWindow">
 	<!-- Translators: This is the title of the application window -->
 	<property name="title" translatable="yes">Replay</property>
 	<property name="default-width">1024</property>
@@ -35,7 +35,7 @@
 			</child>
 
 			<child>
-				<object class="HdyLeaflet">
+				<object class="AdwLeaflet">
 					<property name="vexpand">True</property>
 
 					<child>

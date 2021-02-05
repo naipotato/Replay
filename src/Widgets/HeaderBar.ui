@@ -27,7 +27,7 @@
 	</property>
 
 	<child>
-		<object class="HdyHeaderBar" id="_header_bar">
+		<object class="AdwHeaderBar" id="_header_bar">
 			<style>
 				<class name="titlebar" />
 			</style>
@@ -48,7 +48,7 @@
 							<property name="name">search</property>
 
 							<property name="child">
-								<object class="HdyClamp">
+								<object class="AdwClamp">
 									<property name="tightening-threshold">400</property>
 									<property name="maximum-size">600</property>
 

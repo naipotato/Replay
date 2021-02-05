@@ -75,7 +75,7 @@
           ]
         },
         {
-          "name": "libhandy",
+          "name": "libadwaita",
           "buildsystem": "meson",
           "builddir": true,
           "config-opts": [
@@ -85,8 +85,8 @@
           "sources": [
             {
               "type": "git",
-              "url": "https://gitlab.gnome.org/exalm/libhandy.git",
-              "branch": "gtk4"
+              "url": "https://gitlab.gnome.org/exalm/libadwaita.git",
+              "branch": "main"
             }
           ]
         }

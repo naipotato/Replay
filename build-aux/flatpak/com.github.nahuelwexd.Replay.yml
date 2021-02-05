@@ -87,8 +87,8 @@ modules:
               - type: git
                 url: https://github.com/sass/libsass.git
 
-      # Adaptive design
-      - name: libhandy
+      # GNOME Design Language
+      - name: libadwaita
         buildsystem: meson
         builddir: true
 
@@ -98,5 +98,5 @@ modules:
 
         sources:
           - type: git
-            url: https://gitlab.gnome.org/exalm/libhandy.git
-            branch: gtk4
+            url: https://gitlab.gnome.org/exalm/libadwaita.git
+            branch: main
