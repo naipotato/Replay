@@ -35,7 +35,7 @@
 					<property name="orientation">vertical</property>
 
 					<child>
-						<object class="HdyCarousel" id="carousel">
+						<object class="AdwCarousel" id="carousel">
 							<property name="animation-duration">500</property>
 
 							<child>
@@ -77,7 +77,7 @@
 					</child>
 
 					<child>
-						<object class="HdyCarouselIndicatorDots">
+						<object class="AdwCarouselIndicatorDots">
 							<property name="carousel">carousel</property>
 						</object>
 					</child>

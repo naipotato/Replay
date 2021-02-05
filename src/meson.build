@@ -25,7 +25,7 @@ replay_dependencies = [
 	gtk_dep,
 	gee_dep,
 	config_dep,
-	libhandy_dep,
+	adwaita_dep,
 ]
 
 

@@ -73,7 +73,7 @@ public class Rpy.Application : Gtk.Application
 				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 		}
 
-		Hdy.init ();
+		Adw.init ();
 
 		this.ensure_type_registration ();
 		this.register_actions ();

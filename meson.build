@@ -73,16 +73,16 @@ gtk_dep = dependency ('gtk4')
 gee_dep = dependency ('gee-0.8')
 config_dep = valac.find_library ('config', dirs: vapidir)
 
-libhandy_dep = dependency ('libhandy-4', required: false)
-if not libhandy_dep.found ()
-	libhandy = subproject ('libhandy',
+adwaita_dep = dependency ('libadwaita-1', required: false)
+if not adwaita_dep.found ()
+	adwaita = subproject ('libadwaita',
 		default_options: [
 			'examples=false',
 			'package_subdir=replay',
 			'tests=false',
 		],
 	)
-	libhandy_dep = libhandy.get_variable ('libhandy_vapi')
+	adwaita_dep = adwaita.get_variable ('libadwaita_vapi')
 endif
 
 
