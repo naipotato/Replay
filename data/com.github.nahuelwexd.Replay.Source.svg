@@ -16,7 +16,7 @@
    id="svg11300"
    sodipodi:version="0.32"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
-   sodipodi:docname="someone.somewhere.Replay.Source.svg"
+   sodipodi:docname="com.github.nahuelwexd.Replay.Source.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    style="display:inline;enable-background:new"
@@ -824,9 +824,9 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6568544"
-     inkscape:cx="79.965467"
-     inkscape:cy="49.892435"
+     inkscape:zoom="32.000001"
+     inkscape:cx="60.453229"
+     inkscape:cy="48.474932"
      inkscape:current-layer="layer9"
      showgrid="true"
      inkscape:grid-bbox="true"
@@ -3338,7 +3338,7 @@
          ry="5" />
       <g
          id="g1469"
-         transform="matrix(0.99997642,0,0,0.92857138,45.000245,129.54014)"
+         transform="matrix(0.99997642,0,0,0.92857151,44.000246,129.42856)"
          style="display:inline;enable-background:new">
         <rect
            style="fill:url(#linearGradient1473);fill-opacity:1;stroke-width:0.887411"
