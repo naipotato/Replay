@@ -46,7 +46,7 @@ public class Rpy.StackSidebar : Gtk.Widget
 	}
 
 
-	private Gtk.Widget get_row_from_page (GLib.Object item)
+	private Gtk.Widget get_row_from_page (Object item)
 		requires (item is Gtk.StackPage)
 	{
 		var stack_page = (Gtk.StackPage) item;

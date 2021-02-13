@@ -105,6 +105,6 @@ public class Rpy.HeaderBar : Gtk.Widget
 		this._search_entry.set_key_capture_widget (this);
 
 		this.bind_property ("can-go-back", this._back_button, "visible",
-			GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
+			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
 	}
 }
