@@ -15,26 +15,11 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/ApplicationWindow.ui")]
-public class Rpy.ApplicationWindow : Adw.ApplicationWindow
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/home-page.ui")]
+public class Rpy.HomePage : Gtk.Widget
 {
-	[GtkChild] private unowned Rpy.HeaderBar _header_bar;
-
-
-	public ApplicationWindow (Rpy.Application app)
+	static construct
 	{
-		GLib.Object (
-			application: app
-		);
-	}
-
-
-	construct
-	{
-		this._header_bar.key_capture_widget = this;
-
-#if DEVEL
-		this.add_css_class ("devel");
-#endif
+		set_css_name ("homepage");
 	}
 }

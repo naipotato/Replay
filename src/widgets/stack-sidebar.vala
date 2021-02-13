@@ -15,7 +15,7 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/StackSidebar.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/stack-sidebar.ui")]
 public class Rpy.StackSidebar : Gtk.Widget
 {
 	[GtkChild] private unowned Gtk.ListBox _list_box;

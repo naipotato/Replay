@@ -15,7 +15,7 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HeaderBar.ui")]
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
 public class Rpy.HeaderBar : Gtk.Widget
 {
 	private weak Gtk.Widget?            _capture_widget;
