@@ -17,8 +17,8 @@
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
 public class Rpy.HeaderBar : Gtk.Widget {
-	private weak Gtk.Widget?            _capture_widget;
-	private      Gtk.EventControllerKey _capture_widget_controller;
+	private weak Gtk.Widget? _capture_widget;
+	private Gtk.EventControllerKey _capture_widget_controller;
 
 	[GtkChild]
 	private unowned Adw.HeaderBar _header_bar;
@@ -61,8 +61,8 @@ public class Rpy.HeaderBar : Gtk.Widget {
         }
     }
 
-	public string title         { get; set; }
-	public bool   title_visible { get; set; }
+	public string title { get; set; }
+	public bool title_visible { get; set; }
 
 
 	public override void dispose () {

@@ -22,7 +22,7 @@ public class Rpy.VideoCarouselItem : Gtk.Widget {
 
 
 	public string thumbnail_url { get; set; }
-	public string title         { get; set; }
+	public string title { get; set; }
 	public string channel_title { get; set; }
 
 

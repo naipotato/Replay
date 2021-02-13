@@ -26,7 +26,7 @@ public class Rpy.Application : Gtk.Application {
 			resource_base_path: Constants.RESOURCE_PATH,
 #endif
 			application_id: Constants.APPLICATION_ID,
-			         flags: ApplicationFlags.FLAGS_NONE
+			flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
 
@@ -96,21 +96,21 @@ public class Rpy.Application : Gtk.Application {
 
 	private void show_about_dialog () requires (this.active_window != null) {
 		var about_dialog = new Gtk.AboutDialog () {
-			      transient_for = this.active_window,
-			              modal = true,
+			transient_for = this.active_window,
+			modal = true,
 			destroy_with_parent = true,
-			                      // Translators: This is the title of the About dialog
-			              title = _("About Replay"),
-			     logo_icon_name = Constants.APPLICATION_ID,
-			            version = Constants.VERSION,
-			                      // Translators: This is the summary of the app
-			           comments = _("Explore and watch YouTube videos"),
-			            website = Constants.PROJECT_WEBSITE,
-			                      // Translators: This is the label of the link to the app's repository
-			      website_label = _("Project repository"),
-			          copyright = "© 2019 - 2020 Nahuel Gomez Castro",
-			       license_type = Gtk.License.GPL_3_0,
-			            authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" }
+			// Translators: This is the title of the About dialog
+			title = _("About Replay"),
+			logo_icon_name = Constants.APPLICATION_ID,
+			version = Constants.VERSION,
+			// Translators: This is the summary of the app
+			comments = _("Explore and watch YouTube videos"),
+			website = Constants.PROJECT_WEBSITE,
+			// Translators: This is the label of the link to the app's repository
+			website_label = _("Project repository"),
+			copyright = "© 2019 - 2020 Nahuel Gomez Castro",
+			license_type = Gtk.License.GPL_3_0,
+			authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" }
 		};
 
 		about_dialog.present_with_time (Gdk.CURRENT_TIME);
