@@ -37,7 +37,7 @@ public class Rpy.HeaderBar : Gtk.Widget {
 			}
 
 			if (this._capture_widget != null) {
-				((!) this._capture_widget).remove_controller (this._capture_widget_controller);
+				this._capture_widget.remove_controller (this._capture_widget_controller);
 			}
 
 			this._capture_widget = value;
@@ -51,7 +51,7 @@ public class Rpy.HeaderBar : Gtk.Widget {
 				this._capture_widget_controller.key_released.connect (
 					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state));
 
-				((!) this._capture_widget).add_controller (this._capture_widget_controller);
+				this._capture_widget.add_controller (this._capture_widget_controller);
             }
         }
     }

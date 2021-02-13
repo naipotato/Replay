@@ -42,7 +42,7 @@ public class Rpy.Application : Gtk.Application {
 	}
 
 
-	public override void activate () requires (this.get_active_window () != null) {
+	public override void activate () requires (this.active_window != null) {
 		this.active_window.present_with_time (Gdk.CURRENT_TIME);
 	}
 
@@ -55,7 +55,7 @@ public class Rpy.Application : Gtk.Application {
 		// Since this is a media app, the dark theme is used
 		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
 		if (gtk_settings != null) {
-			((!) gtk_settings).gtk_application_prefer_dark_theme = true;
+			gtk_settings.gtk_application_prefer_dark_theme = true;
 		}
 
 		var css_provider = new Gtk.CssProvider ();
@@ -63,7 +63,7 @@ public class Rpy.Application : Gtk.Application {
 
 		Gdk.Display? display = Gdk.Display.get_default ();
 		if (display != null) {
-			Gtk.StyleContext.add_provider_for_display ((!) display, css_provider,
+			Gtk.StyleContext.add_provider_for_display (display, css_provider,
 				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 		}
 
@@ -94,7 +94,7 @@ public class Rpy.Application : Gtk.Application {
 		this.add_action (quit_action);
 	}
 
-	private void show_about_dialog () requires (this.get_active_window () != null) {
+	private void show_about_dialog () requires (this.active_window != null) {
 		var about_dialog = new Gtk.AboutDialog () {
 			      transient_for = this.active_window,
 			              modal = true,
