@@ -25,8 +25,9 @@ public class Rpy.StackSidebar : Gtk.Widget {
 	public Gtk.Stack? stack {
 		get { return this._stack; }
 		set {
-			if (this._stack != null)
+			if (this._stack != null) {
 				((!) this._stack).pages.selection_changed.disconnect (this.on_stack_pages_selection_changed);
+			}
 
 			this._stack = value;
 

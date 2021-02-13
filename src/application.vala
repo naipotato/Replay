@@ -54,8 +54,9 @@ public class Rpy.Application : Gtk.Application {
 
 		// Since this is a media app, the dark theme is used
 		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
-		if (gtk_settings != null)
+		if (gtk_settings != null) {
 			((!) gtk_settings).gtk_application_prefer_dark_theme = true;
+		}
 
 		var css_provider = new Gtk.CssProvider ();
 		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");

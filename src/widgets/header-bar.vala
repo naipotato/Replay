@@ -32,10 +32,13 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	public weak Gtk.Widget? key_capture_widget {
 		get { return this._capture_widget; }
 		set {
-			if (this._capture_widget == value) return;
+			if (this._capture_widget == value) {
+				return;
+			}
 
-			if (this._capture_widget != null)
+			if (this._capture_widget != null) {
 				((!) this._capture_widget).remove_controller (this._capture_widget_controller);
+			}
 
 			this._capture_widget = value;
 
@@ -66,14 +69,17 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	// More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
 	// ported to Vala and modified for Replay
 	private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state) {
-		if (!this.get_mapped ())
+		if (!this.get_mapped ()) {
 			return Gdk.EVENT_PROPAGATE;
+		}
 
-		if (this.title_visible)
+		if (this.title_visible) {
 			return Gdk.EVENT_PROPAGATE;
+		}
 
-		if (this._search_entry.has_focus)
+		if (this._search_entry.has_focus) {
 			return Gdk.EVENT_PROPAGATE;
+		}
 
 		bool handled = this._capture_widget_controller.forward (this);
 
