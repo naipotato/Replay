@@ -17,7 +17,8 @@
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/video-carousel-item.ui")]
 public class Rpy.VideoCarouselItem : Gtk.Widget {
-	[GtkChild] private unowned Gtk.Picture _thumbnail;
+	[GtkChild]
+	private unowned Gtk.Picture _thumbnail;
 
 
 	public string thumbnail_url { get; set; }
