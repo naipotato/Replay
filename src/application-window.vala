@@ -16,21 +16,18 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/application-window.ui")]
-public class Rpy.ApplicationWindow : Adw.ApplicationWindow
-{
+public class Rpy.ApplicationWindow : Adw.ApplicationWindow {
 	[GtkChild] private unowned HeaderBar _header_bar;
 
 
-	public ApplicationWindow (Rpy.Application app)
-	{
+	public ApplicationWindow (Rpy.Application app) {
 		Object (
 			application: app
 		);
 	}
 
 
-	construct
-	{
+	construct {
 		this._header_bar.key_capture_widget = this;
 
 #if DEVEL

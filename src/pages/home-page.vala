@@ -16,10 +16,8 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/home-page.ui")]
-public class Rpy.HomePage : Gtk.Widget
-{
-	static construct
-	{
+public class Rpy.HomePage : Gtk.Widget {
+	static construct {
 		set_css_name ("homepage");
 	}
 }

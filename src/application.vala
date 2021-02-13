@@ -15,10 +15,8 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Rpy.Application : Gtk.Application
-{
-	public Application ()
-	{
+public class Rpy.Application : Gtk.Application {
+	public Application () {
 		Object (
 #if DEVEL
 			// In development builds, we force the resource base path to be the
@@ -33,8 +31,7 @@ public class Rpy.Application : Gtk.Application
 	}
 
 
-	public static int main (string[] args)
-	{
+	public static int main (string[] args) {
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		Intl.setlocale (LocaleCategory.ALL);
 		Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
@@ -45,14 +42,11 @@ public class Rpy.Application : Gtk.Application
 	}
 
 
-	public override void activate ()
-		requires (this.get_active_window () != null)
-	{
+	public override void activate () requires (this.get_active_window () != null) {
 		this.active_window.present_with_time (Gdk.CURRENT_TIME);
 	}
 
-	public override void startup ()
-	{
+	public override void startup () {
 		base.startup ();
 
 		// Translators: This is the application name
@@ -67,8 +61,7 @@ public class Rpy.Application : Gtk.Application
 		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
 
 		Gdk.Display? display = Gdk.Display.get_default ();
-		if (display != null)
-		{
+		if (display != null) {
 			Gtk.StyleContext.add_provider_for_display ((!) display, css_provider,
 				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 		}
@@ -82,16 +75,14 @@ public class Rpy.Application : Gtk.Application
 	}
 
 
-	private void ensure_type_registration ()
-	{
+	private void ensure_type_registration () {
 		typeof (HeaderBar).ensure ();
 		typeof (HomePage).ensure ();
 		typeof (StackSidebar).ensure ();
 		typeof (VideoCarouselItem).ensure ();
 	}
 
-	private void register_actions ()
-	{
+	private void register_actions () {
 		var about_action = new SimpleAction ("about", null);
 		about_action.activate.connect (parameter => this.show_about_dialog ());
 		this.add_action (about_action);
@@ -102,11 +93,8 @@ public class Rpy.Application : Gtk.Application
 		this.add_action (quit_action);
 	}
 
-	private void show_about_dialog ()
-		requires (this.get_active_window () != null)
-	{
-		var about_dialog = new Gtk.AboutDialog ()
-		{
+	private void show_about_dialog () requires (this.get_active_window () != null) {
+		var about_dialog = new Gtk.AboutDialog () {
 			      transient_for = this.active_window,
 			              modal = true,
 			destroy_with_parent = true,

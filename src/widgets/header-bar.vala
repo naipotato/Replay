@@ -16,8 +16,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
-public class Rpy.HeaderBar : Gtk.Widget
-{
+public class Rpy.HeaderBar : Gtk.Widget {
 	private weak Gtk.Widget?            _capture_widget;
 	private      Gtk.EventControllerKey _capture_widget_controller;
 
@@ -30,11 +29,9 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
 	// ported to Vala.
-	public weak Gtk.Widget? key_capture_widget
-	{
+	public weak Gtk.Widget? key_capture_widget {
 		get { return this._capture_widget; }
-		set
-		{
+		set {
 			if (this._capture_widget == value) return;
 
 			if (this._capture_widget != null)
@@ -42,10 +39,8 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 			this._capture_widget = value;
 
-			if (this._capture_widget != null)
-			{
-				this._capture_widget_controller = new Gtk.EventControllerKey ()
-				{
+			if (this._capture_widget != null) {
+				this._capture_widget_controller = new Gtk.EventControllerKey () {
 					propagation_phase = Gtk.PropagationPhase.CAPTURE
 				};
 
@@ -62,8 +57,7 @@ public class Rpy.HeaderBar : Gtk.Widget
 	public bool   title_visible { get; set; }
 
 
-	public override void dispose ()
-	{
+	public override void dispose () {
 		this._header_bar.unparent ();
 		base.dispose ();
 	}
@@ -71,8 +65,7 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 	// More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
 	// ported to Vala and modified for Replay
-	private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state)
-	{
+	private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state) {
 		if (!this.get_mapped ())
 			return Gdk.EVENT_PROPAGATE;
 
@@ -84,8 +77,7 @@ public class Rpy.HeaderBar : Gtk.Widget
 
 		bool handled = this._capture_widget_controller.forward (this);
 
-		if (handled == Gdk.EVENT_STOP)
-		{
+		if (handled == Gdk.EVENT_STOP) {
 			this._search_entry.grab_focus ();
 			this._search_entry.set_position (int.MAX);
 		}
@@ -94,14 +86,12 @@ public class Rpy.HeaderBar : Gtk.Widget
 	}
 
 	[GtkCallback]
-	private void on_search_entry_stop_search ()
-	{
+	private void on_search_entry_stop_search () {
 		this._search_entry.text = "";
 	}
 
 
-	construct
-	{
+	construct {
 		this._search_entry.set_key_capture_widget (this);
 
 		this.bind_property ("can-go-back", this._back_button, "visible",
