@@ -61,8 +61,11 @@ public class Rpy.Application : Gtk.Application {
 
 		Gdk.Display? display = Gdk.Display.get_default ();
 		if (display != null) {
-			Gtk.StyleContext.add_provider_for_display (display, css_provider,
-				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+			Gtk.StyleContext.add_provider_for_display (
+				display,
+				css_provider,
+				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+			);
 		}
 
 		Adw.init ();

@@ -101,7 +101,11 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	construct {
 		this._search_entry.set_key_capture_widget (this);
 
-		this.bind_property ("can-go-back", this._back_button, "visible",
-			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+		this.bind_property (
+			"can-go-back",
+			this._back_button,
+			"visible",
+			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+		);
 	}
 }
