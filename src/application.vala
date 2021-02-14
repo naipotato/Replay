@@ -30,7 +30,6 @@ public class Rpy.Application : Gtk.Application {
 		);
 	}
 
-
 	public static int main (string[] args) {
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		Intl.setlocale (LocaleCategory.ALL);
@@ -40,7 +39,6 @@ public class Rpy.Application : Gtk.Application {
 
 		return new Rpy.Application ().run (args);
 	}
-
 
 	public override void activate () requires (this.active_window != null) {
 		this.active_window.present_with_time (Gdk.CURRENT_TIME);
@@ -74,7 +72,6 @@ public class Rpy.Application : Gtk.Application {
 
 		new ApplicationWindow (this);
 	}
-
 
 	private void ensure_type_registration () {
 		typeof (HeaderBar).ensure ();

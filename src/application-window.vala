@@ -20,13 +20,11 @@ public class Rpy.ApplicationWindow : Adw.ApplicationWindow {
 	[GtkChild]
 	private unowned HeaderBar _header_bar;
 
-
 	public ApplicationWindow (Rpy.Application app) {
 		Object (
 			application: app
 		);
 	}
-
 
 	construct {
 		this._header_bar.key_capture_widget = this;

@@ -29,7 +29,6 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	[GtkChild]
 	private unowned Gtk.Button _back_button;
 
-
 	public bool can_go_back { get; set; }
 
 	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
@@ -64,12 +63,10 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	public string title { get; set; }
 	public bool title_visible { get; set; }
 
-
 	public override void dispose () {
 		this._header_bar.unparent ();
 		base.dispose ();
 	}
-
 
 	// More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
 	// ported to Vala and modified for Replay
@@ -100,7 +97,6 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	private void on_search_entry_stop_search () {
 		this._search_entry.text = "";
 	}
-
 
 	construct {
 		this._search_entry.set_key_capture_widget (this);

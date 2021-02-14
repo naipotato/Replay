@@ -22,7 +22,6 @@ public class Rpy.StackSidebar : Gtk.Widget {
 
 	private Gtk.Stack? _stack;
 
-
 	public Gtk.Stack? stack {
 		get { return this._stack; }
 		set {
@@ -42,7 +41,6 @@ public class Rpy.StackSidebar : Gtk.Widget {
 			}
 		}
 	}
-
 
 	private Gtk.Widget get_row_from_page (Object item) requires (item is Gtk.StackPage) {
 		var stack_page = (Gtk.StackPage) item;
@@ -70,12 +68,10 @@ public class Rpy.StackSidebar : Gtk.Widget {
 		this._list_box.select_row (row_selected);
 	}
 
-
 	public override void dispose () {
 		this._list_box.unparent ();
 		base.dispose ();
 	}
-
 
 	static construct {
 		set_css_name ("stacksidebar");

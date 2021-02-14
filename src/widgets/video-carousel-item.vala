@@ -20,11 +20,9 @@ public class Rpy.VideoCarouselItem : Gtk.Widget {
 	[GtkChild]
 	private unowned Gtk.Picture _thumbnail;
 
-
 	public string thumbnail_url { get; set; }
 	public string title { get; set; }
 	public string channel_title { get; set; }
-
 
 	public override void snapshot (Gtk.Snapshot snapshot) {
 		var rect = Graphene.Rect ().init (0, 0, this.get_width (), this.get_height ());
@@ -37,7 +35,6 @@ public class Rpy.VideoCarouselItem : Gtk.Widget {
 		snapshot.pop ();
 	}
 
-
 	private void build_extra_constraints (Gtk.ConstraintLayout layout_manager) {
 		layout_manager.add_constraint (new Gtk.Constraint (this._thumbnail, Gtk.ConstraintAttribute.TOP,
 			Gtk.ConstraintRelation.EQ, this._thumbnail, Gtk.ConstraintAttribute.WIDTH, -0.28125, 125,
@@ -46,7 +43,6 @@ public class Rpy.VideoCarouselItem : Gtk.Widget {
 			Gtk.ConstraintRelation.EQ, this._thumbnail, Gtk.ConstraintAttribute.WIDTH, 0.28125, 125,
 			Gtk.ConstraintStrength.REQUIRED));
 	}
-
 
 	construct {
 		// FIXME: This thing is hardcoded, it should be loaded from an URL
