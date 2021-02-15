@@ -31,7 +31,8 @@ public class Rpy.HeaderBar : Gtk.Widget {
 
 	public bool can_go_back { get; set; }
 
-	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
+	// Some bits stolen from
+	// https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
 	// ported to Vala.
 	public unowned Gtk.Widget? key_capture_widget {
 		get { return this._capture_widget; }
@@ -68,7 +69,8 @@ public class Rpy.HeaderBar : Gtk.Widget {
 		base.dispose ();
 	}
 
-	// More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
+	// More bits stolen from
+	// https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
 	// ported to Vala and modified for Replay
 	private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state) {
 		if (!this.get_mapped ()) {
