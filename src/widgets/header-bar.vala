@@ -17,7 +17,7 @@
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
 public class Rpy.HeaderBar : Gtk.Widget {
-	private weak Gtk.Widget? _capture_widget;
+	private unowned Gtk.Widget? _capture_widget;
 	private Gtk.EventControllerKey _capture_widget_controller;
 
 	[GtkChild]
@@ -33,7 +33,7 @@ public class Rpy.HeaderBar : Gtk.Widget {
 
 	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
 	// ported to Vala.
-	public weak Gtk.Widget? key_capture_widget {
+	public unowned Gtk.Widget? key_capture_widget {
 		get { return this._capture_widget; }
 		set {
 			if (this._capture_widget == value) {
