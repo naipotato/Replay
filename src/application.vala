@@ -19,10 +19,10 @@ public class Rpy.Application : Gtk.Application {
 	public Application () {
 		Object (
 #if DEVEL
-			// In development builds, we force the resource base path to be the
-			// same as that of release builds, to not have to manually load the
-			// icons, shortcuts window and other automatic resources, avoiding
-			// future headaches.
+			// In development builds, force the resource base path to be the
+			// same as the one we use in release builds, so as not to have to
+			// manually load icons, shortcut window, and other automatic
+			// resources, avoiding future headaches
 			resource_base_path: Constants.RESOURCE_PATH,
 #endif
 			application_id: Constants.APPLICATION_ID,
@@ -31,6 +31,7 @@ public class Rpy.Application : Gtk.Application {
 	}
 
 	public static int main (string[] args) {
+		// Configure project localizations
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		Intl.setlocale (LocaleCategory.ALL);
 		Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
@@ -50,12 +51,13 @@ public class Rpy.Application : Gtk.Application {
 		/// TRANSLATORS: This is the application name
 		Environment.set_application_name (_("Replay"));
 
-		// Since this is a media app, the dark theme is used
+		// Since this is a media app, inform GTK that we prefer the dark theme
 		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
 		if (gtk_settings != null) {
 			gtk_settings.gtk_application_prefer_dark_theme = true;
 		}
 
+		// Load our custom stylesheet
 		var css_provider = new Gtk.CssProvider ();
 		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
 
@@ -68,6 +70,8 @@ public class Rpy.Application : Gtk.Application {
 			);
 		}
 
+		// FIXME: This call may be replaced by AdwApplication
+		//        https://gitlab.gnome.org/exalm/libadwaita/-/issues/30#note_1004873
 		Adw.init ();
 
 		this.ensure_type_registration ();
