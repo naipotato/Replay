@@ -48,14 +48,17 @@ public class Rpy.Application : Gtk.Application {
 	public override void startup () {
 		base.startup ();
 
+
 		/// TRANSLATORS: This is the application name
 		Environment.set_application_name (_("Replay"));
+
 
 		// Since this is a media app, inform GTK that we prefer the dark theme
 		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
 		if (gtk_settings != null) {
 			gtk_settings.gtk_application_prefer_dark_theme = true;
 		}
+
 
 		// Load our custom stylesheet
 		var css_provider = new Gtk.CssProvider ();
@@ -70,24 +73,20 @@ public class Rpy.Application : Gtk.Application {
 			);
 		}
 
+
 		// FIXME: This call may be replaced by AdwApplication
 		//        https://gitlab.gnome.org/exalm/libadwaita/-/issues/30#note_1004873
 		Adw.init ();
 
-		this.ensure_type_registration ();
-		this.register_actions ();
 
-		new ApplicationWindow (this);
-	}
-
-	private void ensure_type_registration () {
+		// Register custom types
 		typeof (HeaderBar).ensure ();
 		typeof (HomePage).ensure ();
 		typeof (StackSidebar).ensure ();
 		typeof (VideoCarouselItem).ensure ();
-	}
 
-	private void register_actions () {
+
+		// Register app actions
 		var about_action = new SimpleAction ("about", null);
 		about_action.activate.connect (parameter => this.show_about_dialog ());
 		this.add_action (about_action);
@@ -96,6 +95,9 @@ public class Rpy.Application : Gtk.Application {
 		quit_action.activate.connect (parameter => this.quit ());
 		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
 		this.add_action (quit_action);
+
+
+		new ApplicationWindow (this);
 	}
 
 	private void show_about_dialog () requires (this.active_window != null) {
