@@ -33,8 +33,10 @@
 			</style>
 
 			<child type="start">
-				<object class="GtkButton" id="_back_button">
+				<object class="GtkButton">
 					<property name="icon-name">go-previous-symbolic</property>
+					<property name="visible" bind-property="can-go-back" bind-source="RpyHeaderBar"
+					          bind-flags="default|sync-create" />
 				</object>
 			</child>
 

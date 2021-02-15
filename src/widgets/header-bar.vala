@@ -26,9 +26,6 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	[GtkChild]
 	private unowned Gtk.SearchEntry _search_entry;
 
-	[GtkChild]
-	private unowned Gtk.Button _back_button;
-
 	public bool can_go_back { get; set; }
 
 	// Some bits stolen from
@@ -101,12 +98,5 @@ public class Rpy.HeaderBar : Gtk.Widget {
 
 	construct {
 		this._search_entry.set_key_capture_widget (this);
-
-		this.bind_property (
-			"can-go-back",
-			this._back_button,
-			"visible",
-			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-		);
 	}
 }
