@@ -61,7 +61,7 @@ public class Rpy.StackSidebar : Gtk.Widget {
 	private void on_list_box_row_activated (Gtk.ListBoxRow row) {
 		// Due to the fact that the pages of the stack are binded to the list
 		// box, we can assume that the items are in the same order
-		this._stack.pages.select_item (row.get_index (), true);
+		this.stack.pages.select_item (row.get_index (), true);
 		this._list_box.select_row (row);
 	}
 
