@@ -18,7 +18,7 @@
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
 public class Rpy.HeaderBar : Gtk.Widget {
 	private unowned Gtk.Widget? _capture_widget;
-	private Gtk.EventControllerKey _capture_widget_controller;
+	private Gtk.EventControllerKey? _capture_widget_controller;
 
 	[GtkChild]
 	private unowned Adw.HeaderBar _header_bar;
