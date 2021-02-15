@@ -43,6 +43,8 @@ public class Rpy.StackSidebar : Gtk.Widget {
 	}
 
 	private Gtk.Widget get_row_from_page (Object item) requires (item is Gtk.StackPage) {
+		// FIXME: Remove this cast once Fedora valac gains support for type
+		//        narrowing
 		var stack_page = (Gtk.StackPage) item;
 
 		var icon = new Gtk.Image.from_icon_name (stack_page.icon_name);
