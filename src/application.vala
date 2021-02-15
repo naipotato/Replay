@@ -55,9 +55,9 @@ public class Rpy.Application : Gtk.Application {
 
 		// Since this is a media app, inform GTK that we prefer the dark theme
 		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
-		if (gtk_settings != null) {
-			gtk_settings.gtk_application_prefer_dark_theme = true;
-		}
+		assert (gtk_settings != null);
+
+		gtk_settings.gtk_application_prefer_dark_theme = true;
 
 
 		// Load our custom stylesheet
@@ -65,13 +65,9 @@ public class Rpy.Application : Gtk.Application {
 		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
 
 		Gdk.Display? display = Gdk.Display.get_default ();
-		if (display != null) {
-			Gtk.StyleContext.add_provider_for_display (
-				display,
-				css_provider,
-				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-			);
-		}
+		assert (display != null);
+
+		Gtk.StyleContext.add_provider_for_display (display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
 
 		// FIXME: This call may be replaced by AdwApplication
