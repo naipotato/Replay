@@ -37,7 +37,7 @@ public class Rpy.StackSidebar : Gtk.Widget {
 
 				// The first selection always needs to be done manually
 				Gtk.Bitset selection = this._stack.pages.get_selection ();
-				this.on_stack_pages_selection_changed (selection.get_nth (0), 0);
+				this.on_stack_pages_selection_changed (selection.get_nth (0));
 			}
 		}
 	}
@@ -65,7 +65,7 @@ public class Rpy.StackSidebar : Gtk.Widget {
 		this._list_box.select_row (row);
 	}
 
-	private void on_stack_pages_selection_changed (uint position, uint n_items) {
+	private void on_stack_pages_selection_changed (uint position) {
 		var row_selected = this._list_box.get_row_at_index ((int) position);
 		this._list_box.select_row (row_selected);
 	}
