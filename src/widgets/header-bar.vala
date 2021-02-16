@@ -34,7 +34,7 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	public unowned Gtk.Widget? key_capture_widget {
 		get { return this._capture_widget; }
 		set {
-			if (this._capture_widget == value) {
+			if (value == this._capture_widget) {
 				return;
 			}
 
