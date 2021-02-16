@@ -21,7 +21,7 @@
 <interface>
 
 <template class="RpyApplicationWindow" parent="AdwApplicationWindow">
-	<!-- Translators: This is the title of the application window -->
+	<!-- TRANSLATORS: This is the title of the application window -->
 	<property name="title" translatable="yes">Replay</property>
 	<property name="default-width">1024</property>
 	<property name="default-height">600</property>
@@ -50,7 +50,7 @@
 
 							<child>
 								<object class="GtkStackPage">
-									<!-- Translators: This is the label for the home page on the sidebar -->
+									<!-- TRANSLATORS: This is the label for the home page on the sidebar -->
 									<property name="title" translatable="yes">Home</property>
 									<property name="icon-name">go-home-symbolic</property>
 

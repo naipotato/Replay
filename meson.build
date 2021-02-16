@@ -12,12 +12,6 @@ add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name ()),
 )
 
 
-# Enable null safety
-add_project_arguments ('--enable-experimental-non-null',
-	language: 'vala'
-)
-
-
 # Check the profile for this build
 if get_option ('profile') == 'development'
 	profile = '.Devel'

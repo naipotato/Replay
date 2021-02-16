@@ -15,9 +15,22 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Rpy.Core.Video : Object
-{
-	public string id            { get; set; }
-	public string title         { get; set; }
-	public string thumbnail_url { get; set; }
+[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/application-window.ui")]
+public class Rpy.ApplicationWindow : Adw.ApplicationWindow {
+	[GtkChild]
+	private unowned HeaderBar _header_bar;
+
+	public ApplicationWindow (Rpy.Application app) {
+		Object (
+			application: app
+		);
+	}
+
+	construct {
+		this._header_bar.key_capture_widget = this;
+
+#if DEVEL
+		this.add_css_class ("devel");
+#endif
+	}
 }

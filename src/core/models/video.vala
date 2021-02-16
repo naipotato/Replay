@@ -15,11 +15,8 @@
  * Replay.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/github/nahuelwexd/Replay/HomePage.ui")]
-public class Rpy.HomePage : Gtk.Widget
-{
-	static construct
-	{
-		set_css_name ("homepage");
-	}
+public class Rpy.Core.Video : Object {
+	public string id { get; set; }
+	public string title { get; set; }
+	public string thumbnail_url { get; set; }
 }

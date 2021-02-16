@@ -54,7 +54,7 @@
 
 									<child>
 										<object class="GtkSearchEntry" id="_search_entry">
-											<!-- Translators: This is the placeholder shown in the search entry -->
+											<!-- TRANSLATORS: This is the placeholder shown in the search entry -->
 											<property name="placeholder-text" translatable="yes">Search</property>
 											<signal name="stop-search" handler="on_search_entry_stop_search" />
 										</object>
@@ -72,7 +72,7 @@
 
 							<property name="child">
 								<object class="GtkLabel">
-									<!-- Translators: This is the title shown in the application window on mobile view -->
+									<!-- TRANSLATORS: This is the title shown in the application window on mobile view -->
 									<property name="label" translatable="yes">Replay</property>
 
 									<style>
@@ -91,7 +91,7 @@
 			<child type="end">
 				<object class="GtkMenuButton" id="_menu_button">
 					<property name="menu-model">primary-menu</property>
-					<!-- Translators: This is the tooltip shown for the button that opens the primary menu -->
+					<!-- TRANSLATORS: This is the tooltip shown for the button that opens the primary menu -->
 					<property name="tooltip-text" translatable="yes">Menu</property>
 					<property name="direction">none</property>
 				</object>
@@ -105,7 +105,7 @@
 <menu id="primary-menu">
 	<section>
 		<item>
-			<!-- Translators: This the label for the item in the primary menu that opens the about dialog -->
+			<!-- TRANSLATORS: This the label for the item in the primary menu that opens the about dialog -->
 			<attribute name="label" translatable="yes">About Replay</attribute>
 			<attribute name="action">app.about</attribute>
 		</item>
