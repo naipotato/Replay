@@ -1,25 +1,25 @@
 # Replay Design
 
-This is a repository in which the different mockups that will be used during the development of [Replay](https://github.com/nahuelwexd/Replay) will be published, for each of its screens and sections. It is also the place where all discussions related to the app design should take place.
+Welcome to the design branch of Replay! Each of the different mockups that will
+be used for the development of the app will be published here.
 
-## Goals for the design
+## Design Goals
 
-- Should be simple and comfortable to use
-
-- Should be friendly with trackpads and touchscreens
-
-- Should be adaptive, for different form factors
-
+- It must be simple and comfortable to use
+- Must be friendly with touchscreens and touchpads
+- Must be adaptive, for different form factors
 - Must feel familiar to current YouTube users
-
-- Must follow the [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/stable)
+- Must follow the
+  [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/stable)
 
 ## Contributing
 
-Please, read our [contributing guidelines](.github/CONTRIBUTING.md) before doing anything.
+If you want to contribute your own designs, we suggest that you read the
+[contributing guidelines](.github/CONTRIBUTING.md).
 
 ## License
 
-[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0)
+[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0)
 
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0).
+This work is licensed under the
+[Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0).
