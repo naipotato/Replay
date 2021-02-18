@@ -12,11 +12,9 @@ replay_sources = files (
 )
 
 
-gnome = import ('gnome')
-
-replay_sources += gnome.compile_resources (
-	'@0@.gresource'.format (meson.project_name ()),
-	'@0@.gresource.xml'.format (meson.project_name ()),
+ui_resources = gnome.compile_resources (
+	'replay-ui-resources',
+	'replay-ui-resources.xml',
 	dependencies: custom_css
 )
 
@@ -32,6 +30,8 @@ replay_dependencies = [
 executable (
 	meson.project_name (),
 	replay_sources,
+	icon_resources,
+	ui_resources,
 
 	       dependencies: replay_dependencies,
 	            install: true,

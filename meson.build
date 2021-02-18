@@ -4,9 +4,6 @@ project ('com.github.nahuelwexd.Replay', 'c', 'vala',
 )
 
 
-# Enable gettext
-i18n = import ('i18n')
-
 add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name ()),
 	language: 'c'
 )
@@ -60,6 +57,8 @@ confinc = include_directories ('.')
 # Common variables
 valac = meson.get_compiler ('vala')
 vapidir = meson.source_root () / 'vapi'
+gnome = import ('gnome')
+i18n = import ('i18n')
 
 
 # Dependencies

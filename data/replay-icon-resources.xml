@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+
+<gresource prefix="/com/github/nahuelwexd/Replay">
+	<file>icons/scalable/actions/go-trending-symbolic.svg</file>
+	<file>icons/scalable/actions/go-subscriptions-symbolic.svg</file>
+	<file>icons/scalable/actions/go-liked-symbolic.svg</file>
+	<file>icons/scalable/actions/go-favorites-symbolic.svg</file>
+	<file>icons/scalable/actions/go-history-symbolic.svg</file>
+	<file>icons/scalable/actions/go-watch-later-symbolic.svg</file>
+	<file>icons/scalable/actions/go-playlists-symbolic.svg</file>
+</gresource>
+
+</gresources>
