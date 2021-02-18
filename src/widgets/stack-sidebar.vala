@@ -25,6 +25,10 @@ public class Rpy.StackSidebar : Gtk.Widget {
 	public Gtk.Stack? stack {
 		get { return this._stack; }
 		set {
+			if (value == this._stack) {
+				return;
+			}
+
 			if (this._stack != null) {
 				this._stack.pages.selection_changed.disconnect (this.on_stack_pages_selection_changed);
 			}
@@ -37,12 +41,14 @@ public class Rpy.StackSidebar : Gtk.Widget {
 
 				// The first selection always needs to be done manually
 				Gtk.Bitset selection = this._stack.pages.get_selection ();
-				this.on_stack_pages_selection_changed (selection.get_nth (0), 0);
+				this.on_stack_pages_selection_changed (selection.get_nth (0));
 			}
 		}
 	}
 
 	private Gtk.Widget get_row_from_page (Object item) requires (item is Gtk.StackPage) {
+		// FIXME: Remove this cast once Fedora valac gains support for type
+		//        narrowing
 		var stack_page = (Gtk.StackPage) item;
 
 		var icon = new Gtk.Image.from_icon_name (stack_page.icon_name);
@@ -59,11 +65,11 @@ public class Rpy.StackSidebar : Gtk.Widget {
 	private void on_list_box_row_activated (Gtk.ListBoxRow row) {
 		// Due to the fact that the pages of the stack are binded to the list
 		// box, we can assume that the items are in the same order
-		this._stack.pages.select_item (row.get_index (), true);
+		this.stack.pages.select_item (row.get_index (), true);
 		this._list_box.select_row (row);
 	}
 
-	private void on_stack_pages_selection_changed (uint position, uint n_items) {
+	private void on_stack_pages_selection_changed (uint position) {
 		var row_selected = this._list_box.get_row_at_index ((int) position);
 		this._list_box.select_row (row_selected);
 	}

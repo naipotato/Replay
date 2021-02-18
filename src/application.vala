@@ -19,10 +19,10 @@ public class Rpy.Application : Gtk.Application {
 	public Application () {
 		Object (
 #if DEVEL
-			// In development builds, we force the resource base path to be the
-			// same as that of release builds, to not have to manually load the
-			// icons, shortcuts window and other automatic resources, avoiding
-			// future headaches.
+			// In development builds, force the resource base path to be the
+			// same as the one we use in release builds, so as not to have to
+			// manually load icons, shortcut window, and other automatic
+			// resources, avoiding future headaches
 			resource_base_path: Constants.RESOURCE_PATH,
 #endif
 			application_id: Constants.APPLICATION_ID,
@@ -31,6 +31,7 @@ public class Rpy.Application : Gtk.Application {
 	}
 
 	public static int main (string[] args) {
+		// Configure project localizations
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		Intl.setlocale (LocaleCategory.ALL);
 		Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
@@ -47,51 +48,52 @@ public class Rpy.Application : Gtk.Application {
 	public override void startup () {
 		base.startup ();
 
+
 		/// TRANSLATORS: This is the application name
 		Environment.set_application_name (_("Replay"));
 
-		// Since this is a media app, the dark theme is used
-		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
-		if (gtk_settings != null) {
-			gtk_settings.gtk_application_prefer_dark_theme = true;
-		}
 
+		// Since this is a media app, inform GTK that we prefer the dark theme
+		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
+		assert (gtk_settings != null);
+
+		gtk_settings.gtk_application_prefer_dark_theme = true;
+
+
+		// Load our custom stylesheet
 		var css_provider = new Gtk.CssProvider ();
 		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
 
 		Gdk.Display? display = Gdk.Display.get_default ();
-		if (display != null) {
-			Gtk.StyleContext.add_provider_for_display (
-				display,
-				css_provider,
-				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-			);
-		}
+		assert (display != null);
 
+		Gtk.StyleContext.add_provider_for_display (display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+
+		// FIXME: This call may be replaced by AdwApplication
+		//        https://gitlab.gnome.org/exalm/libadwaita/-/issues/30#note_1004873
 		Adw.init ();
 
-		this.ensure_type_registration ();
-		this.register_actions ();
 
-		new ApplicationWindow (this);
-	}
-
-	private void ensure_type_registration () {
+		// Register custom types
 		typeof (HeaderBar).ensure ();
 		typeof (HomePage).ensure ();
 		typeof (StackSidebar).ensure ();
 		typeof (VideoCarouselItem).ensure ();
-	}
 
-	private void register_actions () {
+
+		// Register app actions
 		var about_action = new SimpleAction ("about", null);
-		about_action.activate.connect (parameter => this.show_about_dialog ());
+		about_action.activate.connect (this.show_about_dialog);
 		this.add_action (about_action);
 
 		var quit_action = new SimpleAction ("quit", null);
-		quit_action.activate.connect (parameter => this.quit ());
+		quit_action.activate.connect (this.quit);
 		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
 		this.add_action (quit_action);
+
+
+		new ApplicationWindow (this);
 	}
 
 	private void show_about_dialog () requires (this.active_window != null) {

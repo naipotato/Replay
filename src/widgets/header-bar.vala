@@ -17,8 +17,8 @@
 
 [GtkTemplate (ui = "/com/github/nahuelwexd/Replay/header-bar.ui")]
 public class Rpy.HeaderBar : Gtk.Widget {
-	private weak Gtk.Widget? _capture_widget;
-	private Gtk.EventControllerKey _capture_widget_controller;
+	private unowned Gtk.Widget? _capture_widget;
+	private Gtk.EventControllerKey? _capture_widget_controller;
 
 	[GtkChild]
 	private unowned Adw.HeaderBar _header_bar;
@@ -26,17 +26,15 @@ public class Rpy.HeaderBar : Gtk.Widget {
 	[GtkChild]
 	private unowned Gtk.SearchEntry _search_entry;
 
-	[GtkChild]
-	private unowned Gtk.Button _back_button;
-
 	public bool can_go_back { get; set; }
 
-	// Some bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
+	// Some bits stolen from
+	// https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c and
 	// ported to Vala.
-	public weak Gtk.Widget? key_capture_widget {
+	public unowned Gtk.Widget? key_capture_widget {
 		get { return this._capture_widget; }
 		set {
-			if (this._capture_widget == value) {
+			if (value == this._capture_widget) {
 				return;
 			}
 
@@ -52,8 +50,7 @@ public class Rpy.HeaderBar : Gtk.Widget {
 				};
 
 				this._capture_widget_controller.key_pressed.connect (this.capture_widget_key_handled);
-				this._capture_widget_controller.key_released.connect (
-					(keyval, keycode, state) => this.capture_widget_key_handled (keyval, keycode, state));
+				this._capture_widget_controller.key_released.connect (() => this.capture_widget_key_handled ());
 
 				this._capture_widget.add_controller (this._capture_widget_controller);
             }
@@ -68,9 +65,10 @@ public class Rpy.HeaderBar : Gtk.Widget {
 		base.dispose ();
 	}
 
-	// More bits stolen from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
+	// More bits stolen from
+	// https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gtk/gtksearchbar.c,
 	// ported to Vala and modified for Replay
-	private bool capture_widget_key_handled (uint keyval, uint keycode, Gdk.ModifierType state) {
+	private bool capture_widget_key_handled () {
 		if (!this.get_mapped ()) {
 			return Gdk.EVENT_PROPAGATE;
 		}
@@ -100,12 +98,5 @@ public class Rpy.HeaderBar : Gtk.Widget {
 
 	construct {
 		this._search_entry.set_key_capture_widget (this);
-
-		this.bind_property (
-			"can-go-back",
-			this._back_button,
-			"visible",
-			BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-		);
 	}
 }

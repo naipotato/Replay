@@ -31,7 +31,9 @@
 			<property name="orientation">vertical</property>
 
 			<child>
-				<object class="RpyHeaderBar" id="_header_bar" />
+				<object class="RpyHeaderBar" id="_header_bar">
+					<property name="key-capture-widget">RpyApplicationWindow</property>
+				</object>
 			</child>
 
 			<child>
