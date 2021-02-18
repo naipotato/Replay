@@ -11,3 +11,6 @@ destdir = getenv('DESTDIR')
 if not destdir:
 	print('Updating icon cache...')
 	call(['gtk-update-icon-cache', '-qtf', join(datadir, 'icons', 'hicolor')])
+
+	print('Updating desktop database...')
+	call(['update-desktop-database', '-q', join(datadir, 'applications')])
