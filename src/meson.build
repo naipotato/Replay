@@ -15,7 +15,6 @@ replay_sources = files (
 ui_resources = gnome.compile_resources (
 	'replay-ui-resources',
 	'replay-ui-resources.xml',
-	dependencies: custom_css
 )
 
 

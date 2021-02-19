@@ -65,7 +65,7 @@ public class Rpy.Application : Gtk.Application {
 
 		// Load our custom stylesheet
 		var css_provider = new Gtk.CssProvider ();
-		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/styles.css");
+		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/style.css");
 
 		Gdk.Display? display = Gdk.Display.get_default ();
 		assert (display != null);

@@ -31,9 +31,6 @@ finish-args:
   # Hardware acceleration access
   - --device=dri
 
-  # A11Y access
-  - --talk-name=org.a11y.Bus
-
 cleanup:
   - /include
   - /lib/pkgconfig
@@ -61,32 +58,6 @@ modules:
         path: ../..
 
     modules:
-      # Compile SCSS files
-      - name: sassc
-        buildsystem: simple
-
-        build-commands:
-          - autoreconf --force --install
-          - ./configure --prefix=/app
-          - make -j5 install
-
-        sources:
-          - type: git
-            url: https://github.com/sass/sassc.git
-
-        modules:
-          - name: libsass
-            buildsystem: simple
-
-            build-commands:
-              - autoreconf --force --install
-              - ./configure --disable-tests --disable-static --enable-shared --prefix=/app
-              - make -j5 install
-
-            sources:
-              - type: git
-                url: https://github.com/sass/libsass.git
-
       # GNOME Design Language
       - name: libadwaita
         buildsystem: meson

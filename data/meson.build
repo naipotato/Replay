@@ -1,15 +1,3 @@
-# Compile SASS into CSS for custom styles
-sassc = find_program ('sassc')
-
-custom_css = custom_target ('custom-css',
-	           command: [sassc, '-M', '-t', 'compact', '@INPUT@', '@OUTPUT@'],
-	             input: 'styles/styles.scss',
-	            output: 'styles.css',
-	build_always_stale: true,
-	  build_by_default: true
-)
-
-
 # Configure and install the desktop file in order to get an entry in the app drawer
 desktop_file_conf = configuration_data ()
 desktop_file_conf.set ('APPLICATION_ID', application_id)

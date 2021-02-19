@@ -10,8 +10,7 @@
     "--share=ipc",
     "--socket=fallback-x11",
     "--socket=wayland",
-    "--device=dri",
-    "--talk-name=org.a11y.Bus"
+    "--device=dri"
   ],
   "cleanup": [
     "/include",
@@ -42,38 +41,6 @@
         }
       ],
       "modules": [
-        {
-          "name": "sassc",
-          "buildsystem": "simple",
-          "build-commands": [
-            "autoreconf --force --install",
-            "./configure --prefix=/app",
-            "make -j5 install"
-          ],
-          "sources": [
-            {
-              "type": "git",
-              "url": "https://github.com/sass/sassc.git"
-            }
-          ],
-          "modules": [
-            {
-              "name": "libsass",
-              "buildsystem": "simple",
-              "build-commands": [
-                "autoreconf --force --install",
-                "./configure --disable-tests --disable-static --enable-shared --prefix=/app",
-                "make -j5 install"
-              ],
-              "sources": [
-                {
-                  "type": "git",
-                  "url": "https://github.com/sass/libsass.git"
-                }
-              ]
-            }
-          ]
-        },
         {
           "name": "libadwaita",
           "buildsystem": "meson",
