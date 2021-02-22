@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="42.524536mm"
+   height="39.780025mm"
+   viewBox="0 0 42.524536 39.780025"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="primary-menu.svg"
+   inkscape:export-filename="../primary-menu.png"
+   inkscape:export-xdpi="96.165451"
+   inkscape:export-ydpi="96.165451">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter906">
+      <feFlood
+         flood-opacity="0.698039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood896" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite898" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="2"
+         result="blur"
+         id="feGaussianBlur900" />
+      <feOffset
+         dx="0"
+         dy="1"
+         result="offset"
+         id="feOffset902" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite904" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.3721385"
+     inkscape:cx="63.309835"
+     inkscape:cy="75.174848"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-37.55998,-43.390608)">
+    <rect
+       style="fill:#242424;fill-opacity:1;stroke:#1c1c1c;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect908"
+       width="9.5249996"
+       height="8.9958334"
+       x="54.05975"
+       y="43.5229"
+       ry="1.3229166" />
+    <g
+       id="g925"
+       transform="translate(0.2543118,0.20426345)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect921"
+         width="4.2333331"
+         height="4.2333331"
+         x="56.451271"
+         y="45.699886" />
+      <path
+         d="m 57.245021,46.493636 h 2.645834 v 0.529167 h -2.645834 z m 0,1.058334 h 2.645834 v 0.529166 h -2.645834 z m 0,1.058333 h 2.645834 v 0.529167 h -2.645834 z"
+         style="fill:#eeeeec;fill-opacity:1;stroke-width:0.264583;marker:none"
+         overflow="visible"
+         color="#bebebe"
+         fill="#474747"
+         id="path910" />
+    </g>
+    <path
+       id="rect892"
+       style="fill:#2e2e2e;fill-opacity:1;stroke:#1c1c1c;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.9"
+       d="m 222.32031,199.70312 -14.14258,14.14258 h -56.71875 c -4.986,0 -9,4.014 -9,9 v 82 c 0,4.986 4.014,9 9,9 h 141.72266 c 4.986,0 9,-4.014 9,-9 v -82 c 0,-4.986 -4.014,-9 -9,-9 h -56.7207 z"
+       transform="scale(0.26458333)" />
+    <g
+       id="g858"
+       transform="translate(-36.000795,2.7409979)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke-width:0.264583"
+         id="rect853"
+         width="39.614212"
+         height="7.9375"
+         x="75.015724"
+         y="55.162006"
+         ry="1.3229166" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#eeeeec;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="77.833717"
+         y="60.564625"
+         id="text18"><tspan
+           sodipodi:role="line"
+           id="tspan16"
+           x="77.833717"
+           y="60.564625"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#eeeeec;fill-opacity:1;stroke-width:0.264583">Preferences</tspan></text>
+    </g>
+    <g
+       id="g865"
+       transform="translate(11.73605,9.0957228)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke-width:0.264583"
+         id="rect860"
+         width="39.614212"
+         height="7.9375"
+         x="27.278879"
+         y="56.744781"
+         ry="1.3229166" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#eeeeec;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="30.09692"
+         y="61.726357"
+         id="text851"><tspan
+           sodipodi:role="line"
+           id="tspan849"
+           x="30.09692"
+           y="61.726357"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#eeeeec;fill-opacity:1;stroke-width:0.264583">Keyboard Shortcuts</tspan></text>
+    </g>
+    <g
+       id="g872"
+       transform="translate(4.9867387,-3.8318742)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke-width:0.264583"
+         id="rect867"
+         width="39.614212"
+         height="7.9375"
+         x="34.028191"
+         y="77.609879"
+         ry="1.3229166" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#eeeeec;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="37.1759"
+         y="82.591454"
+         id="text847"><tspan
+           sodipodi:role="line"
+           id="tspan845"
+           x="37.1759"
+           y="82.591454"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#eeeeec;fill-opacity:1;stroke-width:0.264583">About Replay</tspan></text>
+    </g>
+  </g>
+</svg>
