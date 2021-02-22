@@ -115,7 +115,8 @@ public class Rpy.Application : Gtk.Application {
 			website_label = _("Project repository"),
 			copyright = "© 2019 - 2020 Nahuel Gomez Castro",
 			license_type = Gtk.License.GPL_3_0,
-			authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" }
+			authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" },
+			artists = { "Noëlle https://github.com/jannuary" }
 		};
 
 		about_dialog.present_with_time (Gdk.CURRENT_TIME);
