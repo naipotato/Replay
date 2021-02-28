@@ -1,10 +1,14 @@
 replay_sources = files (
 	'core/models/video.vala',
 
+	'enums/view-category.vala',
+
 	'pages/home-page.vala',
 	'pages/page.vala',
 
 	'services/navigation-service.vala',
+
+	'views/view.vala',
 
 	'widgets/header-bar.vala',
 	'widgets/stack-sidebar.vala',
