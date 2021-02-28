@@ -2,6 +2,9 @@ replay_sources = files (
 	'core/models/video.vala',
 
 	'pages/home-page.vala',
+	'pages/page.vala',
+
+	'services/navigation-service.vala',
 
 	'widgets/header-bar.vala',
 	'widgets/stack-sidebar.vala',
