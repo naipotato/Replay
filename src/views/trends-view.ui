@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyTrendsView" parent="RpyView">
+	<property name="icon-name">rpy-trending-symbolic</property>
+	<property name="title" translatable="yes">Trends</property>
+
+	<property name="child">
+		<object class="GtkLabel">
+			<property name="label">Trends page</property>
+		</object>
+	</property>
+
+</template>
+
+</interface>

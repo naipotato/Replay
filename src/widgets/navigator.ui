@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyNavigator" parent="GtkWidget">
+
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
+
+	<child>
+		<object class="GtkStack" id="stack">
+			<property name="transition-type">crossfade</property>
+		</object>
+	</child>
+
+</template>
+
+</interface>

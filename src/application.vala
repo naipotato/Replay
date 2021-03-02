@@ -41,7 +41,7 @@ public class Rpy.Application : Gtk.Application {
 		Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
 		Intl.textdomain (Constants.GETTEXT_PACKAGE);
 
-		return new Rpy.Application ().run (args);
+		return new Application ().run (args);
 	}
 
 	public override void activate () requires (this.active_window != null) {
@@ -81,7 +81,8 @@ public class Rpy.Application : Gtk.Application {
 		// Register custom types
 		typeof (HeaderBar).ensure ();
 		typeof (HomePage).ensure ();
-		typeof (NavigationSidebar).ensure ();
+		typeof (Navigator).ensure ();
+		typeof (NavigatorSidebar).ensure ();
 		typeof (VideoCarouselItem).ensure ();
 
 
@@ -96,7 +97,13 @@ public class Rpy.Application : Gtk.Application {
 		this.add_action (quit_action);
 
 
-		new ApplicationWindow (this);
+		var nav_service = new NavigationService ();
+		new ApplicationWindow (this, nav_service, new ObservableList<View>.wrap ({
+			new HomeView (),
+			new TrendsView (),
+			new SubscriptionsView (),
+			new FavoritesView ()
+		}));
 	}
 
 	private void show_about_dialog () requires (this.active_window != null) {

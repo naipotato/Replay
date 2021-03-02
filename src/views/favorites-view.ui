@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyFavoritesView" parent="RpyView">
+	<property name="icon-name">rpy-favorites-symbolic</property>
+	<property name="title" translatable="yes">Favorites</property>
+	<property name="category">secondary</property>
+
+	<property name="child">
+		<object class="GtkLabel">
+			<property name="label">Favorites page</property>
+		</object>
+	</property>
+
+</template>
+
+</interface>

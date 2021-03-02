@@ -1,46 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <interface>
 
 <template class="RpyApplicationWindow" parent="AdwApplicationWindow">
-	<!-- TRANSLATORS: This is the title of the application window -->
-	<property name="title" translatable="yes">Replay</property>
-	<property name="default-width">1024</property>
 	<property name="default-height">600</property>
+	<property name="default-width">1024</property>
 
-	<child>
-		<object class="GtkBox">
-			<property name="orientation">vertical</property>
-
-			<child>
-				<object class="RpyHeaderBar" id="_header_bar">
-					<property name="key-capture-widget">RpyApplicationWindow</property>
-				</object>
-			</child>
+	<property name="child">
+		<object class="AdwLeaflet" id="root-leaflet">
+			<property name="transition-type">slide</property>
+			<property name="visible-child">content-leaflet</property>
 
 			<child>
-				<object class="AdwLeaflet">
-					<property name="vexpand">True</property>
+				<object class="GtkBox">
+					<property name="orientation">vertical</property>
 
 					<child>
-						<object class="RpyStackSidebar">
-							<property name="stack">content-stack</property>
+						<object class="RpyHeaderBar" id="sidebar-header-bar">
+							<property name="key-capture-widget">RpyApplicationWindow</property>
+							<property name="show-end-title-buttons">no</property>
+							<property name="show-menu-button">yes</property>
+							<property name="show-search-button">yes</property>
+
+							<style>
+								<class name="no-decoration" />
+							</style>
+
 						</object>
 					</child>
 
 					<child>
-						<object class="GtkStack" id="content-stack">
-							<property name="hexpand">True</property>
+						<object class="RpyNavigatorSidebar" id="sidebar">
+							<property name="navigator">content-navigator</property>
+							<property name="vexpand">yes</property>
+						</object>
+					</child>
+
+				</object>
+			</child>
+
+			<child>
+				<object class="AdwLeafletPage">
+					<property name="navigatable">no</property>
+
+					<property name="child">
+						<object class="GtkSeparator">
+							<property name="orientation">vertical</property>
+
+							<style>
+								<class name="sidebar" />
+							</style>
+
+						</object>
+					</property>
+
+				</object>
+			</child>
+
+			<child>
+				<object class="AdwLeaflet" id="content-leaflet">
+					<property name="can-unfold">no</property>
+					<property name="hexpand">yes</property>
+					<signal name="notify::child-transition-running" handler="try-remove-page" />
+					<signal name="notify::visible-child" handler="try-remove-page" />
+
+					<child>
+						<object class="GtkBox">
+							<property name="orientation">vertical</property>
 
 							<child>
-								<object class="GtkStackPage">
-									<!-- TRANSLATORS: This is the label for the home page on the sidebar -->
-									<property name="title" translatable="yes">Home</property>
-									<property name="icon-name">rpy-home-symbolic</property>
+								<object class="RpyHeaderBar">
+									<property name="key-capture-widget">RpyApplicationWindow</property>
+									<property name="show-start-title-buttons">no</property>
+									<property name="title">REPLACE ME</property>
 
-									<property name="child">
-										<object class="RpyHomePage" />
-									</property>
+									<binding name="show-menu-button">
+										<lookup name="folded">root-leaflet</lookup>
+									</binding>
+
+									<binding name="show-search-button">
+										<lookup name="folded">root-leaflet</lookup>
+									</binding>
+
+								</object>
+							</child>
+
+							<child>
+								<object class="RpyNavigator" id="content-navigator">
+									<property name="vexpand">yes</property>
+									<property name="views">selection-model</property>
+								</object>
+							</child>
+
+							<child>
+								<object class="AdwViewSwitcherBar">
+
+									<binding name="stack">
+										<lookup name="stack">content-navigator</lookup>
+									</binding>
+
+									<binding name="reveal">
+										<lookup name="folded">root-leaflet</lookup>
+									</binding>
 
 								</object>
 							</child>
@@ -52,8 +112,14 @@
 			</child>
 
 		</object>
-	</child>
+	</property>
 
 </template>
+
+<object class="GtkSingleSelection" id="selection-model">
+	<binding name="model">
+		<lookup name="views">RpyApplicationWindow</lookup>
+	</binding>
+</object>
 
 </interface>

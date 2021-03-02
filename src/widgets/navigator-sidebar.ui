@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
 
-<template class="RpyNavigationSidebar" parent="GtkWidget">
+<template class="RpyNavigatorSidebar" parent="GtkWidget">
 
 	<property name="layout-manager">
 		<object class="GtkBinLayout" />
@@ -11,7 +11,7 @@
 		<object class="GtkScrolledWindow">
 			<property name="hscrollbar-policy">never</property>
 
-			<child>
+			<property name="child">
 				<object class="GtkListBox" id="list-box">
 					<signal name="row-selected" handler="update-selected-view" />
 
@@ -20,11 +20,25 @@
 					</style>
 
 				</object>
-			</child>
+			</property>
 
 		</object>
 	</child>
 
 </template>
+
+<object class="GtkSortListModel" id="list-model">
+
+	<binding name="model">
+		<lookup name="views" type="RpyNavigator">
+			<lookup name="navigator">RpyNavigatorSidebar</lookup>
+		</lookup>
+	</binding>
+
+	<property name="sorter">
+		<object class="GtkCustomSorter" id="list-model-sorter" />
+	</property>
+
+</object>
 
 </interface>

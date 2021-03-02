@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpySubscriptionsView" parent="RpyView">
+	<property name="icon-name">rpy-subscriptions-symbolic</property>
+	<property name="title" translatable="yes">Subscriptions</property>
+
+	<property name="child">
+		<object class="GtkLabel">
+			<property name="label">Subscriptions page</property>
+		</object>
+	</property>
+
+</template>
+
+</interface>

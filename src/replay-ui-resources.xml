@@ -4,12 +4,17 @@
 <gresource prefix="/com/github/nahuelwexd/Replay">
 	<file alias="home-page.ui">pages/home-page.ui</file>
 
+	<file alias="favorites-view.ui">views/favorites-view.ui</file>
+	<file alias="home-view.ui">views/home-view.ui</file>
 	<file alias="library-view.ui">views/library-view.ui</file>
 	<file alias="search-view.ui">views/search-view.ui</file>
+	<file alias="subscriptions-view.ui">views/subscriptions-view.ui</file>
+	<file alias="trends-view.ui">views/trends-view.ui</file>
 
 	<file alias="header-bar.ui">widgets/header-bar.ui</file>
-	<file alias="navigation-sidebar.ui">widgets/navigation-sidebar.ui</file>
-	<file alias="navigation-sidebar-row.ui">widgets/navigation-sidebar-row.ui</file>
+	<file alias="navigator.ui">widgets/navigator.ui</file>
+	<file alias="navigator-sidebar.ui">widgets/navigator-sidebar.ui</file>
+	<file alias="navigator-sidebar-row.ui">widgets/navigator-sidebar-row.ui</file>
 	<file alias="video-carousel-item.ui">widgets/video-carousel-item.ui</file>
 
 	<file alias="application-window.ui">application-window.ui</file>

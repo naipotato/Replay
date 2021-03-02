@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyHomeView" parent="RpyView">
+	<property name="icon-name">rpy-home-symbolic</property>
+	<property name="title" translatable="yes">Home</property>
+
+	<property name="child">
+		<object class="GtkLabel">
+			<property name="label">Home page</property>
+		</object>
+	</property>
+
+</template>
+
+</interface>

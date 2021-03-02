@@ -21,13 +21,13 @@ homepage > scrolledwindow > viewport > box > label {
 }
 
 
-/* Navigation sidebar */
+/* Navigator sidebar */
 
-navigationsidebar {
+navigatorsidebar {
 	min-width: 180px;
 }
 
-navigationsidebar box {
+navigatorsidebar box {
 	margin: 0 4px;
 }
 
@@ -60,4 +60,12 @@ window.devel headerbar.titlebar {
 window.devel headerbar.titlebar:backdrop {
 	background: @theme_bg_color cross-fade(10% -gtk-icontheme('system-run-symbolic'), image(transparent)) 90% 0/256px 256px no-repeat,
 	            image(@theme_bg_color);
+}
+
+window.devel .no-decoration headerbar.titlebar {
+	background: linear-gradient(to top, shade(shade(@theme_bg_color, 0.52), 1.26), shade(shade(@theme_bg_color, 0.52), 1.44));
+}
+
+window.devel .no-decoration headerbar.titlebar:backdrop {
+	background: image(@theme_bg_color);
 }

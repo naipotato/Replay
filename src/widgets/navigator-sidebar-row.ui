@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
 
-<template class="RpyNavigationSidebarRow" parent="GtkListBoxRow">
+<template class="RpyNavigatorSidebarRow" parent="GtkListBoxRow">
 	<property name="child">
 		<object class="GtkBox">
 			<property name="spacing">12</property>
@@ -10,7 +10,7 @@
 				<object class="GtkImage">
 					<binding name="icon-name">
 						<lookup name="icon-name" type="RpyView">
-							<lookup name="view">RpyNavigationSidebarRow</lookup>
+							<lookup name="view">RpyNavigatorSidebarRow</lookup>
 						</lookup>
 					</binding>
 				</object>
@@ -20,7 +20,7 @@
 				<object class="GtkLabel">
 					<binding name="label">
 						<lookup name="title" type="RpyView">
-							<lookup name="view">RpyNavigationSidebarRow</lookup>
+							<lookup name="view">RpyNavigatorSidebarRow</lookup>
 						</lookup>
 					</binding>
 				</object>
