@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpySearchView" parent="RpyView">
+	<property name="child">
+		<object class="GtkLabel">
+			<property name="label">Search Page</property>
+		</object>
+	</property>
+</template>
+
+</interface>

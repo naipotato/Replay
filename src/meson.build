@@ -11,6 +11,7 @@ replay_sources = files (
 	'utils/list-model.vala',
 	'utils/observable-list.vala',
 
+	'views/search-view.vala',
 	'views/view.vala',
 
 	'widgets/header-bar.vala',
