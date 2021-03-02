@@ -36,7 +36,7 @@
 								<object class="GtkStackPage">
 									<!-- TRANSLATORS: This is the label for the home page on the sidebar -->
 									<property name="title" translatable="yes">Home</property>
-									<property name="icon-name">go-home-symbolic</property>
+									<property name="icon-name">rpy-home-symbolic</property>
 
 									<property name="child">
 										<object class="RpyHomePage" />
