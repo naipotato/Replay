@@ -24,7 +24,7 @@
  * It contains the necessary properties to be able to show the views in a menu,
  * as well as to be able to categorize them.
  */
-public abstract class Rpy.View : Gtk.Widget {
+public abstract class Rpy.View : Gtk.Widget, Gtk.Buildable {
 	private Gtk.Widget? _child;
 
 	/**

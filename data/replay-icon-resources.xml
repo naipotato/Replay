@@ -5,6 +5,7 @@
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-favorites-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-history-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-home-symbolic.svg</file>
+	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-library-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-liked-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-playlists-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-subscriptions-symbolic.svg</file>

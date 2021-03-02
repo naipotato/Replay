@@ -4,6 +4,7 @@
 <gresource prefix="/com/github/nahuelwexd/Replay">
 	<file alias="home-page.ui">pages/home-page.ui</file>
 
+	<file alias="library-view.ui">views/library-view.ui</file>
 	<file alias="search-view.ui">views/search-view.ui</file>
 
 	<file alias="header-bar.ui">widgets/header-bar.ui</file>

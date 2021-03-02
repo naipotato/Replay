@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyLibraryView" parent="RpyView">
+	<property name="icon-view">rpy-library-symbolic</property>
+	<!-- TRANSLATORS: This is the title of the library view -->
+	<property name="title" translatable="yes">Library</property>
+
+	<property name="child">
+		<object class="GtkLabel">
+			<property name="label">Library view</property>
+		</object>
+	</property>
+</template>
+
+</interface>
