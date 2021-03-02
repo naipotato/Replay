@@ -21,13 +21,13 @@ homepage > scrolledwindow > viewport > box > label {
 }
 
 
-/* Stack sidebar */
+/* Navigation sidebar */
 
-stacksidebar {
+navigationsidebar {
 	min-width: 180px;
 }
 
-stacksidebar box {
+navigationsidebar box {
 	margin: 0 4px;
 }
 

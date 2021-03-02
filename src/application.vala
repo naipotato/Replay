@@ -81,7 +81,7 @@ public class Rpy.Application : Gtk.Application {
 		// Register custom types
 		typeof (HeaderBar).ensure ();
 		typeof (HomePage).ensure ();
-		typeof (StackSidebar).ensure ();
+		typeof (NavigationSidebar).ensure ();
 		typeof (VideoCarouselItem).ensure ();
 
 

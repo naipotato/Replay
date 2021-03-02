@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyNavigationSidebarRow" parent="GtkListBoxRow">
+	<property name="child">
+		<object class="GtkBox">
+			<property name="spacing">12</property>
+
+			<child>
+				<object class="GtkImage">
+					<binding name="icon-name">
+						<lookup name="icon-name" type="RpyView">
+							<lookup name="view">RpyNavigationSidebarRow</lookup>
+						</lookup>
+					</binding>
+				</object>
+			</child>
+
+			<child>
+				<object class="GtkLabel">
+					<binding name="label">
+						<lookup name="title" type="RpyView">
+							<lookup name="view">RpyNavigationSidebarRow</lookup>
+						</lookup>
+					</binding>
+				</object>
+			</child>
+
+		</object>
+	</property>
+</template>
+
+</interface>

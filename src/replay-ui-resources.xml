@@ -5,7 +5,8 @@
 	<file alias="home-page.ui">pages/home-page.ui</file>
 
 	<file alias="header-bar.ui">widgets/header-bar.ui</file>
-	<file alias="stack-sidebar.ui">widgets/stack-sidebar.ui</file>
+	<file alias="navigation-sidebar.ui">widgets/navigation-sidebar.ui</file>
+	<file alias="navigation-sidebar-row.ui">widgets/navigation-sidebar-row.ui</file>
 	<file alias="video-carousel-item.ui">widgets/video-carousel-item.ui</file>
 
 	<file alias="application-window.ui">application-window.ui</file>

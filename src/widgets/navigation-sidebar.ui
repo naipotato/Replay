@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyNavigationSidebar" parent="GtkWidget">
+
+	<property name="layout-manager">
+		<object class="GtkBinLayout" />
+	</property>
+
+	<child>
+		<object class="GtkScrolledWindow">
+			<property name="hscrollbar-policy">never</property>
+
+			<child>
+				<object class="GtkListBox" id="list-box">
+					<signal name="row-selected" handler="update-selected-view" />
+
+					<style>
+						<class name="navigation-sidebar" />
+					</style>
+
+				</object>
+			</child>
+
+		</object>
+	</child>
+
+</template>
+
+</interface>

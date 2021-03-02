@@ -14,7 +14,7 @@ replay_sources = files (
 	'views/view.vala',
 
 	'widgets/header-bar.vala',
-	'widgets/stack-sidebar.vala',
+	'widgets/navigation-sidebar.vala',
 	'widgets/video-carousel-item.vala',
 
 	'application.vala',
