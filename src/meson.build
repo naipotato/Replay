@@ -8,6 +8,7 @@ replay_sources = files (
 
 	'services/navigation-service.vala',
 
+	'utils/list-model.vala',
 	'utils/observable-list.vala',
 
 	'views/view.vala',
