@@ -84,7 +84,7 @@ convenient to improve readability even without language servers.
 - Always use the `this` keyword to refer to the members of the current instance
 - The opening brace must always be at the end of the first line in classes,
   functions, loops, and general control flows ("One True Brace Style")
-- Always use 4 column wide tabs to indent, and spaces to align
+- Always use 2 column wide tabs to indent, and spaces to align
 - Always use string templates to interpolate strings, except in error messages,
   which must be localizable and therefore use printf style
 - Lines of code must not exceed 120 columns long

@@ -1,5 +1,5 @@
 /* Replay - Explore and watch YouTube videos
- * Copyright 2019 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+ * Copyright 2019-2021 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
  *
  * Replay is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
@@ -16,8 +16,7 @@
  */
 
 [CCode (cheader_filename = "config.h", lower_case_cprefix = "")]
-namespace Rpy.Constants
-{
+namespace Rpy.Constants {
 	public const string APPLICATION_ID;
 	public const string PROJECT_WEBSITE;
 	public const string RESOURCE_PATH;
