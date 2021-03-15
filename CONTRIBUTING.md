@@ -3,14 +3,23 @@
 Hey! Do you want to contribute to the project? That's great! 🎉️
 
 Below you will find a series of guides to help you do this, such as: how to
-build and debug the app, the coding style we use, and various recommendations
-when creating your commits and publishing your pull requests.
+build and debug the app, the coding style we use, various recommendations when
+creating your commits and publishing your pull requests, and so on.
 
 > NOTE: If you are a designer, and you want to contribute designs to the app,
 > switch to the [`design`](https://github.com/nahuelwexd/Replay/tree/design)
 > branch to find the design contribution guidelines 😊️
 
 Don't forget to join the Telegram group listed on the [README](README.md)!
+
+### Content
+
+- [Building the Project](#building-the-project)
+- [Coding Style](#coding-style)
+- [Commit Messages](#commit-messages)
+- [Pull Requests](#pull-requests)
+- [Issues](#issues)
+- [Translating the App](#translating-the-app)
 
 ## Building the Project
 
@@ -182,3 +191,23 @@ In case of visual issue, also check if it is reproducible with Adwaita.
 
 For crash reports, attach the corresponding backtrace to facilitate its
 correction.
+
+## Translating the App
+
+Since Replay is fully developed in Vala and GTK, both of which make use of GNU
+gettext for translation support, we see no reason to use a different system, so
+the process to translate Replay into your language should not differ from the
+process from other GNOME apps.
+
+- First, clone the repository with Builder as described in
+  [Building the Project](#building-the-project)
+- Open the `po/LINGUAS` file and add your language code to the list. For example,
+  for Spanish, I should add "es"
+- Run the application at least 1 time from Builder
+- Open a terminal in the Replay runtime in Builder, using Ctrl + Enter >
+  "new-terminal-in-runtime" > Enter
+- Enter the command `ninja com.github.nahuelwexd.Replay-update-po`, this will
+  generate a new file called `po/<language-code>.po`
+- Open the file with Gtranslator, in case you don't have it installed, you can
+  do it from [here](https://flathub.org/apps/details/org.gnome.Gtranslator).
+- At the end, create a new commit with the changes and open a new Pull Request :)
