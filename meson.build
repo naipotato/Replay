@@ -9,6 +9,12 @@ add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name ()),
 )
 
 
+# Add extra type checks in runtime
+add_project_arguments ('--enable-checking',
+	language: 'vala'
+)
+
+
 # Check the profile for this build
 if get_option ('profile') == 'development'
 	profile = '.Devel'
