@@ -48,7 +48,6 @@ cleanup:
 modules:
   - name: replay
     buildsystem: meson
-    builddir: true
 
     config-opts:
       - -Dprofile=development
@@ -61,7 +60,6 @@ modules:
       # GNOME Design Language
       - name: libadwaita
         buildsystem: meson
-        builddir: true
 
         config-opts:
           - -Dexamples=false
@@ -69,5 +67,5 @@ modules:
 
         sources:
           - type: git
-            url: https://gitlab.gnome.org/exalm/libadwaita.git
+            url: https://gitlab.gnome.org/GNOME/libadwaita.git
             branch: main
