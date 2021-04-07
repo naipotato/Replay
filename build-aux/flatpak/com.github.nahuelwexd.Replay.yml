@@ -32,7 +32,10 @@ finish-args:
   - --device=dri
 
 cleanup:
+  - /bin/sassc
   - /include
+  - /lib/girepository-1.0
+  - /lib/libsassc.*
   - /lib/pkgconfig
   - /man
   - /share/aclocal
@@ -46,6 +49,45 @@ cleanup:
   - '*.a'
 
 modules:
+  - name: libsass
+
+    config-opts:
+      - --disable-tests
+      - --disable-static
+      - --enable-shared
+
+    sources:
+      - type: git
+        url: https://github.com/sass/libsass.git
+
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf --force --install
+
+  - name: sassc
+
+    sources:
+      - type: git
+        url: https://github.com/sass/sassc.git
+
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf --force --install
+
+  - name: libadwaita
+    buildsystem: meson
+
+    config-opts:
+      - -Dexamples=false
+      - -Dtests=false
+
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libadwaita.git
+        branch: main
+
   - name: replay
     buildsystem: meson
 
@@ -55,17 +97,3 @@ modules:
     sources:
       - type: dir
         path: ../..
-
-    modules:
-      # GNOME Design Language
-      - name: libadwaita
-        buildsystem: meson
-
-        config-opts:
-          - -Dexamples=false
-          - -Dtests=false
-
-        sources:
-          - type: git
-            url: https://gitlab.gnome.org/GNOME/libadwaita.git
-            branch: main
