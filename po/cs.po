@@ -1,0 +1,76 @@
+# Czech translations for com.github.nahuelwexd.Replay package.
+# Copyright (C) 2021 THE com.github.nahuelwexd.Replay'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.nahuelwexd.Replay package.
+# Vojtěch Perník <pervoj@gmx.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.nahuelwexd.Replay\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-14 21:10-0300\n"
+"PO-Revision-Date: 2021-04-20 19:25+0200\n"
+"Last-Translator: Vojtěch Perník <pervoj@gmx.com>\n"
+"Language-Team: Czech <@>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#. Translators: This is the application name
+#. TRANSLATORS: This is the title shown in the application window on mobile view
+#. / TRANSLATORS: This is the application name
+#. TRANSLATORS: This is the title of the application window
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:5
+#: src/widgets/header-bar.ui:60 src/application.vala:56
+#: src/application-window.ui:7
+msgid "Replay"
+msgstr "Replay"
+
+#. Translators: This is the generic name for the application
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:7
+msgid "YouTube client"
+msgstr "Klient YouTube"
+
+#. Translators: This is a little summary about the app
+#. / TRANSLATORS: This is the summary of the app
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:9 src/application.vala:112
+msgid "Explore and watch YouTube videos"
+msgstr "Prozkoumávejte a sledujte videa na YouTube"
+
+#. Translators: These are the keywords used by the search trackers on DEs, MUST be delimited by semicolons and MUST have a trailing one
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:17
+msgid "youtube;videos;"
+msgstr "youtube;videa;"
+
+#. TRANSLATORS: This is the "Recommendations" label shown in the home page
+#: src/pages/home-page.ui:70
+msgid "Recommendations"
+msgstr "Doporučení"
+
+#. TRANSLATORS: This is the placeholder shown in the search entry
+#: src/widgets/header-bar.ui:42
+msgid "Search"
+msgstr "Hledat"
+
+#. TRANSLATORS: This is the tooltip shown for the button that opens the primary menu
+#: src/widgets/header-bar.ui:79
+msgid "Menu"
+msgstr "Menu"
+
+#. TRANSLATORS: This the label for the item in the primary menu that opens the about dialog
+#. / TRANSLATORS: This is the title of the About dialog
+#: src/widgets/header-bar.ui:93 src/application.vala:108
+msgid "About Replay"
+msgstr "O Replay"
+
+#. / TRANSLATORS: This is the label of the link to the app's repository
+#: src/application.vala:115
+msgid "Project repository"
+msgstr "Repositář projektu"
+
+#. TRANSLATORS: This is the label for the home page on the sidebar
+#: src/application-window.ui:38
+msgid "Home"
+msgstr "Domů"
