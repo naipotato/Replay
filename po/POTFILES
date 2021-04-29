@@ -1,5 +1,3 @@
 data/com.github.nahuelwexd.Replay.desktop.in.in
-src/pages/home-page.ui
-src/widgets/header-bar.ui
 src/application.vala
 src/application-window.ui

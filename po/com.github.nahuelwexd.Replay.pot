@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.nahuelwexd.Replay\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 21:10-0300\n"
+"POT-Creation-Date: 2021-04-28 23:50-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Translators: This is the application name
-#. TRANSLATORS: This is the title shown in the application window on mobile view
 #. / TRANSLATORS: This is the application name
 #. TRANSLATORS: This is the title of the application window
-#: data/com.github.nahuelwexd.Replay.desktop.in.in:5
-#: src/widgets/header-bar.ui:60 src/application.vala:56
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:5 src/application.vala:56
 #: src/application-window.ui:7
 msgid "Replay"
 msgstr ""
@@ -34,7 +32,7 @@ msgstr ""
 
 #. Translators: This is a little summary about the app
 #. / TRANSLATORS: This is the summary of the app
-#: data/com.github.nahuelwexd.Replay.desktop.in.in:9 src/application.vala:112
+#: data/com.github.nahuelwexd.Replay.desktop.in.in:9 src/application.vala:105
 msgid "Explore and watch YouTube videos"
 msgstr ""
 
@@ -43,33 +41,12 @@ msgstr ""
 msgid "youtube;videos;"
 msgstr ""
 
-#. TRANSLATORS: This is the "Recommendations" label shown in the home page
-#: src/pages/home-page.ui:70
-msgid "Recommendations"
-msgstr ""
-
-#. TRANSLATORS: This is the placeholder shown in the search entry
-#: src/widgets/header-bar.ui:42
-msgid "Search"
-msgstr ""
-
-#. TRANSLATORS: This is the tooltip shown for the button that opens the primary menu
-#: src/widgets/header-bar.ui:79
-msgid "Menu"
-msgstr ""
-
-#. TRANSLATORS: This the label for the item in the primary menu that opens the about dialog
 #. / TRANSLATORS: This is the title of the About dialog
-#: src/widgets/header-bar.ui:93 src/application.vala:108
+#: src/application.vala:101
 msgid "About Replay"
 msgstr ""
 
 #. / TRANSLATORS: This is the label of the link to the app's repository
-#: src/application.vala:115
+#: src/application.vala:108
 msgid "Project repository"
-msgstr ""
-
-#. TRANSLATORS: This is the label for the home page on the sidebar
-#: src/application-window.ui:38
-msgid "Home"
 msgstr ""
