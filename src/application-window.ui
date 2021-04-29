@@ -7,53 +7,6 @@
 	<property name="title" translatable="yes">Replay</property>
 	<property name="default-width">1024</property>
 	<property name="default-height">600</property>
-
-	<child>
-		<object class="GtkBox">
-			<property name="orientation">vertical</property>
-
-			<child>
-				<object class="RpyHeaderBar" id="_header_bar">
-					<property name="key-capture-widget">RpyApplicationWindow</property>
-				</object>
-			</child>
-
-			<child>
-				<object class="AdwLeaflet">
-					<property name="vexpand">True</property>
-
-					<child>
-						<object class="RpyStackSidebar">
-							<property name="stack">content-stack</property>
-						</object>
-					</child>
-
-					<child>
-						<object class="GtkStack" id="content-stack">
-							<property name="hexpand">True</property>
-
-							<child>
-								<object class="GtkStackPage">
-									<!-- TRANSLATORS: This is the label for the home page on the sidebar -->
-									<property name="title" translatable="yes">Home</property>
-									<property name="icon-name">rpy-home-symbolic</property>
-
-									<property name="child">
-										<object class="RpyHomePage" />
-									</property>
-
-								</object>
-							</child>
-
-						</object>
-					</child>
-
-				</object>
-			</child>
-
-		</object>
-	</child>
-
 </template>
 
 </interface>

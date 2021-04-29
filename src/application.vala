@@ -78,13 +78,6 @@ public class Rpy.Application : Gtk.Application {
 		Adw.init ();
 
 
-		// Register custom types
-		typeof (HeaderBar).ensure ();
-		typeof (HomePage).ensure ();
-		typeof (StackSidebar).ensure ();
-		typeof (VideoCarouselItem).ensure ();
-
-
 		// Register app actions
 		var about_action = new SimpleAction ("about", null);
 		about_action.activate.connect (this.show_about_dialog);
