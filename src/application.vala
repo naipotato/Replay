@@ -74,7 +74,7 @@ public class Rpy.Application : Gtk.Application {
 
 
 		// FIXME: This call may be replaced by AdwApplication
-		//        https://gitlab.gnome.org/exalm/libadwaita/-/issues/30#note_1004873
+		//        https://gitlab.gnome.org/GNOME/libadwaita/-/issues/30#note_1004873
 		Adw.init ();
 
 
