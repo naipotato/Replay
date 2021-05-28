@@ -1,4 +1,6 @@
 replay_sources = files (
+	'services/navigation-service.vala',
+
 	'views/view.vala',
 
 	'application.vala',
