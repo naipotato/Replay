@@ -56,7 +56,7 @@ jobs:
               build-aux/flatpak/com.github.nahuelwexd.Replay.yml
 
       - name: Upload Flatpak repository
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: repo
           path: repo
@@ -79,7 +79,7 @@ jobs:
               com.github.nahuelwexd.Replay.Devel.Locale
 
       - name: Upload bundle
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: Flatpak Bundles
           path: '*.flatpak'
