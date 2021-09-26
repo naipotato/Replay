@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.nahuelwexd.Replay package.
+# This file is distributed under the same license as the com.github.replaydev.Replay package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.nahuelwexd.Replay\n"
+"Project-Id-Version: com.github.replaydev.Replay\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-28 23:50-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -20,24 +20,24 @@ msgstr ""
 #. Translators: This is the application name
 #. / TRANSLATORS: This is the application name
 #. TRANSLATORS: This is the title of the application window
-#: data/com.github.nahuelwexd.Replay.desktop.in.in:5 src/application.vala:56
+#: data/com.github.replaydev.Replay.desktop.in.in:5 src/application.vala:56
 #: src/application-window.ui:7
 msgid "Replay"
 msgstr ""
 
 #. Translators: This is the generic name for the application
-#: data/com.github.nahuelwexd.Replay.desktop.in.in:7
+#: data/com.github.replaydev.Replay.desktop.in.in:7
 msgid "YouTube client"
 msgstr ""
 
 #. Translators: This is a little summary about the app
 #. / TRANSLATORS: This is the summary of the app
-#: data/com.github.nahuelwexd.Replay.desktop.in.in:9 src/application.vala:105
+#: data/com.github.replaydev.Replay.desktop.in.in:9 src/application.vala:105
 msgid "Explore and watch YouTube videos"
 msgstr ""
 
 #. Translators: These are the keywords used by the search trackers on DEs, MUST be delimited by semicolons and MUST have a trailing one
-#: data/com.github.nahuelwexd.Replay.desktop.in.in:17
+#: data/com.github.replaydev.Replay.desktop.in.in:17
 msgid "youtube;videos;"
 msgstr ""
 

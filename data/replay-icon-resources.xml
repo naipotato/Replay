@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
 
-<gresource prefix="/com/github/nahuelwexd/Replay">
+<gresource prefix="/com/github/replaydev/Replay">
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-favorites-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-history-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">icons/scalable/places/rpy-home-symbolic.svg</file>
