@@ -1,10 +1,9 @@
-/* Automatically generated from com.github.nahuelwexd.Replay.yml, do not modify. */
 {
-  "app-id": "com.github.nahuelwexd.Replay.Devel",
+  "app-id": "com.github.replaydev.Replay.Devel",
   "runtime": "org.gnome.Platform",
   "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
-  "command": "com.github.nahuelwexd.Replay",
+  "command": "com.github.replaydev.Replay",
   "finish-args": [
     "--share=network",
     "--share=ipc",
@@ -13,14 +12,9 @@
     "--device=dri"
   ],
   "cleanup": [
-    "/bin/sassc",
     "/include",
-    "/lib/girepository-1.0",
-    "/lib/libsassc.*",
     "/lib/pkgconfig",
     "/man",
-    "/share/aclocal",
-    "/share/gir-1.0",
     "/share/doc",
     "/share/gtk-doc",
     "/share/man",
