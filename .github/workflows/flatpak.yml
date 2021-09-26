@@ -32,54 +32,36 @@ on:
 name: Flatpak
 
 jobs:
-  build:
-    name: Build the app
-    runs-on: ubuntu-20.04
+  flatpak:
+    name: Flatpak
+    runs-on: ubuntu-latest
     container:
-      image: nahuelwexd/replay-ci-image:latest
+      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
+    strategy:
+      matrix:
+        arch: [x86_64, aarch64]
+      fail-fast: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
 
-      - name: Cache dependencies
-        uses: actions/cache@v2.1.6
-        with:
-          path: .flatpak-builder
-          key: ${{ runner.os }}-flatpak-${{ hashFiles('**/com.github.nahuelwexd.Replay.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-flatpak-
-
-      - name: Build
+      - name: Install deps
         run: |
-          flatpak-builder --repo=repo --install-deps-from=gnome-nightly flatpak_app \
-              build-aux/flatpak/com.github.nahuelwexd.Replay.yml
+          dnf install -y docker
 
-      - name: Upload Flatpak repository
-        uses: actions/upload-artifact@v2.2.4
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1.2.0
         with:
-          name: repo
-          path: repo
+          platforms: arm64
 
-  package:
-    name: Create Flatpak bundle
-    runs-on: ubuntu-20.04
-    container:
-      image: nahuelwexd/replay-ci-image:latest
-      options: --privileged
-    needs: build
-    steps:
-      - name: Download Flatpak repository
-        uses: actions/download-artifact@v2.0.10
-
-      - name: Create Flatpak bundle
-        run: |
-          flatpak build-bundle repo com.github.nahuelwexd.Replay.Devel.flatpak com.github.nahuelwexd.Replay.Devel
-          flatpak build-bundle --runtime repo com.github.nahuelwexd.Replay.Devel.Locale.flatpak \
-              com.github.nahuelwexd.Replay.Devel.Locale
-
-      - name: Upload bundle
-        uses: actions/upload-artifact@v2.2.4
+      - name: Build flatpak
+        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
-          name: Flatpak Bundles
-          path: '*.flatpak'
+          manifest-path: build-aux/flatpak/com.github.replaydev.Replay.json
+          bundle: com.github.replaydev.Replay.Devel.flatpak
+          repository-name: gnome-nightly
+          branch: main
+          cache-key: flatpak-builder-${{ github.sha }}
+          arch: ${{ matrix.arch }}
