@@ -1,4 +1,4 @@
-project ('com.github.nahuelwexd.Replay', 'c', 'vala',
+project ('com.github.replaydev.Replay', 'c', 'vala',
 	version: '0.1.0',
 	license: 'GPL-3.0-or-later'
 )
@@ -29,8 +29,8 @@ endif
 
 # Info about the app
 application_id  = '@0@@1@'.format (meson.project_name (), profile)
-project_website = 'https://github.com/nahuelwexd/Replay'
-resource_path   = '/com/github/nahuelwexd/Replay'
+project_website = 'https://github.com/ReplayDev/Replay'
+resource_path   = '/com/github/replaydev/Replay'
 version         = '@0@-@VCS_TAG@'.format (meson.project_version ())
 gettext_package = meson.project_name ()
 localedir       = get_option ('localedir')

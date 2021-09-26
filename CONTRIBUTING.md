@@ -7,7 +7,7 @@ build and debug the app, the coding style we use, various recommendations when
 creating your commits and publishing your pull requests, and so on.
 
 > NOTE: If you are a designer, and you want to contribute designs to the app,
-> switch to the [`design`](https://github.com/nahuelwexd/Replay/tree/design)
+> switch to the [`design`](https://github.com/ReplayDev/Replay/tree/design)
 > branch to find the design contribution guidelines 😊️
 
 Don't forget to join the Telegram group listed on the [README](README.md)!
@@ -206,7 +206,7 @@ process from other GNOME apps.
 - Run the application at least 1 time from Builder
 - Open a terminal in the Replay runtime in Builder, using Ctrl + Enter >
   "new-terminal-in-runtime" > Enter
-- Enter the command `ninja com.github.nahuelwexd.Replay-update-po`, this will
+- Enter the command `ninja com.github.replaydev.Replay-update-po`, this will
   generate a new file called `po/<language-code>.po`
 - Open the file with Gtranslator, in case you don't have it installed, you can
   do it from [here](https://flathub.org/apps/details/org.gnome.Gtranslator).
