@@ -18,7 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-class Rpy.Application : Gtk.Application {
+class Rpy.Application : Adw.Application {
 	Application () {
 		Object (
 #if DEVEL
@@ -56,26 +56,9 @@ class Rpy.Application : Gtk.Application {
 		Environment.set_application_name (_("Replay"));
 
 
-		// Since this is a media app, inform GTK that we prefer the dark theme
-		Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
-		assert (gtk_settings != null);
-
-		gtk_settings.gtk_application_prefer_dark_theme = true;
-
-
-		// Load our custom stylesheet
-		var css_provider = new Gtk.CssProvider ();
-		css_provider.load_from_resource ("/com/github/replaydev/Replay/style.css");
-
-		Gdk.Display? display = Gdk.Display.get_default ();
-		assert (display != null);
-
-		Gtk.StyleContext.add_provider_for_display (display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-
-		// FIXME: This call may be replaced by AdwApplication
-		//        https://gitlab.gnome.org/GNOME/libadwaita/-/issues/30#note_1004873
-		Adw.init ();
+		// Since this is a media app, inform the system that we prefer a dark
+		// color scheme
+		this.style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
 
 
 		// Register app actions
