@@ -18,13 +18,13 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public enum Rpy.ViewType {
+private enum Rpy.ViewType {
 	PRIMARY,
 	SECONDARY,
 	TRANSITORY;
 }
 
-public class Rpy.View : Adw.Bin {
+private class Rpy.View : Adw.Bin {
 	public string? title { get; set; }
 	public string? subtitle { get; set; }
 	public ViewType view_type { get; construct; }

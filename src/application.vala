@@ -18,8 +18,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Rpy.Application : Gtk.Application {
-	public Application () {
+private class Rpy.Application : Gtk.Application {
+	private Application () {
 		Object (
 #if DEVEL
 			// In development builds, force the resource base path to be the
@@ -33,7 +33,7 @@ public class Rpy.Application : Gtk.Application {
 		);
 	}
 
-	public static int main (string[] args) {
+	private static int main (string[] args) {
 		// Configure project localizations
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		Intl.setlocale (LocaleCategory.ALL);
@@ -44,11 +44,11 @@ public class Rpy.Application : Gtk.Application {
 		return new Rpy.Application ().run (args);
 	}
 
-	public override void activate () requires (this.active_window != null) {
+	protected override void activate () requires (this.active_window != null) {
 		this.active_window.present_with_time (Gdk.CURRENT_TIME);
 	}
 
-	public override void startup () {
+	protected override void startup () {
 		base.startup ();
 
 

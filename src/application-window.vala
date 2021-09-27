@@ -19,7 +19,7 @@
  */
 
 [GtkTemplate (ui = "/com/github/replaydev/Replay/application-window.ui")]
-public class Rpy.ApplicationWindow : Adw.ApplicationWindow {
+private class Rpy.ApplicationWindow : Adw.ApplicationWindow {
 	public ApplicationWindow (Rpy.Application app) {
 		Object (
 			application: app
