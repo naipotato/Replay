@@ -19,9 +19,7 @@
  */
 
 enum Rpy.ViewType {
-	PRIMARY,
-	SECONDARY,
-	TRANSITORY;
+	PRIMARY, SECONDARY, TRANSITORY;
 }
 
 class Rpy.View : Adw.Bin {
