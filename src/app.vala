@@ -1,4 +1,4 @@
-/* application.vala
+/* app.vala
  *
  * Copyright 2019-2021 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
  *
@@ -18,8 +18,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-class Rpy.Application : Adw.Application {
-	Application () {
+class Rpy.App : Adw.Application {
+	App () {
 		Object (
 #if DEVEL
 			// In development builds, force the resource base path to be the
@@ -41,7 +41,7 @@ class Rpy.Application : Adw.Application {
 		Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
 		Intl.textdomain (Constants.GETTEXT_PACKAGE);
 
-		return new Rpy.Application ().run (args);
+		return new App ().run (args);
 	}
 
 	protected override void activate () requires (this.active_window != null) {
