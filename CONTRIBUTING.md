@@ -43,20 +43,20 @@ convenient to improve readability even without language servers.
 - Public classes must go in their own separate files. If one of them is a mere
   helper to another, an exception can be made so that they go in the same file.
 - The order of the class members must be as follows:
-  - Public fields
-  - Private fields
-  - Public properties
-  - Private properties
   - Public Vala's constructors
   - Private Vala's constructors
-  - Public signals
-  - Private signals
-  - Public methods
-  - Private methods
   - GObject code blocks
     - `construct` block
     - `static construct` block
     - `class construct` block
+  - Public fields
+  - Private fields
+  - Public properties
+  - Private properties
+  - Public signals
+  - Private signals
+  - Public methods
+  - Private methods
 - The class members must be arranged alphabetically
 - Vala's constructors should not be used to initialize the class, but rather as
   convenient functions to set certain properties when instantiating an object
@@ -64,9 +64,7 @@ convenient to improve readability even without language servers.
   See:
   ```vala
   public ApplicationWindow (Rpy.Application app) {
-  	Object (
-  		application: app
-  	);
+  	Object (application: app);
   }
   ```
 - Private fields must start with an underscore (`_`)
@@ -93,7 +91,7 @@ convenient to improve readability even without language servers.
 - Always use the `this` keyword to refer to the members of the current instance
 - The opening brace must always be at the end of the first line in classes,
   functions, loops, and general control flows ("One True Brace Style")
-- Always use 2 column wide tabs to indent, and spaces to align
+- Always use tabs to indent, and spaces to align
 - Always use string templates to interpolate strings, except in error messages,
   which must be localizable and therefore use printf style
 - Lines of code must not exceed 120 columns long
