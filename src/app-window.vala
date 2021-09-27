@@ -1,4 +1,4 @@
-/* application-window.vala
+/* app-window.vala
  *
  * Copyright 2019-2021 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
  *
@@ -18,9 +18,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/com/github/replaydev/Replay/application-window.ui")]
-class Rpy.ApplicationWindow : Adw.ApplicationWindow {
-	public ApplicationWindow (App app) {
+[GtkTemplate (ui = "/com/github/replaydev/Replay/app-window.ui")]
+class Rpy.AppWindow : Adw.ApplicationWindow {
+	public AppWindow (App app) {
 		Object (application: app);
 	}
 

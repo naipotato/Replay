@@ -72,7 +72,7 @@ class Rpy.App : Adw.Application {
 		this.add_action (quit_action);
 
 
-		new ApplicationWindow (this);
+		new AppWindow (this);
 	}
 
 	void show_about_dialog () requires (this.active_window != null) {
