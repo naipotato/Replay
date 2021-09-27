@@ -12,10 +12,10 @@ configured_desktop_file = configure_file (
 desktop_file = i18n.merge_file (
 	      input: configured_desktop_file,
 	     output: '@0@.desktop'.format (application_id),
-	     po_dir: meson.source_root () / 'po',
+	     po_dir: meson.project_source_root () / 'po',
 	       type: 'desktop',
 	    install: true,
-	install_dir: get_option ('datadir') / 'applications'
+	install_dir: datadir / 'applications'
 )
 
 
@@ -23,26 +23,10 @@ desktop_file = i18n.merge_file (
 desktop_file_validate = find_program ('desktop-file-validate', required: false)
 
 if desktop_file_validate.found ()
-	test (
-		'validate-desktop-file',
-		desktop_file_validate,
+	test ('validate-desktop-file', desktop_file_validate,
 		args: desktop_file
 	)
 endif
 
-# Install app icons
-install_data ('icons/scalable/apps/@0@.svg'.format (application_id),
-	install_dir: get_option ('datadir') / 'icons/hicolor/scalable/apps'
-)
 
-install_data ('icons/symbolic/apps/@0@-symbolic.svg'.format (meson.project_name ()),
-	install_dir: get_option ('datadir') / 'icons/hicolor/symbolic/apps',
-	     rename: '@0@-symbolic.svg'.format (application_id)
-)
-
-
-# Compile symbolic icons as resources
-icon_resources = gnome.compile_resources (
-	'replay-icon-resources',
-	'replay-icon-resources.xml',
-)
+subdir ('icons')

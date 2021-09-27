@@ -26,7 +26,7 @@ public class Rpy.Application : Gtk.Application {
 			// same as the one we use in release builds, so as not to have to
 			// manually load icons, shortcut window, and other automatic
 			// resources, avoiding future headaches
-			resource_base_path: Constants.RESOURCE_PATH,
+			resource_base_path: "/com/github/replaydev/Replay",
 #endif
 			application_id: Constants.APPLICATION_ID,
 			flags: ApplicationFlags.FLAGS_NONE
@@ -65,7 +65,7 @@ public class Rpy.Application : Gtk.Application {
 
 		// Load our custom stylesheet
 		var css_provider = new Gtk.CssProvider ();
-		css_provider.load_from_resource (@"$(Constants.RESOURCE_PATH)/style.css");
+		css_provider.load_from_resource ("/com/github/replaydev/Replay/style.css");
 
 		Gdk.Display? display = Gdk.Display.get_default ();
 		assert (display != null);
@@ -103,7 +103,7 @@ public class Rpy.Application : Gtk.Application {
 			version = Constants.VERSION,
 			/// TRANSLATORS: This is the summary of the app
 			comments = _("Explore and watch YouTube videos"),
-			website = Constants.PROJECT_WEBSITE,
+			website = "httos://github.com/ReplayDev/Replay",
 			/// TRANSLATORS: This is the label of the link to the app's repository
 			website_label = _("Project repository"),
 			copyright = "© 2019 - 2020 Nahuel Gomez Castro",
