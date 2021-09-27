@@ -18,8 +18,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-private class Rpy.Application : Gtk.Application {
-	private Application () {
+class Rpy.Application : Gtk.Application {
+	Application () {
 		Object (
 #if DEVEL
 			// In development builds, force the resource base path to be the
@@ -33,7 +33,7 @@ private class Rpy.Application : Gtk.Application {
 		);
 	}
 
-	private static int main (string[] args) {
+	static int main (string[] args) {
 		// Configure project localizations
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
 		Intl.setlocale (LocaleCategory.ALL);
@@ -92,7 +92,7 @@ private class Rpy.Application : Gtk.Application {
 		new ApplicationWindow (this);
 	}
 
-	private void show_about_dialog () requires (this.active_window != null) {
+	void show_about_dialog () requires (this.active_window != null) {
 		var about_dialog = new Gtk.AboutDialog () {
 			transient_for = this.active_window,
 			modal = true,
