@@ -2,7 +2,7 @@ replay_sources = files (
 	'views/view.vala',
 
 	'app.vala',
-	'application-window.vala',
+	'app-window.vala',
 )
 
 
