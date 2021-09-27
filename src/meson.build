@@ -6,13 +6,15 @@ replay_sources = files (
 )
 
 
-ui_resources = gnome.compile_resources (
+replay_sources += icon_resources
+
+replay_sources += gnome.compile_resources (
 	'replay-ui-resources',
 	'replay-ui-resources.xml',
 )
 
 
-replay_dependencies = [
+replay_deps = [
 	gtk_dep,
 	gee_dep,
 	config_dep,
@@ -20,14 +22,9 @@ replay_dependencies = [
 ]
 
 
-executable (
-	meson.project_name (),
-	replay_sources,
-	icon_resources,
-	ui_resources,
-
-	       dependencies: replay_dependencies,
+executable (meson.project_name (), replay_sources,
+	       dependencies: replay_deps,
 	            install: true,
-	            gui_app: true,
-	include_directories: confinc
+	      win_subsystem: 'windows',
+	include_directories: confinc,
 )
