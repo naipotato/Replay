@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
          xmlns:foaf="http://xmlns.com/foaf/0.1/"
          xmlns="http://usefulinc.com/ns/doap#">
+
 	<name xml:lang="en">Replay</name>
 	<shortdesc xml:lang="en">YouTube client</shortdesc>
-	<description xml:lang="en">Explore and watch YouTube videos</description>
+	<description>
+		Replay is a YouTube client that allows you to enjoy your favorite videos
+		in a safe and secure way.
+	</description>
 	<homepage rdf:resource="https://github.com/ReplayDev/Replay" />
 	<bug-database rdf:resource="https://github.com/ReplayDev/Replay/issues" />
 	<programming-language>Vala</programming-language>
-	<license rdf:resource="https://www.gnu.org/licenses/gpl-3.0.html" />
-	<developer>
+
+	<maintainer>
 		<foaf:Person>
 			<foaf:name>Nahuel Gomez Castro</foaf:name>
-			<foaf:homepage rdf:resource="https://nahuelgomez.com.ar" />
-			<foaf:mbox_sha1sum>607f7ec4de26aba4965d7459dc1299304e05e33a</foaf:mbox_sha1sum>
+			<foaf:mbox rdf:resource="mailto:contact@nahuelgomez.com.ar" />
 		</foaf:Person>
-	</developer>
+	</maintainer>
+
 </Project>
