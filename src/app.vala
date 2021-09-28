@@ -30,7 +30,7 @@ class Rpy.App : Adw.Application {
 	}
 
 	protected override void activate () {
-		this.active_window?.present_with_time (Gdk.CURRENT_TIME);
+		this.active_window?.present ();
 	}
 
 	protected override void startup () {
@@ -82,6 +82,6 @@ class Rpy.App : Adw.Application {
 			artists = { "Noëlle https://github.com/jannuary" }
 		};
 
-		about_dialog.present_with_time (Gdk.CURRENT_TIME);
+		about_dialog.present ();
 	}
 }
