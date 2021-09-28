@@ -29,8 +29,8 @@ class Rpy.App : Adw.Application {
 		return new App ().run (args);
 	}
 
-	protected override void activate () requires (this.active_window != null) {
-		this.active_window.present_with_time (Gdk.CURRENT_TIME);
+	protected override void activate () {
+		this.active_window?.present_with_time (Gdk.CURRENT_TIME);
 	}
 
 	protected override void startup () {
@@ -60,7 +60,9 @@ class Rpy.App : Adw.Application {
 		new AppWindow (this);
 	}
 
-	void show_about_dialog () requires (this.active_window != null) {
+	void show_about_dialog () {
+		if (this.active_window == null) return;
+
 		var about_dialog = new Gtk.AboutDialog () {
 			transient_for = this.active_window,
 			modal = true,
