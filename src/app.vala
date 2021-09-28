@@ -63,25 +63,23 @@ class Rpy.App : Adw.Application {
 	void show_about_dialog () {
 		if (this.active_window == null) return;
 
-		var about_dialog = new Gtk.AboutDialog () {
-			transient_for = this.active_window,
-			modal = true,
-			destroy_with_parent = true,
+		Gtk.show_about_dialog (
+			this.active_window,
+			modal: true,
+			destroy_with_parent: true,
 			/// TRANSLATORS: This is the title of the About dialog
-			title = _("About Replay"),
-			logo_icon_name = Constants.APPLICATION_ID,
-			version = Constants.VERSION,
+			title: _("About Replay"),
+			logo_icon_name: Constants.APPLICATION_ID,
+			version: Constants.VERSION,
 			/// TRANSLATORS: This is the summary of the app
-			comments = _("Explore and watch YouTube videos"),
-			website = "httos://github.com/ReplayDev/Replay",
+			comments: _("Explore and watch YouTube videos"),
+			website: "https://github.com/ReplayDev/Replay",
 			/// TRANSLATORS: This is the label of the link to the app's repository
-			website_label = _("Project repository"),
-			copyright = "© 2019 - 2021 Nahuel Gomez Castro",
-			license_type = Gtk.License.GPL_3_0,
-			authors = { "Nahuel Gomez Castro <contact@nahuelgomez.com.ar>" },
-			artists = { "Noëlle https://github.com/jannuary" }
-		};
-
-		about_dialog.present ();
+			website_label: _("Project repository"),
+			copyright: "© 2019 - 2021 Nahuel Gomez Castro",
+			license_type: Gtk.License.GPL_3_0,
+			authors: new string[] { "Nahuel Gomez Castro <contact@nahuelgomez.com.ar>" },
+			artists: new string[] { "Noëlle https://github.com/jannuary" }
+		);
 	}
 }
