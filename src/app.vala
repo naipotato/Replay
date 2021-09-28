@@ -8,10 +8,8 @@ class Rpy.App : Adw.Application {
 	App () {
 		Object (
 #if DEVEL
-			// In development builds, force the resource base path to be the
-			// same as the one we use in release builds, so as not to have to
-			// manually load icons, shortcut window, and other automatic
-			// resources, avoiding future headaches
+			// Ensure that the resource base path in development builds is the same
+			// as in release builds to avoid problems with automatic resources.
 			resource_base_path: "/com/github/replaydev/Replay",
 #endif
 			application_id: Constants.APPLICATION_ID,
