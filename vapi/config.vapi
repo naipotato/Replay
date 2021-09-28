@@ -1,5 +1,5 @@
 /* Replay - Explore and watch YouTube videos
- * Copyright 2019-2021 - 2020 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+ * Copyright 2019-2021 Nahuel Gomez Castro <contact@nahuelgomez.com.ar>
  *
  * Replay is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software

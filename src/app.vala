@@ -1,6 +1,6 @@
 /* app.vala
  *
- * Copyright 2019-2021 Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+ * Copyright 2019-2021 Nahuel Gomez Castro <contact@nahuelgomez.com.ar>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,9 +89,9 @@ class Rpy.App : Adw.Application {
 			website = "httos://github.com/ReplayDev/Replay",
 			/// TRANSLATORS: This is the label of the link to the app's repository
 			website_label = _("Project repository"),
-			copyright = "© 2019 - 2020 Nahuel Gomez Castro",
+			copyright = "© 2019 - 2021 Nahuel Gomez Castro",
 			license_type = Gtk.License.GPL_3_0,
-			authors = { "Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>" },
+			authors = { "Nahuel Gomez Castro <contact@nahuelgomez.com.ar>" },
 			artists = { "Noëlle https://github.com/jannuary" }
 		};
 
