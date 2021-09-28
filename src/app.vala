@@ -19,6 +19,12 @@ class Rpy.App : Adw.Application {
 		);
 	}
 
+	// FIXME: We're able to access instance members, but not explicitly
+	ActionEntry[] action_entries = {
+		{ "about", show_about_dialog },
+		{ "quit",  quit              }
+	};
+
 	static int main (string[] args) {
 		// Configure project localizations
 		// See https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
@@ -47,14 +53,8 @@ class Rpy.App : Adw.Application {
 
 
 		// Register app actions
-		var about_action = new SimpleAction ("about", null);
-		about_action.activate.connect (this.show_about_dialog);
-		this.add_action (about_action);
-
-		var quit_action = new SimpleAction ("quit", null);
-		quit_action.activate.connect (this.quit);
-		this.set_accels_for_action ("app.quit", { "<Primary>Q" });
-		this.add_action (quit_action);
+		this.add_action_entries (action_entries, this);
+		this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
 
 
 		new AppWindow (this);
