@@ -3,7 +3,6 @@
 
 <gresource prefix="/com/github/replaydev/Replay">
 	<file alias="app-window.ui">app-window.ui</file>
-
 	<file>style.css</file>
 </gresource>
 
