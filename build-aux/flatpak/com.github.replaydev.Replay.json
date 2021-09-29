@@ -1,96 +1,102 @@
 {
-  "app-id": "com.github.replaydev.Replay.Devel",
-  "runtime": "org.gnome.Platform",
-  "runtime-version": "master",
-  "sdk": "org.gnome.Sdk",
-  "command": "com.github.replaydev.Replay",
-  "finish-args": [
-    "--share=network",
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--device=dri",
-    "--env=GTK_PATH=/app/lib/gtk-4.0"
-  ],
-  "cleanup": [
-    "/include",
-    "/lib/pkgconfig",
-    "/man",
-    "/share/doc",
-    "/share/gtk-doc",
-    "/share/man",
-    "/share/pkgconfig",
-    "/share/vala",
-    "*.la",
-    "*.a"
-  ],
-  "modules": [
-    {
-      "name": "libsass",
-      "cleanup": ["*"],
-      "config-opts": [
-        "--disable-tests",
-        "--disable-static",
-        "--enable-shared"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/sass/libsass.git"
-        },
-        {
-          "type": "script",
-          "dest-filename": "autogen.sh",
-          "commands": [
-            "autoreconf --force --install"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "sassc",
-      "cleanup": ["*"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/sass/sassc.git"
-        },
-        {
-          "type": "script",
-          "dest-filename": "autogen.sh",
-          "commands": [
-            "autoreconf --force --install"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "libadwaita",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dexamples=false",
-        "-Dtests=false"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-          "branch": "main"
-        }
-      ]
-    },
-    {
-      "name": "replay",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dprofile=development"
-      ],
-      "sources": [
-        {
-          "type": "dir",
-          "path": "../.."
-        }
-      ]
-    }
-  ]
+	"app-id": "com.github.replaydev.Replay.Devel",
+	"runtime": "org.gnome.Platform",
+	"runtime-version": "master",
+	"sdk": "org.gnome.Sdk",
+	"command": "com.github.replaydev.Replay",
+	"finish-args": [
+		"--share=network",
+		"--share=ipc",
+		"--socket=fallback-x11",
+		"--socket=wayland",
+		"--device=dri",
+		"--env=GTK_PATH=/app/lib/gtk-4.0"
+	],
+	"cleanup": [
+		"/include",
+		"/lib/pkgconfig",
+		"/man",
+		"/share/doc",
+		"/share/gtk-doc",
+		"/share/man",
+		"/share/pkgconfig",
+		"/share/vala",
+		"*.la",
+		"*.a"
+	],
+	"modules": [
+		{
+			"name": "replay",
+			"buildsystem": "meson",
+			"config-opts": [
+				"-Dprofile=development"
+			],
+			"sources": [
+				{
+					"type": "dir",
+					"path": "../.."
+				}
+			],
+			"modules": [
+				{
+					"name": "libadwaita",
+					"buildsystem": "meson",
+					"config-opts": [
+						"-Dexamples=false",
+						"-Dtests=false"
+					],
+					"sources": [
+						{
+							"type": "git",
+							"url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+							"branch": "main"
+						}
+					],
+					"modules": [
+						{
+							"name": "sassc",
+							"cleanup": ["*"],
+							"sources": [
+								{
+									"type": "git",
+									"url": "https://github.com/sass/sassc.git"
+								},
+								{
+									"type": "script",
+									"dest-filename": "autogen.sh",
+									"commands": [
+										"autoreconf --force --install"
+									]
+								}
+							],
+							"modules": [
+								{
+									"name": "libsass",
+									"cleanup": ["*"],
+									"config-opts": [
+										"--disable-tests",
+										"--disable-static",
+										"--enable-shared"
+									],
+									"sources": [
+										{
+											"type": "git",
+											"url": "https://github.com/sass/libsass.git"
+										},
+										{
+											"type": "script",
+											"dest-filename": "autogen.sh",
+											"commands": [
+												"autoreconf --force --install"
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
 }
