@@ -1,3 +1,3 @@
-data/com.github.replaydev.Replay.desktop.in.in
-src/application.vala
-src/application-window.ui
+data/app.drey.Replay.desktop.in.in
+src/app.vala
+src/app-window.ui
