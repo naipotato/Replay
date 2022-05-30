@@ -17,7 +17,7 @@
 	<maintainer>
 		<foaf:Person>
 			<foaf:name>Nahuel Gomez</foaf:name>
-			<foaf:mbox rdf:resource="mailto:nahuel@nahuewexd.com" />
+			<foaf:mbox rdf:resource="mailto:nahuel@nahuelwexd.com" />
 		</foaf:Person>
 	</maintainer>
 
