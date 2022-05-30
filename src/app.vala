@@ -10,7 +10,7 @@ class Rpy.App : Adw.Application {
 #if DEVEL
 			// Ensure that the resource base path in development builds is the same
 			// as in release builds to avoid problems with automatic resources.
-			resource_base_path: "/com/github/replaydev/Replay",
+			resource_base_path: "/app/drey/Replay",
 #endif
 			application_id: Constants.APPLICATION_ID,
 			flags: ApplicationFlags.FLAGS_NONE

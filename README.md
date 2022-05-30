@@ -1,4 +1,4 @@
-<img align="left" alt="Project logo" src="data/icons/scalable/apps/com.github.replaydev.Replay.svg" />
+<img align="left" alt="Project logo" src="data/icons/scalable/apps/app.drey.Replay.svg" />
 
 # [WIP] Replay
 

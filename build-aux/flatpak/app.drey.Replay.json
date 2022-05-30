@@ -1,9 +1,9 @@
 {
-  "app-id": "com.github.replaydev.Replay.Devel",
+  "app-id": "app.drey.Replay.Devel",
   "runtime": "org.gnome.Platform",
   "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
-  "command": "com.github.replaydev.Replay",
+  "command": "app.drey.Replay",
   "finish-args": [
     "--share=network",
     "--share=ipc",

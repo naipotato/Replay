@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
 
-<gresource prefix="/com/github/replaydev/Replay/icons">
+<gresource prefix="/app/drey/Replay/icons">
 	<file compressed="true" preprocess="xml-stripblanks">scalable/places/rpy-favorites-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">scalable/places/rpy-history-symbolic.svg</file>
 	<file compressed="true" preprocess="xml-stripblanks">scalable/places/rpy-home-symbolic.svg</file>

@@ -59,8 +59,8 @@ jobs:
       - name: Build flatpak
         uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
-          manifest-path: build-aux/flatpak/com.github.replaydev.Replay.json
-          bundle: com.github.replaydev.Replay.Devel.flatpak
+          manifest-path: build-aux/flatpak/app.drey.Replay.json
+          bundle: app.drey.Replay.Devel.flatpak
           repository-name: gnome-nightly
           branch: main
           cache-key: flatpak-builder-${{ github.sha }}
