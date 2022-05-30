@@ -1,16 +1,24 @@
 root = true
 
 [*]
-indent_style             = tab      # We use tabs to indent
-charset                  = utf-8    # Encode your files with UTF-8
-end_of_line              = lf       # Use Linux-style to end your lines
-max_line_length          = 120      # Limit your lines to 120 columns
-trim_trailing_whitespace = true     # Do not leave any trailing whitespace
-insert_final_newline     = true     # Always end any file with a newline
+end_of_line              = lf
+charset                  = utf-8
+trim_trailing_whitespace = true
+insert_final_newline     = true
+max_line_length          = 80
 
-[*.{yaml,yml}]
-indent_style = spaces               # We use spaces to indent on YAML files
-indent_size  = 2                    # The indent size must have a width of 2 spaces
+[meson{.build,_options.txt}]
+indent_style = space
+indent_size  = 2
 
-[*.md]
-max_line_length = 80                # Limit your lines to 80 columns on Markdown files
+[*.json]
+indent_style = space
+indent_size  = 4
+
+[*.{vala,vapi}]
+indent_style = space
+indent_size  = 4
+
+[*.{ui,xml,doap}]
+indent_style = space
+indent_size  = 2
