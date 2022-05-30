@@ -71,7 +71,7 @@ class Rpy.App : Adw.Application {
 			version: Constants.VERSION,
 			/// TRANSLATORS: This is the summary of the app
 			comments: _("Explore and watch YouTube videos"),
-			website: "https://github.com/ReplayDev/Replay",
+			website: "https://github.com/nahuelwexd/Replay",
 			/// TRANSLATORS: This is the label of the link to the app's repository
 			website_label: _("Project repository"),
 			copyright: "© 2019 - 2021 Nahuel Gomez Castro",
