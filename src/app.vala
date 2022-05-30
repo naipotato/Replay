@@ -76,7 +76,7 @@ class Rpy.App : Adw.Application {
 			website_label: _("Project repository"),
 			copyright: "© 2019 - 2021 Nahuel Gomez Castro",
 			license_type: Gtk.License.GPL_3_0,
-			authors: new string[] { "Nahuel Gomez Castro <contact@nahuelgomez.com.ar>" },
+			authors: new string[] { "Nahuel Gomez https://nahuelwexd.com" },
 			artists: new string[] { "Noëlle https://github.com/jannuary" }
 		);
 	}
