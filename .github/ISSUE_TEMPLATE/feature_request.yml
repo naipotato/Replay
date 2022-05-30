@@ -1,6 +1,6 @@
 name: Feature request
 description: Suggest an idea for this project
-labels: enhacement
+labels: enhancement
 assignees: nahuelwexd
 
 body:
@@ -18,9 +18,7 @@ body:
   - type: textarea
     attributes:
       label: Describe alternatives you've considered
-      description: |
-        A clear and concise description of any alternative solutions or features you've
-        considered.
+      description: A clear and concise description of any alternative solutions or features you've considered.
 
   - type: textarea
     attributes:
