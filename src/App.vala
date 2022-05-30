@@ -12,7 +12,7 @@ class Rpy.App : Adw.Application {
             // as in release builds to avoid problems with automatic resources.
             resource_base_path: "/app/drey/Replay",
 #endif
-            application_id: Constants.APPLICATION_ID,
+            application_id: Config.APPLICATION_ID,
             flags: ApplicationFlags.FLAGS_NONE
         );
     }
@@ -26,9 +26,9 @@ class Rpy.App : Adw.Application {
     static int main (string[] args) {
         // Configure project localizations
         // See https://docs.gtk.org/glib/i18n.html
-        Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
-        Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
-        Intl.textdomain (Constants.GETTEXT_PACKAGE);
+        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
+        Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (Config.GETTEXT_PACKAGE);
 
         return new App ().run (args);
     }
@@ -67,8 +67,8 @@ class Rpy.App : Adw.Application {
             destroy_with_parent: true,
             /// TRANSLATORS: This is the title of the About dialog
             title: _("About Replay"),
-            logo_icon_name: Constants.APPLICATION_ID,
-            version: Constants.VERSION,
+            logo_icon_name: Config.APPLICATION_ID,
+            version: Config.VERSION,
             /// TRANSLATORS: This is the summary of the app
             comments: _("Explore and watch YouTube videos"),
             website: "https://github.com/nahuelwexd/Replay",
