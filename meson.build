@@ -24,7 +24,7 @@ localedir = prefix / get_option('localedir')
 profile         = get_option('profile')
 app_id_suffix   = profile == 'development' ? '.Devel' : ''
 application_id  = meson.project_name() + app_id_suffix
-version         = meson.project_version() + '-@VCS_TAG@'
+version         = meson.project_version() + '-${vcs_tag}'
 gettext_package = meson.project_name()
 
 # generate a header with the info
@@ -39,10 +39,11 @@ config_h_in = configure_file(
 )
 
 vcs_tag(
-  command  : ['git', 'rev-parse', '--short', 'HEAD'],
-  fallback : profile == 'development' ? 'devel' : 'stable',
-  input    : config_h_in,
-  output   : 'config.h',
+  command        : ['git', 'rev-parse', '--short', 'HEAD'],
+  fallback       : profile == 'development' ? 'devel' : 'stable',
+  input          : config_h_in,
+  output         : 'config.h',
+  replace_string : '${vcs_tag}',
 )
 
 add_project_arguments(
