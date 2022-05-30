@@ -1,16 +1,20 @@
-# Install app icons
-install_data ('scalable/apps/@0@.svg'.format (application_id),
-  install_dir: datadir / 'icons/hicolor/scalable/apps'
+# install app icons
+scalable_dir = 'scalable/apps'
+install_data(
+  scalable_dir / application_id + '.svg',
+  install_dir : datadir / 'icons/hicolor' / scalable_dir,
 )
 
-install_data ('symbolic/apps/@0@-symbolic.svg'.format (meson.project_name ()),
-  install_dir: datadir / 'icons/hicolor/symbolic/apps',
-       rename: '@0@-symbolic.svg'.format (application_id)
+symbolic_dir = 'symbolic/apps'
+install_data(
+  symbolic_dir / meson.project_name() + '-symbolic.svg',
+
+  install_dir : datadir / 'icons/hicolor' / symbolic_dir,
+  rename      : application_id + '-symbolic.svg',
 )
 
-
-# Compile symbolic icons as resources
-icon_resources = gnome.compile_resources (
+# compile symbolic icons as resources
+icon_resources = gnome.compile_resources(
   'replay-icon-resources',
   'replay-icon-resources.xml',
 )

@@ -1,6 +1,8 @@
-option ('profile',
-         type: 'combo',
-        value: 'default',
-      choices: ['default', 'development'],
-  description: 'The build profile for the app. If none specified, "default" is used'
+option(
+  'profile',
+
+  type        : 'combo',
+  choices     : ['default', 'development'],
+  value       : 'default',
+  description : 'The build profile to be used',
 )
