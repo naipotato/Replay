@@ -1,7 +1,7 @@
 {
   "app-id": "app.drey.Replay.Devel",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "master",
+  "runtime-version": "42",
   "sdk": "org.gnome.Sdk",
   "command": "app.drey.Replay",
   "finish-args": [

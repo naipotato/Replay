@@ -36,7 +36,7 @@ jobs:
     name: Flatpak
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
+      image: bilelmoussaoui/flatpak-github-actions:gnome-42
       options: --privileged
     strategy:
       matrix:
@@ -47,8 +47,7 @@ jobs:
         uses: actions/checkout@v3.0.2
 
       - name: Install deps
-        run: |
-          dnf install -y docker
+        run: dnf install -y docker
 
       - name: Set up QEMU
         id: qemu
@@ -61,7 +60,6 @@ jobs:
         with:
           manifest-path: build-aux/flatpak/app.drey.Replay.json
           bundle: app.drey.Replay.Devel.flatpak
-          repository-name: gnome-nightly
           branch: main
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
