@@ -3,6 +3,9 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "42",
   "sdk": "org.gnome.Sdk",
+	"sdk-extensions": [
+		"org.freedesktop.Sdk.Extension.vala"
+	],
   "command": "app.drey.Replay",
   "finish-args": [
     "--share=network",
@@ -11,6 +14,10 @@
     "--socket=wayland",
     "--device=dri"
   ],
+	"build-options": {
+		"append-path": "/usr/lib/sdk/vala/bin",
+		"append-ld-library-path": "/usr/lib/sdk/vala/lib"
+	},
   "cleanup": [
     "/include",
     "/lib/pkgconfig",
