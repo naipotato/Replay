@@ -7,7 +7,7 @@ build and debug the app, the coding style we use, various recommendations when
 creating your commits and publishing your pull requests, and so on.
 
 > NOTE: If you are a designer, and you want to contribute designs to the app,
-> switch to the [`design`](https://github.com/ReplayDev/Replay/tree/design)
+> switch to the [`design`](https://github.com/nahuelwexd/Replay/tree/design)
 > branch to find the design contribution guidelines 😊️
 
 Don't forget to join the Telegram group listed on the [README](README.md)!
