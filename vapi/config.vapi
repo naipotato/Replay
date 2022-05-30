@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Nahuel Gomez Castro <contact@nahuelgomez.com.ar>
+ * Copyright 2019 Nahuel Gomez https://nahuelwexd.com
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
