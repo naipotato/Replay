@@ -7,7 +7,7 @@ project(
     'b_ndebug=if-release',
   ],
   license         : 'GPL-3.0-or-later',
-  meson_version   : '>=0.56.0',
+  meson_version   : '>=0.59.0',
   version         : '0.1.0',
 )
 
@@ -81,5 +81,7 @@ subdir('data')
 subdir('src')
 subdir('po')
 
-# post install script
-meson.add_install_script('build-aux/meson/post-install.py')
+gnome.post_install(
+  gtk_update_icon_cache   : true,
+  update_desktop_database : true,
+)
