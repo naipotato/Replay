@@ -2,10 +2,10 @@
 <interface>
 
 <template class="RpyAppWindow" parent="AdwApplicationWindow">
-	<!-- TRANSLATORS: This is the title of the app window -->
-	<property name="title" translatable="yes">Replay</property>
-	<property name="default-width">1024</property>
-	<property name="default-height">600</property>
+  <!-- TRANSLATORS: This is the title of the app window -->
+  <property name="title" translatable="yes">Replay</property>
+  <property name="default-width">1024</property>
+  <property name="default-height">600</property>
 </template>
 
 </interface>

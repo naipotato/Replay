@@ -1,31 +1,31 @@
 project ('app.drey.Replay', 'c', 'vala',
-	        version: '0.1.0',
-	        license: 'GPL-3.0-or-later',
-	  meson_version: '>=0.56.0',
-	default_options: ['warning_level=2']
+          version: '0.1.0',
+          license: 'GPL-3.0-or-later',
+    meson_version: '>=0.56.0',
+  default_options: ['warning_level=2']
 )
 
 
 add_project_arguments ('-DGETTEXT_PACKAGE=@0@'.format (meson.project_name ()),
-	language: 'c'
+  language: 'c'
 )
 
 
 # Add extra type checks in runtime
 add_project_arguments ('--enable-checking',
-	language: 'vala'
+  language: 'vala'
 )
 
 
 # Check the profile for this build
 if get_option ('profile') == 'development'
-	profile = '.Devel'
+  profile = '.Devel'
 
-	add_project_arguments ('-D', 'DEVEL',
-		language: 'vala'
-	)
+  add_project_arguments ('-D', 'DEVEL',
+    language: 'vala'
+  )
 else
-	profile = ''
+  profile = ''
 endif
 
 # Common dirs
@@ -48,15 +48,15 @@ config_h.set_quoted ('GETTEXT_PACKAGE', gettext_package)
 config_h.set_quoted ('LOCALEDIR', localedir)
 
 config_h_in = configure_file (
-	       output: 'config.h.in',
-	configuration: config_h
+         output: 'config.h.in',
+  configuration: config_h
 )
 
 vcs_tag (
-	 command: ['git', 'rev-parse', '--short', 'HEAD'],
-	fallback: get_option ('profile') != 'default' ? 'devel' : 'stable',
-	   input: config_h_in,
-	  output: 'config.h'
+   command: ['git', 'rev-parse', '--short', 'HEAD'],
+  fallback: get_option ('profile') != 'default' ? 'devel' : 'stable',
+     input: config_h_in,
+    output: 'config.h'
 )
 
 confinc = include_directories ('.')
@@ -78,7 +78,7 @@ config_dep  = valac.find_library ('config', dirs: vapidir)
 
 # Add vapidir for custom vapis
 add_project_arguments ('--vapidir', vapidir,
-	language: 'vala'
+  language: 'vala'
 )
 
 
@@ -94,6 +94,6 @@ subdir ('po')
 
 # Summary
 summary ({
-	'Prefix': get_option ('prefix'),
-	'Profile': get_option ('profile'),
+  'Prefix': get_option ('prefix'),
+  'Profile': get_option ('profile'),
 })
