@@ -74,7 +74,7 @@ class Rpy.App : Adw.Application {
 			website: "https://github.com/nahuelwexd/Replay",
 			/// TRANSLATORS: This is the label of the link to the app's repository
 			website_label: _("Project repository"),
-			copyright: "© 2019 - 2021 Nahuel Gomez Castro",
+			copyright: "© 2022 Nahuel Gomez",
 			license_type: Gtk.License.GPL_3_0,
 			authors: new string[] { "Nahuel Gomez https://nahuelwexd.com" },
 			artists: new string[] { "Noëlle https://github.com/jannuary" }
