@@ -35,10 +35,6 @@ and downloading one of those that have been successfully generated.
 > **NOTE:** You must download the artifact called "Flatpak Bundles", which
 > contains 2 flatpak files ready to install: the application and the locales.
 
-## Contributing
-
-You can read our contributing guidelines [here](CONTRIBUTING.md).
-
 ## License
 
 This project is licensed under the [GNU General Public License v3](COPYING) or
