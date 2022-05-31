@@ -4,26 +4,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-class Rpy.App : Adw.Application {
-    App () {
-        Object (
-#if DEVEL
-            // Ensure that the resource base path in development builds is the same
-            // as in release builds to avoid problems with automatic resources.
-            resource_base_path: "/app/drey/Replay",
-#endif
-            application_id: Config.APPLICATION_ID,
-            flags: ApplicationFlags.FLAGS_NONE
-        );
+sealed class Rpy.App : Adw.Application {
+    construct {
+        this.application_id = Config.APPLICATION_ID;
     }
 
-    // FIXME: We're able to access instance members, but not explicitly
-    ActionEntry[] action_entries = {
-        { "about", show_about_dialog },
-        { "quit",  quit              }
-    };
-
-    static int main (string[] args) {
+    public static int main (string[] args) {
         // Configure project localizations
         // See https://docs.gtk.org/glib/i18n.html
         Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
@@ -33,51 +19,61 @@ class Rpy.App : Adw.Application {
         return new App ().run (args);
     }
 
-    protected override void activate () {
+    public override void activate () {
         this.active_window?.present ();
     }
 
-    protected override void startup () {
+    public override void startup () {
+        // Ensure that the resource base path in development builds is the same
+        // as in release builds to avoid problems with automatic resources.
+        this.resource_base_path = "/app/drey/Replay";
+
         base.startup ();
 
-
-        /// TRANSLATORS: This is the application name
+        // TRANSLATORS: This is the application name
         Environment.set_application_name (_("Replay"));
-
 
         // Since this is a media app, inform the system that we prefer a dark
         // color scheme
-        this.style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
+        this.style_manager.color_scheme = PREFER_DARK;
 
-
-        // Register app actions
-        this.add_action_entries (action_entries, this);
-        this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
-
+        this.setup_actions ();
 
         new AppWindow (this);
     }
 
-    void show_about_dialog () {
-        if (this.active_window == null) return;
+    /** Sets app-level actions, along with their keyboard shortcuts */
+    private void setup_actions () {
+        var action_entries = new ActionEntry[] {
+            { "about", show_about_dialog },
+            { "quit",  quit              },
+        };
 
-        Gtk.show_about_dialog (
-            this.active_window,
-            modal: true,
-            destroy_with_parent: true,
-            /// TRANSLATORS: This is the title of the About dialog
-            title: _("About Replay"),
-            logo_icon_name: Config.APPLICATION_ID,
-            version: Config.VERSION,
-            /// TRANSLATORS: This is the summary of the app
-            comments: _("Explore and watch YouTube videos"),
-            website: "https://github.com/nahuelwexd/Replay",
-            /// TRANSLATORS: This is the label of the link to the app's repository
-            website_label: _("Project repository"),
-            copyright: "© 2022 Nahuel Gomez",
-            license_type: Gtk.License.GPL_3_0,
-            authors: new string[] { "Nahuel Gomez https://nahuelwexd.com" },
-            artists: new string[] { "Noëlle https://github.com/jannuary" }
-        );
+        this.add_action_entries (action_entries, this);
+        this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
+    }
+
+    /** Shows the About dialog */
+    private void show_about_dialog () {
+        var about_dialog = new Gtk.AboutDialog () {
+            transient_for = this.active_window,
+            modal = true,
+            destroy_with_parent = true,
+            // TRANSLATORS: This is the title of the About dialog
+            title = C_("about window title", "About Replay"),
+            logo_icon_name = Config.APPLICATION_ID,
+            version = Config.VERSION,
+            // TRANSLATORS: This is the summary of the app
+            comments = _("Explore and watch your favorite videos"),
+            website = "https://github.com/nahuelwexd/Replay",
+            // TRANSLATORS: This is the label of the link to the app's repo
+            website_label = _("Project repository"),
+            copyright = "© 2022 Nahuel Gomez",
+            license_type = GPL_3_0,
+            authors = { "Nahuel Gomez https://nahuelwexd.com" },
+            artists = { "Noëlle https://github.com/jannuary" },
+        };
+
+        about_dialog.present ();
     }
 }
