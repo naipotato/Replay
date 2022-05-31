@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+/** ``RpyApp`` performs the initialization operations of the app */
 sealed class Rpy.App : Adw.Application {
     construct {
         this.application_id = Config.APPLICATION_ID;
