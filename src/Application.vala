@@ -4,7 +4,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-/** ``RpyApplication`` performs the initialization operations of the app */
+/**
+ * Base class for the Replay app.
+ *
+ * It initializes the app, registers the global actions, and starts the main
+ * loop.
+ */
 sealed class Rpy.Application : Adw.Application {
     construct {
         this.application_id = Config.APPLICATION_ID;
