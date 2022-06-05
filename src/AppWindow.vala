@@ -6,7 +6,7 @@
 
 [GtkTemplate (ui = "/app/drey/Replay/AppWindow.ui")]
 class Rpy.AppWindow : Adw.ApplicationWindow {
-    public AppWindow (App app) {
+    public AppWindow (Application app) {
         Object (application: app);
     }
 

@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-/** ``RpyApp`` performs the initialization operations of the app */
-sealed class Rpy.App : Adw.Application {
+/** ``RpyApplication`` performs the initialization operations of the app */
+sealed class Rpy.Application : Adw.Application {
     construct {
         this.application_id = Config.APPLICATION_ID;
     }
@@ -17,7 +17,7 @@ sealed class Rpy.App : Adw.Application {
         Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-        return new App ().run (args);
+        return new Application ().run (args);
     }
 
     public override void activate () {

@@ -1,7 +1,7 @@
 replay_sources = [
   'Views/View.vala',
 
-  'App.vala',
+  'Application.vala',
   'AppWindow.vala',
 ]
 
