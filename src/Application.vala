@@ -45,7 +45,7 @@ sealed class Rpy.Application : Adw.Application {
 
         this.setup_actions ();
 
-        new AppWindow (this);
+        new MainWindow (this);
     }
 
     /** Sets app-level actions, along with their keyboard shortcuts */
