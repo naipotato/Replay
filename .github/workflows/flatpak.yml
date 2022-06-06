@@ -7,6 +7,7 @@ on:
       - build-aux/flatpak/**
       - build-aux/meson/**
       - data/**
+      - lib/**
       - po/**
       - src/**
       - subprojects/**
@@ -22,6 +23,7 @@ on:
       - build-aux/flatpak/**
       - build-aux/meson/**
       - data/**
+      - lib/**
       - po/**
       - src/**
       - subprojects/**
