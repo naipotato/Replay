@@ -76,9 +76,11 @@ vapidir = meson.project_source_root() / 'vapi'
 adwaita_dep = dependency('libadwaita-1', version : '>=1.0', method : 'pkg-config')
 config_dep  = valac.find_library('config', dirs : vapidir)
 gee_dep     = dependency('gee-0.8', version : '>=0.20', method : 'pkg-config')
+gio_dep     = dependency('gio-2.0', version : '>=2.70', method : 'pkg-config')
 
 # subdirectories
 subdir('data')
+subdir('lib')
 subdir('src')
 subdir('po')
 
