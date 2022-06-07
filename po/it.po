@@ -1,0 +1,50 @@
+# ITALIAN TRANSLATION FOR REPLAY.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the app.drey.Replay package.
+# ALBANO BATTISTELLA <ALBANO_BATTISTELLA@HOTMAIL.COM>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: app.drey.Replay\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-29 21:56-0300\n"
+"PO-Revision-Date: 2022-06-07 19:58+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Translators: This is the application name
+#. / TRANSLATORS: This is the application name
+#. TRANSLATORS: This is the title of the app window
+#: data/app.drey.Replay.desktop.in.in:5 src/app.vala:45 src/app-window.ui:6
+msgid "Replay"
+msgstr "Replay"
+
+#. Translators: This is the generic name for the application
+#: data/app.drey.Replay.desktop.in.in:7
+msgid "YouTube client"
+msgstr "YouTube client"
+
+#. Translators: This is a little summary about the app
+#. / TRANSLATORS: This is the summary of the app
+#: data/app.drey.Replay.desktop.in.in:9 src/app.vala:73
+msgid "Explore and watch YouTube videos"
+msgstr "Esplora e guarda i video di YouTube"
+
+#. Translators: These are the keywords used by the search trackers on DEs, MUST be delimited by semicolons and MUST have a trailing one
+#: data/app.drey.Replay.desktop.in.in:17
+msgid "youtube;videos;"
+msgstr "youtube;video;"
+
+#. / TRANSLATORS: This is the title of the About dialog
+#: src/app.vala:69
+msgid "About Replay"
+msgstr "Informazioni su Replay"
+
+#. / TRANSLATORS: This is the label of the link to the app's repository
+#: src/app.vala:76
+msgid "Project repository"
+msgstr "Repository del progetto"
