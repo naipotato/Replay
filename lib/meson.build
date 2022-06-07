@@ -1,5 +1,6 @@
 libinvidious_sources = [
   'Utils/Functions.vala',
+  'Utils/RequestError.vala',
   'Utils/UriQueryBuilder.vala',
 
   'InvidiousApi.vala',
@@ -7,6 +8,8 @@ libinvidious_sources = [
 
 libinvidious_deps = [
   gio_dep,
+  gjson_dep,
+  soup_dep,
 ]
 
 libinvidious = library(

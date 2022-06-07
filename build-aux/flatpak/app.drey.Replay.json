@@ -32,6 +32,19 @@
     ],
     "modules": [
         {
+            "name": "vul",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dwith-vala=0.56"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/BZHDeveloper/vul.git"
+                }
+            ]
+        },
+        {
             "name": "replay",
             "buildsystem": "meson",
             "config-opts": [
