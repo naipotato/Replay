@@ -5,5 +5,9 @@
  */
 
 public sealed class Iv.InvidiousApi {
+    internal Soup.Session session { get; private set; }
 
+    public InvidiousApi (Soup.Session? session) {
+        this.session = session ?? new Soup.Session ();
+    }
 }

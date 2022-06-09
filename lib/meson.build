@@ -1,4 +1,6 @@
 libinvidious_sources = [
+  'Requests/Request.vala',
+
   'Utils/Functions.vala',
   'Utils/RequestError.vala',
   'Utils/UriQueryBuilder.vala',
