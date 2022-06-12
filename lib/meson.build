@@ -1,4 +1,8 @@
 libinvidious_sources = [
+  'Models/Instance.vala',
+  'Models/Stats.vala',
+
+  'Requests/InstancesRequest.vala',
   'Requests/Request.vala',
 
   'Utils/Functions.vala',

@@ -7,7 +7,11 @@
 public sealed class Iv.InvidiousApi {
     internal Soup.Session session { get; private set; }
 
-    public InvidiousApi (Soup.Session? session) {
+    public InvidiousApi (Soup.Session? session = null) {
         this.session = session ?? new Soup.Session ();
+    }
+
+    public InstancesRequest instances () {
+        return new InstancesRequest (this);
     }
 }
