@@ -1,11 +1,8 @@
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - .github/workflows/flatpak.yml
-      - build-aux/flatpak/**
-      - build-aux/meson/**
       - data/**
       - lib/**
       - po/**
@@ -16,12 +13,9 @@ on:
       - meson_options.txt
 
   pull_request:
-    branches:
-      - main
+    branches: [main]
     paths:
       - .github/workflows/flatpak.yml
-      - build-aux/flatpak/**
-      - build-aux/meson/**
       - data/**
       - lib/**
       - po/**
@@ -37,13 +31,15 @@ jobs:
   flatpak:
     name: Flatpak
     runs-on: ubuntu-latest
+
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-42
       options: --privileged
+
     strategy:
-      matrix:
-        arch: [x86_64, aarch64]
-      fail-fast: false
+      matrix: { arch: [x86_64, aarch64] }
+      fail-fast: no
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.2
@@ -54,13 +50,12 @@ jobs:
       - name: Set up QEMU
         id: qemu
         uses: docker/setup-qemu-action@v2.0.0
-        with:
-          platforms: arm64
+        with: { platforms: arm64 }
 
       - name: Build flatpak
         uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
-          manifest-path: build-aux/flatpak/app.drey.Replay.json
+          manifest-path: app.drey.Replay.Devel.yml
           bundle: app.drey.Replay.Devel.flatpak
           branch: main
           cache-key: flatpak-builder-${{ github.sha }}
