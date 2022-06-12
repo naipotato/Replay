@@ -22,7 +22,7 @@ localedir = prefix / get_option('localedir')
 
 # info about the app
 profile         = get_option('profile')
-app_id_suffix   = profile == 'development' ? '.Devel' : ''
+app_id_suffix   = profile == 'devel' ? '.Devel' : ''
 application_id  = meson.project_name() + app_id_suffix
 version         = meson.project_version() + '-${vcs_tag}'
 gettext_package = meson.project_name()
@@ -40,7 +40,7 @@ config_h_in = configure_file(
 
 vcs_tag(
   command        : ['git', 'rev-parse', '--short', 'HEAD'],
-  fallback       : profile == 'development' ? 'devel' : 'stable',
+  fallback       : profile,
   input          : config_h_in,
   output         : 'config.h',
   replace_string : '${vcs_tag}',
@@ -59,7 +59,7 @@ vala_args = [
   '--enable-checking',
 ]
 
-if profile == 'development'
+if profile == 'devel'
   vala_args += '--define=DEVEL'
 endif
 

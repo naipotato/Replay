@@ -2,7 +2,7 @@ option(
   'profile',
 
   type        : 'combo',
-  choices     : ['default', 'development'],
-  value       : 'default',
+  choices     : ['stable', 'devel'],
+  value       : 'stable',
   description : 'The build profile to be used',
 )
