@@ -10,6 +10,7 @@ libinvidious_sources = [
 ]
 
 libinvidious_deps = [
+  gee_dep,
   gio_dep,
   gjson_dep,
   soup_dep,

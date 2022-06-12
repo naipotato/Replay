@@ -4,22 +4,35 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public abstract class Iv.Request : Object {
-    public virtual InvidiousApi? api_client { get; construct; }
-    public abstract string base_url { get; }
-    public abstract string method_name { get; }
+public abstract class Iv.Request<TResponse> {
+    private InvidiousApi _api_client;
 
-    private Soup.Session? session {
-        get { return this.api_client?.session; }
+    protected abstract string base_url { get; }
+    protected abstract string method_name { get; }
+
+    protected virtual Gee.List<string> path_params {
+        get;
+        default = Gee.List.empty ();
     }
 
-    public virtual async GJson.Node? execute_async (
-        Cancellable? cancellable = null
-    ) throws RequestError, IOError requires (this.session != null) {
-        var message = new Soup.Message (
-            "GET",
-            @"https://$(this.base_url)/$(this.method_name)?$(this.to_query ())"
-        );
+    protected virtual Gee.Map<string, string> query_params {
+        get;
+        default = Gee.Map.empty ();
+    }
+
+    private Soup.Session session {
+        get { return this._api_client.session; }
+    }
+
+    protected Request (InvidiousApi api_client) {
+        this._api_client = api_client;
+    }
+
+    public async TResponse execute_async (Cancellable? cancellable = null)
+        throws RequestError, IOError
+    {
+        var uri = this.build_uri ();
+        var message = new Soup.Message.from_uri ("GET", uri);
 
         Bytes response;
 
@@ -43,32 +56,25 @@ public abstract class Iv.Request : Object {
             throw RequestError.from_status_code (message.status_code, json);
         }
 
-        return json;
+        return this.parse_response (json);
     }
 
-    public virtual string to_query () {
-        var klass = (ObjectClass) this.get_type ().class_ref ();
-        var props = klass.list_properties ();
+    protected abstract TResponse parse_response (GJson.Node json);
 
-        var query = new UriQueryBuilder ();
-
-        var props_to_ignore = new string[] {
-            "api-client",
-            "base-url",
-            "method-name",
+    private Uri build_uri () {
+        var builder = new UriBuilder ("https") {
+            host = this.base_url,
+            path = this.method_name,
         };
 
-        foreach (var prop in props) {
-            if (prop.name in props_to_ignore) {
-                continue;
-            }
-
-            var val = Value (prop.value_type);
-            this.get_property (prop.name, ref val);
-
-            query.append (prop.name, Functions.value_to_string (val));
+        foreach (var param in this.path_params) {
+            builder.append_path (param);
         }
 
-        return query.to_string ();
+        foreach (var param in this.query_params) {
+            builder.append_query_param (param.key, param.value);
+        }
+
+        return builder.build ();
     }
 }
