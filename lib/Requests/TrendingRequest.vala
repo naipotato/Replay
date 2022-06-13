@@ -41,7 +41,7 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
         get { return this._base_url; }
     }
 
-    protected override string method_name {
+    protected override string base_path {
         get { return "/api/v1/trending"; }
     }
 

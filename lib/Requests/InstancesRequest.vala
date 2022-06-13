@@ -25,7 +25,7 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
         get { return "api.invidious.io"; }
     }
 
-    protected override string method_name {
+    protected override string base_path {
         get { return "instances.json"; }
     }
 

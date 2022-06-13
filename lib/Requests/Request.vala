@@ -8,7 +8,7 @@ public abstract class Iv.Request<TResponse> {
     private InvidiousApi _api_client;
 
     protected abstract string host { get; }
-    protected abstract string method_name { get; }
+    protected abstract string base_path { get; }
 
     protected virtual Gee.List<string> path_params {
         get;
@@ -64,7 +64,7 @@ public abstract class Iv.Request<TResponse> {
     private Uri build_uri () {
         var builder = new UriBuilder ("https") {
             host = this.host,
-            path = this.method_name,
+            path = this.base_path,
         };
 
         foreach (var param in this.path_params) {
