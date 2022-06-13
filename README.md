@@ -4,8 +4,10 @@
 
 Explore and watch YouTube videos
 
-[![Flatpak CI badge](https://github.com/nahuelwexd/Replay/workflows/Flatpak/badge.svg)](https://github.com/nahuelwexd/Replay/actions?query=workflow:Flatpak)
+[![Flatpak CI status](https://github.com/nahuelwexd/Replay/workflows/Flatpak/badge.svg)](https://github.com/nahuelwexd/Replay/actions?query=workflow:Flatpak)
+[![Please do not ship this app yet](https://img.shields.io/badge/Please-Don't%20Ship%20WIP-yellow)](https://dont-ship.it/)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
+[![Liberapay donations](https://img.shields.io/liberapay/receives/nahuelwexd.svg?logo=liberapay)](https://liberapay.com/nahuelwexd/donate)
 [![License](https://img.shields.io/github/license/nahuelwexd/Replay?label=License&logo=gnu)](COPYING)
 [![Telegram group badge](https://img.shields.io/badge/Telegram-Join_the_chat-2CA5E0?style=flat&logo=telegram)](https://t.me/ReplayApp)
 
