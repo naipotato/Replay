@@ -6,13 +6,13 @@
 
 public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
     private string _base_url;
-    private string? _type;
+    private string? _category;
     private string? _region;
 
-    public string? type {
-        get { return this._type; }
+    public string? category {
+        get { return this._category; }
         set {
-            this._type = value;
+            this._category = value;
 
             if (value == null && this.query_params.has_key ("type")) {
                 this.query_params.unset ("type");
