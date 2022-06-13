@@ -12,12 +12,12 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
         set {
             this._sort_by = value;
 
-            if (value == null && this.query_params.has_key ("sort_by")) {
-                this.query_params.unset ("sort_by");
+            if (value == null) {
+                this.unset_query_param ("sort_by");
                 return;
             }
 
-            this.query_params["sort_by"] = string.joinv (",", value);
+            this.set_query_param ("sort_by", string.joinv (",", value));
         }
     }
 
@@ -27,11 +27,6 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
 
     protected override string base_path {
         get { return "instances.json"; }
-    }
-
-    protected override Gee.Map<string, string> query_params {
-        get;
-        default = new Gee.HashMap<string, string> ();
     }
 
     public InstancesRequest (InvidiousApi api_client) {

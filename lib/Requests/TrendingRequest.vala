@@ -14,12 +14,12 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
         set {
             this._category = value;
 
-            if (value == null && this.query_params.has_key ("type")) {
-                this.query_params.unset ("type");
+            if (value == null) {
+                this.unset_query_param ("type");
                 return;
             }
 
-            this.query_params["type"] = value;
+            this.set_query_param ("type", value);
         }
     }
 
@@ -28,12 +28,12 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
         set {
             this._region = value;
 
-            if (value == null && this.query_params.has_key ("region")) {
-                this.query_params.unset ("region");
+            if (value == null) {
+                this.unset_query_param ("region");
                 return;
             }
 
-            this.query_params["region"] = value;
+            this.set_query_param ("region", value);
         }
     }
 
@@ -43,11 +43,6 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
 
     protected override string base_path {
         get { return "/api/v1/trending"; }
-    }
-
-    protected override Gee.Map<string, string> query_params {
-        get;
-        default = new Gee.HashMap<string, string> ();
     }
 
     public TrendingRequest (InvidiousApi api_client, string base_url) {

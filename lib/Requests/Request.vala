@@ -6,19 +6,13 @@
 
 public abstract class Iv.Request<TResponse> {
     private InvidiousApi _api_client;
+    private Gee.List<string> _path_params = new Gee.ArrayList<string> ();
+
+    private Gee.Map<string, string> _query_params =
+        new Gee.HashMap<string, string> ();
 
     protected abstract string host { get; }
     protected abstract string base_path { get; }
-
-    protected virtual Gee.List<string> path_params {
-        get;
-        default = Gee.List.empty ();
-    }
-
-    protected virtual Gee.Map<string, string> query_params {
-        get;
-        default = Gee.Map.empty ();
-    }
 
     private Soup.Session session {
         get { return this._api_client.session; }
@@ -59,7 +53,30 @@ public abstract class Iv.Request<TResponse> {
         return this.parse_response (json);
     }
 
+    protected void add_path_param (string param) {
+        this._path_params.add (param);
+    }
+
     protected abstract TResponse parse_response (GJson.Node json);
+
+    protected void set_query_param (string key, string value) {
+        this._query_params[key] = value;
+    }
+
+    protected void unset_query_param (string key) {
+        this._query_params.unset (key);
+    }
+
+    protected void update_path_param (string old_value, string new_value) {
+        var index = this._path_params.index_of (old_value);
+
+        if (index == -1) {
+            critical ("Path param not found: %s", old_value);
+            return;
+        }
+
+        this._path_params[index] = new_value;
+    }
 
     private Uri build_uri () {
         var builder = new UriBuilder ("https") {
@@ -67,11 +84,11 @@ public abstract class Iv.Request<TResponse> {
             path = this.base_path,
         };
 
-        foreach (var param in this.path_params) {
+        foreach (var param in this._path_params) {
             builder.append_path (param);
         }
 
-        foreach (var param in this.query_params) {
+        foreach (var param in this._query_params) {
             builder.append_query_param (param.key, param.value);
         }
 
