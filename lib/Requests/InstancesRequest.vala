@@ -5,12 +5,18 @@
  */
 
 public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
-    private string[] _sort_by;
+    private string[]? _sort_by;
 
-    public string[] sort_by {
+    public string[]? sort_by {
         owned get { return this._sort_by; }
         set {
             this._sort_by = value;
+
+            if (value == null && this.query_params.has_key ("sort_by")) {
+                this.query_params.unset ("sort_by");
+                return;
+            }
+
             this.query_params["sort_by"] = string.joinv (",", value);
         }
     }
