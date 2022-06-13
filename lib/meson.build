@@ -1,9 +1,12 @@
 libinvidious_sources = [
   'Models/Instance.vala',
   'Models/Stats.vala',
+  'Models/TrendingVideo.vala',
+  'Models/VideoThumbnail.vala',
 
   'Requests/InstancesRequest.vala',
   'Requests/Request.vala',
+  'Requests/TrendingRequest.vala',
 
   'Utils/Functions.vala',
   'Utils/RequestError.vala',
