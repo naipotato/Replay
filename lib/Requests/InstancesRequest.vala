@@ -21,7 +21,7 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
         }
     }
 
-    protected override string base_url {
+    protected override string host {
         get { return "api.invidious.io"; }
     }
 

@@ -37,7 +37,7 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
         }
     }
 
-    protected override string base_url {
+    protected override string host {
         get { return this._base_url; }
     }
 
