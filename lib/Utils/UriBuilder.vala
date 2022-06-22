@@ -5,11 +5,13 @@
  */
 
 public class Iv.UriBuilder {
+    private Regex _placeholder_regex = /\{(\w+)\}/;
+
     private string _scheme;
     private string? _userinfo;
     private string? _host;
     private int _port = -1;
-    private StringBuilder? _path_builder;
+    private string? _path;
     private StringBuilder? _query_builder;
     private string? _fragment;
 
@@ -28,7 +30,7 @@ public class Iv.UriBuilder {
     public string? path {
         set {
             if (value == null) {
-                this._path_builder = null;
+                this._path = null;
                 return;
             }
 
@@ -36,12 +38,7 @@ public class Iv.UriBuilder {
                 ? value
                 : "/%s".printf (value);
 
-            if (this._path_builder == null) {
-                this._path_builder = new StringBuilder (path_with_slash);
-                return;
-            }
-
-            this._path_builder.assign (path_with_slash);
+            this._path = path_with_slash;
         }
     }
 
@@ -69,17 +66,7 @@ public class Iv.UriBuilder {
         this._scheme = scheme;
     }
 
-    public UriBuilder append_path (string new_segment) {
-        if (this._path_builder == null) {
-            this._path_builder = new StringBuilder ();
-        }
-
-        this._path_builder.append_printf ("/%s", new_segment);
-
-        return this;
-    }
-
-    public UriBuilder append_query_param (string key, string value) {
+    public UriBuilder append_parameter (string key, string value) {
         if (this._query_builder == null) {
             this._query_builder = new StringBuilder ();
         }
@@ -96,9 +83,31 @@ public class Iv.UriBuilder {
             this._userinfo,
             this._host,
             this._port,
-            this._path_builder?.str ?? "",
+            this._path ?? "",
             this._query_builder?.str,
             this._fragment
         );
+    }
+
+    public UriBuilder set_path_segment (string key, string value) {
+        var path = this._path ?? "";
+
+        try {
+            this._placeholder_regex.replace_eval (path, -1, 0, 0, (info, res) => {
+                    var match = info.fetch (1);
+
+                    if (match != key) {
+                        return false;
+                    }
+
+                res.append (value);
+
+                    return true;
+            });
+        } catch (Error err) {
+            warning ("Error replacing path segment: %s", err.message);
+        }
+
+        return this;
     }
 }

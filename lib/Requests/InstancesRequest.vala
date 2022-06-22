@@ -13,11 +13,11 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
             this._sort_by = value;
 
             if (value == null) {
-                this.unset_query_param ("sort_by");
+                this.remove_parameter ("sort_by");
                 return;
             }
 
-            this.set_query_param ("sort_by", string.joinv (",", value));
+            this.append_parameter ("sort_by", string.joinv (",", value));
         }
     }
 
@@ -25,7 +25,7 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
         get { return "api.invidious.io"; }
     }
 
-    protected override string base_path {
+    protected override string path {
         get { return "instances.json"; }
     }
 

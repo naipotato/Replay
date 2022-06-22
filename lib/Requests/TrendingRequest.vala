@@ -5,7 +5,7 @@
  */
 
 public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
-    private string _base_url;
+    private string _host;
     private string? _category;
     private string? _region;
 
@@ -15,11 +15,11 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
             this._category = value;
 
             if (value == null) {
-                this.unset_query_param ("type");
+                this.remove_parameter ("type");
                 return;
             }
 
-            this.set_query_param ("type", value);
+            this.append_parameter ("type", value);
         }
     }
 
@@ -29,25 +29,25 @@ public sealed class Iv.TrendingRequest : Request<Gee.List<TrendingVideo>> {
             this._region = value;
 
             if (value == null) {
-                this.unset_query_param ("region");
+                this.remove_parameter ("region");
                 return;
             }
 
-            this.set_query_param ("region", value);
+            this.append_parameter ("region", value);
         }
     }
 
     protected override string host {
-        get { return this._base_url; }
+        get { return this._host; }
     }
 
-    protected override string base_path {
+    protected override string path {
         get { return "/api/v1/trending"; }
     }
 
-    public TrendingRequest (InvidiousApi api_client, string base_url) {
+    public TrendingRequest (InvidiousApi api_client, string host) {
         base (api_client);
-        this._base_url = base_url;
+        this._host = host;
     }
 
     protected override Gee.List<TrendingVideo> parse_response (GJson.Node json) {

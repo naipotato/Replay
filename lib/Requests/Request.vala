@@ -6,13 +6,15 @@
 
 public abstract class Iv.Request<TResponse> {
     private InvidiousApi _api_client;
-    private Gee.List<string> _path_params = new Gee.ArrayList<string> ();
 
-    private Gee.Map<string, string> _query_params =
+    private Gee.Map<string, string> _path_segments =
+        new Gee.HashMap<string, string> ();
+
+    private Gee.Map<string, string> _parameters =
         new Gee.HashMap<string, string> ();
 
     protected abstract string host { get; }
-    protected abstract string base_path { get; }
+    protected abstract string path { get; }
 
     private Soup.Session session {
         get { return this._api_client.session; }
@@ -53,43 +55,32 @@ public abstract class Iv.Request<TResponse> {
         return this.parse_response (json);
     }
 
-    protected void add_path_param (string param) {
-        this._path_params.add (param);
+    protected void append_parameter (string key, string value) {
+        this._parameters[key] = value;
     }
 
     protected abstract TResponse parse_response (GJson.Node json);
 
-    protected void set_query_param (string key, string value) {
-        this._query_params[key] = value;
+    protected void remove_parameter (string key) {
+        this._parameters.unset (key);
     }
 
-    protected void unset_query_param (string key) {
-        this._query_params.unset (key);
-    }
-
-    protected void update_path_param (string old_value, string new_value) {
-        var index = this._path_params.index_of (old_value);
-
-        if (index == -1) {
-            critical ("Path param not found: %s", old_value);
-            return;
-        }
-
-        this._path_params[index] = new_value;
+    protected void set_path_segment (string key, string value) {
+        this._path_segments[key] = value;
     }
 
     private Uri build_uri () {
         var builder = new UriBuilder ("https") {
             host = this.host,
-            path = this.base_path,
+            path = this.path,
         };
 
-        foreach (var param in this._path_params) {
-            builder.append_path (param);
+        foreach (var segment in this._path_segments) {
+            builder.set_path_segment (segment.key, segment.value);
         }
 
-        foreach (var param in this._query_params) {
-            builder.append_query_param (param.key, param.value);
+        foreach (var parameter in this._parameters) {
+            builder.append_parameter (parameter.key, parameter.value);
         }
 
         return builder.build ();
