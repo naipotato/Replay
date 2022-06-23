@@ -12,7 +12,7 @@ public sealed class Iv.Instance : Object {
     public bool api { get; set; }
 
     [Description (nick = "json::type")]
-    public string? scheme { get; set; }
+    public string? protocol { get; set; }
 
     public string? uri { get; set; }
     public Monitor? monitor { get; set; }
@@ -25,7 +25,7 @@ public sealed class Iv.Instance : Object {
         public string? url { get; set; }
 
         [Description (nick = "json::type")]
-        public string? scheme { get; set; }
+        public string? protocol { get; set; }
 
         public Gee.List<Ratio> dailyRatios {
             get;
