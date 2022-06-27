@@ -8,7 +8,16 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
     private string[]? _sort_by;
 
     public string[]? sort_by {
-        owned get { return this._sort_by; }
+        owned get {
+
+            /*
+             * This is owned so that the returned array is always a copy and
+             * not the original array, so that to make alterations on it you
+             * must always go through the setter
+             */
+
+            return this._sort_by;
+        }
         set {
             this._sort_by = value;
 
