@@ -14,4 +14,8 @@ public sealed class Iv.InvidiousApi {
     public InstancesRequest instances () {
         return new InstancesRequest (this);
     }
+
+    public TrendingRequest trending (string host) {
+        return new TrendingRequest (this, host);
+    }
 }
