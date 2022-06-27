@@ -34,11 +34,7 @@ public class Iv.UriBuilder {
                 return;
             }
 
-            var path_with_slash = value.has_prefix ("/")
-                ? value
-                : "/%s".printf (value);
-
-            this._path = path_with_slash;
+            this._path = value.has_prefix ("/") ? value : @"/$value";
         }
     }
 
@@ -49,9 +45,7 @@ public class Iv.UriBuilder {
                 return;
             }
 
-            var query_with_ampersand = value.has_suffix ("&")
-                ? value
-                : "%s&".printf (value);
+            var query_with_ampersand = value.has_suffix ("&") ? value : @"$value&";
 
             if (this._query_builder == null) {
                 this._query_builder = new StringBuilder (query_with_ampersand);
@@ -71,7 +65,7 @@ public class Iv.UriBuilder {
             this._query_builder = new StringBuilder ();
         }
 
-        this._query_builder.append_printf ("%s=%s&", key, value);
+        this._query_builder.append (@"$key=$value&");
 
         return this;
     }
@@ -105,7 +99,7 @@ public class Iv.UriBuilder {
                 return true;
             });
         } catch (Error err) {
-            warning ("Error replacing path segment: %s", err.message);
+            warning (@"Error replacing path segment: $(err.message)");
         }
 
         return this;

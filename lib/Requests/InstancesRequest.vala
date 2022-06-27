@@ -49,7 +49,7 @@ public sealed class Iv.InstancesRequest : Request<Gee.List<Instance>> {
             var instances_json = json.as_array ().select ("$[*][1]");
             result = GJson.deserialize_array (instances_json);
         } catch (Error err) {
-            warning ("Error parsing response: %s", err.message);
+            warning (@"Error parsing response: $(err.message)");
         }
 
         return result.read_only_view;

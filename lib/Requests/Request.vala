@@ -37,7 +37,7 @@ public abstract class Iv.Request<TResponse> {
                 throw (IOError.CANCELLED) err;
             }
 
-            throw new RequestError.UNKNOWN ("Unknown error: %s", err.message);
+            throw new RequestError.UNKNOWN (@"Unknown error: $(err.message)");
         }
 
         var json = GJson.Node.parse ((string) response.get_data ());

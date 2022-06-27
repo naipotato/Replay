@@ -30,31 +30,31 @@ public errordomain Iv.RequestError {
 
         switch (status_code) {
             case Soup.Status.BAD_REQUEST:
-                return new RequestError.BAD_REQUEST ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.BAD_REQUEST (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.CONFLICT:
-                return new RequestError.CONFLICT ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.CONFLICT (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.FORBIDDEN:
-                return new RequestError.FORBIDDEN ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.FORBIDDEN (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.INTERNAL_SERVER_ERROR:
-                return new RequestError.INTERNAL_SERVER_ERROR ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.INTERNAL_SERVER_ERROR (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.NOT_FOUND:
-                return new RequestError.NOT_FOUND ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.NOT_FOUND (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.REQUEST_TIMEOUT:
-                return new RequestError.REQUEST_TIMEOUT ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.REQUEST_TIMEOUT (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.SERVICE_UNAVAILABLE:
-                return new RequestError.SERVICE_UNAVAILABLE ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.SERVICE_UNAVAILABLE (@"$reason_phrase: $server_error_message");
 
             case Soup.Status.UNAUTHORIZED:
-                return new RequestError.UNAUTHORIZED ("%s: %s", reason_phrase, server_error_message);
+                return new RequestError.UNAUTHORIZED (@"$reason_phrase: $server_error_message");
 
             default:
-                return new RequestError.UNKNOWN ("Unknown error: %s", server_error_message);
+                return new RequestError.UNKNOWN (@"Unknown error: $server_error_message");
         }
     }
 }
