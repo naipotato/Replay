@@ -94,15 +94,15 @@ public class Iv.UriBuilder {
 
         try {
             this._placeholder_regex.replace_eval (path, -1, 0, 0, (info, res) => {
-                    var match = info.fetch (1);
+                var match = info.fetch (1);
 
-                    if (match != key) {
-                        return false;
-                    }
+                if (match != key) {
+                    return false;
+                }
 
                 res.append (value);
 
-                    return true;
+                return true;
             });
         } catch (Error err) {
             warning ("Error replacing path segment: %s", err.message);

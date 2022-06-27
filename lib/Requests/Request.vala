@@ -6,12 +6,8 @@
 
 public abstract class Iv.Request<TResponse> {
     private InvidiousApi _api_client;
-
-    private Gee.Map<string, string> _path_segments =
-        new Gee.HashMap<string, string> ();
-
-    private Gee.Map<string, string> _parameters =
-        new Gee.HashMap<string, string> ();
+    private Gee.Map<string, string> _path_segments = new Gee.HashMap<string, string> ();
+    private Gee.Map<string, string> _parameters = new Gee.HashMap<string, string> ();
 
     protected abstract string host { get; }
     protected abstract string path { get; }
@@ -24,9 +20,7 @@ public abstract class Iv.Request<TResponse> {
         this._api_client = api_client;
     }
 
-    public async TResponse execute_async (Cancellable? cancellable = null)
-        throws RequestError, IOError
-    {
+    public async TResponse execute_async (Cancellable? cancellable = null) throws RequestError, IOError {
         var uri = this.build_uri ();
         var message = new Soup.Message.from_uri ("GET", uri);
 
