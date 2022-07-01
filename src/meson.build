@@ -2,7 +2,7 @@ replay_sources = [
   'Views/View.vala',
 
   'Application.vala',
-  'MainWindow.vala',
+  'MainWindow.ui.vala',
 ]
 
 replay_sources += icon_resources
