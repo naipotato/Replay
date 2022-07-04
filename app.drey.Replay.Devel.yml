@@ -43,4 +43,4 @@ modules:
     config-opts: [-Dprofile=devel]
     sources:
       - type: dir
-        path: .
+        path: '.'
