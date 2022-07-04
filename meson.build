@@ -44,26 +44,21 @@ vcs_tag(
   replace_string : '${vcs_tag}',
 )
 
+# add some extra arguments
+add_project_arguments(
+  '--enable-checking',
+  '--nostdpkg',
+  '--define=' + profile.to_upper(),
+
+  language : 'vala',
+)
+
 add_project_arguments(
   '-I' + meson.project_build_root(),
   f'-DGETTEXT_PACKAGE=@gettext_package@',
   '-DG_LOG_DOMAIN="Replay"',
 
   language : 'c',
-)
-
-# add extra type checks in runtime
-vala_args = [
-  '--enable-checking',
-]
-
-if profile == 'devel'
-  vala_args += '--define=DEVEL'
-endif
-
-add_project_arguments(
-  vala_args,
-  language : 'vala',
 )
 
 # common variables
