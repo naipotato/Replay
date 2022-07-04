@@ -2,10 +2,7 @@ project(
   'app.drey.Replay',
   'vala', 'c',
 
-  default_options : [
-    'warning_level=2',
-    'b_ndebug=if-release',
-  ],
+  default_options : 'warning_level=2',
   license         : 'GPL-3.0-or-later',
   meson_version   : '>=0.59.0',
   version         : '0.1.0',
