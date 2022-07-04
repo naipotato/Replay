@@ -28,10 +28,10 @@ gettext_package = meson.project_name()
 config_h_in = configure_file(
   output        : 'config.h.in',
   configuration : {
-    'APPLICATION_ID'  : '"' + application_id + '"',
-    'VERSION'         : '"' + version + '"',
-    'GETTEXT_PACKAGE' : '"' + gettext_package + '"',
-    'LOCALEDIR'       : '"' + localedir + '"',
+    'APPLICATION_ID'  : f'"@application_id@"',
+    'VERSION'         : f'"@version@"',
+    'GETTEXT_PACKAGE' : f'"@gettext_package@"',
+    'LOCALEDIR'       : f'"@localedir@"',
   },
 )
 
@@ -45,7 +45,7 @@ vcs_tag(
 
 add_project_arguments(
   '-I' + meson.project_build_root(),
-  '-DGETTEXT_PACKAGE=' + meson.project_name(),
+  f'-DGETTEXT_PACKAGE=@gettext_package@',
   '-DG_LOG_DOMAIN="Replay"',
 
   language : 'c',
