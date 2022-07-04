@@ -1,8 +1,8 @@
 # configure and install the desktop file in order to get an entry in the app drawer
 configured_desktop_file = configure_file(
   format        : 'cmake',
-  input         : meson.project_name() + '.desktop.in.in',
-  output        : meson.project_name() + '.desktop.in',
+  input         : f'@rdnn_app_name@.desktop.in.in',
+  output        : f'@rdnn_app_name@.desktop.in',
   configuration : {
     'icon_name' : application_id,
     'command'   : meson.project_name(),
@@ -11,7 +11,7 @@ configured_desktop_file = configure_file(
 
 desktop_file = i18n.merge_file(
   input       : configured_desktop_file,
-  output      : application_id + '.desktop',
+  output      : f'@application_id@.desktop',
   po_dir      : meson.project_source_root() / 'po',
   type        : 'desktop',
   install     : true,

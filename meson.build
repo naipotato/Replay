@@ -1,5 +1,5 @@
 project(
-  'app.drey.Replay',
+  'replay',
   'vala', 'c',
 
   default_options : 'warning_level=2',
@@ -19,8 +19,9 @@ localedir = prefix / get_option('localedir')
 
 # info about the app
 profile         = get_option('profile')
+rdnn_app_name   = 'app.drey.Replay'
 app_id_suffix   = profile == 'devel' ? '.Devel' : ''
-application_id  = meson.project_name() + app_id_suffix
+application_id  = f'@rdnn_app_name@@app_id_suffix@'
 version         = meson.project_version() + '-${vcs_tag}'
 gettext_package = meson.project_name()
 

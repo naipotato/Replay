@@ -1,5 +1,5 @@
 app-id: app.drey.Replay.Devel
-command: app.drey.Replay
+command: replay
 
 runtime: org.gnome.Platform
 runtime-version: "42"
