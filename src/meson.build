@@ -16,7 +16,7 @@ replay_deps = [
 ]
 
 executable(
-  meson.project_name(),
+  application_id,
   replay_sources,
 
   dependencies  : replay_deps,

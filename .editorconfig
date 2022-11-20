@@ -13,12 +13,12 @@ indent_size  = 2
 
 [*.json]
 indent_style = space
-indent_size  = 4
+indent_size  = 2
 
 [*.{vala,vapi}]
 indent_style = space
 indent_size  = 4
 
-[*.{ui,xml,doap}]
+[*.{ui,xml,doap}{,.in}]
 indent_style = space
 indent_size  = 2
