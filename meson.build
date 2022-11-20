@@ -22,26 +22,27 @@ profile         = get_option('profile')
 rdnn_app_name   = 'app.drey.Replay'
 app_id_suffix   = profile == 'devel' ? '.Devel' : ''
 application_id  = f'@rdnn_app_name@@app_id_suffix@'
-version         = meson.project_version() + '-${vcs_tag}'
+version         = meson.project_version()
 gettext_package = meson.project_name()
 
+# determine vcs tag to use
+git     = find_program('git', required : false)
+vcs_tag = profile # fallback
+
+if git.found()
+  result  = run_command(git, 'rev-parse', '--short', 'HEAD', check : false)
+  vcs_tag = result.returncode() == 0 ? result.stdout().strip() : profile
+endif
+
 # generate a header with the info
-config_h_in = configure_file(
-  output        : 'config.h.in',
+configure_file(
+  output        : 'config.h',
   configuration : {
     'APPLICATION_ID'  : f'"@application_id@"',
-    'VERSION'         : f'"@version@"',
+    'VERSION'         : f'"@version@-@vcs_tag@"',
     'GETTEXT_PACKAGE' : f'"@gettext_package@"',
     'LOCALEDIR'       : f'"@localedir@"',
   },
-)
-
-vcs_tag(
-  command        : ['git', 'rev-parse', '--short', 'HEAD'],
-  fallback       : profile,
-  input          : config_h_in,
-  output         : 'config.h',
-  replace_string : '${vcs_tag}',
 )
 
 # add some extra arguments
