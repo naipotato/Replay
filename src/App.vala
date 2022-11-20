@@ -46,11 +46,11 @@ sealed class Rpy.App : Adw.Application {
         // color scheme
         this.style_manager.color_scheme = PREFER_DARK;
 
-        this.setup_actions ();
+        this.init_actions ();
     }
 
     /** Sets app-level actions, along with their keyboard shortcuts */
-    private void setup_actions () {
+    private void init_actions () {
         var action_entries = new ActionEntry[] {
             { "about", show_about_window },
             { "quit",  quit              },
