@@ -33,7 +33,7 @@ sealed class Rpy.App : Adw.Application {
     }
 
     public override void activate () {
-        var win = this.active_window ?? new MainWindow (this);
+        var win = this.active_window ?? new AppWindow (this);
         win.present ();
     }
 
