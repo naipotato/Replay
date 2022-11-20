@@ -4,12 +4,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-/**
- * Base class for the Replay app.
- *
- * It initializes the app, registers the global actions, and starts the main
- * loop.
- */
 sealed class Rpy.App : Adw.Application {
     public App () {
         Object (
@@ -49,7 +43,6 @@ sealed class Rpy.App : Adw.Application {
         this.init_actions ();
     }
 
-    /** Sets app-level actions, along with their keyboard shortcuts */
     private void init_actions () {
         var action_entries = new ActionEntry[] {
             { "about", show_about_window },
@@ -60,7 +53,6 @@ sealed class Rpy.App : Adw.Application {
         this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    /** Shows the About window */
     private void show_about_window () {
         var about_window = new Adw.AboutWindow () {
             transient_for       = this.active_window,
