@@ -11,8 +11,15 @@
  * loop.
  */
 sealed class Rpy.App : Adw.Application {
-    construct {
-        this.application_id = Config.APPLICATION_ID;
+    public App () {
+        Object (
+            application_id: Config.APPLICATION_ID,
+
+            // Ensure that the resource base path in development builds is the
+            // same as in stable builds to avoid problems with automatic
+            // resources
+            resource_base_path: "/app/drey/Replay"
+        );
     }
 
     public static int main (string[] args) {
@@ -30,10 +37,6 @@ sealed class Rpy.App : Adw.Application {
     }
 
     public override void startup () {
-        // Ensure that the resource base path in development builds is the same
-        // as in release builds to avoid problems with automatic resources.
-        this.resource_base_path = "/app/drey/Replay";
-
         base.startup ();
 
         Environment.set_application_name ("Replay");
