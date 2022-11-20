@@ -36,8 +36,7 @@ sealed class Rpy.Application : Adw.Application {
 
         base.startup ();
 
-        // TRANSLATORS: This is the application name
-        Environment.set_application_name (_("Replay"));
+        Environment.set_application_name ("Replay");
 
         // Since this is a media app, inform the system that we prefer a dark
         // color scheme
@@ -51,7 +50,7 @@ sealed class Rpy.Application : Adw.Application {
     /** Sets app-level actions, along with their keyboard shortcuts */
     private void setup_actions () {
         var action_entries = new ActionEntry[] {
-            { "about", show_about_dialog },
+            { "about", show_about_window },
             { "quit",  quit              },
         };
 
@@ -59,27 +58,26 @@ sealed class Rpy.Application : Adw.Application {
         this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    /** Shows the About dialog */
-    private void show_about_dialog () {
-        var about_dialog = new Gtk.AboutDialog () {
-            transient_for = this.active_window,
-            modal = true,
+    /** Shows the About window */
+    private void show_about_window () {
+        var about_window = new Adw.AboutWindow () {
+            transient_for       = this.active_window,
+            modal               = true,
             destroy_with_parent = true,
-            // TRANSLATORS: This is the title of the About dialog
-            title = C_("about window title", "About Replay"),
-            logo_icon_name = Config.APPLICATION_ID,
-            version = Config.VERSION,
-            // TRANSLATORS: This is the summary of the app
-            comments = _("Explore and watch your favorite videos"),
-            website = "https://github.com/nahuelwexd/Replay",
-            // TRANSLATORS: This is the label of the link to the app's repo
-            website_label = _("Project repository"),
-            copyright = "© 2022 Nahuel Gomez",
-            license_type = GPL_3_0,
-            authors = { "Nahuel Gomez https://nahuelwexd.com" },
-            artists = { "Noëlle https://github.com/jannuary" },
+            application_icon    = Config.APPLICATION_ID,
+            application_name    = "Replay",
+            developer_name      = "Nahuel Gomez",
+            version             = Config.VERSION,
+            website             = "https://github.com/nahuelwexd/Replay",
+            issue_url           = "https://github.com/nahuelwexd/Replay/issues",
+            developers          = { "Nahuel Gomez https://nahuelwexd.com" },
+            artists             = { "Noëlle https://github.com/jannuary" },
+            // TRANSLATORS: Put your credits here
+            translator_credits  = _("translator-credits"),
+            copyright           = "© 2022 Nahuel Gomez",
+            license_type        = GPL_3_0,
         };
 
-        about_dialog.present ();
+        about_window.present ();
     }
 }
