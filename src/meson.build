@@ -1,5 +1,5 @@
 replay_sources = [
-  'Application.vala',
+  'App.vala',
   'MainWindow.ui.vala',
 ]
 

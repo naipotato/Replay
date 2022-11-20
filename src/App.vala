@@ -10,7 +10,7 @@
  * It initializes the app, registers the global actions, and starts the main
  * loop.
  */
-sealed class Rpy.Application : Adw.Application {
+sealed class Rpy.App : Adw.Application {
     construct {
         this.application_id = Config.APPLICATION_ID;
     }
@@ -22,7 +22,7 @@ sealed class Rpy.Application : Adw.Application {
         Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-        return new Application ().run (args);
+        return new App ().run (args);
     }
 
     public override void activate () {
