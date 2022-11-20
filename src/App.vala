@@ -33,7 +33,8 @@ sealed class Rpy.App : Adw.Application {
     }
 
     public override void activate () {
-        this.active_window?.present ();
+        var win = this.active_window ?? new MainWindow (this);
+        win.present ();
     }
 
     public override void startup () {
@@ -46,8 +47,6 @@ sealed class Rpy.App : Adw.Application {
         this.style_manager.color_scheme = PREFER_DARK;
 
         this.setup_actions ();
-
-        new MainWindow (this);
     }
 
     /** Sets app-level actions, along with their keyboard shortcuts */
