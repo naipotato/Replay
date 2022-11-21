@@ -76,7 +76,6 @@ soup_dep    = dependency('libsoup-3.0', version : '>=3.0', method : 'pkg-config'
 
 # subdirectories
 subdir('data')
-subdir('lib')
 subdir('src')
 subdir('po')
 
