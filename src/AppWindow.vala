@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/app/drey/Replay/AppWindow.ui")]
+[GtkTemplate (ui = "/app/drey/Replay/ui/AppWindow.ui")]
 class Rpy.AppWindow : Adw.ApplicationWindow {
     public AppWindow (App app) {
         Object (application: app);

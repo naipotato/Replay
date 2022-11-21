@@ -1,15 +1,11 @@
-replay_sources = [
+sources = [
   'App.vala',
   'AppWindow.vala',
 ]
 
-replay_sources += icon_resources
-replay_sources += gnome.compile_resources(
-  'replay-ui-resources',
-  'replay-ui-resources.xml',
-)
+resources = gnome.compile_resources('replay-resources', 'replay-resources.xml')
 
-replay_deps = [
+deps = [
   adwaita_dep,
   config_dep,
   gee_dep,
@@ -17,9 +13,9 @@ replay_deps = [
 
 executable(
   application_id,
-  replay_sources,
+  sources, resources,
 
-  dependencies  : replay_deps,
+  dependencies  : deps,
   install       : true,
   win_subsystem : 'windows',
 )

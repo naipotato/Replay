@@ -2,8 +2,11 @@
 <gresources>
 
 <gresource prefix="/app/drey/Replay">
-  <file alias="AppWindow.ui">AppWindow.ui</file>
   <file>style.css</file>
+</gresource>
+
+<gresource prefix="/app/drey/Replay/ui">
+  <file>AppWindow.ui</file>
 </gresource>
 
 </gresources>
