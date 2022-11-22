@@ -41,6 +41,11 @@ sealed class Rpy.App : Adw.Application {
         this.style_manager.color_scheme = PREFER_DARK;
 
         this.init_actions ();
+        this.init_widgets ();
+    }
+
+    private void init_widgets () {
+        typeof (Navigator).ensure ();
     }
 
     private void init_actions () {

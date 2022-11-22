@@ -6,13 +6,16 @@
 
 [GtkTemplate (ui = "/app/drey/Replay/ui/AppWindow.ui")]
 class Rpy.AppWindow : Adw.ApplicationWindow {
+    [GtkChild]
+    private unowned Navigator _navigator;
+
     public AppWindow (App app) {
         Object (application: app);
     }
 
-#if DEVEL
     construct {
-        this.add_css_class ("devel");
+        #if DEVEL
+            this.add_css_class ("devel");
+        #endif
     }
-#endif
 }

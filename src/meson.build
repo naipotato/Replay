@@ -1,4 +1,6 @@
 sources = [
+  'Common/Widgets/Navigator.vala',
+
   'App.vala',
   'AppWindow.vala',
 ]
