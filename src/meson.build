@@ -12,12 +12,16 @@ sources = [
 
 resources = gnome.compile_resources('replay-resources', 'replay-resources.xml')
 
+valac   = meson.get_compiler('vala')
+vapidir = meson.project_source_root() / 'vapi'
+
 deps = [
-  adwaita_dep,
-  config_dep,
-  gee_dep,
-  gjson_dep,
-  soup_dep,
+  dependency('libadwaita-1', version : '>=1.2',  method : 'pkg-config'),
+  dependency('gee-0.8',      version : '>=0.20', method : 'pkg-config'),
+  dependency('gio-2.0',      version : '>=2.70', method : 'pkg-config'),
+  dependency('gjson-1.0',    version : '>=1.0',  method : 'pkg-config'),
+  dependency('libsoup-3.0',  version : '>=3.0',  method : 'pkg-config'),
+  valac.find_library('config', dirs : vapidir),
 ]
 
 executable(
