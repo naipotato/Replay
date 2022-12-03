@@ -1,10 +1,10 @@
 sources = [
-  'Common/Errors/HttpError.vala',
+  'Errors/HttpError.vala',
 
-  'Common/Utils/Fetch.vala',
-  'Common/Utils/RequestOptions.vala',
+  'Utils/Fetch.vala',
+  'Utils/RequestOptions.vala',
 
-  'Common/Widgets/Navigator.vala',
+  'Widgets/Navigator.vala',
 
   'App.vala',
   'AppWindow.vala',
