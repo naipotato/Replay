@@ -3,6 +3,7 @@ sources = [
 
   'Utils/Fetch.vala',
   'Utils/RequestOptions.vala',
+  'Utils/ViewModel.vala',
 
   'Widgets/Navigator.vala',
 
