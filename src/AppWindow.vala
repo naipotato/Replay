@@ -5,7 +5,7 @@
  */
 
 [GtkTemplate (ui = "/app/drey/Replay/ui/AppWindow.ui")]
-class Rpy.AppWindow : Adw.ApplicationWindow {
+sealed class Rpy.AppWindow : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Navigator _navigator;
 
@@ -17,5 +17,7 @@ class Rpy.AppWindow : Adw.ApplicationWindow {
         #if DEVEL
             this.add_css_class ("devel");
         #endif
+
+        this._navigator.push (new TrendsView ());
     }
 }

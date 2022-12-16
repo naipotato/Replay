@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-class Rpy.Navigator : Gtk.Widget {
+sealed class Rpy.Navigator : Gtk.Widget {
     private Adw.Leaflet _leaflet = new Adw.Leaflet () {
         can_navigate_back = true,
         can_unfold        = false,
