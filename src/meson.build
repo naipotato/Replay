@@ -6,6 +6,7 @@ sources = [
   'Utils/ViewModel.vala',
 
   'Widgets/Navigator.vala',
+  'Widgets/View.vala',
 
   'App.vala',
   'AppWindow.vala',
