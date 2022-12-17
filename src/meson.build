@@ -3,6 +3,8 @@ sources = [
 
   'Models/Video.vala',
 
+  'Repositories/VideoRepository.vala',
+
   'Utils/Fetch.vala',
   'Utils/RequestOptions.vala',
   'Utils/ViewModel.vala',
