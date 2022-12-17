@@ -1,6 +1,8 @@
 sources = [
   'Errors/HttpError.vala',
 
+  'Models/Video.vala',
+
   'Utils/Fetch.vala',
   'Utils/RequestOptions.vala',
   'Utils/ViewModel.vala',
