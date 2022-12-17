@@ -10,9 +10,9 @@ abstract class Rpy.View : Gtk.Widget, Gtk.Buildable {
     };
 
     private Adw.Bin _content_bin = new Adw.Bin () {
-        vexpand = true,
+        vexpand     = true,
         css_classes = { "card" },
-        overflow = HIDDEN,
+        overflow    = HIDDEN,
     };
 
     public Gtk.Widget child {

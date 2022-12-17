@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RpyTrendsView" parent="RpyView">
+  <property name="child">
+    <object class="GtkStack">
+
+      <binding name="visible-child-name">
+        <closure type="gchararray" function="state_to_nick">
+          <lookup name="state" type="RpyTrendsViewModel">
+            <lookup name="view-model">RpyTrendsView</lookup>
+          </lookup>
+        </closure>
+      </binding>
+
+      <child>
+        <object class="GtkStackPage">
+          <property name="name">loading</property>
+
+          <property name="child">
+            <object class="GtkSpinner">
+              <property name="spinning">True</property>
+              <property name="valign">center</property>
+              <property name="height-request">32</property>
+            </object>
+          </property>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkStackPage">
+          <property name="name">error</property>
+
+          <property name="child">
+            <object class="GtkLabel">
+              <property name="label">An error occurred!</property>
+            </object>
+          </property>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkStackPage">
+          <property name="name">loaded</property>
+
+          <property name="child">
+            <object class="GtkScrolledWindow">
+              <property name="hscrollbar-policy">never</property>
+
+              <property name="child">
+                <object class="GtkListView">
+
+                  <property name="model">
+                    <object class="GtkNoSelection">
+                      <binding name="model">
+                        <lookup name="trending-videos" type="RpyTrendsViewModel">
+                          <lookup name="view-model">RpyTrendsView</lookup>
+                        </lookup>
+                      </binding>
+                    </object>
+                  </property>
+
+                  <property name="factory">
+                    <object class="GtkBuilderListItemFactory">
+                      <property name="resource">/app/drey/Replay/ui/TrendsVideoItem.ui</property>
+                    </object>
+                  </property>
+
+                </object>
+              </property>
+
+            </object>
+          </property>
+
+        </object>
+      </child>
+
+    </object>
+  </property>
+</template>
+
+</interface>

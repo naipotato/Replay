@@ -1,6 +1,9 @@
 sources = [
   'Errors/HttpError.vala',
 
+  'Features/Trends/TrendsView.vala',
+  'Features/Trends/TrendsViewModel.vala',
+
   'Models/Video.vala',
 
   'Repositories/VideoRepository.vala',

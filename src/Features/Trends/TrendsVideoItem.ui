@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="GtkListItem">
+  <property name="child">
+    <object class="GtkGrid">
+      <property name="column-spacing">6</property>
+      <property name="row-spacing">6</property>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="label">Title</property>
+          <property name="halign">end</property>
+
+          <layout>
+            <property name="row">0</property>
+            <property name="column">0</property>
+          </layout>
+
+          <style>
+            <class name="dim-label" />
+          </style>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="halign">start</property>
+
+          <binding name="label">
+            <lookup name="title" type="RpyVideo">
+              <lookup name="item">GtkListItem</lookup>
+            </lookup>
+          </binding>
+
+          <layout>
+            <property name="row">0</property>
+            <property name="column">1</property>
+          </layout>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="label">Author</property>
+          <property name="halign">end</property>
+
+          <layout>
+            <property name="row">1</property>
+            <property name="column">0</property>
+          </layout>
+
+          <style>
+            <class name="dim-label" />
+          </style>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="halign">start</property>
+
+          <binding name="label">
+            <lookup name="author" type="RpyVideo">
+              <lookup name="item">GtkListItem</lookup>
+            </lookup>
+          </binding>
+
+          <layout>
+            <property name="row">1</property>
+            <property name="column">1</property>
+          </layout>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="label">View count</property>
+          <property name="halign">end</property>
+
+          <layout>
+            <property name="row">2</property>
+            <property name="column">0</property>
+          </layout>
+
+          <style>
+            <class name="dim-label" />
+          </style>
+
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="halign">start</property>
+
+          <binding name="label">
+            <lookup name="view-count" type="RpyVideo">
+              <lookup name="item">GtkListItem</lookup>
+            </lookup>
+          </binding>
+
+          <layout>
+            <property name="row">2</property>
+            <property name="column">1</property>
+          </layout>
+
+        </object>
+      </child>
+
+    </object>
+  </property>
+</template>
+
+</interface>
