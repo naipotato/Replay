@@ -25,54 +25,8 @@ namespace Rpy {
         var json  = GJson.Node.parse ((string) Bytes.unref_to_data ((owned) bytes));
 
         if (message.status_code >= 400)
-            throw error_by_status_code (message.status_code, json);
+            throw HttpError.from_status_code (message.status_code, json);
 
         return json;
-    }
-
-    HttpError error_by_status_code (Soup.Status status_code, GJson.Node json) {
-        var server_error_message = "no server error message";
-
-        var error_object = json.as_object ();
-        if (error_object.has_key ("error"))
-            server_error_message = error_object.get_string_member ("error");
-
-        switch (status_code) {
-            case BAD_REQUEST:
-                return new HttpError.BAD_REQUEST ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case UNAUTHORIZED:
-                return new HttpError.UNAUTHORIZED ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case FORBIDDEN:
-                return new HttpError.FORBIDDEN ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case NOT_FOUND:
-                return new HttpError.NOT_FOUND ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case REQUEST_TIMEOUT:
-                return new HttpError.REQUEST_TIMEOUT ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case CONFLICT:
-                return new HttpError.CONFLICT ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case INTERNAL_SERVER_ERROR:
-                return new HttpError.INTERNAL_SERVER_ERROR ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            case SERVICE_UNAVAILABLE:
-                return new HttpError.SERVICE_UNAVAILABLE ("%s: %s",
-                    Soup.Status.get_phrase (status_code), server_error_message);
-
-            default:
-                return new HttpError.UNKNOWN ("Unknown error: %s",
-                    server_error_message);
-        }
     }
 }
