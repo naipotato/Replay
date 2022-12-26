@@ -7,9 +7,14 @@
 sealed class Rpy.VideoRepository {
     public async Gee.List<Video> get_trending_videos () throws Error {
         var uri = "https://yt.funami.tech/api/v1/trending";
-        var response = yield fetch (uri);
 
-        var it = response.as_array ().iterator ().map<Video> (
+        var response = yield fetch (uri);
+        var json = yield response.json ();
+
+        if (!response.ok)
+            throw HttpError.from_status_code (response.status_code, json);
+
+        var it = json.as_array ().iterator ().map<Video> (
             (item) => this.json_to_video ((GJson.Object) item));
 
         var video_list = new Gee.ArrayList<Video> ();

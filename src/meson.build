@@ -10,6 +10,7 @@ sources = [
 
   'Utils/Fetch.vala',
   'Utils/RequestOptions.vala',
+  'Utils/Response.vala',
   'Utils/ViewModel.vala',
 
   'Widgets/Navigator.vala',
