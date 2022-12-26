@@ -6,3 +6,7 @@
   background-color: @headerbar_backdrop_color;
   transition: background-color 200ms ease-out;
 }
+
+.rpy-view gridview {
+  background-color: transparent;
+}

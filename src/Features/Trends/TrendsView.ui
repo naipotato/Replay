@@ -50,7 +50,8 @@
               <property name="hscrollbar-policy">never</property>
 
               <property name="child">
-                <object class="GtkListView">
+                <object class="GtkGridView">
+                  <property name="orientation">vertical</property>
 
                   <property name="model">
                     <object class="GtkNoSelection">
