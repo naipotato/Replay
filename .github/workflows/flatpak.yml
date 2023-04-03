@@ -53,7 +53,7 @@ jobs:
         with: { platforms: arm64 }
 
       - name: Build flatpak
-        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v5
+        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           manifest-path: build-aux/app.drey.Replay.Devel.json
           bundle: app.drey.Replay.Devel.flatpak
