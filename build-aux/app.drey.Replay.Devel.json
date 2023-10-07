@@ -3,7 +3,7 @@
   "command": "app.drey.Replay.Devel",
 
   "runtime": "org.gnome.Platform",
-  "runtime-version": "43",
+  "runtime-version": "45",
   "sdk": "org.gnome.Sdk",
 
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.vala"],
@@ -21,37 +21,6 @@
   ],
 
   "modules": [
-    {
-      "name": "jsonrpc-glib",
-      "buildsystem": "meson",
-      "cleanup": ["*"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/GNOME/jsonrpc-glib.git",
-          "tag": "3.42.0"
-        }
-      ]
-    },
-    {
-      "name": "vala-language-server",
-      "buildsystem": "meson",
-      "cleanup": ["*"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/vala-lang/vala-language-server.git",
-          "tag": "0.48.5"
-        },
-        {
-          "type": "patch",
-          "paths": [
-            "00-vls-fix-regex-for-links-in-comments.patch",
-            "01-vls-fix-259.patch"
-          ]
-        }
-      ]
-    },
     {
       "name": "vul",
       "buildsystem": "meson",
