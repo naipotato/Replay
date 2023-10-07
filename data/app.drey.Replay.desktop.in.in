@@ -7,9 +7,9 @@ GenericName=YouTube Client
 # Translators: This is a little summary about the app
 Comment=Explore and watch YouTube videos
 # Translators: This is a placeholder for the application icon name. This MUST NO be translated.
-Icon=${icon_name}
-TryExec=${command}
-Exec=${command}
+Icon=@icon_name@
+TryExec=@command@
+Exec=@command@
 Terminal=false
 Categories=Network;Player;Feed;GTK;
 # Translators: These are the keywords used by the search trackers on DEs, MUST be delimited by semicolons and MUST have a trailing one
