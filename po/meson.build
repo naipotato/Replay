@@ -1,1 +1,3 @@
-i18n.gettext(gettext_package, preset : 'glib')
+i18n.gettext(gettext_pkg,
+  preset : 'glib',
+)

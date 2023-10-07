@@ -1,6 +1,4 @@
-option(
-  'profile',
-
+option('profile',
   type        : 'combo',
   choices     : ['stable', 'devel'],
   value       : 'stable',

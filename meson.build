@@ -1,68 +1,25 @@
-project(
-  'replay',
-  'vala', 'c',
-
-  default_options : 'warning_level=2',
+project('replay', 'vala', 'c',
+  default_options : { 'warning_level': '2' },
   license         : 'GPL-3.0-or-later',
-  meson_version   : '>=0.59.0',
+  license_files   : 'COPYING',
+  meson_version   : '>=1.2',
   version         : '0.1.0',
 )
 
-# import modules
 gnome = import('gnome')
 i18n  = import('i18n')
 
-# common dirs
 prefix    = get_option('prefix')
 datadir   = prefix / get_option('datadir')
 localedir = prefix / get_option('localedir')
 
-# info about the app
-profile         = get_option('profile')
-rdnn_app_name   = 'app.drey.Replay'
-app_id_suffix   = profile == 'devel' ? '.Devel' : ''
-application_id  = f'@rdnn_app_name@@app_id_suffix@'
-version         = meson.project_version()
-gettext_package = meson.project_name()
+profile       = get_option('profile')
+reverse_dns   = 'app.drey.Replay'
+app_id_suffix = profile == 'devel' ? '.Devel' : ''
+app_id        = reverse_dns + app_id_suffix
+version       = meson.project_version() + '-@VCS_TAG@'
+gettext_pkg   = meson.project_name()
 
-# determine vcs tag to use
-git     = find_program('git', required : false)
-vcs_tag = profile # fallback
-
-if git.found()
-  result  = run_command(git, 'rev-parse', '--short', 'HEAD', check : false)
-  vcs_tag = result.returncode() == 0 ? result.stdout().strip() : profile
-endif
-
-# generate a header with the info
-configure_file(
-  output        : 'config.h',
-  configuration : {
-    'APPLICATION_ID'  : f'"@application_id@"',
-    'VERSION'         : f'"@version@-@vcs_tag@"',
-    'GETTEXT_PACKAGE' : f'"@gettext_package@"',
-    'LOCALEDIR'       : f'"@localedir@"',
-  },
-)
-
-# add some extra arguments
-add_project_arguments(
-  '--enable-checking',
-  '--nostdpkg',
-  '--define=' + profile.to_upper(),
-
-  language : 'vala',
-)
-
-add_project_arguments(
-  '-I' + meson.project_build_root(),
-  f'-DGETTEXT_PACKAGE=@gettext_package@',
-  '-DG_LOG_DOMAIN="Replay"',
-
-  language : 'c',
-)
-
-# subdirectories
 subdir('data')
 subdir('src')
 subdir('po')

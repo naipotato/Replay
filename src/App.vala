@@ -7,7 +7,7 @@
 sealed class Rpy.App : Adw.Application {
     public App () {
         Object (
-            application_id: Config.APPLICATION_ID,
+            application_id: Config.APP_ID,
 
             // Ensure that the resource base path in development builds is the
             // same as in stable builds to avoid problems with automatic
@@ -19,9 +19,9 @@ sealed class Rpy.App : Adw.Application {
     public static int main (string[] args) {
         // Configure project localizations
         // See https://docs.gtk.org/glib/i18n.html
-        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
-        Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
-        Intl.textdomain (Config.GETTEXT_PACKAGE);
+        Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
+        Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");
+        Intl.textdomain (Config.GETTEXT_PKG);
 
         return new App ().run (args);
     }
@@ -63,7 +63,7 @@ sealed class Rpy.App : Adw.Application {
             transient_for       = this.active_window,
             modal               = true,
             destroy_with_parent = true,
-            application_icon    = Config.APPLICATION_ID,
+            application_icon    = Config.APP_ID,
             application_name    = "Replay",
             developer_name      = "Nahuel Gomez",
             version             = Config.VERSION,

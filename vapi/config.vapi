@@ -6,8 +6,8 @@
 
 [CCode (cheader_filename = "config.h", lower_case_cprefix = "")]
 namespace Config {
-    public const string APPLICATION_ID;
-    public const string VERSION;
-    public const string GETTEXT_PACKAGE;
+    public const string APP_ID;
+    public const string GETTEXT_PKG;
     public const string LOCALEDIR;
+    public const string VERSION;
 }
