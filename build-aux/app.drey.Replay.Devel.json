@@ -22,6 +22,19 @@
 
   "modules": [
     {
+      "name": "Swift-MesonLSP",
+      "buildsystem": "simple",
+      "build-commands": ["install -Dm755 -t /app/bin Swift-MesonLSP"],
+      "cleanup": ["*"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/JCWasmx86/Swift-MesonLSP/releases/download/v2.4.4/Swift-MesonLSP.zip",
+          "sha256": "2b9359e9cff8cec40279f78c62ef8eb94693e26e21716f82293cf96ad1f723aa"
+        }
+      ]
+    },
+    {
       "name": "vul",
       "buildsystem": "meson",
       "sources": [
