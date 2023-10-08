@@ -2,6 +2,8 @@
 <interface>
 
 <template class="RpyTrendsView" parent="RpyView">
+  <property name="title">Trends</property>
+
   <property name="child">
     <object class="GtkStack">
 
@@ -80,6 +82,7 @@
 
     </object>
   </property>
+
 </template>
 
 </interface>

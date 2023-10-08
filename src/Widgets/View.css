@@ -1,9 +1,9 @@
 .rpy-view {
-  background-color: @headerbar_bg_color;
+  background-color: @sidebar_bg_color;
 }
 
 .rpy-view:backdrop {
-  background-color: @headerbar_backdrop_color;
+  background-color: @sidebar_backdrop_color;
   transition: background-color 200ms ease-out;
 }
 
