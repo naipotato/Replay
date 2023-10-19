@@ -1,4 +1,5 @@
-sources = files('App.vala', 'AppWindow.vala')
+vala_sources = files('App.vala', 'AppWindow.vala')
+blp_sources  = files('AppWindow.blp')
 
 subdir('Errors')
 subdir('Features')
@@ -8,7 +9,19 @@ subdir('Utils')
 subdir('Widgets')
 
 resources = gnome.compile_resources('resources', 'resources.xml',
-  c_name : meson.project_name(),
+  c_name       : meson.project_name(),
+  dependencies : custom_target(
+    build_always_stale : true,
+    command            : [
+      find_program('blueprint-compiler'),
+      'batch-compile',
+      '@OUTPUT@',
+      '@CURRENT_SOURCE_DIR@',
+      '@INPUT@',
+    ],
+    input              : blp_sources,
+    output             : '.',
+  ),
 )
 
 vcs_tag(
@@ -34,6 +47,7 @@ executable(app_id,
   vala_args           : [
     '--define=' + profile.to_upper(),
     '--enable-checking',
+    '--gresourcesdir=src/',
     '--nostdpkg',
   ],
   dependencies        : [
@@ -50,6 +64,6 @@ executable(app_id,
   ],
   include_directories : '.',
   install             : true,
-  sources             : [resources, sources],
+  sources             : [resources, vala_sources],
   win_subsystem       : 'windows',
 )

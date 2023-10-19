@@ -1,1 +1,1 @@
-sources += files('Video.vala')
+vala_sources += files('Video.vala')

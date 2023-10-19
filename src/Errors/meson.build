@@ -1,1 +1,1 @@
-sources += files('HttpError.vala')
+vala_sources += files('HttpError.vala')

@@ -1,0 +1,10 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RpyAppWindow : Adw.ApplicationWindow {
+  title: 'Replay';
+  default-width: 1024;
+  default-height: 720;
+
+  $RpyNavigator _navigator {}
+}

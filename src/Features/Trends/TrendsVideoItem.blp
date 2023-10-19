@@ -1,0 +1,40 @@
+using Gtk 4.0;
+
+template Gtk.ListItem {
+  child: Gtk.Box {
+    orientation: vertical;
+
+    Gtk.Label {
+      ellipsize: end;
+      label: bind template.item as <$RpyVideo>.title;
+      lines: 2;
+      wrap: true;
+      xalign: 0;
+      yalign: 0;
+
+      styles ['heading']
+    }
+
+    Gtk.Label {
+      ellipsize: end;
+      label: bind template.item as <$RpyVideo>.author;
+      lines: 1;
+      wrap: true;
+      xalign: 0;
+      yalign: 0;
+
+      styles ['caption']
+    }
+
+    Gtk.Label {
+      ellipsize: end;
+      label: bind template.item as <$RpyVideo>.view-count;
+      lines: 1;
+      wrap: true;
+      xalign: 0;
+      yalign: 0;
+
+      styles ['caption', 'numeric']
+    }
+  };
+}
