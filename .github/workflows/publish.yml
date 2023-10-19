@@ -1,0 +1,70 @@
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish.yml
+      - data/**
+      - lib/**
+      - po/**
+      - src/**
+      - subprojects/**
+      - vapi/**
+      - meson.build
+      - meson_options.txt
+
+name: Publish
+
+jobs:
+  flatpak:
+    name: Flatpak
+    runs-on: ubuntu-latest
+
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
+      options: --privileged
+
+    strategy:
+      matrix: { arch: [x86_64, aarch64] }
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Install deps
+        if: ${{ matrix.arch != 'x86_64' }}
+        run: dnf install -y docker
+
+      - id: qemu
+        name: Set up QEMU
+        if: ${{ matrix.arch != 'x86_64' }}
+        uses: docker/setup-qemu-action@v3.0.0
+        with: { platforms: arm64 }
+
+      - id: gpg
+        name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v6.0.0
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+
+      - name: Build flatpak
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          manifest-path: build-aux/app.drey.Replay.Devel.json
+          cache-key: flatpak-builder-${{ github.sha }}
+          arch: ${{ matrix.arch }}
+          gpg-sign: ${{ steps.gpg.outputs.keyid }}
+
+      - name: Push update
+        env:
+          ARCH: ${{ matrix.arch }}
+          REPO_URL: https://${{ secrets.GITHUB_TOKEN }}@github.com/nahuelwexd/replay-nightly.git
+        run: |
+          git clone $REPO_URL
+
+          flatpak build-commit-from --src-repo=repo replay-nightly app/app.drey.Replay.Devel/$ARCH/master
+          flatpak build-commit-from --src-repo=repo replay-nightly runtime/app.drey.Replay.Devel.Debug/$ARCH/master
+
+          cd replay-nightly
+          git add . && git commit --author=Nah -m "Update app.drey.Replay.Devel" && git push $REPO_URL main
