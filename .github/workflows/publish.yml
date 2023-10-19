@@ -65,7 +65,8 @@ jobs:
           path: replay-nightly
 
       - name: Commit update
-        env: { ARCH: ${{ matrix.arch }} }
+        env:
+          ARCH: ${{ matrix.arch }}
         run: |
           flatpak build-commit-from --src-repo=repo replay-nightly app/app.drey.Replay.Devel/$ARCH/master
           flatpak build-commit-from --src-repo=repo replay-nightly runtime/app.drey.Replay.Devel.Debug/$ARCH/master
