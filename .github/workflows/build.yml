@@ -1,21 +1,7 @@
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/flatpak.yml
-      - data/**
-      - lib/**
-      - po/**
-      - src/**
-      - subprojects/**
-      - vapi/**
-      - meson.build
-      - meson_options.txt
-
   pull_request:
     branches: [main]
     paths:
-      - .github/workflows/flatpak.yml
       - data/**
       - lib/**
       - po/**
@@ -25,7 +11,7 @@ on:
       - meson.build
       - meson_options.txt
 
-name: Flatpak
+name: Build
 
 jobs:
   flatpak:
@@ -33,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-42
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
       options: --privileged
 
     strategy:
@@ -45,18 +31,18 @@ jobs:
         uses: actions/checkout@v4.1.1
 
       - name: Install deps
+        if: ${{ matrix.arch != 'x86_64' }}
         run: dnf install -y docker
 
-      - name: Set up QEMU
-        id: qemu
+      - id: qemu
+        name: Set up QEMU
+        if: ${{ matrix.arch != 'x86_64' }}
         uses: docker/setup-qemu-action@v3.0.0
         with: { platforms: arm64 }
 
       - name: Build flatpak
-        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           manifest-path: build-aux/app.drey.Replay.Devel.json
-          bundle: app.drey.Replay.Devel.flatpak
-          branch: main
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
