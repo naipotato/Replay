@@ -24,6 +24,7 @@ jobs:
       options: --privileged
 
     strategy:
+      max-parallel: 1
       matrix: { arch: [x86_64, aarch64] }
       fail-fast: false
 
@@ -57,15 +58,23 @@ jobs:
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.keyid }}
 
-      - name: Push update
-        env:
-          ARCH: ${{ matrix.arch }}
-          REPO_URL: https://${{ secrets.GITHUB_TOKEN }}@github.com/nahuelwexd/replay-nightly.git
-        run: |
-          git clone $REPO_URL
+      - name: Checkout replay-nightly repo
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: nahuelwexd/replay-nightly
+          path: replay-nightly
 
+      - name: Commit update
+        env: { ARCH: ${{ matrix.arch }} }
+        run: |
           flatpak build-commit-from --src-repo=repo replay-nightly app/app.drey.Replay.Devel/$ARCH/master
           flatpak build-commit-from --src-repo=repo replay-nightly runtime/app.drey.Replay.Devel.Debug/$ARCH/master
 
-          cd replay-nightly
-          git add . && git commit --author=Nah -m "Update app.drey.Replay.Devel" && git push $REPO_URL main
+      - name: Push update
+        uses: EndBug/add-and-commit@v9.1.3
+        with:
+          commit: --amend
+          cwd: replay-nightly
+          default_author: github_actions
+          message: Update app.drey.Replay.Devel
+          push: --force origin main
