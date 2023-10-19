@@ -42,6 +42,13 @@ jobs:
         uses: docker/setup-qemu-action@v3.0.0
         with: { platforms: arm64 }
 
+      - name: Checkout replay-nightly repo
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: nahuelwexd/replay-nightly
+          token: ${{ secrets.REPLAY_NIGHTLY_TOKEN }}
+          path: repo
+
       - id: gpg
         name: Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v6.0.0
@@ -49,7 +56,7 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
 
-      - name: Build flatpak
+      - name: Build & export flatpak
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           manifest-path: build-aux/app.drey.Replay.Devel.json
@@ -57,20 +64,6 @@ jobs:
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.keyid }}
-
-      - name: Checkout replay-nightly repo
-        uses: actions/checkout@v4.1.1
-        with:
-          repository: nahuelwexd/replay-nightly
-          token: ${{ secrets.REPLAY_NIGHTLY_TOKEN }}
-          path: replay-nightly
-
-      - name: Commit update
-        env:
-          ARCH: ${{ matrix.arch }}
-        run: |
-          flatpak build-commit-from --src-repo=repo replay-nightly app/app.drey.Replay.Devel/$ARCH/master
-          flatpak build-commit-from --src-repo=repo replay-nightly runtime/app.drey.Replay.Devel.Debug/$ARCH/master
 
       - name: Push update
         uses: EndBug/add-and-commit@v9.1.3
