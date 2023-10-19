@@ -44,5 +44,6 @@ jobs:
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           manifest-path: build-aux/app.drey.Replay.Devel.json
+          build-bundle: false
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
