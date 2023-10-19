@@ -1,4 +1,4 @@
-sources += files(
+vala_sources += files(
   'Fetch.vala',
   'RequestOptions.vala',
   'Response.vala',

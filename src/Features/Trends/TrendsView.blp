@@ -1,0 +1,44 @@
+using Gtk 4.0;
+
+template $RpyTrendsView : $RpyView {
+  title: 'Trends';
+
+  Gtk.Stack {
+    visible-child-name: bind $state_to_nick(template.view-model as <$RpyTrendsViewModel>.state) as <string>;
+
+    Gtk.StackPage {
+      name: 'loading';
+      child: Gtk.Spinner {
+        height-request: 32;
+        spinning: true;
+        valign: center;
+      };
+    }
+
+    Gtk.StackPage {
+      name: 'error';
+      child: Gtk.Label {
+        label: 'An error occurred!';
+      };
+    }
+
+    Gtk.StackPage {
+      name: 'loaded';
+      child: Gtk.ScrolledWindow {
+        hscrollbar-policy: never;
+
+        Gtk.GridView {
+          orientation: vertical;
+
+          model: Gtk.NoSelection {
+            model: bind template.view-model as <$RpyTrendsViewModel>.trending-videos;
+          };
+
+          factory: Gtk.BuilderListItemFactory {
+            resource: '/app/drey/Replay/ui/TrendsVideoItem.ui';
+          };
+        }
+      };
+    }
+  }
+}
