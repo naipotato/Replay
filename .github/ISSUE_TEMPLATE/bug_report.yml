@@ -58,7 +58,7 @@ body:
       label: Installation method
       description: How did you install the app?
       options:
-        - Flatpak from GitHub Actions
+        - Flatpak from nightly repo
         - Other, unofficial package
 
   - type: textarea
