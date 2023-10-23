@@ -1,44 +1,52 @@
 using Gtk 4.0;
+using Adw 1;
 
-template $RpyTrendsView : $RpyView {
+template $RpyTrendsView : Adw.NavigationPage {
   title: 'Trends';
 
-  Gtk.Stack {
-    visible-child-name: bind $state_to_nick(template.view-model as <$RpyTrendsViewModel>.state) as <string>;
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
 
-    Gtk.StackPage {
-      name: 'loading';
-      child: Gtk.Spinner {
-        height-request: 32;
-        spinning: true;
-        valign: center;
-      };
-    }
+    Gtk.Stack {
+      visible-child-name: bind $state_to_nick(template.view-model as <$RpyTrendsViewModel>.state) as <string>;
 
-    Gtk.StackPage {
-      name: 'error';
-      child: Gtk.Label {
-        label: 'An error occurred!';
-      };
-    }
+      Gtk.StackPage {
+        name: 'loading';
+        child: Gtk.Spinner {
+          height-request: 32;
+          spinning: true;
+          valign: center;
+        };
+      }
 
-    Gtk.StackPage {
-      name: 'loaded';
-      child: Gtk.ScrolledWindow {
-        hscrollbar-policy: never;
+      Gtk.StackPage {
+        name: 'error';
+        child: Gtk.Label {
+          label: 'An error occurred!';
+        };
+      }
 
-        Gtk.GridView {
-          orientation: vertical;
+      Gtk.StackPage {
+        name: 'loaded';
+        child: Gtk.ScrolledWindow {
+          hscrollbar-policy: never;
 
-          model: Gtk.NoSelection {
-            model: bind template.view-model as <$RpyTrendsViewModel>.trending-videos;
-          };
+          Gtk.GridView {
+            orientation: vertical;
 
-          factory: Gtk.BuilderListItemFactory {
-            resource: '/app/drey/Replay/ui/TrendsVideoItem.ui';
-          };
-        }
-      };
+            model: Gtk.NoSelection {
+              model: bind template.view-model as <$RpyTrendsViewModel>.trending-videos;
+            };
+
+            factory: Gtk.BuilderListItemFactory {
+              resource: '/app/drey/Replay/ui/TrendsVideoItem.ui';
+            };
+
+            styles ['rpy-transparent']
+          }
+        };
+      }
     }
   }
 }

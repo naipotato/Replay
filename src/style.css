@@ -1,5 +1,7 @@
-@import url('css/View.css');
-
 * {
     line-height: calc(1em + 0.5rem);
+}
+
+.rpy-transparent {
+    background: transparent;
 }
