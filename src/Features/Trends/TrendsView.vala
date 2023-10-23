@@ -5,7 +5,9 @@
  */
 
 [GtkTemplate (ui = "/app/drey/Replay/ui/TrendsView.ui")]
-sealed class Rpy.TrendsView : View {
+sealed class Rpy.TrendsView : Adw.NavigationPage {
+    public TrendsViewModel view_model { get; construct; }
+
     public TrendsView () {
         Object (view_model: new TrendsViewModel ());
     }

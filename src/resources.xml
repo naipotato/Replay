@@ -12,8 +12,4 @@
   <file>AppWindow.ui</file>
 </gresource>
 
-<gresource prefix="/app/drey/Replay/css">
-  <file alias="View.css">Widgets/View.css</file>
-</gresource>
-
 </gresources>
