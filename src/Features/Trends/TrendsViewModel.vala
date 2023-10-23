@@ -12,7 +12,7 @@ sealed class Rpy.TrendsViewModel : ViewModel {
     }
 
     public async void load_trending_videos () {
-        this.state = LOADING;
+        this.state = IN_PROGRESS;
 
         try {
             var repo = new VideoRepository ();
@@ -21,7 +21,7 @@ sealed class Rpy.TrendsViewModel : ViewModel {
             var videos_array = videos.to_array ();
             this.trending_videos.splice (0, 0, (Object[]) videos_array);
 
-            this.state = LOADED;
+            this.state = SUCCESS;
         } catch (Error e) {
             this.state = ERROR;
         }

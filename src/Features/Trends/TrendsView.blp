@@ -12,7 +12,7 @@ template $RpyTrendsView : Adw.NavigationPage {
       visible-child-name: bind $state_to_nick(template.view-model as <$RpyTrendsViewModel>.state) as <string>;
 
       Gtk.StackPage {
-        name: 'loading';
+        name: 'in-progress';
         child: Gtk.Spinner {
           height-request: 32;
           spinning: true;
@@ -28,7 +28,7 @@ template $RpyTrendsView : Adw.NavigationPage {
       }
 
       Gtk.StackPage {
-        name: 'loaded';
+        name: 'success';
         child: Gtk.ScrolledWindow {
           hscrollbar-policy: never;
 

@@ -14,18 +14,10 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
 
     [GtkCallback]
     private string state_to_nick (ViewModelState state) {
-        switch (state) {
-            case INITIAL:
-            case LOADING:
-                return "loading";
+        var local_state = state == ViewModelState.INITIAL
+            ? ViewModelState.IN_PROGRESS
+            : state;
 
-            case LOADED:
-                return "loaded";
-
-            case ERROR:
-                return "error";
-        }
-
-        return "loading";
+        return local_state.to_nick ();
     }
 }
