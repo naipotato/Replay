@@ -36,15 +36,6 @@ sealed class Rpy.App : Adw.Application {
         Environment.set_application_name ("Replay");
         this.style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
 
-        this.init_actions ();
-        this.init_widgets ();
-    }
-
-    private void init_widgets () {
-        typeof (Navigator).ensure ();
-    }
-
-    private void init_actions () {
         this.add_action_entries ({
             { "about", this.show_about_window },
             { "quit",  this.quit              },
