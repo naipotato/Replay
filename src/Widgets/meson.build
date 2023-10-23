@@ -1,1 +1,1 @@
-vala_sources += files('Navigator.vala', 'View.vala')
+vala_sources += files('View.vala')
