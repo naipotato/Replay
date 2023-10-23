@@ -9,8 +9,10 @@ abstract class Rpy.ViewModel : Object {
 }
 
 enum Rpy.ViewModelState {
-    INITIAL,
-    LOADING,
-    LOADED,
-    ERROR;
+    INITIAL, IN_PROGRESS, SUCCESS, ERROR;
+
+    public string to_nick () {
+        var enumc = (EnumClass) typeof (ViewModelState).class_ref ();
+        return enumc.get_value (this).value_nick;
+    }
 }
