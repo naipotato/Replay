@@ -17,7 +17,6 @@ sealed class Rpy.App : Adw.Application {
     }
 
     public static int main (string[] args) {
-        // Configure project localizations
         // See https://docs.gtk.org/glib/i18n.html
         Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
         Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");
@@ -27,18 +26,15 @@ sealed class Rpy.App : Adw.Application {
     }
 
     public override void activate () {
-        var win = this.active_window ?? new AppWindow (this);
-        win.present ();
+        var window = this.active_window ?? new AppWindow (this);
+        window.present ();
     }
 
     public override void startup () {
         base.startup ();
 
         Environment.set_application_name ("Replay");
-
-        // Since this is a media app, inform the system that we prefer a dark
-        // color scheme
-        this.style_manager.color_scheme = PREFER_DARK;
+        this.style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
 
         this.init_actions ();
         this.init_widgets ();
@@ -49,20 +45,17 @@ sealed class Rpy.App : Adw.Application {
     }
 
     private void init_actions () {
-        var action_entries = new ActionEntry[] {
-            { "about", show_about_window },
-            { "quit",  quit              },
-        };
+        this.add_action_entries ({
+            { "about", this.show_about_window },
+            { "quit",  this.quit              },
+        }, this);
 
-        this.add_action_entries (action_entries, this);
         this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
     private void show_about_window () {
         var about_window = new Adw.AboutWindow () {
             transient_for       = this.active_window,
-            modal               = true,
-            destroy_with_parent = true,
             application_icon    = Config.APP_ID,
             application_name    = "Replay",
             developer_name      = "Nahuel Gomez",
@@ -73,8 +66,8 @@ sealed class Rpy.App : Adw.Application {
             artists             = { "Noëlle https://github.com/jannuary" },
             // TRANSLATORS: Put your credits here
             translator_credits  = _("translator-credits"),
-            copyright           = "© 2022 Nahuel Gomez",
-            license_type        = GPL_3_0,
+            copyright           = "© 2023 Nahuel Gomez",
+            license_type        = Gtk.License.GPL_3_0,
         };
 
         about_window.present ();
