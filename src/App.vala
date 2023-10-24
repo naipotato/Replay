@@ -34,7 +34,7 @@ sealed class Rpy.App : Adw.Application {
         base.startup ();
 
         Environment.set_application_name ("Replay");
-        this.style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
+        this.style_manager.color_scheme = PREFER_DARK;
 
         this.add_action_entries ({
             { "about", this.show_about_window },
@@ -58,7 +58,7 @@ sealed class Rpy.App : Adw.Application {
             // TRANSLATORS: Put your credits here
             translator_credits  = _("translator-credits"),
             copyright           = "© 2023 Nahuel Gomez",
-            license_type        = Gtk.License.GPL_3_0,
+            license_type        = GPL_3_0,
         };
 
         about_window.present ();
