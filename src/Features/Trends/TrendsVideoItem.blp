@@ -1,8 +1,13 @@
 using Gtk 4.0;
 
 template Gtk.ListItem {
+  focusable: false;
+
   child: Gtk.Box {
     orientation: vertical;
+    focusable: true;
+
+    styles ['card', 'activatable', 'rpy-trends-video-item']
 
     Gtk.Label {
       ellipsize: end;
@@ -10,7 +15,6 @@ template Gtk.ListItem {
       lines: 2;
       wrap: true;
       xalign: 0;
-      yalign: 0;
 
       styles ['heading']
     }
@@ -18,23 +22,21 @@ template Gtk.ListItem {
     Gtk.Label {
       ellipsize: end;
       label: bind template.item as <$RpyVideo>.author;
-      lines: 1;
+      lines: 2;
       wrap: true;
       xalign: 0;
-      yalign: 0;
 
-      styles ['caption']
+      styles ['caption', 'dim-label']
     }
 
     Gtk.Label {
       ellipsize: end;
       label: bind template.item as <$RpyVideo>.view-count;
-      lines: 1;
+      lines: 2;
       wrap: true;
       xalign: 0;
-      yalign: 0;
 
-      styles ['caption', 'numeric']
+      styles ['caption', 'dim-label', 'numeric']
     }
   };
 }
