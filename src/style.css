@@ -2,6 +2,17 @@
     line-height: calc(1em + 0.5rem);
 }
 
-.rpy-transparent {
-    background: transparent;
+.rpy-trends-grid {
+    background: none;
+    padding: 24px 18px;
+    border-spacing: 12px;
+}
+
+.rpy-trends-grid > child {
+    padding: 0;
+    background: none;
+}
+
+.rpy-trends-video-item {
+    padding: 12px;
 }

@@ -32,18 +32,23 @@ template $RpyTrendsView : Adw.NavigationPage {
         child: Gtk.ScrolledWindow {
           hscrollbar-policy: never;
 
-          Gtk.GridView {
-            orientation: vertical;
+          Adw.ClampScrollable {
+            maximum-size: 1280;
+            tightening-threshold: 768;
 
-            model: Gtk.NoSelection {
-              model: bind template.view-model as <$RpyTrendsViewModel>.trending-videos;
-            };
+            Gtk.GridView {
+              max-columns: 4;
 
-            factory: Gtk.BuilderListItemFactory {
-              resource: '/app/drey/Replay/ui/TrendsVideoItem.ui';
-            };
+              model: Gtk.NoSelection {
+                model: bind template.view-model as <$RpyTrendsViewModel>.trending-videos;
+              };
 
-            styles ['rpy-transparent']
+              factory: Gtk.BuilderListItemFactory {
+                resource: '/app/drey/Replay/ui/TrendsVideoItem.ui';
+              };
+
+              styles ['rpy-trends-grid']
+            }
           }
         };
       }
