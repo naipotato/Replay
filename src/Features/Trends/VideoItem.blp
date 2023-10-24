@@ -1,0 +1,51 @@
+using Gtk 4.0;
+
+template Gtk.ListItem {
+  focusable: false;
+
+  child: Gtk.Box {
+    orientation: vertical;
+    focusable: true;
+    overflow: hidden;
+
+    styles ['card', 'activatable', 'rpy-trends-video-item']
+
+    $RpyThumbnail {
+      uri: bind template.item as <$RpyVideo>.thumbnail_uri;
+    }
+
+    Gtk.Box {
+      orientation: vertical;
+
+      Gtk.Label {
+        ellipsize: end;
+        label: bind template.item as <$RpyVideo>.title;
+        lines: 2;
+        wrap: true;
+        xalign: 0.0;
+
+        styles ['heading']
+      }
+
+      Gtk.Label {
+        ellipsize: end;
+        label: bind template.item as <$RpyVideo>.author;
+        lines: 2;
+        wrap: true;
+        xalign: 0.0;
+
+        styles ['caption', 'dim-label']
+      }
+
+      Gtk.Label {
+        ellipsize: end;
+        label: bind template.item as <$RpyVideo>.view-count;
+        lines: 2;
+        wrap: true;
+        xalign: 0.0;
+
+        styles ['caption', 'dim-label', 'numeric']
+      }
+    }
+  };
+}

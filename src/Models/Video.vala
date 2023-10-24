@@ -6,7 +6,7 @@
 
 sealed class Rpy.Video : Object {
     public string   id               { get; set; }
-    public Uri      thumbnail_uri    { get; set; }
+    public string   thumbnail_uri    { get; set; }
     public string   title            { get; set; }
     public string   author           { get; set; }
     public int64    view_count       { get; set; }

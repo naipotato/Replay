@@ -25,18 +25,12 @@ sealed class Rpy.VideoRepository {
 
     private Video json_to_video (GJson.Object json) {
         var video = new Video () {
-            id         = json["videoId"].as_string (),
-            title      = json["title"].as_string (),
-            author     = json["author"].as_string (),
-            view_count = json["viewCount"].as_integer (),
+            id            = json["videoId"].as_string (),
+            thumbnail_uri = json["videoThumbnails"][0]["url"].as_string (),
+            title         = json["title"].as_string (),
+            author        = json["author"].as_string (),
+            view_count    = json["viewCount"].as_integer (),
         };
-
-        var thumbnails = json["videoThumbnails"].as_array ();
-        var thumbnail  = thumbnails[0].as_object ();
-
-        try {
-            video.thumbnail_uri = Uri.parse (thumbnail["url"].as_string (), NONE);
-        } catch (Error e) {}
 
         var publication_date_unix = json["published"].as_integer ();
         video.publication_date = new DateTime.from_unix_utc (publication_date_unix);
