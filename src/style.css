@@ -13,6 +13,6 @@
     background: none;
 }
 
-.rpy-trends-video-item {
-    padding: 12px;
+.rpy-trends-video-item > box {
+    margin: 12px;
 }
