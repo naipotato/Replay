@@ -44,7 +44,16 @@ template $RpyTrendsView : Adw.NavigationPage {
               };
 
               factory: Gtk.BuilderListItemFactory {
-                resource: '/app/drey/Replay/ui/VideoItem.ui';
+                template Gtk.ListItem {
+                  focusable: false;
+                  child: $RpyVideoItem {
+                    thumbnail-uri: bind template.item as <$RpyVideo>.thumbnail-uri;
+                    title: bind template.item as <$RpyVideo>.title;
+                    author: bind template.item as <$RpyVideo>.author;
+                    view-count: bind template.item as <$RpyVideo>.view-count;
+                    publication-date: bind template.item as <$RpyVideo>.publication-date;
+                  };
+                }
               };
 
               styles ['rpy-trends-grid']

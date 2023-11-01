@@ -22,7 +22,7 @@ sealed class Rpy.Response {
         // We take the contents of the input stream, and move them to a
         // memory-based output stream, so that we can get the bytes from it in
         // a simple manner
-        yield output_stream.splice_async (input_stream, CLOSE_SOURCE | CLOSE_TARGET);
+        yield output_stream.splice_async (input_stream, CLOSE_SOURCE | CLOSE_TARGET, Priority.DEFAULT_IDLE);
 
         return output_stream.steal_as_bytes ();
     }
