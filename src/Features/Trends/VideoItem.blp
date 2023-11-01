@@ -1,51 +1,92 @@
 using Gtk 4.0;
 
-template Gtk.ListItem {
-  focusable: false;
+template $RpyVideoItem : Gtk.Widget {
+  focusable: true;
+  overflow: hidden;
 
-  child: Gtk.Box {
+  layout-manager: Gtk.BoxLayout {
     orientation: vertical;
-    focusable: true;
-    overflow: hidden;
-
-    styles ['card', 'activatable', 'rpy-trends-video-item']
-
-    $RpyThumbnail {
-      uri: bind template.item as <$RpyVideo>.thumbnail_uri;
-    }
-
-    Gtk.Box {
-      orientation: vertical;
-
-      Gtk.Label {
-        ellipsize: end;
-        label: bind template.item as <$RpyVideo>.title;
-        lines: 2;
-        wrap: true;
-        xalign: 0.0;
-
-        styles ['heading']
-      }
-
-      Gtk.Label {
-        ellipsize: end;
-        label: bind template.item as <$RpyVideo>.author;
-        lines: 2;
-        wrap: true;
-        xalign: 0.0;
-
-        styles ['caption', 'dim-label']
-      }
-
-      Gtk.Label {
-        ellipsize: end;
-        label: bind template.item as <$RpyVideo>.view-count;
-        lines: 2;
-        wrap: true;
-        xalign: 0.0;
-
-        styles ['caption', 'dim-label', 'numeric']
-      }
-    }
   };
+
+  styles ['card', 'activatable', 'rpy-video-item']
+
+  $RpyThumbnail _thumbnail {
+    uri: bind template.thumbnail-uri;
+  }
+
+  Gtk.Grid _info_grid {
+    Gtk.Label {
+      ellipsize: end;
+      hexpand: true;
+      label: bind template.title;
+      lines: 2;
+      wrap: true;
+      xalign: 0.0;
+
+      styles ['heading']
+
+      layout {
+        column: 0;
+        row: 0;
+        column-span: 3;
+      }
+    }
+
+    Gtk.Label {
+      ellipsize: end;
+      hexpand: true;
+      label: bind template.author;
+      single-line-mode: true;
+      xalign: 0.0;
+
+      styles ['caption', 'dim-label']
+
+      layout {
+        column: 0;
+        row: 1;
+        column-span: 3;
+      }
+    }
+
+    Gtk.Label {
+      label: bind $format_view_count(template.view-count) as <string>;
+      single-line-mode: true;
+      xalign: 0.0;
+
+      styles ['caption', 'dim-label']
+
+      layout {
+        column: 0;
+        row: 2;
+      }
+    }
+
+    Gtk.Label {
+      label: ' • ';
+      single-line-mode: true;
+      xalign: 0.0;
+
+      styles ['caption', 'dim-label']
+
+      layout {
+        column: 1;
+        row: 2;
+      }
+    }
+
+    Gtk.Label {
+      hexpand: true;
+      label: bind $format_relative_date(template.publication-date) as <string>;
+      single-line-mode: true;
+      tooltip-text: bind $format_absolute_date(template.publication-date) as <string>;
+      xalign: 0.0;
+
+      styles ['caption', 'dim-label']
+
+      layout {
+        column: 2;
+        row: 2;
+      }
+    }
+  }
 }

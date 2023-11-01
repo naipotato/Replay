@@ -21,7 +21,7 @@ namespace Rpy {
         if (options?.body != null)
             message.set_request_body_from_bytes (null, new Bytes (options.body.data));
 
-        return new Response (yield session.send_async (message, Priority.DEFAULT, null)) {
+        return new Response (yield session.send_async (message, Priority.DEFAULT_IDLE, null)) {
             status_code = message.status_code,
             status_text = message.reason_phrase,
             ok          = 200 <= message.status_code < 300,
