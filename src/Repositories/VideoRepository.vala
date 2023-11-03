@@ -6,7 +6,7 @@
 
 sealed class Rpy.VideoRepository {
     public async Gee.List<Video> get_trending_videos () throws Error {
-        var uri = "https://yt.funami.tech/api/v1/trending";
+        var uri = "https://invidious.fdn.fr/api/v1/trending";
 
         var response = yield fetch (uri);
         var json = yield response.json ();
