@@ -16,3 +16,15 @@
 .rpy-video-item > grid {
     margin: 12px;
 }
+
+.rpy-video-duration {
+    margin: 12px;
+    color: white;
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 0 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    min-height: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
