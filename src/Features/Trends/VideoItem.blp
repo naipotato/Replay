@@ -10,8 +10,20 @@ template $RpyVideoItem : Gtk.Widget {
 
   styles ['card', 'activatable', 'rpy-video-item']
 
-  $RpyThumbnail _thumbnail {
-    uri: bind template.thumbnail-uri;
+  Gtk.Overlay _thumbnail_overlay {
+    $RpyThumbnail {
+      uri: bind template.thumbnail-uri;
+    }
+
+    [overlay]
+    Gtk.Label {
+      halign: end;
+      label: bind $format_duration(template.duration) as <string>;
+      single-line-mode: true;
+      valign: start;
+
+      styles ['rpy-video-duration']
+    }
   }
 
   Gtk.Grid _info_grid {

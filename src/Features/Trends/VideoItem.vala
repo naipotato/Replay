@@ -7,7 +7,7 @@
 [GtkTemplate (ui = "/app/drey/Replay/ui/VideoItem.ui")]
 sealed class Rpy.VideoItem : Gtk.Widget {
     [GtkChild]
-    private unowned Thumbnail _thumbnail;
+    private unowned Gtk.Overlay _thumbnail_overlay;
 
     [GtkChild]
     private unowned Gtk.Grid _info_grid;
@@ -17,9 +17,10 @@ sealed class Rpy.VideoItem : Gtk.Widget {
     public string?   author           { get; set; }
     public int64     view_count       { get; set; }
     public DateTime? publication_date { get; set; }
+    public TimeSpan  duration         { get; set; }
 
     protected override void dispose () {
-        this._thumbnail.unparent ();
+        this._thumbnail_overlay.unparent ();
         this._info_grid.unparent ();
         base.dispose ();
     }
@@ -149,5 +150,16 @@ sealed class Rpy.VideoItem : Gtk.Widget {
     [GtkCallback]
     private string? format_absolute_date (DateTime? date) {
         return date?.to_local ()?.format ("%c");
+    }
+
+    [GtkCallback]
+    private string format_duration (TimeSpan duration) {
+        var seconds = duration % TimeSpan.MINUTE / TimeSpan.SECOND;
+        var minutes = duration % TimeSpan.HOUR / TimeSpan.MINUTE;
+        var hours   = duration / TimeSpan.HOUR;
+
+        return hours <= 0
+            ? "%02lli∶%02lli".printf (minutes, seconds)
+            : "%lli∶%02lli∶%02lli".printf (hours, minutes, seconds);
     }
 }

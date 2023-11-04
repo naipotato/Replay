@@ -5,11 +5,11 @@
  */
 
 sealed class Rpy.Video : Object {
-    public string   id               { get; set; }
-    public string   thumbnail_uri    { get; set; }
-    public string   title            { get; set; }
-    public string   author           { get; set; }
-    public int64    view_count       { get; set; }
-    public DateTime publication_date { get; set; }
-    public TimeSpan duration         { get; set; }
+    public string?   id               { get; set; }
+    public string?   thumbnail_uri    { get; set; }
+    public string?   title            { get; set; }
+    public string?   author           { get; set; }
+    public int64     view_count       { get; set; }
+    public DateTime? publication_date { get; set; }
+    public TimeSpan  duration         { get; set; }
 }
