@@ -1,10 +1,10 @@
 /*
- * Copyright 2022 Nahuel Gomez https://nahuelwexd.com
+ * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
  *
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-errordomain Rpy.HttpError {
+public errordomain Iv.Error {
     BAD_REQUEST,
     CONFLICT,
     FORBIDDEN,
@@ -15,7 +15,7 @@ errordomain Rpy.HttpError {
     UNAUTHORIZED,
     UNKNOWN;
 
-    public static HttpError from_status_code (Soup.Status status_code, GJson.Node json) {
+    internal static Error from_status_code (Soup.Status status_code, GJson.Node json) {
         var server_error_message = "no server error message";
 
         if (json.node_type == OBJECT && json["error"].node_type == STRING)
@@ -26,31 +26,31 @@ errordomain Rpy.HttpError {
 
         switch (status_code) {
             case Soup.Status.BAD_REQUEST:
-                return new HttpError.BAD_REQUEST (error_message);
+                return new Error.BAD_REQUEST (error_message);
 
             case Soup.Status.CONFLICT:
-                return new HttpError.CONFLICT (error_message);
+                return new Error.CONFLICT (error_message);
 
             case Soup.Status.FORBIDDEN:
-                return new HttpError.FORBIDDEN (error_message);
+                return new Error.FORBIDDEN (error_message);
 
             case Soup.Status.INTERNAL_SERVER_ERROR:
-                return new HttpError.INTERNAL_SERVER_ERROR (error_message);
+                return new Error.INTERNAL_SERVER_ERROR (error_message);
 
             case Soup.Status.NOT_FOUND:
-                return new HttpError.NOT_FOUND (error_message);
+                return new Error.NOT_FOUND (error_message);
 
             case Soup.Status.REQUEST_TIMEOUT:
-                return new HttpError.REQUEST_TIMEOUT (error_message);
+                return new Error.REQUEST_TIMEOUT (error_message);
 
             case Soup.Status.SERVICE_UNAVAILABLE:
-                return new HttpError.SERVICE_UNAVAILABLE (error_message);
+                return new Error.SERVICE_UNAVAILABLE (error_message);
 
             case Soup.Status.UNAUTHORIZED:
-                return new HttpError.UNAUTHORIZED (error_message);
+                return new Error.UNAUTHORIZED (error_message);
 
             default:
-                return new HttpError.UNKNOWN (@"Unknown error: $server_error_message");
+                return new Error.UNKNOWN (@"Unknown error: $server_error_message");
         }
     }
 }
