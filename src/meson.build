@@ -1,7 +1,6 @@
 vala_sources = files('App.vala', 'AppWindow.vala')
 blp_sources  = files('AppWindow.blp')
 
-subdir('Errors')
 subdir('Features')
 subdir('Models')
 subdir('Repositories')
@@ -60,6 +59,8 @@ executable(app_id,
     dependency('icu-i18n',     method : 'pkg-config', version : '>=62.0'),
     dependency('libadwaita-1', method : 'pkg-config', version : '>=1.4' ),
     dependency('libsoup-3.0',  method : 'pkg-config', version : '>=3.0' ),
+
+    subproject('invidious-api').get_variable('invidious_api_dep'),
 
     meson.get_compiler('vala').find_library('config', dirs : meson.project_source_root() / 'vapi'),
   ],

@@ -6,16 +6,12 @@
 
 sealed class Rpy.VideoRepository {
     public async Gee.List<Video> get_trending_videos () throws Error {
-        var uri = "https://invidious.fdn.fr/api/v1/trending";
+        var client = new Iv.Client ("invidious.fdn.fr");
 
-        var response = yield fetch (uri);
-        var json = yield response.json ();
+        var request    = client.trending ();
+        var api_videos = yield request.execute_async ();
 
-        if (!response.ok)
-            throw HttpError.from_status_code (response.status_code, json);
-
-        var it = json.as_array ().iterator ().map<Video> (
-            (item) => this.json_to_video ((GJson.Object) item));
+        var it = api_videos.iterator ().map<Video> ((item) => this.api_to_video (item));
 
         var video_list = new Gee.ArrayList<Video> ();
         video_list.add_all_iterator (it);
@@ -23,21 +19,15 @@ sealed class Rpy.VideoRepository {
         return video_list;
     }
 
-    private Video json_to_video (GJson.Object json) {
-        var video = new Video () {
-            id            = json["videoId"].as_string (),
-            thumbnail_uri = json["videoThumbnails"][0]["url"].as_string (),
-            title         = json["title"].as_string (),
-            author        = json["author"].as_string (),
-            view_count    = json["viewCount"].as_integer (),
+    private Video api_to_video (Iv.Video api_video) {
+        return new Video () {
+            id               = api_video.videoId,
+            thumbnail_uri    = api_video.videoThumbnails[0].url,
+            title            = api_video.title,
+            author           = api_video.author,
+            view_count       = api_video.viewCount,
+            publication_date = new DateTime.from_unix_utc (api_video.published),
+            duration         = api_video.lengthSeconds * TimeSpan.SECOND,
         };
-
-        var publication_date_unix = json["published"].as_integer ();
-        video.publication_date = new DateTime.from_unix_utc (publication_date_unix);
-
-        var duration_seconds = json["lengthSeconds"].as_integer ();
-        video.duration = duration_seconds * TimeSpan.SECOND;
-
-        return video;
     }
 }
