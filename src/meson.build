@@ -5,6 +5,7 @@ subdir('Features')
 subdir('Models')
 subdir('Repositories')
 subdir('Utils')
+subdir('Widgets')
 
 resources = gnome.compile_resources('resources', 'resources.xml',
   c_name       : meson.project_name(),

@@ -5,23 +5,13 @@
  */
 
 sealed class Rpy.Thumbnail : Gtk.Widget {
-    private Gdk.Paintable? _paintable;
+    private static Soup.Session _session = new Soup.Session ();
 
-    private string? _uri;
-    private double _aspect_ratio = 16.0 / 9.0;
-    private int _min_width = 260;
+    private Gdk.Texture? _texture = null;
 
-    public string? uri {
-        get { return this._uri; }
-        set {
-            if (this._uri == value)
-                return;
-
-            this._uri = value;
-
-            this.refresh_thumbnail.begin ();
-        }
-    }
+    private double  _aspect_ratio = 16.0 / 9.0;
+    private int     _min_width    = 260;
+    private string? _uri          = null;
 
     public double aspect_ratio {
         get { return this._aspect_ratio; }
@@ -34,6 +24,10 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
             this.notify_property ("min-height");
             this.queue_resize ();
         }
+    }
+
+    public int min_height {
+        get { return (int) (this.min_width / this.aspect_ratio); }
     }
 
     public int min_width {
@@ -49,8 +43,16 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
         }
     }
 
-    public int min_height {
-        get { return (int) (this.min_width / this.aspect_ratio); }
+    public string? uri {
+        get { return this._uri; }
+        set {
+            if (this._uri == value)
+                return;
+
+            this._uri = value;
+
+            this.refresh_thumbnail.begin ();
+        }
     }
 
     protected override Gtk.SizeRequestMode get_request_mode () {
@@ -68,40 +70,52 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     }
 
     protected override void snapshot (Gtk.Snapshot snapshot) {
-        if (this._paintable == null)
+        if (this._texture == null)
             return;
 
-        var paintable_width = this._paintable.get_intrinsic_width ();
-        var paintable_height = this._paintable.get_intrinsic_height ();
+        var paintable_width  = this._texture.get_intrinsic_width ();
+        var paintable_height = this._texture.get_intrinsic_height ();
 
-        var widget_width = this.get_width ();
+        var widget_width  = this.get_width ();
         var widget_height = this.get_height ();
 
         double width, height;
-        this._paintable.compute_concrete_size (widget_width, 0, paintable_width,
+        this._texture.compute_concrete_size (widget_width, 0, paintable_width,
             paintable_height, out width, out height);
 
-        snapshot.translate ({ 0, (int) (0 - (height - widget_height) / 2) });
+        snapshot.translate (Graphene.Point () {
+            x = 0,
+            y = (int) (0 - (height - widget_height) / 2),
+        });
 
         snapshot.push_clip (Graphene.Rect () {
-            origin = { 0, (int) ((height - widget_height) / 2) },
-            size = { widget_width, widget_height },
+            origin = Graphene.Point () {
+                x = 0,
+                y = (int) ((height - widget_height) / 2),
+            },
+            size   = Graphene.Size () {
+                width  = widget_width,
+                height = widget_height,
+            },
         });
 
         var filter = width > paintable_width || height > paintable_height
             ? Gsk.ScalingFilter.NEAREST
             : Gsk.ScalingFilter.TRILINEAR;
 
-        snapshot.append_scaled_texture ((Gdk.Texture) this._paintable, filter, Graphene.Rect () {
-            origin = { 0, 0 },
-            size = { (float) width, (float) height },
+        snapshot.append_scaled_texture (this._texture, filter, Graphene.Rect () {
+            origin = Graphene.Point (),
+            size   = Graphene.Size () {
+                width  = (float) width,
+                height = (float) height,
+            },
         });
 
         snapshot.pop ();
     }
 
     private async void refresh_thumbnail () {
-        this._paintable = null;
+        this._texture = null;
 
         this.queue_draw ();
         this.queue_resize ();
@@ -110,18 +124,16 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
             return;
 
         try {
-            var response = yield fetch (this.uri);
-            var bytes = yield response.bytes ();
+            var message = new Soup.Message ("GET", this.uri);
+            var bytes   = yield Thumbnail._session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
 
-            if (!response.ok)
+            if (message.status_code >= 400)
                 return;
 
-            this._paintable = yield run_in_thread (() => Gdk.Texture.from_bytes (bytes));
+            this._texture = yield Utils.run_in_thread (() => Gdk.Texture.from_bytes (bytes));
 
-            this.queue_draw ();
             this.queue_resize ();
-
-            return;
+            this.queue_draw ();
         } catch {}
     }
 }

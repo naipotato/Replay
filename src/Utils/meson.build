@@ -1,6 +1,1 @@
-vala_sources += files(
-  'Fetch.vala',
-  'RequestOptions.vala',
-  'Response.vala',
-  'RunInThread.vala',
-)
+vala_sources += files('RunInThread.vala')

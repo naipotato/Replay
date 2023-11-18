@@ -4,10 +4,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-namespace Rpy {
-    [CCode (scope = "async")]
-    delegate T ThreadFunc<T> () throws Error;
+[CCode (scope = "async")]
+delegate T Rpy.Utils.ThreadFunc<T> () throws Error;
 
+namespace Rpy.Utils {
     async T run_in_thread<T> (owned ThreadFunc<T> func) throws Error {
         T      result = null;
         Error? error = null;
@@ -32,7 +32,7 @@ namespace Rpy {
 }
 
 [Compact (opaque = true)]
-class Rpy.Worker {
+class Rpy.Utils.Worker {
     private static Once<ThreadPool<Worker>> _thread_pool;
 
     public static ThreadPool<Worker> thread_pool {
