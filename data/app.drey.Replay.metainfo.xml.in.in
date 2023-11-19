@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>@app_id@</id>
+
+  <name>Replay</name>
+  <summary>Explore and watch your favorite videos</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <recommends>
+    <display_length compare="ge">360</display_length>
+  </recommends>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <description>
+    <p>
+      Welcome to Replay, your open source YouTube client for GNOME! Although it's in active
+      development and doesn't yet have a stable release, Replay brings you a unique experience to
+      discover the most popular trending videos from the comfort of your favorite environment.
+    </p>
+    <ul>
+      <li>
+        Easy Browsing: Navigate through an intuitive interface that displays trending US videos in
+        detailed cards with thumbnails, duration, title, channel, views and publication date.
+      </li>
+      <li>
+        Continuous Development: As an open source project, Replay is constantly evolving. As the
+        community contributes, we anticipate offering more features to enhance your viewing
+        experience.
+      </li>
+      <li>
+        Unified Experience: Designed to fit your GNOME desktop and phone, Replay provides a smooth
+        and efficient experience across all your devices.
+      </li>
+    </ul>
+    <p>
+      Download Replay today, join our development community, and start exploring the exciting world
+      of YouTube from your GNOME environment.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">@app_id@.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://github.com/nahuelwexd/Replay/raw/main/data/screenshots/screenshot.png</image>
+      <caption>Trends view</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="bugtracker">https://github.com/nahuelwexd/Replay/issues</url>
+  <url type="donation">https://liberapay.com/nahuelwexd</url>
+  <url type="vcs-browser">https://github.com/nahuelwexd/Replay</url>
+
+  <developer id="nahuelwexd.com">
+    <name>Nahuel Gomez</name>
+  </developer>
+  <update_contact>nahuel_AT_nahuelwexd.com</update_contact>
+
+  <provides>
+    <binary>@app_id@</binary>
+  </provides>
+
+</component>
