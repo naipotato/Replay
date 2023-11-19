@@ -46,13 +46,13 @@ template $RpyTrendsView : Adw.NavigationPage {
               factory: Gtk.BuilderListItemFactory {
                 template Gtk.ListItem {
                   focusable: false;
-                  child: $RpyVideoItem {
+                  child: $RpyVideoCard {
+                    author: bind template.item as <$RpyVideo>.author;
+                    duration: bind template.item as <$RpyVideo>.duration;
+                    publication-date: bind template.item as <$RpyVideo>.publication-date;
                     thumbnail-uri: bind template.item as <$RpyVideo>.thumbnail-uri;
                     title: bind template.item as <$RpyVideo>.title;
-                    author: bind template.item as <$RpyVideo>.author;
                     view-count: bind template.item as <$RpyVideo>.view-count;
-                    publication-date: bind template.item as <$RpyVideo>.publication-date;
-                    duration: bind template.item as <$RpyVideo>.duration;
                   };
                 }
               };

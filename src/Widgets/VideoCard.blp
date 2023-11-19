@@ -1,6 +1,6 @@
 using Gtk 4.0;
 
-template $RpyVideoItem : Gtk.Widget {
+template $RpyVideoCard : Gtk.Widget {
   focusable: true;
   overflow: hidden;
 
@@ -8,7 +8,7 @@ template $RpyVideoItem : Gtk.Widget {
     orientation: vertical;
   };
 
-  styles ['card', 'activatable', 'rpy-video-item']
+  styles ['activatable', 'card', 'rpy-video-card']
 
   Gtk.Overlay _thumbnail_overlay {
     $RpyThumbnail {
