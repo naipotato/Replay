@@ -1,6 +1,7 @@
-vala_sources = files('App.vala', 'AppWindow.vala')
-blp_sources  = files('AppWindow.blp')
+vala_sources = files('Main.vala')
+blp_sources  = files()
 
+subdir('App')
 subdir('Features')
 subdir('Models')
 subdir('Repositories')

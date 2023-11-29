@@ -16,15 +16,6 @@ sealed class Rpy.App : Adw.Application {
         );
     }
 
-    public static int main (string[] args) {
-        // See https://docs.gtk.org/glib/i18n.html
-        Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
-        Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");
-        Intl.textdomain (Config.GETTEXT_PKG);
-
-        return new App ().run (args);
-    }
-
     public override void activate () {
         var window = this.active_window ?? new AppWindow (this);
         window.present ();
