@@ -4,17 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-enum Rpy.ViewModelState {
-    INITIAL, IN_PROGRESS, SUCCESS, ERROR;
-
-    public string to_nick () {
-        var enumc = (EnumClass) typeof (ViewModelState).class_ref ();
-        return enumc.get_value (this).value_nick;
-    }
-}
-
-sealed class Rpy.TrendsViewModel : Object {
-    public ViewModelState state { get; private set; default = INITIAL; }
+sealed class Rpy.TrendsViewModel : ViewModel {
     public ListStore trending_videos { get; default = new ListStore (typeof (Video)); }
 
     construct {
