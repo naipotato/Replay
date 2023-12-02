@@ -8,7 +8,7 @@
 <gresource prefix="/app/drey/Replay/ui">
   <file alias="AppWindow.ui">App/AppWindow.ui</file>
 
-  <file alias="TrendsView.ui">Features/Trends/TrendsView.ui</file>
+  <file alias="TrendsView.ui">Trends/Views/TrendsView.ui</file>
 
   <file alias="VideoCard.ui">Shared/Widgets/VideoCard.ui</file>
 </gresource>

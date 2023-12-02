@@ -3,7 +3,7 @@ blp_sources  = files()
 
 subdir('App')
 subdir('Shared')
-subdir('Features')
+subdir('Trends')
 
 resources = gnome.compile_resources('resources', 'resources.xml',
   c_name       : meson.project_name(),
