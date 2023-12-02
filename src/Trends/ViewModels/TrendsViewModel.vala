@@ -5,24 +5,24 @@
  */
 
 sealed class Rpy.TrendsViewModel : ViewModel {
-    public ListStore trending_videos { get; default = new ListStore (typeof (Video)); }
+    public VideoRepository repository { get; construct; }
+    public ListStore videos { get; default = new ListStore (typeof (Video)); }
 
-    construct {
-        this.load_trending_videos.begin ();
+    public TrendsViewModel (VideoRepository? repository = null) {
+        Object (repository: repository ?? new VideoRepository ());
     }
 
-    public async void load_trending_videos () {
+    public async void fetch_trending_videos () {
         this.state = IN_PROGRESS;
 
         try {
-            var repo = new VideoRepository ();
-            var videos = yield repo.get_trending_videos ();
+            var videos = yield this.repository.get_trending_videos ();
 
             var videos_array = videos.to_array ();
-            this.trending_videos.splice (0, 0, (Object[]) videos_array);
+            this.videos.splice (0, 0, (Object[]) videos_array);
 
             this.state = SUCCESS;
-        } catch (Error e) {
+        } catch {
             this.state = ERROR;
         }
     }

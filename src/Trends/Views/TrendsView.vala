@@ -8,8 +8,12 @@
 sealed class Rpy.TrendsView : Adw.NavigationPage {
     public TrendsViewModel view_model { get; construct; }
 
-    public TrendsView () {
-        Object (view_model: new TrendsViewModel ());
+    public TrendsView (TrendsViewModel? view_model = null) {
+        Object (view_model: view_model ?? new TrendsViewModel ());
+    }
+
+    protected override void shown () {
+        this.view_model.fetch_trending_videos.begin ();
     }
 
     [GtkCallback]
