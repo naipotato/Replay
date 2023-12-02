@@ -10,7 +10,7 @@
 
   <file alias="TrendsView.ui">Features/Trends/TrendsView.ui</file>
 
-  <file alias="VideoCard.ui">Widgets/VideoCard.ui</file>
+  <file alias="VideoCard.ui">Shared/Widgets/VideoCard.ui</file>
 </gresource>
 
 </gresources>
