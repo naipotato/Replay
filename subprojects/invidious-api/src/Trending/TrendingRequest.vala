@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class Iv.TrendingRequest : Request<Gee.List<Video>> {
+public class Iv.TrendingRequest : Request<Gee.List<CommonVideo>> {
     private Client _client;
 
     private Category? _category;
@@ -66,7 +66,7 @@ public class Iv.TrendingRequest : Request<Gee.List<Video>> {
         return this._client.session;
     }
 
-    internal override Gee.List<Video> parse_response (GJson.Node json) {
+    internal override Gee.List<CommonVideo> parse_response (GJson.Node json) {
         return GJson.deserialize_array (json.as_array ());
     }
 }

@@ -1,1 +1,1 @@
-sources += files('TrendingRequest.vala', 'Video.vala')
+sources += files('TrendingRequest.vala')

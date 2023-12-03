@@ -13,7 +13,7 @@ sealed class Rpy.Video : Object {
     public DateTime? publication_date { get; set; }
     public TimeSpan  duration         { get; set; }
 
-    public static Video from_api (Iv.Video api_video) {
+    public static Video from_api (Iv.CommonVideo api_video) {
         return new Video () {
             id               = api_video.videoId,
             thumbnail_uri    = api_video.videoThumbnails[0].url,
