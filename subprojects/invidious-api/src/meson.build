@@ -2,6 +2,7 @@ sources = files('Client.vala')
 
 subdir('Shared')
 subdir('Trending')
+subdir('Video')
 
 deps = [
   dependency('gee-0.8',     method : 'pkg-config', version : '>=0.20'),

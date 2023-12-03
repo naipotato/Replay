@@ -34,7 +34,7 @@ public class Iv.TrendingRequest : Request<Gee.List<CommonVideo>> {
         }
     }
 
-    public string? region {
+    public string region {
         get { return this._region; }
         set {
             if (this._region == value.up ())

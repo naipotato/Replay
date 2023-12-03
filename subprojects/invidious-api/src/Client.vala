@@ -16,4 +16,8 @@ public class Iv.Client {
     public TrendingRequest trending () {
         return new TrendingRequest (this);
     }
+
+    public VideoRequest video (string id) {
+        return new VideoRequest (this, id);
+    }
 }

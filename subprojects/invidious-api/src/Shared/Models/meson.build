@@ -1,1 +1,1 @@
-sources += files('CommonThumbnail.vala', 'CommonVideo.vala')
+sources += files('CommonImage.vala', 'CommonThumbnail.vala', 'CommonVideo.vala')
