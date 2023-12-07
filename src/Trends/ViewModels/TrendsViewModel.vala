@@ -6,7 +6,7 @@
 
 sealed class Rpy.TrendsViewModel : ViewModel {
     public VideoRepository repository { get; construct; }
-    public ListStore videos { get; default = new ListStore (typeof (Video)); }
+    public ListStore videos { get; default = new ListStore (typeof (CommonVideo)); }
 
     public TrendsViewModel (VideoRepository? repository = null) {
         Object (repository: repository ?? new VideoRepository ());
@@ -16,7 +16,7 @@ sealed class Rpy.TrendsViewModel : ViewModel {
         this.state = IN_PROGRESS;
 
         try {
-            var videos = yield this.repository.get_trending_videos ();
+            var videos = yield this.repository.trending ();
 
             var videos_array = videos.to_array ();
             this.videos.splice (0, 0, (Object[]) videos_array);

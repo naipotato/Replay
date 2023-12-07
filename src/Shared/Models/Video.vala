@@ -1,27 +1,39 @@
 /*
- * Copyright 2022 Nahuel Gomez https://nahuelwexd.com
+ * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 sealed class Rpy.Video : Object {
-    public string?   id               { get; set; }
-    public string?   thumbnail_uri    { get; set; }
-    public string?   title            { get; set; }
-    public string?   author           { get; set; }
-    public int64     view_count       { get; set; }
-    public DateTime? publication_date { get; set; }
-    public TimeSpan  duration         { get; set; }
+    public Gee.Map<Quality, string>? qualities { get; set; }
+    public string?                   title     { get; set; }
 
-    public static Video from_api (Iv.CommonVideo api_video) {
+    public static Video from_api (Iv.Video api_video) {
+        var qualities = new Gee.HashMap<Quality, string> ();
+
+        foreach (var format_stream in api_video.formatStreams) {
+            switch (format_stream.quality) {
+                case "small":
+                    qualities[Quality.SMALL] = format_stream.url;
+                    break;
+
+                case "medium":
+                    qualities[Quality.MEDIUM] = format_stream.url;
+                    break;
+
+                case "hd720":
+                    qualities[Quality.HD720] = format_stream.url;
+                    break;
+            }
+        }
+
         return new Video () {
-            id               = api_video.videoId,
-            thumbnail_uri    = api_video.videoThumbnails[0].url,
-            title            = api_video.title,
-            author           = api_video.author,
-            view_count       = api_video.viewCount,
-            publication_date = new DateTime.from_unix_utc (api_video.published),
-            duration         = api_video.lengthSeconds * TimeSpan.SECOND,
+            qualities = qualities,
+            title     = api_video.title,
         };
     }
+}
+
+enum Rpy.Quality {
+    SMALL, MEDIUM, HD720;
 }
