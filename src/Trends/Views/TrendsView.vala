@@ -24,4 +24,12 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
 
         return local_state.to_nick ();
     }
+
+    [GtkCallback]
+    private void open_video (uint position) {
+        var video = this.view_model.videos.get_item (position) as CommonVideo;
+
+        var navigator = this.get_ancestor (typeof (Adw.NavigationView)) as Adw.NavigationView;
+        navigator.push (new PlayerView (video.title, video.id));
+    }
 }

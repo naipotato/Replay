@@ -14,9 +14,13 @@ sealed class Rpy.CommonVideo : Object {
     public TimeSpan  duration         { get; set; }
 
     public static CommonVideo from_api (Iv.CommonVideo api_video) {
+        var thumbnail = api_video.videoThumbnails.first_match ((thumbnail) => {
+            return thumbnail.quality == "high";
+        });
+
         return new CommonVideo () {
             id               = api_video.videoId,
-            thumbnail_uri    = api_video.videoThumbnails[0].url,
+            thumbnail_uri    = thumbnail.url,
             title            = api_video.title,
             author           = api_video.author,
             view_count       = api_video.viewCount,

@@ -2,6 +2,7 @@ vala_sources = files('Main.vala')
 blp_sources  = files()
 
 subdir('App')
+subdir('Player')
 subdir('Shared')
 subdir('Trends')
 
@@ -49,18 +50,20 @@ executable(app_id,
     '--vapidir=' + meson.project_source_root() / 'vapi',
   ],
   dependencies        : [
-    dependency('gee-0.8',      method : 'pkg-config', version : '>=0.20'),
-    dependency('gio-2.0',      method : 'pkg-config', version : '>=2.70'),
-    dependency('gjson-1.0',    method : 'pkg-config', version : '>=1.0' ),
-    dependency('glib-2.0',     method : 'pkg-config', version : '>=2.70'),
-    dependency('gobject-2.0',  method : 'pkg-config', version : '>=2.70'),
-    dependency('gtk4',         method : 'pkg-config', version : '>=4.12'),
-    dependency('icu-i18n',     method : 'pkg-config', version : '>=62.0'),
-    dependency('libadwaita-1', method : 'pkg-config', version : '>=1.4' ),
-    dependency('libsoup-3.0',  method : 'pkg-config', version : '>=3.0' ),
+    dependency('gee-0.8',       method : 'pkg-config', version : '>=0.20'),
+    dependency('gio-2.0',       method : 'pkg-config', version : '>=2.70'),
+    dependency('gjson-1.0',     method : 'pkg-config', version : '>=1.0' ),
+    dependency('glib-2.0',      method : 'pkg-config', version : '>=2.70'),
+    dependency('gobject-2.0',   method : 'pkg-config', version : '>=2.70'),
+    dependency('gstreamer-1.0', method : 'pkg-config', version : '>=1.12'),
+    dependency('gtk4',          method : 'pkg-config', version : '>=4.12'),
+    dependency('icu-i18n',      method : 'pkg-config', version : '>=62.0'),
+    dependency('libadwaita-1',  method : 'pkg-config', version : '>=1.4' ),
+    dependency('libsoup-3.0',   method : 'pkg-config', version : '>=3.0' ),
 
     subproject('invidious-api').get_variable('invidious_api_dep'),
 
+    meson.get_compiler('c').find_library('m'),
     meson.get_compiler('vala').find_library('config', dirs : meson.project_source_root() / 'vapi'),
   ],
   include_directories : '.',

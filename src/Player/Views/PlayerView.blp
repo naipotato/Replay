@@ -1,0 +1,56 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RpyPlayerView : Adw.NavigationPage {
+  // can-pop: bind $should_be_poppable(template.root as <Gtk.Window>.fullscreened) as <bool>;
+
+  Gtk.Overlay {
+    $RpyPlayer _player {
+      uri: bind template.view-model as <$RpyPlayerViewModel>.uri;
+      notify::playing => $handle_playback_status_change();
+    }
+
+    [overlay]
+    $AdwHeaderBar {
+      halign: fill;
+      valign: start;
+      show-title: false;
+      visible: bind $should_be_visible(template.root as <Gtk.Window>.fullscreened) as <bool>;
+
+      styles ['hideable']
+    }
+
+    [overlay]
+    Gtk.Spinner _spinner {
+      halign: center;
+      valign: center;
+      height-request: 32;
+      width-request: 32;
+      spinning: bind $should_spin(template.view-model as <$RpyViewModel>.state, _player.buffering) as <bool>;
+      visible: bind _spinner.spinning;
+    }
+
+    [overlay]
+    $RpyControls {
+      player: _player;
+      valign: end;
+
+      styles ['hideable']
+    }
+  }
+
+  Gtk.EventControllerMotion {
+    motion => $handle_pointer_move();
+  }
+
+  Gtk.GestureClick {
+    button: 1;
+    released => $handle_primary_click_released();
+    stopped => $handle_primary_click_stopped();
+  }
+
+  Gtk.GestureClick {
+    button: 3;
+    released => $handle_secondary_click();
+  }
+}

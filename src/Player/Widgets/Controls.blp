@@ -1,0 +1,75 @@
+using Gtk 4.0;
+using Adw 1;
+using Gdk 4.0;
+
+template $RpyControls : Gtk.Widget {
+  layout-manager: Gtk.BoxLayout {
+    spacing: 6;
+  };
+
+  styles ['osd', 'toolbar']
+
+  Gtk.Button _skip_backwards_button {
+    icon-name: 'rpy-skip-backwards-10-symbolic';
+    sensitive: bind template.player as <$RpyPlayer>.prepared;
+    tooltip-text: _('Skip Backwards 10 Seconds');
+
+    clicked => $handle_skip_backwards_button_clicked();
+  }
+
+  Gtk.Button _play_pause_replay_button {
+    icon-name: bind $icon_name_from_playback_status(
+      template.player as <$RpyPlayer>.playing,
+      template.player as <$RpyPlayer>.stopped,
+    ) as <string>;
+    sensitive: bind template.player as <$RpyPlayer>.prepared;
+    tooltip-text: bind $tooltip_from_playback_status(
+      template.player as <$RpyPlayer>.playing,
+      template.player as <$RpyPlayer>.stopped,
+    ) as <string>;
+
+    clicked => $handle_play_pause_replay_button_clicked();
+  }
+
+  Gtk.Button _skip_forward_button {
+    icon-name: 'rpy-skip-forward-10-symbolic';
+    sensitive: bind template.player as <$RpyPlayer>.prepared;
+    tooltip-text: _('Skip Forward 10 Seconds');
+
+    clicked => $handle_skip_forward_button_clicked();
+  }
+
+  Gtk.Label _position_label {
+    label: bind $position_to_string(
+      template.player as <$RpyPlayer>.position,
+      template.player as <$RpyPlayer>.duration,
+    ) as <string>;
+
+    styles ['numeric']
+  }
+
+  Gtk.Scale _scale {
+    hexpand: true;
+    sensitive: bind template.player as <$RpyPlayer>.prepared;
+    valign: center;
+
+    notify::css-classes => $handle_css_classes_changed();
+    value-changed => $handle_value_changed();
+
+    adjustment: Gtk.Adjustment {
+      step-increment: 1;
+      upper: bind template.player as <$RpyPlayer>.duration;
+    };
+  }
+
+  Gtk.Label _duration_label {
+    label: bind $duration_to_string(template.player as <$RpyPlayer>.duration) as <string>;
+    styles ['numeric']
+  }
+
+  Gtk.Button _fullscreen_button {
+    action-name: 'window.toggle-fullscreen';
+    icon-name: bind $icon_name_from_fullscreen_status(template.root as <Gtk.Window>.fullscreened) as <string>;
+    tooltip-text: bind $tooltip_from_fullscreen_status(template.root as <Gtk.Window>.fullscreened) as <string>;
+  }
+}

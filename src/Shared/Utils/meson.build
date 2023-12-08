@@ -1,1 +1,6 @@
-vala_sources += files('FormatFunctions.vala', 'RunInThread.vala')
+vala_sources += files(
+  'ColorFunctions.vala',
+  'FormatFunctions.vala',
+  'RunInThread.vala',
+  'Workarounds.vala',
+)

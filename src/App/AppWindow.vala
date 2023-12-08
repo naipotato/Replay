@@ -20,4 +20,14 @@ sealed class Rpy.AppWindow : Adw.ApplicationWindow {
 
         this._navigation_view.push (new TrendsView ());
     }
+
+    static construct {
+        install_property_action ("window.toggle-fullscreen", "fullscreened");
+        install_action ("window.unfullscreen", null, AppWindow.unfullscreen);
+    }
+
+    private new static void unfullscreen (Gtk.Widget widget) {
+        var self = widget as AppWindow;
+        self.fullscreened = false;
+    }
 }

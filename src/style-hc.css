@@ -1,0 +1,15 @@
+rpyplayerview headerbar button.back {
+    box-shadow: 0 0 0 1px currentColor;
+}
+
+rpyplayerview headerbar button.back:focus:focus-visible {
+    outline-color: alpha(@accent_color, 0.8);
+}
+
+rpyplayerview headerbar windowcontrols button > image {
+    box-shadow: 0 0 0 1px currentColor;
+}
+
+rpyplayerview headerbar windowcontrols button:focus:focus-visible > image {
+    outline-color: alpha(@accent_color, 0.8);
+}

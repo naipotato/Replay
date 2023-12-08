@@ -13,6 +13,9 @@ sealed class Rpy.TrendsViewModel : ViewModel {
     }
 
     public async void fetch_trending_videos () {
+        if (this.state != INITIAL)
+            return;
+
         this.state = IN_PROGRESS;
 
         try {

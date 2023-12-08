@@ -13,7 +13,7 @@ public class Iv.AdaptiveFormat : Object {
     public string? fileType       { get; set; }
     public string? clen           { get; set; }
     public string? lmt            { get; set; }
-    public int64   projectionType { get; set; }
+    public string? projectionType { get; set; }
     public string? container      { get; set; }
     public string? encoding       { get; set; }
     public string? qualityLabel   { get; set; }

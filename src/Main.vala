@@ -5,6 +5,8 @@
  */
 
 int main (string[] args) {
+    Gst.init (ref args);
+
     // See https://docs.gtk.org/glib/i18n.html
     Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
     Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");

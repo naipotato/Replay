@@ -100,7 +100,7 @@ namespace Rpy.Utils {
         return ngettext ("last year", "%i years ago", years).printf (years);
     }
 
-    string format_timespan (TimeSpan timespan) {
+    string format_timespan (TimeSpan timespan, bool always_show_hour = false) {
         var seconds = timespan % TimeSpan.MINUTE / TimeSpan.SECOND;
         var minutes = timespan % TimeSpan.HOUR   / TimeSpan.MINUTE;
         var hours   = timespan                   / TimeSpan.HOUR;
@@ -108,7 +108,7 @@ namespace Rpy.Utils {
         var format          = "%02" + int64.FORMAT;
         var minutes_seconds = (format + "∶" + format).printf (minutes, seconds);
 
-        return hours <= 0 ? minutes_seconds : @"$hours∶$minutes_seconds";
+        return hours <= 0 && !always_show_hour ? minutes_seconds : @"$hours∶$minutes_seconds";
     }
 
     int get_week_of_month (DateTime date) {

@@ -3,14 +3,25 @@
 
 <gresource prefix="/app/drey/Replay">
   <file>style.css</file>
+  <file>style-hc.css</file>
 </gresource>
 
 <gresource prefix="/app/drey/Replay/ui">
   <file alias="AppWindow.ui">App/AppWindow.ui</file>
-
+  <file alias="Controls.ui">Player/Widgets/Controls.ui</file>
+  <file alias="PlayerView.ui">Player/Views/PlayerView.ui</file>
   <file alias="TrendsView.ui">Trends/Views/TrendsView.ui</file>
-
   <file alias="VideoCard.ui">Shared/Widgets/VideoCard.ui</file>
+</gresource>
+
+<gresource prefix="/app/drey/Replay/icons">
+  <file alias="scalable/actions/rpy-fullscreen-symbolic.svg">Player/Widgets/rpy-fullscreen-symbolic.svg</file>
+  <file alias="scalable/actions/rpy-pause-symbolic.svg">Player/Widgets/rpy-pause-symbolic.svg</file>
+  <file alias="scalable/actions/rpy-play-symbolic.svg">Player/Widgets/rpy-play-symbolic.svg</file>
+  <file alias="scalable/actions/rpy-replay-symbolic.svg">Player/Widgets/rpy-replay-symbolic.svg</file>
+  <file alias="scalable/actions/rpy-restore-symbolic.svg">Player/Widgets/rpy-restore-symbolic.svg</file>
+  <file alias="scalable/actions/rpy-skip-backwards-10-symbolic.svg">Player/Widgets/rpy-skip-backwards-10-symbolic.svg</file>
+  <file alias="scalable/actions/rpy-skip-forward-10-symbolic.svg">Player/Widgets/rpy-skip-forward-10-symbolic.svg</file>
 </gresource>
 
 </gresources>

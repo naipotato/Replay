@@ -6,7 +6,7 @@ template $RpyTrendsView : Adw.NavigationPage {
 
   Adw.ToolbarView {
     [top]
-    Adw.HeaderBar {}
+    Adw.HeaderBar { }
 
     Gtk.Stack {
       visible-child-name: bind $state_to_nick(template.view-model as <$RpyViewModel>.state) as <string>;
@@ -38,6 +38,7 @@ template $RpyTrendsView : Adw.NavigationPage {
 
             Gtk.GridView {
               max-columns: 4;
+              single-click-activate: true;
 
               model: Gtk.NoSelection {
                 model: bind template.view-model as <$RpyTrendsViewModel>.videos;
@@ -56,6 +57,8 @@ template $RpyTrendsView : Adw.NavigationPage {
                   };
                 }
               };
+
+              activate => $open_video();
 
               styles ['rpy-trends-grid']
             }
