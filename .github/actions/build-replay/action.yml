@@ -17,6 +17,7 @@ runs:
     - name: Install docker
       if: ${{ inputs.arch != 'x86_64' }}
       run: dnf install -y docker
+      shell: bash
 
     - id: qemu
       name: Set up QEMU
