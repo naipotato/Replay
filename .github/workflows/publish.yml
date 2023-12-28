@@ -13,11 +13,11 @@ on:
       - meson.build
       - meson_options.txt
 
-name: Publish
+name: Publish Releases
 
 jobs:
-  flatpak:
-    name: Flatpak
+  nightly:
+    name: Nightly
     runs-on: ubuntu-latest
 
     container:
