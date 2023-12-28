@@ -1,0 +1,34 @@
+name: Set up and Build Replay
+description: Builds Replay for specified architecture
+
+inputs:
+  arch:
+    description: Architecture target for Replay
+    required: true
+  upload-artifact:
+    description: Whether to upload the generated artifact
+    required: true
+  gpg-sign:
+    description: GPG Key to use when signing
+
+runs:
+  using: composite
+  steps:
+    - name: Install docker
+      if: ${{ inputs.arch != 'x86_64' }}
+      run: dnf install -y docker
+
+    - id: qemu
+      name: Set up QEMU
+      if: ${{ inputs.arch != 'x86_64' }}
+      uses: docker/setup-qemu-action@v3.0.0
+      with: { platforms: arm64 }
+
+    - name: Build Replay
+      uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        manifest-path: build-aux/app.drey.Replay.Devel.json
+        build-bundle: ${{ inputs.upload-artifact }}
+        cache-key: flatpak-builder-${{ github.sha }}
+        arch: ${{ inputs.arch }}
+        gpg-sign: ${{ inputs.gpg-sign }}

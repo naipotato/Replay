@@ -33,16 +33,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Install deps
-        if: ${{ matrix.arch != 'x86_64' }}
-        run: dnf install -y docker
-
-      - id: qemu
-        name: Set up QEMU
-        if: ${{ matrix.arch != 'x86_64' }}
-        uses: docker/setup-qemu-action@v3.0.0
-        with: { platforms: arm64 }
-
       - name: Checkout replay-nightly repo
         uses: actions/checkout@v4.1.1
         with:
@@ -57,13 +47,11 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
 
-      - name: Build & export flatpak
-        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      - name: Build Replay
+        uses: ./.github/actions/build-replay
         with:
-          manifest-path: build-aux/app.drey.Replay.Devel.json
-          build-bundle: false
-          cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
+          upload-artifact: false
           gpg-sign: ${{ steps.gpg.outputs.keyid }}
 
       - name: Push update
