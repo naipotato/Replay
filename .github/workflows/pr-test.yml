@@ -11,11 +11,12 @@ on:
       - meson.build
       - meson_options.txt
 
-name: Build
+name: Test Pull Request
+run-name: Generating artifacts for '${{ github.event.pull_request.title }}'
 
 jobs:
-  flatpak:
-    name: Flatpak
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     container:
