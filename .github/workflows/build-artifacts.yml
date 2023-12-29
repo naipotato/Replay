@@ -36,3 +36,4 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
           upload-artifact: true
+          artifact-name: app.drey.Replay.flatpak
