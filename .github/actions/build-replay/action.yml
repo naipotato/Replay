@@ -34,5 +34,5 @@ runs:
         build-bundle: ${{ inputs.upload-artifact }}
         bundle: ${{ inputs.artifact-name }}
         cache-key: flatpak-builder-${{ github.sha }}
-        arch: ${{ inputs.arch }}
+        arch: ${{ inputs.target }}
         gpg-sign: ${{ inputs.gpg-sign }}

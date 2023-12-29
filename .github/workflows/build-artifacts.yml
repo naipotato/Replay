@@ -24,7 +24,7 @@ jobs:
       options: --privileged
 
     strategy:
-      matrix: { arch: [x86_64, aarch64] }
+      matrix: { target: [x86_64, aarch64] }
       fail-fast: false
 
     steps:
@@ -34,6 +34,6 @@ jobs:
       - name: Build Replay
         uses: ./.github/actions/build-replay
         with:
-          arch: ${{ matrix.arch }}
+          target: ${{ matrix.target }}
           upload-artifact: true
           artifact-name: app.drey.Replay.flatpak
