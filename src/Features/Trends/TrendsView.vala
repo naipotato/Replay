@@ -12,6 +12,10 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
         Object (view_model: new TrendsViewModel ());
     }
 
+    static construct {
+        set_css_name ("rpytrendsview");
+    }
+
     [GtkCallback]
     private string state_to_nick (ViewModelState state) {
         var local_state = state == INITIAL

@@ -1,30 +1,42 @@
-* {
-  line-height: calc(1em + 0.5rem);
-}
+/* special rule to calculate the ideal line height in all widgets */
+* { line-height: calc(1em + 0.5rem); }
 
-.rpy-trends-grid {
+/***************
+ * Trends View *
+ ***************/
+
+rpytrendsview gridview {
   background: none;
   padding: 24px 18px;
   border-spacing: 12px;
 }
 
-.rpy-trends-grid > child {
+rpytrendsview gridview > child {
   padding: 0;
   background: none;
+  box-shadow: none;
 }
 
-.rpy-video-card > grid {
-  margin: 12px;
+/**************
+ * Video Card *
+ **************/
+
+rpyvideocard > grid {
+  padding: 12px;
 }
 
-.rpy-video-duration {
-  margin: 12px;
+rpyvideocard .video-duration {
   color: white;
-  font-size: 9pt;
-  font-weight: 700;
+  background-color: alpha(black, 0.8);
+
+  margin: 12px;
   padding: 0 12px;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 12px;
+
   min-height: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border: 1px solid alpha(white, 0.15);
+  border-radius: 9999px;
+
+  font-size: 9pt;
+  font-weight: bold;
 }

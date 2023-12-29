@@ -8,7 +8,7 @@ template $RpyVideoCard : Gtk.Widget {
     orientation: vertical;
   };
 
-  styles ['activatable', 'card', 'rpy-video-card']
+  styles ['activatable', 'card']
 
   Gtk.Overlay _thumbnail_overlay {
     $RpyThumbnail {
@@ -22,7 +22,7 @@ template $RpyVideoCard : Gtk.Widget {
       single-line-mode: true;
       valign: start;
 
-      styles ['rpy-video-duration']
+      styles ['video-duration']
     }
   }
 
