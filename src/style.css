@@ -1,30 +1,30 @@
 * {
-    line-height: calc(1em + 0.5rem);
+  line-height: calc(1em + 0.5rem);
 }
 
 .rpy-trends-grid {
-    background: none;
-    padding: 24px 18px;
-    border-spacing: 12px;
+  background: none;
+  padding: 24px 18px;
+  border-spacing: 12px;
 }
 
 .rpy-trends-grid > child {
-    padding: 0;
-    background: none;
+  padding: 0;
+  background: none;
 }
 
 .rpy-video-card > grid {
-    margin: 12px;
+  margin: 12px;
 }
 
 .rpy-video-duration {
-    margin: 12px;
-    color: white;
-    font-size: 9pt;
-    font-weight: 700;
-    padding: 0 12px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 12px;
-    min-height: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 12px;
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 0 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  min-height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }

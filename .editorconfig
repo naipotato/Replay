@@ -19,6 +19,10 @@ indent_size  = 2
 indent_style = space
 indent_size  = 4
 
-[*.{ui,xml,doap}{,.in}]
+[*.{blp,xml,doap}{,.in}]
+indent_style = space
+indent_size  = 2
+
+[*.css]
 indent_style = space
 indent_size  = 2
