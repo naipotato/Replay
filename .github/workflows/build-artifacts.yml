@@ -1,4 +1,5 @@
 on:
+  workflow_dispatch:
   pull_request:
     branches: [main]
     paths:
@@ -11,12 +12,11 @@ on:
       - meson.build
       - meson_options.txt
 
-name: Test Pull Request
-run-name: Generating artifacts for '${{ github.event.pull_request.title }}'
+name: Build Artifacts
 
 jobs:
-  build:
-    name: Build
+  flatpak:
+    name: Flatpak
     runs-on: ubuntu-latest
 
     container:

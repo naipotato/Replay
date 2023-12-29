@@ -3,7 +3,6 @@ on:
   push:
     branches: [main]
     paths:
-      - .github/workflows/publish.yml
       - data/**
       - lib/**
       - po/**
@@ -13,7 +12,7 @@ on:
       - meson.build
       - meson_options.txt
 
-name: Publish Releases
+name: Publish Release
 
 jobs:
   nightly:
