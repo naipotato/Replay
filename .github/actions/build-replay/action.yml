@@ -2,12 +2,14 @@ name: Set up and Build Replay
 description: Builds Replay for specified architecture
 
 inputs:
-  arch:
-    description: Architecture target for Replay
+  target:
+    description: Target for this Replay build
     required: true
   upload-artifact:
     description: Whether to upload the generated artifact
-    required: true
+    default: 'false'
+  artifact-name:
+    description: Name for the artifact
   gpg-sign:
     description: GPG Key to use when signing
 
@@ -30,6 +32,7 @@ runs:
       with:
         manifest-path: build-aux/app.drey.Replay.Devel.json
         build-bundle: ${{ inputs.upload-artifact }}
+        bundle: ${{ inputs.artifact-name }}
         cache-key: flatpak-builder-${{ github.sha }}
         arch: ${{ inputs.arch }}
         gpg-sign: ${{ inputs.gpg-sign }}

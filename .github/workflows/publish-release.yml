@@ -50,7 +50,6 @@ jobs:
         uses: ./.github/actions/build-replay
         with:
           arch: ${{ matrix.arch }}
-          upload-artifact: false
           gpg-sign: ${{ steps.gpg.outputs.keyid }}
 
       - name: Push update
