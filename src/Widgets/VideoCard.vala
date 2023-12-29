@@ -19,6 +19,10 @@ sealed class Rpy.VideoCard : Gtk.Widget {
     public string?   title            { get; set; }
     public int64     view_count       { get; set; }
 
+    static construct {
+        set_css_name ("rpyvideocard");
+    }
+
     protected override void dispose () {
         this._thumbnail_overlay.unparent ();
         this._info_grid.unparent ();

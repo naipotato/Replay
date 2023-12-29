@@ -13,6 +13,10 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     private int     _min_width    = 260;
     private string? _uri          = null;
 
+    static construct {
+        set_css_name ("rpythumbnail");
+    }
+
     public double aspect_ratio {
         get { return this._aspect_ratio; }
         set {
