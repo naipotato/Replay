@@ -2,12 +2,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 sealed class Rpy.App : Adw.Application {
-    public App () {
-        Object (application_id: Config.APP_ID);
+    public App (string app_id) {
+        Object (application_id: app_id);
     }
 
     public static int main (string[] args) {
-        return new App ().run (args);
+        var app = new App (Config.APP_ID);
+        return app.run (args);
     }
 
     protected override void activate () {
