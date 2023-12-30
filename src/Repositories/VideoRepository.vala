@@ -1,8 +1,5 @@
-/*
- * Copyright 2022 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+// Copyright 2022 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 sealed class Rpy.VideoRepository {
     public async Gee.List<Video> get_trending_videos () throws Error {

@@ -1,8 +1,5 @@
-/*
- * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+// Copyright 2023 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 sealed class Rpy.Thumbnail : Gtk.Widget {
     private static Soup.Session _session = new Soup.Session ();

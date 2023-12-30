@@ -1,8 +1,5 @@
-/*
- * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: LGPL-3.0-or-later
- */
+// Copyright 2023 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 public class Iv.TrendingRequest : Request<Gee.List<Video>> {
     private Client _client;
