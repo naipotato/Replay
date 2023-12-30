@@ -22,12 +22,12 @@ sealed class Rpy.App : Adw.Application {
         return new App ().run (args);
     }
 
-    public override void activate () {
+    protected override void activate () {
         var window = this.active_window ?? new AppWindow (this);
         window.present ();
     }
 
-    public override void startup () {
+    protected override void startup () {
         base.startup ();
 
         Environment.set_application_name ("Replay");
