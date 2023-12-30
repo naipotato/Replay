@@ -12,8 +12,7 @@ sealed class Rpy.App : Adw.Application {
     }
 
     protected override void activate () {
-        var window = this.active_window ?? new AppWindow (this);
-        window.present ();
+        (this.active_window ?? new AppWindow (this)).present ();
     }
 
     protected override void startup () {
