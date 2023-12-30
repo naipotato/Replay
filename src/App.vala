@@ -27,7 +27,9 @@ sealed class Rpy.App : Adw.Application {
         base.startup ();
 
         Environment.set_application_name ("Replay");
-        this.style_manager.color_scheme = PREFER_DARK;
+
+        var style_manager = Adw.StyleManager.get_default ();
+        style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
 
         this.add_action_entries ({
             { "about", this.show_about_window },
