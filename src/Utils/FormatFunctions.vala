@@ -1,8 +1,5 @@
-/*
- * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+// Copyright 2023 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 namespace Rpy.Utils {
     string format_number (int64 number, string skeleton) {

@@ -1,8 +1,5 @@
-/*
- * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+// Copyright 2023 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 [CCode (cprefix = "U", lower_case_cprefix = "u_")]
 namespace Icu {

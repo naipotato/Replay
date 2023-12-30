@@ -1,8 +1,5 @@
-/*
- * Copyright 2023 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+// Copyright 2023 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 [GtkTemplate (ui = "/app/drey/Replay/ui/VideoCard.ui")]
 sealed class Rpy.VideoCard : Gtk.Widget {

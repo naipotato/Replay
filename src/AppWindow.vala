@@ -1,8 +1,5 @@
-/*
- * Copyright 2019 Nahuel Gomez https://nahuelwexd.com
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+// Copyright 2019 Nahuel Gomez https://nahuelwexd.com
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 [GtkTemplate (ui = "/app/drey/Replay/ui/AppWindow.ui")]
 sealed class Rpy.AppWindow : Adw.ApplicationWindow {
