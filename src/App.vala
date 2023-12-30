@@ -14,11 +14,6 @@ sealed class Rpy.App : Adw.Application {
     }
 
     public static int main (string[] args) {
-        // See https://docs.gtk.org/glib/i18n.html
-        Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
-        Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");
-        Intl.textdomain (Config.GETTEXT_PKG);
-
         return new App ().run (args);
     }
 
@@ -28,6 +23,11 @@ sealed class Rpy.App : Adw.Application {
     }
 
     protected override void startup () {
+        // See https://docs.gtk.org/glib/i18n.html
+        Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
+        Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");
+        Intl.textdomain (Config.GETTEXT_PKG);
+
         base.startup ();
 
         Environment.set_application_name ("Replay");
