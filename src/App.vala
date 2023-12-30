@@ -31,12 +31,18 @@ sealed class Rpy.App : Adw.Application {
         var style_manager = Adw.StyleManager.get_default ();
         style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
 
-        this.add_action_entries ({
-            { "about", this.show_about_window },
-            { "quit",  this.quit              },
+        this.add_action_entries (new ActionEntry[] {
+            ActionEntry () {
+                name     = "about",
+                activate = this.show_about_window,
+            },
+            ActionEntry () {
+                name     = "quit",
+                activate = this.quit,
+            },
         }, this);
 
-        this.set_accels_for_action ("app.quit", { "<Ctrl>Q" });
+        this.set_accels_for_action ("app.quit", new string[] { "<Ctrl>Q" });
     }
 
     private void show_about_window () {
