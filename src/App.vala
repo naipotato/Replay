@@ -3,14 +3,7 @@
 
 sealed class Rpy.App : Adw.Application {
     public App () {
-        Object (
-            application_id: Config.APP_ID,
-
-            // Ensure that the resource base path in development builds is the
-            // same as in stable builds to avoid problems with automatic
-            // resources
-            resource_base_path: "/app/drey/Replay"
-        );
+        Object (application_id: Config.APP_ID);
     }
 
     public static int main (string[] args) {
@@ -27,6 +20,9 @@ sealed class Rpy.App : Adw.Application {
         Intl.bindtextdomain (Config.GETTEXT_PKG, Config.LOCALEDIR);
         Intl.bind_textdomain_codeset (Config.GETTEXT_PKG, "UTF-8");
         Intl.textdomain (Config.GETTEXT_PKG);
+
+        Application.set_default (this);
+        this.resource_base_path = "/app/drey/Replay";
 
         base.startup ();
 
