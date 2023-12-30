@@ -42,22 +42,19 @@ sealed class Rpy.App : Adw.Application {
     }
 
     private void show_about_window () {
-        var about_window = new Adw.AboutWindow () {
-            transient_for       = this.active_window,
-            application_icon    = Config.APP_ID,
-            application_name    = "Replay",
-            developer_name      = "Nahuel Gomez",
-            version             = Config.VERSION,
-            website             = "https://github.com/nahuelwexd/Replay",
-            issue_url           = "https://github.com/nahuelwexd/Replay/issues",
-            developers          = { "Nahuel Gomez https://nahuelwexd.com" },
-            artists             = { "Noëlle https://github.com/jannuary" },
-            // TRANSLATORS: Put your credits here
-            translator_credits  = _("translator-credits"),
-            copyright           = "© 2023 Nahuel Gomez",
-            license_type        = GPL_3_0,
-        };
-
-        about_window.present ();
+        Adw.show_about_window (this.active_window,
+            application_icon: Config.APP_ID,
+            application_name: "Replay",
+            developer_name: "Nahuel Gomez",
+            version: Config.VERSION,
+            website: "https://github.com/nahuelwexd/Replay",
+            issue_url: "https://github.com/nahuelwexd/Replay/issues",
+            developers: new string[] { "Nahuel Gomez https://nahuelwexd.com" },
+            artists: new string[] { "Noëlle https://github.com/jannuary" },
+            // Translators: Replace "translator-credits" with your credits
+            translator_credits: _("translator-credits"),
+            copyright: "© 2023 Nahuel Gomez",
+            license_type: Gtk.License.GPL_3_0
+        );
     }
 }
