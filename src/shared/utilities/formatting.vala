@@ -39,7 +39,7 @@ namespace Rpy.Utils {
 
             var hours = (long) (difference / TimeSpan.HOUR);
 
-            var was_yesterday     = day_hour - hours < 0;
+            var was_yesterday     = (day_hour - hours) < 0;
             var should_be_precise = hours < threshold;
 
             if (was_yesterday && !should_be_precise)

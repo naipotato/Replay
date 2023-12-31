@@ -1,7 +1,7 @@
 // Copyright 2023 Nahuel Gomez https://nahuelwexd.com
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-[GtkTemplate (ui = "/app/drey/Replay/ui/VideoCard.ui")]
+[GtkTemplate (ui = "/app/drey/Replay/ui/video-card.ui")]
 sealed class Rpy.VideoCard : Gtk.Widget {
     [GtkChild]
     private unowned Gtk.Overlay _thumbnail_overlay;
