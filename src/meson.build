@@ -1,11 +1,10 @@
-vala_sources = files('App.vala', 'AppWindow.vala')
-blp_sources  = files('AppWindow.blp')
+vala_sources = files()
+blp_sources  = files()
 
-subdir('Features')
-subdir('Models')
-subdir('Repositories')
-subdir('Utils')
-subdir('Widgets')
+subdir('app')
+subdir('shared')
+subdir('trends')
+subdir('videos')
 
 resources = gnome.compile_resources('resources', 'resources.xml',
   c_name       : meson.project_name(),
