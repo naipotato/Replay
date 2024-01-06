@@ -28,8 +28,9 @@ namespace Icu {
             int32 length;
             String._from_utf8 (null, 0, out length, src, src_length, ref p_error_code);
 
-            if (p_error_code == BUFFER_OVERFLOW_ERROR)
+            if (p_error_code == BUFFER_OVERFLOW_ERROR) {
                 p_error_code = ZERO_ERROR;
+            }
 
             var dest = (String) new Char[length + 1];
             String._from_utf8 (dest, length + 1, null, src, src_length, ref p_error_code);
@@ -45,8 +46,9 @@ namespace Icu {
             int32 length;
             this._to_utf8 (null, 0, out length, src_length, ref p_error_code);
 
-            if (p_error_code == BUFFER_OVERFLOW_ERROR)
+            if (p_error_code == BUFFER_OVERFLOW_ERROR) {
                 p_error_code = ZERO_ERROR;
+            }
 
             var dest = (string) new char[length + 1];
             this._to_utf8 (dest, length + 1, null, src_length, ref p_error_code);
@@ -66,10 +68,11 @@ namespace Icu {
 
         [CCode (cname = "_vala_unumf_resultToString")]
         public String to_string (ref ErrorCode ec) {
-            var length = this._to_string (null, 0, ref ec);
+            int32 length = this._to_string (null, 0, ref ec);
 
-            if (ec == BUFFER_OVERFLOW_ERROR)
+            if (ec == BUFFER_OVERFLOW_ERROR) {
                 ec = ZERO_ERROR;
+            }
 
             var dest = (String) new Char[length + 1];
             this._to_string (dest, length + 1, ref ec);

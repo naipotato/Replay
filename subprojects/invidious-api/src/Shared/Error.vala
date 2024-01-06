@@ -15,11 +15,12 @@ public errordomain Iv.Error {
     internal static Error from_status_code (Soup.Status status_code, GJson.Node json) {
         var server_error_message = "no server error message";
 
-        if (json.node_type == OBJECT && json["error"].node_type == STRING)
+        if (json.node_type == OBJECT && json["error"].node_type == STRING) {
             server_error_message = json["error"].as_string ();
+        }
 
-        var reason_phrase = Soup.Status.get_phrase (status_code);
-        var error_message = @"$reason_phrase: $server_error_message";
+        string reason_phrase = Soup.Status.get_phrase (status_code);
+        var    error_message = @"$reason_phrase: $server_error_message";
 
         switch (status_code) {
             case Soup.Status.BAD_REQUEST:

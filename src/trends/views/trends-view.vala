@@ -15,10 +15,10 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
 
     [GtkCallback]
     private string state_to_nick (ViewModelState state) {
-        var local_state = state == INITIAL
-            ? ViewModelState.IN_PROGRESS
-            : state;
+        if (state == ViewModelState.INITIAL) {
+            state = ViewModelState.IN_PROGRESS;
+        }
 
-        return local_state.to_nick ();
+        return state.to_nick ();
     }
 }
