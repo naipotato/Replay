@@ -17,8 +17,9 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     public double aspect_ratio {
         get { return this._aspect_ratio; }
         set {
-            if (this._aspect_ratio == value)
+            if (this._aspect_ratio == value) {
                 return;
+            }
 
             this._aspect_ratio = value;
 
@@ -34,8 +35,9 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     public int min_width {
         get { return this._min_width; }
         set {
-            if (this._min_width == value)
+            if (this._min_width == value) {
                 return;
+            }
 
             this._min_width = value;
 
@@ -47,8 +49,9 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     public string? uri {
         get { return this._uri; }
         set {
-            if (this._uri == value)
+            if (this._uri == value) {
                 return;
+            }
 
             this._uri = value;
 
@@ -57,7 +60,7 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     }
 
     protected override Gtk.SizeRequestMode get_request_mode () {
-        return HEIGHT_FOR_WIDTH;
+        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
     }
 
     protected override void measure (Gtk.Orientation orientation, int for_size,
@@ -71,14 +74,15 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
     }
 
     protected override void snapshot (Gtk.Snapshot snapshot) {
-        if (this._texture == null)
+        if (this._texture == null) {
             return;
+        }
 
-        var paintable_width  = this._texture.get_intrinsic_width ();
-        var paintable_height = this._texture.get_intrinsic_height ();
+        int paintable_width  = this._texture.get_intrinsic_width ();
+        int paintable_height = this._texture.get_intrinsic_height ();
 
-        var widget_width  = this.get_width ();
-        var widget_height = this.get_height ();
+        int widget_width  = this.get_width ();
+        int widget_height = this.get_height ();
 
         double width, height;
         this._texture.compute_concrete_size (widget_width, 0, paintable_width,
@@ -121,15 +125,17 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
         this.queue_draw ();
         this.queue_resize ();
 
-        if (this.uri == null)
+        if (this.uri == null) {
             return;
+        }
 
         try {
             var message = new Soup.Message ("GET", this.uri);
-            var bytes   = yield Thumbnail._session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
+            Bytes bytes = yield Thumbnail._session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
 
-            if (message.status_code >= 400)
+            if (message.status_code >= 400) {
                 return;
+            }
 
             this._texture = yield Utils.run_in_thread (() => Gdk.Texture.from_bytes (bytes));
 

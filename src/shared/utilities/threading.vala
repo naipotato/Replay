@@ -7,7 +7,7 @@ delegate T Rpy.Utils.ThreadFunc<T> () throws Error;
 namespace Rpy.Utils {
     async T run_in_thread<T> (owned ThreadFunc<T> func) throws Error {
         T      result = null;
-        Error? error = null;
+        Error? error  = null;
 
         Worker.thread_pool.add(new Worker (() => {
             try {
@@ -21,8 +21,9 @@ namespace Rpy.Utils {
 
         yield;
 
-        if (error != null)
+        if (error != null) {
             throw error;
+        }
 
         return result;
     }

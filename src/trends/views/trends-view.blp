@@ -7,7 +7,7 @@ using Adw 1;
 template $RpyTrendsView : Adw.NavigationPage {
   title: 'Trends';
 
-  Adw.ToolbarView {
+  child: Adw.ToolbarView {
     [top]
     Adw.HeaderBar {}
 
@@ -16,15 +16,20 @@ template $RpyTrendsView : Adw.NavigationPage {
 
       Gtk.StackPage {
         name: 'in-progress';
+
         child: Gtk.Spinner {
-          height-request: 32;
           spinning: true;
+
           valign: center;
+
+          width-request: 32;
+          height-request: 32;
         };
       }
 
       Gtk.StackPage {
         name: 'error';
+
         child: Gtk.Label {
           label: 'An error occurred!';
         };
@@ -32,14 +37,15 @@ template $RpyTrendsView : Adw.NavigationPage {
 
       Gtk.StackPage {
         name: 'success';
+
         child: Gtk.ScrolledWindow {
           hscrollbar-policy: never;
 
-          Adw.ClampScrollable {
+          child: Adw.ClampScrollable {
             maximum-size: 1280;
             tightening-threshold: 768;
 
-            Gtk.GridView {
+            child: Gtk.GridView {
               max-columns: 4;
 
               model: Gtk.NoSelection {
@@ -49,20 +55,23 @@ template $RpyTrendsView : Adw.NavigationPage {
               factory: Gtk.BuilderListItemFactory {
                 template Gtk.ListItem {
                   focusable: false;
+
                   child: $RpyVideoCard {
-                    author: bind template.item as <$RpyVideo>.author;
-                    duration: bind template.item as <$RpyVideo>.duration;
-                    publication-date: bind template.item as <$RpyVideo>.publication-date;
                     thumbnail-uri: bind template.item as <$RpyVideo>.thumbnail-uri;
+                    duration: bind template.item as <$RpyVideo>.duration;
+
                     title: bind template.item as <$RpyVideo>.title;
+                    author: bind template.item as <$RpyVideo>.author;
+
                     view-count: bind template.item as <$RpyVideo>.view-count;
+                    publication-date: bind template.item as <$RpyVideo>.publication-date;
                   };
                 }
               };
-            }
-          }
+            };
+          };
         };
       }
     }
-  }
+  };
 }

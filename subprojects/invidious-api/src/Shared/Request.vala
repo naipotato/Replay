@@ -32,16 +32,19 @@ public abstract class Iv.Request<TResponse> {
 	}
 
     public async TResponse execute_async () throws Error {
-        var session = this.session ();
+        Soup.Session session = this.session ();
+
         var message = new Soup.Message.from_uri (this.method, this.build_uri ());
 
-        var request_headers = message.get_request_headers ();
-        foreach (var header in this.headers ())
+        Soup.MessageHeaders request_headers = message.get_request_headers ();
+        foreach (var header in this.headers ()) {
             request_headers.append (header.key, header.@value);
+        }
 
-        var body = this.body ();
-        if (body != null)
+        string? body = this.body ();
+        if (body != null) {
             message.set_request_body_from_bytes (null, new Bytes (body.data));
+        }
 
         Bytes bytes;
 
@@ -51,17 +54,18 @@ public abstract class Iv.Request<TResponse> {
             throw new Error.UNKNOWN (@"Unknown error: $(err.message)");
         }
 
-        var data = Bytes.unref_to_data ((owned) bytes);
+        uint8[] data = Bytes.unref_to_data ((owned) bytes);
 
         var raw_text = (string) data;
-        var raw_text_length = data.length;
+        int raw_text_length = data.length;
 
-        var json = GJson.Node.parse (raw_text.make_valid (raw_text_length));
+        GJson.Node node = GJson.Node.parse (raw_text.make_valid (raw_text_length));
 
-        if (message.status_code >= 400)
-            throw Error.from_status_code (message.status_code, json);
+        if (message.status_code >= 400) {
+            throw Error.from_status_code (message.status_code, node);
+        }
 
-        return this.parse_response (json);
+        return this.parse_response (node);
     }
 
     private Uri build_uri () {
@@ -70,8 +74,11 @@ public abstract class Iv.Request<TResponse> {
             path = this.path,
         };
 
-        foreach (var param in this._query_params)
-            builder.add_query_param (param.key, param.@value);
+        foreach (Gee.Map.Entry<string, string>? param in this._query_params) {
+            if (param != null) {
+                builder.add_query_param (param.key, param.@value);
+            }
+        }
 
         return builder.build ();
     }

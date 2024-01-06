@@ -5,13 +5,15 @@ sealed class Rpy.VideoRepository {
     public async Gee.List<Video> get_trending_videos () throws Error {
         var client = new Iv.Client ("invidious.fdn.fr");
 
-        var request    = client.trending ();
-        var api_videos = yield request.execute_async ();
+        Iv.TrendingRequest request    = client.trending ();
+        Gee.List<Iv.Video> api_videos = yield request.execute_async ();
 
-        var it = api_videos.iterator ().map<Video> ((item) => this.api_to_video (item));
+        Gee.Iterator<Video> iterator = api_videos
+            .iterator ()
+            .map<Video> ((item) => this.api_to_video (item));
 
         var video_list = new Gee.ArrayList<Video> ();
-        video_list.add_all_iterator (it);
+        video_list.add_all_iterator (iterator);
 
         return video_list;
     }

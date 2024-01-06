@@ -11,7 +11,7 @@ enum Rpy.ViewModelState {
 }
 
 sealed class Rpy.TrendsViewModel : Object {
-    public ViewModelState state { get; private set; default = INITIAL; }
+    public ViewModelState state { get; private set; default = ViewModelState.INITIAL; }
     public ListStore trending_videos { get; default = new ListStore (typeof (Video)); }
 
     construct {
@@ -19,18 +19,18 @@ sealed class Rpy.TrendsViewModel : Object {
     }
 
     public async void load_trending_videos () {
-        this.state = IN_PROGRESS;
+        this.state = ViewModelState.IN_PROGRESS;
 
         try {
-            var repo = new VideoRepository ();
-            var videos = yield repo.get_trending_videos ();
+            var repository         = new VideoRepository ();
+            Gee.List<Video> videos = yield repository.get_trending_videos ();
 
-            var videos_array = videos.to_array ();
-            this.trending_videos.splice (0, 0, (Object[]) videos_array);
+            Video[] videos_array = videos.to_array ();
+            this.trending_videos.splice (0, 0, videos_array);
 
-            this.state = SUCCESS;
-        } catch (Error e) {
-            this.state = ERROR;
+            this.state = ViewModelState.SUCCESS;
+        } catch {
+            this.state = ViewModelState.ERROR;
         }
     }
 }

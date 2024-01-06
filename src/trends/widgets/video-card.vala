@@ -7,7 +7,7 @@ sealed class Rpy.VideoCard : Gtk.Widget {
     private unowned Gtk.Overlay _thumbnail_overlay;
 
     [GtkChild]
-    private unowned Gtk.Grid _info_grid;
+    private unowned Gtk.Grid _details_grid;
 
     public string?   author           { get; set; }
     public TimeSpan  duration         { get; set; }
@@ -22,7 +22,8 @@ sealed class Rpy.VideoCard : Gtk.Widget {
 
     protected override void dispose () {
         this._thumbnail_overlay.unparent ();
-        this._info_grid.unparent ();
+        this._details_grid.unparent ();
+
         base.dispose ();
     }
 
@@ -43,7 +44,7 @@ sealed class Rpy.VideoCard : Gtk.Widget {
 
     [GtkCallback]
     private string format_view_count (int64 view_count) {
-        var view_count_formatted = Utils.format_number (view_count, "compact-short .#");
+        string view_count_formatted = Utils.format_number (view_count, "compact-short .#");
         return ngettext ("%s view", "%s views", (long) view_count).printf (view_count_formatted);
     }
 }

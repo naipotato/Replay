@@ -10,16 +10,19 @@ public class Iv.TrendingRequest : Request<Gee.List<Video>> {
     public Category? category {
         get { return this._category; }
         set {
-            if (this._category == value)
+            if (this._category == value) {
                 return;
+            }
 
-            if (this._category != null)
+            if (this._category != null) {
                 this.remove_query_param ("type");
+            }
 
             this._category = value;
 
-            if (this._category != null)
+            if (this._category != null) {
                 this.add_query_param ("type", value.as_string ());
+            }
         }
     }
 
@@ -34,16 +37,19 @@ public class Iv.TrendingRequest : Request<Gee.List<Video>> {
     public string? region {
         get { return this._region; }
         set {
-            if (this._region == value.up ())
+            if (this._region == value.up ()) {
                 return;
+            }
 
-            if (this._region != "US")
+            if (this._region != "US") {
                 this.remove_query_param ("region");
+            }
 
             this._region = value.up ();
 
-            if (this._region != "US")
+            if (this._region != "US") {
                 this.add_query_param ("region", value.up ());
+            }
         }
     }
 
