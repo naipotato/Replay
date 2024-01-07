@@ -10,23 +10,11 @@ sealed class Rpy.VideoRepository {
 
         Gee.Iterator<Video> iterator = api_videos
             .iterator ()
-            .map<Video> ((item) => this.api_to_video (item));
+            .map<Video> ((item) => Video.from_api (item));
 
         var video_list = new Gee.ArrayList<Video> ();
         video_list.add_all_iterator (iterator);
 
         return video_list;
-    }
-
-    private Video api_to_video (Iv.Video api_video) {
-        return new Video () {
-            id               = api_video.videoId,
-            thumbnail_uri    = api_video.videoThumbnails[0].url,
-            title            = api_video.title,
-            author           = api_video.author,
-            view_count       = api_video.viewCount,
-            publication_date = new DateTime.from_unix_utc (api_video.published),
-            duration         = api_video.lengthSeconds * TimeSpan.SECOND,
-        };
     }
 }
