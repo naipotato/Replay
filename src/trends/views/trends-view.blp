@@ -12,7 +12,7 @@ template $RpyTrendsView : Adw.NavigationPage {
     Adw.HeaderBar {}
 
     Gtk.Stack {
-      visible-child-name: bind $state_to_nick(template.view-model as <$RpyTrendsViewModel>.state) as <string>;
+      visible-child-name: bind $state_to_nick(template.view-model as <$RpyViewModel>.state) as <string>;
 
       Gtk.StackPage {
         name: 'in-progress';
