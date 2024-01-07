@@ -54,7 +54,7 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
 
             this._uri = value;
 
-            this.refresh_thumbnail.begin ();
+            this.refresh_thumbnail ().disown ();
         }
     }
 
@@ -118,28 +118,37 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
         snapshot.pop ();
     }
 
-    private async void refresh_thumbnail () {
+    private Dex.Future refresh_thumbnail () {
+        return Dex.Scheduler.get_default ().spawn (0, this.refresh_thumbnail_fiber);
+    }
+
+    private Dex.Future? refresh_thumbnail_fiber () {
         this._texture = null;
 
         this.queue_draw ();
         this.queue_resize ();
 
         if (this.uri == null) {
-            return;
+            return null;
         }
 
         try {
             var message = new Soup.Message ("GET", this.uri);
-            Bytes bytes = yield this._session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
+            var bytes   = (Bytes) Utils.session_send_and_read (this._session, message)
+                .await_boxed ();
 
             if (message.status_code >= 400) {
-                return;
+                return null;
             }
 
-            this._texture = yield Utils.run_in_thread (() => Gdk.Texture.from_bytes (bytes));
+            this._texture = (Gdk.Texture) Utils.texture_from_bytes (bytes).await_object ();
 
             this.queue_resize ();
             this.queue_draw ();
-        } catch {}
+
+            return null;
+        } catch (Error err) {
+            return new Dex.Future.for_error (err);
+        }
     }
 }

@@ -25,6 +25,7 @@ sealed class Rpy.App : Adw.Application {
         this.resource_base_path = "/app/drey/Replay";
 
         base.startup ();
+        Dex.init ();
 
         Environment.set_application_name ("Replay");
 
