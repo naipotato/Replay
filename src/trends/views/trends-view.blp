@@ -49,7 +49,7 @@ template $RpyTrendsView : Adw.NavigationPage {
               max-columns: 4;
 
               model: Gtk.NoSelection {
-                model: bind template.view-model as <$RpyTrendsViewModel>.trending-videos;
+                model: bind template.view-model as <$RpyTrendsViewModel>.videos;
               };
 
               factory: Gtk.BuilderListItemFactory {
