@@ -23,19 +23,10 @@ sealed class Rpy.DefaultTrendsViewModel : ViewModel, TrendsViewModel {
     private Dex.Future? fetch_trending_videos_fiber () {
         this.state = ViewModelState.IN_PROGRESS;
 
-        var trending_promise = new Dex.Promise ();
-        this.repository.trending.begin ((_, res) => {
-            try {
-                trending_promise.resolve (this.repository.trending.end (res));
-            } catch (Error err) {
-                trending_promise.reject (err);
-            }
-        });
-
         Gee.List<Video> videos;
 
         try {
-            videos = (Gee.List<Video>) trending_promise.await_object ();
+            videos = (Gee.List<Video>) this.repository.trending ().await_object ();
         } catch (Error err) {
             this.state = ViewModelState.ERROR;
             return new Dex.Future.for_error (err);
