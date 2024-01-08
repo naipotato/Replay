@@ -31,7 +31,11 @@ public abstract class Iv.Request<TResponse> {
 		return null;
 	}
 
-    public async TResponse execute_async () throws Error {
+    public Dex.Future execute () {
+        return Dex.Scheduler.get_default ().spawn (0, this.execute_fiber);
+    }
+
+    private Dex.Future? execute_fiber () {
         Soup.Session session = this.session ();
 
         var message = new Soup.Message.from_uri (this.method, this.build_uri ());
@@ -49,9 +53,10 @@ public abstract class Iv.Request<TResponse> {
         Bytes bytes;
 
         try {
-            bytes = yield session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
+            bytes = (Bytes) Utils.session_send_and_read (session, message).await_boxed ();
         } catch (GLib.Error err) {
-            throw new Error.UNKNOWN (@"Unknown error: $(err.message)");
+            err = new Error.UNKNOWN (@"Unknown error: $(err.message)");
+            return new Dex.Future.for_error (err);
         }
 
         uint8[] data = Bytes.unref_to_data ((owned) bytes);
@@ -62,10 +67,11 @@ public abstract class Iv.Request<TResponse> {
         GJson.Node node = GJson.Node.parse (raw_text.make_valid (raw_text_length));
 
         if (message.status_code >= 400) {
-            throw Error.from_status_code (message.status_code, node);
+            var err = Error.from_status_code (message.status_code, node);
+            return new Dex.Future.for_error (err);
         }
 
-        return this.parse_response (node);
+        return new Dex.Future.for_pointer (this.parse_response (node));
     }
 
     private Uri build_uri () {

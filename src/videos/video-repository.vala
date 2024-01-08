@@ -14,19 +14,10 @@ sealed class Rpy.DefaultVideoRepository : Object, VideoRepository {
         var client                 = new Iv.Client ("invidious.fdn.fr");
         Iv.TrendingRequest request = client.trending ();
 
-        var promise = new Dex.Promise ();
-        request.execute_async.begin ((_, res) => {
-            try {
-                promise.resolve (request.execute_async.end (res));
-            } catch (Error err) {
-                promise.reject (err);
-            }
-        });
-
         Gee.List<Iv.Video> api_videos;
 
         try {
-            api_videos = (Gee.List<Iv.Video>) promise.await_object ();
+            api_videos = (Gee.List<Iv.Video>) request.execute ().await_pointer ();
         } catch (Error err) {
             return new Dex.Future.for_error (err);
         }
