@@ -5,8 +5,8 @@
 sealed class Rpy.TrendsView : Adw.NavigationPage {
     public TrendsViewModel view_model { get; construct; }
 
-    public TrendsView () {
-        Object (view_model: new TrendsViewModel ());
+    public TrendsView (TrendsViewModel? view_model = null) {
+        Object (view_model: view_model ?? new TrendsViewModel ());
     }
 
     static construct {
