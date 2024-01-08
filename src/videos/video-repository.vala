@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 sealed class Rpy.VideoRepository {
-    public async Gee.List<Video> get_trending_videos () throws Error {
+    public async Gee.List<Video> trending () throws Error {
         var client = new Iv.Client ("invidious.fdn.fr");
 
         Iv.TrendingRequest request    = client.trending ();

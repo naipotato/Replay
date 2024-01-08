@@ -10,14 +10,14 @@ sealed class Rpy.TrendsViewModel : ViewModel {
     }
 
     construct {
-        this.load_trending_videos.begin ();
+        this.fetch_trending_videos.begin ();
     }
 
-    public async void load_trending_videos () {
+    public async void fetch_trending_videos () {
         this.state = ViewModelState.IN_PROGRESS;
 
         try {
-            Gee.List<Video> videos = yield this.repository.get_trending_videos ();
+            Gee.List<Video> videos = yield this.repository.trending ();
 
             Video[] videos_array = videos.to_array ();
             this.videos.splice (0, 0, videos_array);
