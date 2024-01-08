@@ -13,6 +13,11 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
         set_css_name ("rpytrendsview");
     }
 
+    protected override void constructed () {
+        base.constructed ();
+        this.view_model.fetch_trending_videos.begin ();
+    }
+
     [GtkCallback]
     private string state_to_nick (ViewModelState state) {
         if (state == ViewModelState.INITIAL) {
