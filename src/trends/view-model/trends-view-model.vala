@@ -9,10 +9,6 @@ sealed class Rpy.TrendsViewModel : ViewModel {
         Object (repository: repository ?? new VideoRepository ());
     }
 
-    construct {
-        this.fetch_trending_videos.begin ();
-    }
-
     public async void fetch_trending_videos () {
         this.state = ViewModelState.IN_PROGRESS;
 
