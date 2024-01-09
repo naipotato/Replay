@@ -10,7 +10,9 @@ sealed class Rpy.AppWindow : Adw.ApplicationWindow {
         Object (application: app);
     }
 
-    construct {
+    protected override void constructed () {
+        base.constructed ();
+
         #if DEVEL
             this.add_css_class ("devel");
         #endif
