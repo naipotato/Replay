@@ -1,7 +1,7 @@
-sources = files('Client.vala')
+sources = files('client.vala')
 
-subdir('Shared')
-subdir('Trending')
+subdir('shared')
+subdir('trending')
 
 deps = [
   dependency('gee-0.8',     method : 'pkg-config', version : '>=0.20'),
