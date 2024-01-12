@@ -1,11 +1,18 @@
 // Copyright 2022 Nahuel Gomez https://nahuelwexd.com
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-sealed class Rpy.TrendsViewModel : ViewModel {
+interface Rpy.TrendsViewModel : ViewModel {
+    public abstract VideoRepository repository { get; construct; }
+    public abstract ListStore       videos     { get; }
+
+    public abstract async void fetch_trending_videos ();
+}
+
+sealed class Rpy.DefaultTrendsViewModel : ViewModel, TrendsViewModel {
     public VideoRepository repository { get; construct; }
     public ListStore       videos     { get; default = new ListStore (typeof (Video)); }
 
-    public TrendsViewModel (VideoRepository? repository = null) {
+    public DefaultTrendsViewModel (VideoRepository? repository = null) {
         Object (repository: repository ?? new DefaultVideoRepository ());
     }
 

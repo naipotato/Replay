@@ -6,7 +6,7 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
     public TrendsViewModel view_model { get; construct; }
 
     public TrendsView (TrendsViewModel? view_model = null) {
-        Object (view_model: view_model ?? new TrendsViewModel ());
+        Object (view_model: view_model ?? new DefaultTrendsViewModel ());
     }
 
     static construct {
