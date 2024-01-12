@@ -6,7 +6,7 @@ sealed class Rpy.TrendsViewModel : ViewModel {
     public ListStore       videos     { get; default = new ListStore (typeof (Video)); }
 
     public TrendsViewModel (VideoRepository? repository = null) {
-        Object (repository: repository ?? new VideoRepository ());
+        Object (repository: repository ?? new DefaultVideoRepository ());
     }
 
     public async void fetch_trending_videos () {
