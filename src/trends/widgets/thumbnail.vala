@@ -2,9 +2,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 sealed class Rpy.Thumbnail : Gtk.Widget {
-    private static Soup.Session _session = new Soup.Session ();
-
     private Gdk.Texture? _texture = null;
+    private Soup.Session _session = new Soup.Session ();
 
     private double  _aspect_ratio = 16.0 / 9.0;
     private int     _min_width    = 260;
@@ -131,7 +130,7 @@ sealed class Rpy.Thumbnail : Gtk.Widget {
 
         try {
             var message = new Soup.Message ("GET", this.uri);
-            Bytes bytes = yield Thumbnail._session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
+            Bytes bytes = yield this._session.send_and_read_async (message, Priority.DEFAULT_IDLE, null);
 
             if (message.status_code >= 400) {
                 return;
