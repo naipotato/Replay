@@ -1,7 +1,11 @@
 // Copyright 2022 Nahuel Gomez https://nahuelwexd.com
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-sealed class Rpy.VideoRepository {
+interface Rpy.VideoRepository : Object {
+    public abstract async Gee.List<Video> trending () throws Error;
+}
+
+sealed class Rpy.DefaultVideoRepository : Object, VideoRepository {
     public async Gee.List<Video> trending () throws Error {
         var client = new Iv.Client ("invidious.fdn.fr");
 
