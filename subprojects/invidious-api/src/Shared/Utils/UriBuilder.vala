@@ -1,7 +1,7 @@
 // Copyright 2023 Nahuel Gomez https://nahuelwexd.com
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-private class Iv.UriBuilder {
+private class Iv.Utils.UriBuilder {
     private string _scheme;
 
     private Gee.Map<string, string> _query_params = new Gee.HashMap<string, string> ();
