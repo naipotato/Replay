@@ -30,7 +30,7 @@ public class Iv.TrendingRequest : Request<Gee.List<Video>> {
         MUSIC, GAMING, NEWS, MOVIES;
 
         internal string as_string () {
-            return enum_as_string (typeof (Category), this);
+            return Utils.enum_as_string (typeof (Category), this);
         }
     }
 

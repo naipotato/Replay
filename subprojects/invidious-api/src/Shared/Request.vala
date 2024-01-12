@@ -69,7 +69,7 @@ public abstract class Iv.Request<TResponse> {
     }
 
     private Uri build_uri () {
-        var builder = new UriBuilder ("https") {
+        var builder = new Utils.UriBuilder ("https") {
             host = this.host,
             path = this.path,
         };
