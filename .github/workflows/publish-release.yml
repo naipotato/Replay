@@ -53,7 +53,7 @@ jobs:
           gpg-sign: ${{ steps.gpg.outputs.keyid }}
 
       - name: Push update
-        uses: EndBug/add-and-commit@v9.1.3
+        uses: EndBug/add-and-commit@v9.1.4
         with:
           commit: --amend
           cwd: repo
