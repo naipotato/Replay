@@ -15,7 +15,7 @@ sealed class Rpy.TrendsView : Adw.NavigationPage {
 
     protected override void constructed () {
         base.constructed ();
-        this.view_model.fetch_trending_videos.begin ();
+        this.view_model.fetch_trending_videos ().disown ();
     }
 
     [GtkCallback]

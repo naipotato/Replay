@@ -1,1 +1,1 @@
-sources += files('enum-as-string.vala', 'uri-builder.vala')
+sources += files('enum-as-string.vala', 'uri-builder.vala', 'wrappers.vala')

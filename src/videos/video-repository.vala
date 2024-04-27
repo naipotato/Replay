@@ -2,15 +2,25 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 interface Rpy.VideoRepository : Object {
-    public abstract async Gee.List<Video> trending () throws Error;
+    public abstract Dex.Future trending ();
 }
 
 sealed class Rpy.DefaultVideoRepository : Object, VideoRepository {
-    public async Gee.List<Video> trending () throws Error {
-        var client = new Iv.Client ("invidious.fdn.fr");
+    public Dex.Future trending () {
+        return Dex.Scheduler.get_default ().spawn (0, this.trending_fiber);
+    }
 
-        Iv.TrendingRequest request    = client.trending ();
-        Gee.List<Iv.Video> api_videos = yield request.execute_async ();
+    private Dex.Future? trending_fiber () {
+        var client                 = new Iv.Client ("invidious.fdn.fr");
+        Iv.TrendingRequest request = client.trending ();
+
+        Gee.List<Iv.Video> api_videos;
+
+        try {
+            api_videos = (Gee.List<Iv.Video>) request.execute ().await_pointer ();
+        } catch (Error err) {
+            return new Dex.Future.for_error (err);
+        }
 
         Gee.Iterator<Video> iterator = api_videos
             .iterator ()
@@ -19,6 +29,6 @@ sealed class Rpy.DefaultVideoRepository : Object, VideoRepository {
         var video_list = new Gee.ArrayList<Video> ();
         video_list.add_all_iterator (iterator);
 
-        return video_list;
+        return new Dex.Future.for_object (video_list);
     }
 }

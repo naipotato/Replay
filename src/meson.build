@@ -58,6 +58,7 @@ executable(app_id,
     dependency('gtk4',         method : 'pkg-config', version : '>=4.12'),
     dependency('icu-i18n',     method : 'pkg-config', version : '>=62.0'),
     dependency('libadwaita-1', method : 'pkg-config', version : '>=1.4' ),
+    dependency('libdex-1',     method : 'pkg-config', version : '>=0.4' ),
     dependency('libsoup-3.0',  method : 'pkg-config', version : '>=3.0' ),
 
     subproject('invidious-api').get_variable('invidious_api_dep'),

@@ -7,6 +7,7 @@ deps = [
   dependency('gee-0.8',     method : 'pkg-config', version : '>=0.20'),
   dependency('gio-2.0',     method : 'pkg-config', version : '>=2.70'),
   dependency('gjson-1.0',   method : 'pkg-config', version : '>=1.0' ),
+  dependency('libdex-1',    method : 'pkg-config', version : '>=0.4' ),
   dependency('libsoup-3.0', method : 'pkg-config', version : '>=3.0' ),
 ]
 
